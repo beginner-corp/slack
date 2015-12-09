@@ -6,8 +6,8 @@
 - perfect symmetry (method sigs match api docs, method sigs are node style)
 - opt in (use the parts of the api surface you want w/o the entire payload)
 - works in node and the browser (related to above)
-- future friendly [1/2] (writ in es2015 but published to npm as es5)
-- future friendly [2/2] (no in-progress es* features, avoid polyfills and def no runtime)
+- future friendly 1/2 (writ in es2015 but published to npm as es5)
+- future friendly 2/2 (no in-progress es* features, avoid polyfills and def no runtime)
 - start w/ just the web api (for now)
 - heavily tested, ci, apache2 license/contrib model
 

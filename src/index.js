@@ -4,6 +4,7 @@ import access from './oauth.access'
 import info from './team.info'
 import list from './users.list'
 import channelsList from './channels.list'
+import postMessage from './chat.postMessage'
 
 let describe = `
   slack
@@ -13,6 +14,7 @@ let describe = `
     team.info(token, (err, data)=>)
     users.list(token, (err, data)=>)
     channels.list({token, exclude_archived}, (err, data)=>)
+    chat.postMessage({token, text, channel}, (err, data)=>)
 `
 
 export default {
@@ -22,5 +24,6 @@ export default {
   oauth: {access},
   team: {info},
   users: {list},
-  channels: {list:channelsList}
+  channels: {list:channelsList},
+  chat: {postMessage}
 }

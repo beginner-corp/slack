@@ -3,6 +3,7 @@ import test from './auth.test'
 import access from './oauth.access'
 import info from './team.info'
 import list from './users.list'
+import channelsList from './channels.list'
 
 let describe = `
   slack
@@ -11,6 +12,7 @@ let describe = `
     oauth.access({client_id, client_secret, code}, (err, data)=>)
     team.info(token, (err, data)=>)
     users.list(token, (err, data)=>)
+    channels.list({token, exclude_archived}, (err, data)=>)
 `
 
 export default {
@@ -19,5 +21,6 @@ export default {
   auth: {test},
   oauth: {access},
   team: {info},
-  users: {list}
+  users: {list},
+  channels: {list:channelsList}
 }

@@ -12,7 +12,9 @@ test('sanity', t=> {
 })
 
 test('cannot get a token with a bad code', t=> {
-  oauth('bad_code', (err, data)=> {
+  let client_id = process.env.SLACK_CLIENT_ID
+  let client_secret = process.env.SLACK_CLIENT_SECRET
+  oauth({client_id, client_secret, code:'bad_code'}, (err, data)=> {
     if (err.message === 'invalid_code') {
       t.ok(err, 'bad code is bad')
       console.log(err)

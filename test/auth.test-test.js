@@ -7,7 +7,7 @@ import path from 'path'
 env(path.join(process.cwd(), '.env'))
 
 test('sanity', t=> {
-  auth((err, data)=> {
+  auth(process.env.SLACK_TOKEN, (err, data)=> {
     if (err) {
       t.fail(err, 'auth could not be tested!')
       console.error(err)

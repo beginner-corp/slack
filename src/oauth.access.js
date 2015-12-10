@@ -1,18 +1,15 @@
 import exec from './exec'
 
-export default function authTest(code, callback) {
+export default function authTest(params, callback) {
 
-  let client_id     = process.env.SLACK_CLIENT_ID
-  let client_secret = process.env.SLACK_CLIENT_SECRET
-  let undef         = v=>typeof v === 'undefined'
+  let req = ['client_id', 'client_secret', 'code']
+  let bad = req.filter(k=> typeof params[k] === 'undefined')
+  let err = bad.length? Error(`oauth.access missing params: ${bad.join(', ')}`) : false
 
-  if (undef(client_id)) {
-    callback(Error('process.env.SLACK_CLIENT_ID not defined'))
-  }
-  else if (undef(client_secret)) {
-    callback(Error('process.env.SLACK_CLIENT_SECRET not defined'))
+  if (err) {
+    callback(err)
   }
   else {
-    exec('oauth.access', {client_id, client_secret, code}, callback)
+    exec('oauth.access', params, callback)
   }
 }

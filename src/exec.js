@@ -2,17 +2,13 @@ import req from 'request'
 
 export default function exec(ns, params, callback) {
 
-  // config-y things
-  let client_id     = process.env.SLACK_CLIENT_ID
-  let client_secret = process.env.SLACK_CLIENT_SECRET
-  let json          = true
-  let base          = 'https://slack.com/api/'
-  let headers       = {Accept: 'application/json'}
-
   // tidy up the api call params
-  let url = `${base}${ns}`
-  let form = Object.assign({client_id, client_secret}, params)
-  let query = {url, headers, form, json}
+  let base    = 'https://slack.com/api/'
+  let url     = `${base}${ns}`
+  let headers = {Accept:'application/json'}
+  let form    = params
+  let json    = true
+  let query   = {url, headers, form, json}
 
   // always post
   req.post(query, (err, res)=> {

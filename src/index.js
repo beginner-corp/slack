@@ -1,29 +1,17 @@
-import apiTest from './api.test'
-import authTest from './auth.test'
-import oauthAccess from './oauth.access'
+import api from './api.test'
+import test from './auth.test'
+import access from './oauth.access'
 
 let describe = `
   slack
     api.test(params, (err, data)=>)
-    auth.test(
+    auth.test(token, (err, data)=>)
     oauth.access
 `
 
-// the whole thing
 export default {
-
   describe,
-
-  api: {
-    test: apiTest     
-  },
-
-  auth: {
-    test: authTest
-  },
-
-  oauth: {
-    access: oauthAccess       
-  }
-/// eom
+  api: {test:api},
+  auth: {test},
+  oauth: {access}
 }

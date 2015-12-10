@@ -6,7 +6,7 @@ let describe = `
   slack
     api.test(params, (err, data)=>)
     auth.test(token, (err, data)=>)
-    oauth.access
+    oauth.access({client_id, client_secret, code}, (err, data)=>)
 `
 
 export default {

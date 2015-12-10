@@ -23,7 +23,7 @@ slack.api.test({hello:'word'}, console.log)
 You can just use one method, if you are exporting for the browser, for example.
 
 ```javascript
-import test from 'slack/api/api.test'
+import test from 'slack/methods/api.test'
 
 // logs {args:{hyper:'card'}}
 test({hyper:'card'}, console.log)

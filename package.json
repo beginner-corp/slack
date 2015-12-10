@@ -2,7 +2,7 @@
   "name": "slack",
   "version": "3.3.1",
   "description": "Slack API client writ in JS",
-  "main": "api/index",
+  "main": "methods/index",
   "scripts": {
     "build": "./scripts/build",
     "test": "./scripts/test",

@@ -1,10 +1,8 @@
 import test from 'tape'
 import auth from '../src/auth.test'
-import env from 'node-env-file'
-import path from 'path'
-
+import env from './_load-env'
 // load SLACK_TOKEN for testing
-env(path.join(process.cwd(), '.env'))
+env()
 
 test('sanity', t=> {
   auth(process.env.SLACK_TOKEN, (err, data)=> {

@@ -1,10 +1,8 @@
 import test from 'tape'
 import oauth from '../src/oauth.access'
-import env from 'node-env-file'
-import path from 'path'
-
-// load SLACK_CLIENT_ID and SLACK_CLIENT_SECRET for testing
-env(path.join(process.cwd(), '.env'))
+import env from './_load-env'
+// load SLACK_TOKEN for testing
+env()
 
 test('sanity', t=> {
   t.ok(oauth, 'oauth exists')

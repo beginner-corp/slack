@@ -1,10 +1,8 @@
 import test from 'tape'
 import list from '../src/channels.list'
-import env from 'node-env-file'
-import path from 'path'
-
+import env from './_load-env'
 // load SLACK_TOKEN for testing
-env(path.join(process.cwd(), '.env'))
+env()
 
 test('can list channels', t=> {
   let token = process.env.SLACK_TOKEN

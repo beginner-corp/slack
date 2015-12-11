@@ -1,4 +1,4 @@
-### slack api client proposal
+### slack api client proposal [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [ ![Codeship Status for smallwins/slack](https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master)](https://codeship.com/projects/121411)
 
 - written in javascript 
 - SUPER low level building block

@@ -47,9 +47,10 @@ You can get a `SLACK_TOKEN` for testing here: https://api.slack.com/web
 - `api.test(params, (err, data)=>)`
 - `auth.test(token, (err, data)=>)`
 - `oauth.access({client_id, client_secret, code}, (err, data)=>)`
-- `team.info(token, (err, data)=>)`
-- `users.list(token, (err, data)=>)`
 - `channels.list({token, exclude_archived}, (err, data)=>)`
 - `channels.history({token, channel}, (err, data)=>)`
 - `chat.postMessage({token, text, channel}, (err, data)=>)`
+- `rtm.start({token}, (err, data)=>)`
+- `team.info(token, (err, data)=>)`
+- `users.list(token, (err, data)=>)`
 

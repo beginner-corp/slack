@@ -1,11 +1,8 @@
 import exec from './exec'
+import req from './_required'
 
 export default function authTest(params, callback) {
-
-  let req = ['client_id', 'client_secret', 'code']
-  let bad = req.filter(k=> typeof params[k] === 'undefined')
-  let err = bad.length? Error(`oauth.access missing params: ${bad.join(', ')}`) : false
-
+  let err = req('oauth.access', params, 'client_id', 'client_secret', 'code')
   if (err) {
     callback(err)
   }

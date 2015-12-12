@@ -50,5 +50,6 @@ You can get a `SLACK_TOKEN` for testing here: https://api.slack.com/web
 - `team.info(token, (err, data)=>)`
 - `users.list(token, (err, data)=>)`
 - `channels.list({token, exclude_archived}, (err, data)=>)`
+- `channels.history({token, channel}, (err, data)=>)`
 - `chat.postMessage({token, text, channel}, (err, data)=>)`
 

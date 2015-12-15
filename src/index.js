@@ -6,6 +6,7 @@ import list from './users.list'
 import channelsList from './channels.list'
 import history from './channels.history'
 import postMessage from './chat.postMessage'
+import start from './rtm.start'
 
 let describe = `
   slack
@@ -16,6 +17,7 @@ let describe = `
     users.list(token, (err, data)=>)
     channels.list({token, exclude_archived}, (err, data)=>)
     channels.history({token, channel}, (err, data)=>)
+    rtm.start({token}, (err, data)=>)
     chat.postMessage({token, text, channel}, (err, data)=>)
 `
 
@@ -27,5 +29,6 @@ export default {
   team: {info},
   users: {list},
   channels: {list:channelsList, history},
-  chat: {postMessage}
+  chat: {postMessage},
+  rtm: {start}
 }

@@ -1,8 +1,8 @@
-import exec from './exec'
-import req from './_required'
+import exec from './_exec'
+import validate from './_validate'
 
 export default function rtmStart(params, callback) {
-  let err = req('rtm.start', params, 'token')
+  let err = validate('rtm.start', params, 'token')
   if (err) {
     callback(err)
   }

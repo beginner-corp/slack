@@ -1,17 +1,17 @@
-import req from 'request'
+import request from 'request'
 
-export default function exec(ns, params, callback) {
+const req = request.defaults({
+  baseUrl: 'https://slack.com/api/',
+  headers: {
+    Accept: 'application/json'
+  },
+  json: true
+})
 
-  // tidy up the api call params
-  let base    = 'https://slack.com/api/'
-  let url     = `${base}${ns}`
-  let headers = {Accept:'application/json'}
-  let form    = params
-  let json    = true
-  let query   = {url, headers, form, json}
+export default function exec(url, form, callback) {
 
   // always post
-  req.post(query, (err, res)=> {
+  req.post({url, form}, (err, res)=> {
     if (err) {
       // if request failed bubble the error
       callback(err)
@@ -27,5 +27,5 @@ export default function exec(ns, params, callback) {
       callback(null, json)
     }
   })
-/// eom  
+/// eom
 }

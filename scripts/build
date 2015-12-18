@@ -1,3 +1,0 @@
-#!/bin/sh
-babel=./node_modules/babel-cli/bin/babel.js
-$babel src --out-dir methods

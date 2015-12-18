@@ -4,7 +4,7 @@
   "description": "Slack API client writ in JS",
   "main": "methods/index",
   "scripts": {
-    "build": "./scripts/build",
+    "build": "babel src --out-dir methods",
     "test": "./scripts/test",
     "prepublish": "npm run build"
   },

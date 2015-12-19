@@ -33,7 +33,7 @@ export default {
   auth: {test},
   channels,
   chat,
-  emoji: {list:emojiList}
+  emoji: {list:emojiList},
   files,
   groups,
   im,

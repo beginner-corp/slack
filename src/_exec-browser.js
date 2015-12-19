@@ -2,9 +2,9 @@ import xhr from 'xhr'
 
 let baseUrl = 'https://slack.com/api/'
 
-export default function exec(url, json, callback) {
+export default function exec(ns, json, callback) {
 
-  let url = `${baseUrl}${url}`
+  let url = `${baseUrl}${ns}`
 
   xhr.post(url, {json}, (err, res)=> {
     if (err) {

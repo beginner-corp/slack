@@ -1,1 +1,1 @@
-setTimeout(window.close, 10000)
+setTimeout(window.close, 7000)

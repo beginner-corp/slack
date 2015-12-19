@@ -1,10 +1,4 @@
-https://badge.fury.io/js/slack.svg
-
-[![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) 
-
-[![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) 
-
-https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg
+[![npm package]](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411)
 
 <img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 

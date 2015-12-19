@@ -1,6 +1,8 @@
 <img width=200 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 
-# Slack Web [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [ ![Codeship Status for smallwins/slack](https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master)](https://codeship.com/projects/121411)
+[![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) 
+[![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) 
+[ ![Codeship Status for smallwins/slack](https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master)](https://codeship.com/projects/121411)
 
 `slack` is a SUPER low level building block web api client written in es2015 JavaScript.
 

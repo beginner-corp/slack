@@ -10,7 +10,7 @@ import access from './oauth.access'
 import reactions from './reactions'
 import start from './rtm.start'
 import search from './search'
-import starsList from './stars.list'
+import stars from './stars'
 import team from './team'
 import usergroups from './usergroups'
 import users from './users'
@@ -42,7 +42,7 @@ export default {
   reactions,
   rtm: {start},
   search,
-  stars: {starsList},
+  stars,
   team,
   usergroups,
   users

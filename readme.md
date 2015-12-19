@@ -1,11 +1,10 @@
 [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) 
 [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) 
+<a href="https://codeship.com/projects/121411"> <img style="max-width:130px" src="https://camo.githubusercontent.com/5064a30800f3ba03f5d50b0bfbf2369210501bc5/68747470733a2f2f636f6465736869702e636f6d2f70726f6a656374732f33666436343165302d383166342d303133332d633733332d3232393430613761343763362f7374617475733f6272616e63683d6d6173746572" alt="Codeship Status for smallwins/slack" data-canonical-src="https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master"></a>
 
 <img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 
-[ ![Codeship Status for smallwins/slack](https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master)](https://codeship.com/projects/121411)
-
-## A `slack` Web API client. :two_hearts:
+### A `slack` Web API client. :raised_hands: :two_hearts:
 
 - Writ in es2015 JavaScript
 - Pure functions *(no stateful things like classes, or using `new`)*
@@ -16,11 +15,11 @@
 - `Future friendly 2/2` no in-progress es* features, avoid polyfills and runtime
 - Heavily tested, CI and Apache2 licensed
 
-### install
+### install :star2:
 
     npm i slack
 
-## usage
+## usage :neckbeard:
 
 This module works in es5 environments by default. It is tested for Node and the browser.
 
@@ -40,7 +39,7 @@ import test from 'slack/methods/api.test'
 test({hyper:'card'}, console.log)
 ```
 
-### test setup
+### test setup :point_left:
 
 Clone this repo and create a file called `.env` in the root with the following:
 
@@ -52,25 +51,25 @@ SLACK_CLIENT_SECRET=xxxx
 
 You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. 
 
-## run the tests
+## testing :point_right:
 
-Test in Node:
+In Node:
 
 ```
 npm test
 ```
 
-Or a browser:
+Or the browser:
 
 ```
 npm run btest
 ```
 
-Or kick up a repl:
+Or kick up a repl and poke around:
 
 <img src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 
-# currently implemented api
+# currently implemented api :tada:
 
 (If the method signature below is *not* syntax highlighted then it needs parameter validation and tests. See the `channels.history` for a good example of how to do this if you want to contibute. Of course, all contributions are super ppreciated! There are many ways this library can be improved. 
 

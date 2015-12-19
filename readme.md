@@ -1,6 +1,10 @@
+https://badge.fury.io/js/slack.svg
+
 [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) 
+
 [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) 
-<a href="https://codeship.com/projects/121411"> <img style="max-width:130px" src="https://camo.githubusercontent.com/5064a30800f3ba03f5d50b0bfbf2369210501bc5/68747470733a2f2f636f6465736869702e636f6d2f70726f6a656374732f33666436343165302d383166342d303133332d633733332d3232393430613761343763362f7374617475733f6272616e63683d6d6173746572" alt="Codeship Status for smallwins/slack" data-canonical-src="https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master"></a>
+
+https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg
 
 <img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 

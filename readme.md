@@ -128,7 +128,9 @@ npm run btest
 - search.all
 - search.files
 - search.messages
+- stars.add
 - stars.list
+- stars.remove
 - team.accessLogs
 - `team.info(token, (err, data)=>)`
 - team.info

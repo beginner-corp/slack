@@ -4,7 +4,7 @@
 
 <img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 
-### A `slack` Web API client. :raised_hands: :two_hearts:
+### A `slack` Web API client. :seedling: :raised_hands: :two_hearts:
 
 - Writ in es2015 JavaScript
 - Pure functions *(no stateful things like classes, or using `new`)*
@@ -15,11 +15,11 @@
 - `Future friendly 2/2` no in-progress es* features, avoid polyfills and runtime
 - Heavily tested, CI and Apache2 licensed
 
-### install :star2:
+### install :star2: :package:
 
     npm i slack
 
-## usage :neckbeard:
+## usage :sparkles: :rocket:
 
 This module works in es5 environments by default. It is tested for Node and the browser.
 
@@ -39,7 +39,7 @@ import test from 'slack/methods/api.test'
 test({hyper:'card'}, console.log)
 ```
 
-### test setup :point_left:
+### test setup :lock: :key: :point_left:
 
 Clone this repo and create a file called `.env` in the root with the following:
 
@@ -49,23 +49,23 @@ SLACK_CLIENT_ID=xxxx
 SLACK_CLIENT_SECRET=xxxx
 ```
 
-You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. 
+You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
 
-## testing :point_right:
+## testing :green_heart:
 
-In Node:
+:point_right: In Node:
 
 ```
 npm test
 ```
 
-Or the browser:
+:point_right: Or the browser:
 
 ```
 npm run btest
 ```
 
-Or kick up a repl and poke around:
+:point_right: Or kick up a repl and poke around:
 
 <img src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 

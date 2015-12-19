@@ -4,13 +4,13 @@
 
 - SUPER low level building block
 - Written in es2015 JavaScript
-- Pure functions (no stateful things like classes, or using `new`)
-- Perfect symmetry (method sigs match api docs, method sigs are node style)
-- Opt in (use the parts of the api surface you want w/o the entire payload)
-- Works in Node and the browser (related to above)
-- Future friendly 1/2 (writ in es2015 but published to npm as es5)
-- Future friendly 2/2 (no in-progress es* features, avoid polyfills and def no runtime)
-- Heavily tested, CI, Apache2 license/contrib model
+- Pure functions *(no stateful things like classes, or using `new`)*
+- Perfect symmetry *(method sigs match api docs, method sigs are node style)*
+- Opt in *(selectivly use the parts of the api surface you want w/o the entire payload)*
+- Works in Node and the browser *(per above)*
+- `Future friendly 1/2` published to npm as es5
+- `Future friendly 2/2` no in-progress es* features, avoid polyfills and runtime
+- Heavily tested, CI and Apache2 licensed
 
 ### install
 
@@ -27,16 +27,7 @@ var slack = require('slack')
 slack.api.test({hello:'word'}, console.log)
 ```
 
-Usage with es2015 works too.
-
-```javascript
-import slack from 'slack'
-
-// logs {args:{hello:'world'}}
-slack.api.test({hello:'word'}, console.log)
-```
-
-You can specify only the methods you need, if you using in the browser, for example.
+Usage with es2015 works well too. [This module uses Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can be nice to trim the payload if you using `slack` in a web browser.
 
 ```javascript
 import test from 'slack/methods/api.test'
@@ -47,7 +38,7 @@ test({hyper:'card'}, console.log)
 
 ### test setup
 
-You will need a `.env` file in the root of this repo with the following:
+Clone this repo and create a file called `.env` in the root with the following:
 
 ```
 SLACK_TOKEN=xxxx
@@ -55,7 +46,7 @@ SLACK_CLIENT_ID=xxxx
 SLACK_CLIENT_SECRET=xxxx
 ```
 
-You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web).
+You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. 
 
 ## run the tests
 
@@ -70,6 +61,10 @@ Or a browser:
 ```
 npm run btest
 ```
+
+Or kick up a repl:
+
+<img src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 
 # currently implemented api
 

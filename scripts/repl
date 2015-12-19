@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+// read in secrets and the such
+require('node-env-file')(process.cwd() + '/.env')
+
+var repl = require('repl')
+var chalk = require('chalk')
+var prompt = chalk.green('#!/slack> ')
+var server = repl.start({prompt})
+
+server.context.slack = require('../')
+server.context.help = x=> console.log(server.context.slack.describe)
+
+server.on('exit', x=> {
+  console.log(chalk.grey('#!/slack> goodbye'))
+})

@@ -1,9 +1,9 @@
 <img width=200 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 
-# Slack Web API [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [ ![Codeship Status for smallwins/slack](https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master)](https://codeship.com/projects/121411)
+# Slack Web [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [ ![Codeship Status for smallwins/slack](https://codeship.com/projects/3fd641e0-81f4-0133-c733-22940a7a47c6/status?branch=master)](https://codeship.com/projects/121411)
 
-- SUPER low level building block
-- Written in es2015 JavaScript
+`slack` is a SUPER low level building block web api client written in es2015 JavaScript.
+
 - Pure functions *(no stateful things like classes, or using `new`)*
 - Perfect symmetry *(method sigs match api docs, method sigs are node style)*
 - Opt in *(selectivly use the parts of the api surface you want w/o the entire payload)*
@@ -18,7 +18,7 @@
 
 ## usage
 
-This module works in es5 environments by default.
+This module works in es5 environments by default. It is tested for Node and the browser.
 
 ```javascript
 var slack = require('slack')
@@ -27,7 +27,7 @@ var slack = require('slack')
 slack.api.test({hello:'word'}, console.log)
 ```
 
-Usage with es2015 works well too. [This module uses Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can be nice to trim the payload if you using `slack` in a web browser.
+Usage with es2015 works well too. This module itself is writen using [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can be nice to trim the payload if you using `slack` in a web browser.
 
 ```javascript
 import test from 'slack/methods/api.test'

@@ -3,9 +3,14 @@
   "version": "3.8.0",
   "description": "Slack API client writ in JS",
   "main": "methods/index",
+  "browser": {
+    "./methods/_exec.js": "./methods/_exec-browser.js",
+    "./test/_env.js": "./test/_env-browser.js"
+  },
   "scripts": {
     "build": "babel src --out-dir methods",
     "test": "./scripts/test",
+    "btest": "./scripts/test-browser | browser-run | tap-spec",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -27,12 +32,18 @@
     "babel-cli": "^6.3.15",
     "babel-plugin-add-module-exports": "^0.1.1",
     "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browser-run": "^3.0.5",
+    "browserify": "^12.0.1",
+    "envify": "^3.4.0",
+    "glob": "^6.0.1",
     "node-env-file": "^0.1.8",
     "tap": "^2.3.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.2.2"
   },
   "dependencies": {
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "xhr": "^2.2.0"
   }
 }

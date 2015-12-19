@@ -1,6 +1,6 @@
 import test from 'tape'
 import start from '../src/rtm.start'
-import env from './_load-env'
+import env from './_env'
 // load SLACK_TOKEN for testing
 env()
 

@@ -1,12 +1,18 @@
 import api from './api.test'
 import test from './auth.test'
+import channels from './channels'
+import chat from './chat'
+import emojiList from './emoji.list'
+import files from './files'
+import groups from './groups'
+import im from './im'
 import access from './oauth.access'
-import info from './team.info'
-import list from './users.list'
-import channelsList from './channels.list'
-import history from './channels.history'
-import postMessage from './chat.postMessage'
+import reactions from './reactions'
 import start from './rtm.start'
+import search from './search'
+import starsList from './stars.list'
+import team from './team'
+import users from './users'
 
 let describe = `
   slack
@@ -25,10 +31,17 @@ export default {
   describe,
   api: {test:api},
   auth: {test},
+  channels,
+  chat,
+  emoji: {list:emojiList}
+  files,
+  groups,
+  im,
   oauth: {access},
-  team: {info},
-  users: {list},
-  channels: {list:channelsList, history},
-  chat: {postMessage},
-  rtm: {start}
+  reactions,
+  rtm: {start},
+  search,
+  stars: {starsList},
+  team,
+  users
 }

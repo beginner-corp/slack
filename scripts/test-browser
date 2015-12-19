@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+var browserify = require('browserify')
+  , babelify   = require('babelify')
+  , envify     = require('envify')
+  , path       = require('path')
+  , glob       = require('glob')
+  , env        = require('node-env-file')
+  , fs         = require('fs')
+  , entries    = glob.sync('./test/*-test.js')
+
+// add a window.close for the browser-run env
+entries.push(path.join(__dirname, '..', 'test', '_env-browser-close.js'))
+
+// load up the env vars
+env(path.join(__dirname, '..', '.env'))
+
+// build the test suite and pipe to stdout
+browserify({entries:entries})
+  .transform(babelify)
+  .transform(envify)
+  .bundle()
+  .pipe(process.stdout)
+
+
+

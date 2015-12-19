@@ -1,6 +1,6 @@
 import test from 'tape'
 import info from '../src/team.info'
-import env from './_load-env'
+import env from './_env'
 // load SLACK_TOKEN for testing
 env()
 

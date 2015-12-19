@@ -1,6 +1,6 @@
 import test from 'tape'
 import auth from '../src/auth.test'
-import env from './_load-env'
+import env from './_env'
 // load SLACK_TOKEN for testing
 env()
 

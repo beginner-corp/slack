@@ -12,5 +12,5 @@ server.context.slack = require('../')
 server.context.help = x=> console.log(server.context.slack.describe)
 
 server.on('exit', x=> {
-  console.log(chalk.grey('#!/slack> goodbye'))
+  console.log(chalk.grey('#!/slack> goodbye 👋👋👋'))
 })

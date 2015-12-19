@@ -15,11 +15,11 @@
 - `Future friendly 2/2` no in-progress es* features, avoid polyfills and runtime
 - Heavily tested, CI and Apache2 licensed
 
-### install :star2::package:
+## install :star2::package:
 
     npm i slack
 
-## usage :sparkles::rocket:
+# usage :sparkles::rocket:
 
 This module works in es5 environments by default. It is tested for Node and the browser.
 
@@ -30,9 +30,10 @@ var slack = require('slack')
 slack.api.test({hello:'word'}, console.log)
 ```
 
-Usage with es2015 works well too being that `slack` itself is writen using [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can be nice to trim the payload if you using `slack` in a web browser.
+Usage with es2015 works well too being that `slack` itself is writen using [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can trim the payload if you using `slack` in a web browser.
 
 ```javascript
+// only import the one method
 import test from 'slack/methods/api.test'
 
 // logs {args:{hyper:'card'}}

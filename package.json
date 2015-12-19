@@ -8,7 +8,7 @@
     "./test/_env.js": "./test/_env-browser.js"
   },
   "scripts": {
-    "start": "./scripts/repl",
+    "start": "npm run build && ./scripts/repl",
     "build": "babel src --out-dir methods",
     "test": "./scripts/test",
     "btest": "./scripts/test-browser | browser-run | tap-spec",

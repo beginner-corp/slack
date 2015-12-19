@@ -120,6 +120,9 @@ npm run btest
 - im.mark
 - im.open
 - `oauth.access({client_id, client_secret, code}, (err, data)=>)`
+- `pins.add({token, channel}, (err, data)=>)`
+- `pins.list({token, channel}, (err, data)=>)`
+- `pins.remove({token, channel}, (err, data)=>)`
 - reactions.add
 - reactions.get
 - reactions.list

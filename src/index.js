@@ -8,6 +8,7 @@ import groups from './groups'
 import im from './im'
 import access from './oauth.access'
 import reactions from './reactions'
+import pins from './pins'
 import start from './rtm.start'
 import search from './search'
 import stars from './stars'
@@ -40,6 +41,7 @@ export default {
   im,
   oauth: {access},
   reactions,
+  pins,
   rtm: {start},
   search,
   stars,

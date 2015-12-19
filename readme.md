@@ -4,7 +4,7 @@
 
 <img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 
-### A `slack` Web API client. :seedling: :raised_hands: :two_hearts:
+### A `slack` Web API client. :seedling::raised_hands::two_hearts:
 
 - Writ in es2015 JavaScript
 - Pure functions *(no stateful things like classes, or using `new`)*
@@ -15,11 +15,11 @@
 - `Future friendly 2/2` no in-progress es* features, avoid polyfills and runtime
 - Heavily tested, CI and Apache2 licensed
 
-### install :star2: :package:
+### install :star2::package:
 
     npm i slack
 
-## usage :sparkles: :rocket:
+## usage :sparkles::rocket:
 
 This module works in es5 environments by default. It is tested for Node and the browser.
 
@@ -39,7 +39,7 @@ import test from 'slack/methods/api.test'
 test({hyper:'card'}, console.log)
 ```
 
-### test setup :lock: :key: :point_left:
+### test setup :lock::key::point_left:
 
 Clone this repo and create a file called `.env` in the root with the following:
 
@@ -51,7 +51,7 @@ SLACK_CLIENT_SECRET=xxxx
 
 You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
 
-## testing :green_heart:
+## testing :green_heart::green_heart::green_heart:
 
 :point_right: In Node:
 

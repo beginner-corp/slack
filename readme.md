@@ -72,7 +72,7 @@ npm run btest
 
 # currently implemented api :tada:
 
-(If the method signature below is *not* syntax highlighted then it needs parameter validation and tests. See the `channels.history` for a good example of how to do this if you want to contibute. Of course, all contributions are super ppreciated! There are many ways this library can be improved. 
+If the method signature below is *not* syntax highlighted then it needs parameter validation and tests. See the `channels.history` for a good example of how to do this if you want to contibute. Of course, all contributions are super appreciated! There are many ways this library can be improved. :honeybee::triangular_flag_on_post:
 
 - `api.test(params, (err, data)=>)`
 - `auth.test(token, (err, data)=>)`

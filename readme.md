@@ -30,7 +30,7 @@ var slack = require('slack')
 slack.api.test({hello:'word'}, console.log)
 ```
 
-Usage with es2015 works well too being that `slack` itself is writen using [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can trim the payload if you using `slack` in a web browser.
+Usage with es2015 works well too being that `slack` itself is writen using [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can trim the payload if you are using `slack` in the browser.
 
 ```javascript
 // only import the one method
@@ -132,6 +132,13 @@ npm run btest
 - team.accessLogs
 - `team.info(token, (err, data)=>)`
 - team.info
+- usergroups.create
+- usergroups.disable
+- usergroups.enable
+- usergroups.list
+- usergroups.update
+- usergroups.users.list
+- usergroups.users.update
 - users.getPresence
 - users.info
 - `users.list(token, (err, data)=>)`

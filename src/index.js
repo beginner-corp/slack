@@ -12,6 +12,7 @@ import start from './rtm.start'
 import search from './search'
 import starsList from './stars.list'
 import team from './team'
+import usergroups from './usergroups'
 import users from './users'
 
 let describe = `
@@ -43,5 +44,6 @@ export default {
   search,
   stars: {starsList},
   team,
+  usergroups,
   users
 }

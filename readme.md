@@ -4,7 +4,7 @@
 
 <img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 
-### A `slack` Web API client. :seedling::raised_hands::two_hearts:
+### A [Slack Web API](https://api.slack.com/methods) client. :seedling::raised_hands::two_hearts:
 
 - Writ in es2015 JavaScript
 - Pure functions *(no stateful things like classes, or using `new`)*
@@ -119,6 +119,11 @@ npm run btest
 - im.list
 - im.mark
 - im.open
+- `mpim.close({token, channel}, (err, data)=>)`
+- `mpim.history({token, channel}, (err, data)=>)`
+- `mpim.list({token}, (err, data)=>)`
+- `mpim.mark({token, channel, ts}, (err, data)=>)`
+- `mpim.open({token, users}, (err, data)=>)`
 - `oauth.access({client_id, client_secret, code}, (err, data)=>)`
 - `pins.add({token, channel}, (err, data)=>)`
 - `pins.list({token, channel}, (err, data)=>)`

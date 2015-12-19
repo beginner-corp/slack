@@ -6,6 +6,7 @@ import emojiList from './emoji.list'
 import files from './files'
 import groups from './groups'
 import im from './im'
+import mpim from './mpim'
 import access from './oauth.access'
 import reactions from './reactions'
 import pins from './pins'
@@ -39,6 +40,7 @@ export default {
   files,
   groups,
   im,
+  mpim,
   oauth: {access},
   reactions,
   pins,

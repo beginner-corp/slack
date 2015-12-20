@@ -74,8 +74,8 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 
 - `api.test(params, (err, data)=>)`
 - `auth.test(token, (err, data)=>)`
-- channels.archive
-- channels.create
+- `channels.archive({token, channel}, (err, data)=>)`
+- `channels.create({token, name}, (err, data)=>)`
 - `channels.history({token, channel}, (err, data)=>)`
 - channels.info
 - channels.invite

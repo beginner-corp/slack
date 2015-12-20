@@ -10,6 +10,7 @@ import mpim from './mpim'
 import access from './oauth.access'
 import reactions from './reactions'
 import pins from './pins'
+import client from './rtm.client'
 import start from './rtm.start'
 import search from './search'
 import stars from './stars'
@@ -21,8 +22,8 @@ let describe = `
   slack
     api.test(params, (err, data)=>)
     auth.test(token, (err, data)=>)
-    channels.archive
-    channels.create
+    channels.archive({token, channel}, (err, data)=>)
+    channels.create({token, name}, (err, data)=>)
     channels.history({token, channel}, (err, data)=>)
     channels.info
     channels.invite
@@ -77,6 +78,7 @@ let describe = `
     reactions.get
     reactions.list
     reactions.remove
+    rtm.client()
     rtm.start({token}, (err, data)=>)
     search.all
     search.files
@@ -114,7 +116,7 @@ export default {
   oauth: {access},
   reactions,
   pins,
-  rtm: {start},
+  rtm: {client, start},
   search,
   stars,
   team,

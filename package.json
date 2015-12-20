@@ -5,13 +5,14 @@
   "main": "methods/index",
   "browser": {
     "./methods/_exec.js": "./methods/_exec-browser.js",
+    "./methods/rtm.client.js": "./methods/rtm.client-browser.js",
     "./test/_env.js": "./test/_env-browser.js"
   },
   "scripts": {
     "start": "npm run build && ./scripts/repl",
     "build": "babel src --out-dir methods",
     "test": "./scripts/test",
-    "btest": "./scripts/test-browser | browser-run | tap-spec",
+    "btest": "npm run build && ./scripts/test-browser | browser-run | tap-spec",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -46,6 +47,8 @@
     "tape": "^4.2.2"
   },
   "dependencies": {
+    "httpplease": "^0.16.4",
+    "query-string": "^3.0.0",
     "request": "^2.67.0",
     "ws": "^0.8.1",
     "xhr": "^2.2.0"

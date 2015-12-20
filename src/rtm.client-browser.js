@@ -1,6 +1,5 @@
 import start from './rtm.start'
 import events from './rtm.events'
-import WebSocket from 'ws'
 
 // socket factory
 export default function client() {
@@ -19,13 +18,18 @@ export default function client() {
   // kicks up a web socket connection
   bot.listen = function botListen(params) {
     start(params, (err, data)=> {
-      // grab a handle on the socket
-      bot.ws = new WebSocket(data.url)
-      // delegate everything
-      bot.ws.on('message', function message(data, flags) {
-        let json = JSON.parse(data)
-        bot.handlers[json.type].forEach(m=> m.call({}, json))
-      })
+      if (err) {
+        console.error(err, data)
+      }
+      else {
+        // grab a handle on the socket
+        bot.ws = new WebSocket(data.url)
+        // delegate everything
+        bot.ws.onmessage = function message(e) {
+          let json = JSON.parse(e.data)
+          bot.handlers[json.type].forEach(m=> m.call({}, json))
+        }
+      }
     })
   }
 

@@ -56,7 +56,7 @@ bot.hello(message=> {
 bot.listen({token})
 ```
 
-The entire RTM event API is supported.
+The entire [RTM event API](https://api.slack.com/rtm) is supported.
 
 ### test setup :lock::key::point_left:
 

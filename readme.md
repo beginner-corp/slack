@@ -97,13 +97,13 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 - `channels.archive({token channel}, (err, data)=>)`
 - `channels.create({token name}, (err, data)=>)`
 - `channels.history({token channel}, (err, data)=>)`
-- channels.info
-- channels.invite
-- channels.join
-- channels.kick
-- channels.leave
+- `channels.info({token, channel}, (err, data)=>)`
+- `channels.invite({token, channel, user}, (err, data)=>)`
+- `channels.join({token, name}, (err, data)=>)`
+- `channels.kick({token, channel, user}, (err, data)=>)`
+- `channels.leave({token, channel}, (err, data)=>)`
 - `channels.list({token exclude_archived}, (err, data)=>)`
-- channels.mark
+- `channels.mark({token, channel, ts}, (err, data)=>)`
 - channels.rename
 - channels.setPurpose
 - channels.setTopic

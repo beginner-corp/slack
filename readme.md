@@ -34,7 +34,7 @@ Usage with es2015 works well too; `slack` itself is written in es2015 with [Babe
 
 ```javascript
 // only import the one method (and its deps oc)
-import-test from `slack/methods/api.test`
+import test from `slack/methods/api.test`
 
 // logs {args:{hyper:`card`}}
 test({hyper:`card`}, console.log)

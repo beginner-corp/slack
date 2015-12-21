@@ -1,17 +1,15 @@
-[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack)-[![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411) [![Apache 2.0](https://img.shields.io/badge/license-Apache 2.0-blue.svg)](https://github.com/smallwins/slack/blob/master/LICENSE)
+[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411) [![Apache 2.0](https://img.shields.io/badge/license-Apache 2.0-blue.svg)](https://github.com/smallwins/slack/blob/master/LICENSE)
 
 <img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 
 ### Slack [Web](https://api.slack.com/methods) and [RTM](https://api.slack.com/rtm) API client. :seedling::raised_hands::two_hearts:
 
-- Writ in es2015 JavaScript tested for Node and the browser
+- Writ in es2015 JS, published as es5, tested for Node and the browser
 - Web API is all pure functions *(no stateful things like classes or using `new`)*
 - RTM API has a thin wrapper for `WebSocket` *(also tested for Node and the browser!)*
 - Perfect symmetry *(low level: method sigs match api docs method sigs are node style)*
 - Opt in *(selectivly use the parts of the api surface you want w/o the entire payload)*
-- `Future friendly 1/2` published to `npm` as es5
-- `Future friendly 2/2` no in-progress es* features avoid polyfills and runtime
-- Heavily tested CI and Apache2 licensed
+- Well tested, CI and Apache2 licensed
 
 ## install :star2::package:
 
@@ -21,13 +19,13 @@ npm i slack
 
 # usage :sparkles::rocket:
 
-This module works in es5 environments and is tested for Node and the browser.
+`slack` is tested for Node and the browser.
 
 ```javascript
 var slack = require('slack')
 
 // logs {args:{hello:'world'}}
-slack.api.test({hello:'word'}, console.log)
+slack.api.test({hello:'world'}, console.log)
 ```
 
 Usage with es2015 works well too; `slack` itself is written with [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can trim the payload if you are using `slack` in the browser.
@@ -40,7 +38,7 @@ import test from 'slack/methods/api.test'
 test({hyper:'card'}, console.log)
 ```
 
-Starting an RTM also session works identically in both Node and the browser.
+Starting an RTM session:
 
 ```javascript
 import slack from 'slack'
@@ -187,7 +185,7 @@ bot.message(console.log)
 bot.listen({token:process.env.SLACK_TOKEN})
 ```
 
-Try it out in the repl by running `npm start` like so:
+Try it out by running `npm start`:
 
 <img src=https://s3-us-west-1.amazonaws.com/bugbot/repl-rtm.png>
 
@@ -226,7 +224,7 @@ bot.listen({token:token})
 
 #### rtm events
 
-Each of these events are also methods on `bot` for registering handlers for those events. 
+Each of these are methods on `bot` for registering handlers for the events of the same name. 
 
 - `hello`
 - `message`

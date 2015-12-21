@@ -6,7 +6,11 @@ import WebSocket from 'ws'
 export default function client() {
 
   // build a new bot every time
-  let bot = {handlers:{}}
+  let bot = {
+    handlers: {
+      started: []
+    }
+  }
   
   // generate event handler registration methods
   events.forEach(e=> {
@@ -15,6 +19,10 @@ export default function client() {
       bot.handlers[e].push(handler)
     }
   })
+
+  bot.started = function(handler) {
+    bot.handlers['started'].push(handler)
+  }
 
   // kicks up a web socket connection
   bot.listen = function botListen(params) {
@@ -26,6 +34,8 @@ export default function client() {
         let json = JSON.parse(data)
         bot.handlers[json.type].forEach(m=> m.call({}, json))
       })
+      // call started callbacks
+      bot.handlers['started'].forEach(m=> m.call({}, data))
     })
   }
 

@@ -4,12 +4,12 @@
 
 ### Slack [Web](https://api.slack.com/methods) and [RTM](https://api.slack.com/rtm) API client. :seedling::raised_hands::two_hearts:
 
-- Writ in es2015 JavaScript
-- Works in Node and the browser *(per above)*
-- Pure functions *(no stateful things like classes or using `new`)*
+- Writ in es2015 JavaScript tested for Node and the browser
+- Web API is all pure functions *(no stateful things like classes or using `new`)*
+- RTM API has a thin wrapper for `WebSocket` *(also tested for Node and the browser!)*
 - Perfect symmetry *(low level: method sigs match api docs method sigs are node style)*
 - Opt in *(selectivly use the parts of the api surface you want w/o the entire payload)*
-- `Future friendly 1/2` published to npm as es5
+- `Future friendly 1/2` published to `npm` as es5
 - `Future friendly 2/2` no in-progress es* features avoid polyfills and runtime
 - Heavily tested CI and Apache2 licensed
 
@@ -21,7 +21,7 @@ npm i slack
 
 # usage :sparkles::rocket:
 
-This module works in es5 environments by default. It is tested for Node and the browser.
+This module works in es5 environments and is tested for Node and the browser.
 
 ```javascript
 var slack = require('slack')
@@ -30,7 +30,7 @@ var slack = require('slack')
 slack.api.test({hello:'word'}, console.log)
 ```
 
-Usage with es2015 works well too; `slack` itself is written in es2015 with [Babel](http://babeljs.io/) for transpile. Also nice you can specify only the methods you need which can trim the payload if you are using `slack` in the browser.
+Usage with es2015 works well too; `slack` itself is written with [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can trim the payload if you are using `slack` in the browser.
 
 ```javascript
 // only import the one method (and its deps oc)
@@ -40,7 +40,7 @@ import test from 'slack/methods/api.test'
 test({hyper:'card'}, console.log)
 ```
 
-Starting an RTM session works identically in both Node and the browser.
+Starting an RTM also session works identically in both Node and the browser.
 
 ```javascript
 import slack from 'slack'
@@ -178,22 +178,55 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 This is currently generated with `./scripts/rtm-events`. The event name becomes a function for registering event handlers like so:
 
 ```javascript
-import slack from `slack`
-
-let token = process.env.SLACK_TOKEN
-let bot = slack.rtm.client()
+var slack = require('slack')
+var bot = slack.rtm.client()
 
 bot.hello(console.log)
 bot.message(console.log)
 
-bot.listen({token})
+bot.listen({token:process.env.SLACK_TOKEN})
 ```
 
 Try it out in the repl by running `npm start` like so:
 
 <img src=https://s3-us-west-1.amazonaws.com/bugbot/repl-rtm.png>
 
-### rtm events
+## slack.rtm.client() factory
+
+`slack.rtm.client()` is a factory method that returns an thinly wrapped WebSocket instance with the following API:
+
+```javascript
+var slack = require('slack')
+var bot = slack.rtm.client()
+var token = process.env.SLACK_TOKEN
+
+// logs: ws, started, close, listen ... in addition to rmt event handler reg methods
+console.log(Object.keys(bot))
+
+// rtm.start payload
+bot.started(function(payload) {
+  console.log('payload from rtm.start', paylod)
+})
+
+// respond to a user_typing message
+bot.user_typing(function(msg) {
+  console.log('several people are coding', msg)
+})
+
+// start listening to the slack team associated to the token
+bot.listen({token:token})
+```
+
+#### rtm client api
+
+- `bot.ws` is a `WebSocket` instance constructed from `slack/methods/rtm.start` payload
+- `bot.started(payload=>)` fires after `rtm.start` payload response is recieved and socket established
+- `bot.close()` closes the `WebSocket`
+- `bot.listen({token})` initiates the `slack/methods/rtm.start` handshake and delegates all messages
+
+#### rtm events
+
+Each of these events are also methods on `bot` for registering handlers for those events. 
 
 - `hello`
 - `message`

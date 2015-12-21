@@ -5,10 +5,10 @@
 ### Slack [Web](https://api.slack.com/methods) and [RTM](https://api.slack.com/rtm) API client. :seedling::raised_hands::two_hearts:
 
 - Writ in es2015 JavaScript
+- Works in Node and the browser *(per above)*
 - Pure functions *(no stateful things like classes or using `new`)*
 - Perfect symmetry *(low level: method sigs match api docs method sigs are node style)*
 - Opt in *(selectivly use the parts of the api surface you want w/o the entire payload)*
-- Works in Node and the browser *(per above)*
 - `Future friendly 1/2` published to npm as es5
 - `Future friendly 2/2` no in-progress es* features avoid polyfills and runtime
 - Heavily tested CI and Apache2 licensed
@@ -24,26 +24,26 @@ npm i slack
 This module works in es5 environments by default. It is tested for Node and the browser.
 
 ```javascript
-var slack = require(`slack`)
+var slack = require('slack')
 
-// logs {args:{hello:`world`}}
-slack.api.test({hello:`word`}, console.log)
+// logs {args:{hello:'world'}}
+slack.api.test({hello:'word'}, console.log)
 ```
 
 Usage with es2015 works well too; `slack` itself is written in es2015 with [Babel](http://babeljs.io/) for transpile. Also nice you can specify only the methods you need which can trim the payload if you are using `slack` in the browser.
 
 ```javascript
 // only import the one method (and its deps oc)
-import test from `slack/methods/api.test`
+import test from 'slack/methods/api.test'
 
-// logs {args:{hyper:`card`}}
-test({hyper:`card`}, console.log)
+// logs {args:{hyper:'card'}}
+test({hyper:'card'}, console.log)
 ```
 
 Starting an RTM session works identically in both Node and the browser.
 
 ```javascript
-import slack from `slack`
+import slack from 'slack'
 
 let bot = slack.rtm.client()
 let token = process.env.SLACK_TOKEN

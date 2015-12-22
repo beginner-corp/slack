@@ -102,10 +102,10 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 - `channels.leave({token, channel}, (err, data)=>)`
 - `channels.list({token exclude_archived}, (err, data)=>)`
 - `channels.mark({token, channel, ts}, (err, data)=>)`
-- channels.rename
-- channels.setPurpose
-- channels.setTopic
-- channels.unarchive
+- `channels.rename({token, channel, name}, (err, data)=>)`
+- `channels.setPurpose({token, channel, purpose}, (err, data)=>)`
+- `channels.setTopic({token, channel, topic}, (err, data)=>)`
+- `channels.unarchive({token, channel}, (err, data)=>)`
 - chat.delete
 - `chat.postMessage({token text, channel}, (err, data)=>)`
 - chat.update
@@ -173,35 +173,17 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 
 # slack rtm api 
 
-This is currently generated with `./scripts/rtm-events`. The event name becomes a function for registering event handlers like so:
-
-```javascript
-var slack = require('slack')
-var bot = slack.rtm.client()
-
-bot.hello(console.log)
-bot.message(console.log)
-
-bot.listen({token:process.env.SLACK_TOKEN})
-```
-
-Try it out by running `npm start`:
-
-<img src=https://s3-us-west-1.amazonaws.com/bugbot/repl-rtm.png>
-
-## slack.rtm.client() factory
-
-`slack.rtm.client()` is a factory method that returns an thinly wrapped WebSocket instance with the following API:
+`slack.rtm.client()` is a factory method that returns an thinly wrapped WebSocket instance with helpers for registering callbacks to [Slack RTM events](https://api.slack.com/events).
 
 ```javascript
 var slack = require('slack')
 var bot = slack.rtm.client()
 var token = process.env.SLACK_TOKEN
 
-// logs: ws, started, close, listen ... in addition to rmt event handler reg methods
+// logs: ws, started, close, listen ... in addition to RTM event handler reg methods
 console.log(Object.keys(bot))
 
-// rtm.start payload
+// do something with the rtm.start payload
 bot.started(function(payload) {
   console.log('payload from rtm.start', paylod)
 })
@@ -214,6 +196,10 @@ bot.user_typing(function(msg) {
 // start listening to the slack team associated to the token
 bot.listen({token:token})
 ```
+
+Try it out by running `npm start`:
+
+<img src=https://s3-us-west-1.amazonaws.com/bugbot/repl-rtm.png>
 
 #### rtm client api
 

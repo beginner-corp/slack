@@ -11,7 +11,7 @@ function writeCode(ns, callback) {
 import exec from './_exec'
 import validate from './_validate'
 
-export default function ${ns.replace('.', '')}(params, callback) {
+export default function ${ns.replace(/\./g, '')}(params, callback) {
   let ns = '${ns}'
   let err = validate(ns, params)
   if (err) {

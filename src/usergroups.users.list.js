@@ -3,7 +3,7 @@
 import exec from './_exec'
 import validate from './_validate'
 
-export default function usergroupsusers.list(params, callback) {
+export default function usergroupsuserslist(params, callback) {
   let ns = 'usergroups.users.list'
   let err = validate(ns, params)
   if (err) {

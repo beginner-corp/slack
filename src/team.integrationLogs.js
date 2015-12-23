@@ -3,8 +3,8 @@
 import exec from './_exec'
 import validate from './_validate'
 
-export default function groupssetTopic(params, callback) {
-  let ns = 'groups.setTopic'
+export default function teamintegrationLogs(params, callback) {
+  let ns = 'team.integrationLogs'
   let err = validate(ns, params)
   if (err) {
     callback(err)

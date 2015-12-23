@@ -106,9 +106,9 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 - `channels.setPurpose({token, channel, purpose}, (err, data)=>)`
 - `channels.setTopic({token, channel, topic}, (err, data)=>)`
 - `channels.unarchive({token, channel}, (err, data)=>)`
-- chat.delete
+- `chat.delete({token, ts, channel}, (err, data)=>)`
 - `chat.postMessage({token text, channel}, (err, data)=>)`
-- chat.update
+- `chat.update({token, ts, channel, text}, (err, data_=>))`
 - emoji.list
 - files.delete
 - files.info

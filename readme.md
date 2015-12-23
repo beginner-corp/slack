@@ -86,89 +86,95 @@ npm run btest
 
 <img-src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 
-# slack web api :tada:
+# slack web api :tada::honeybee::triangular_flag_on_post:
 
-If the method signature below is *not* syntax highlighted then it needs parameter validation and tests. See the `channels.history` for a good example of how to do this if you want to contibute. Of course all contributions are super appreciated! There are many ways this library can be improved. :honeybee::triangular_flag_on_post:
+The entire Slack Web API is supported. All method signatures accept a `params` object and Node style callback. Required params are documented inline below.
 
-- `api.test(params (err, data)=>)`
-- `auth.test(token (err, data)=>)`
-- `channels.archive({token channel}, (err, data)=>)`
-- `channels.create({token name}, (err, data)=>)`
-- `channels.history({token channel}, (err, data)=>)`
-- `channels.info({token, channel}, (err, data)=>)`
-- `channels.invite({token, channel, user}, (err, data)=>)`
-- `channels.join({token, name}, (err, data)=>)`
-- `channels.kick({token, channel, user}, (err, data)=>)`
-- `channels.leave({token, channel}, (err, data)=>)`
-- `channels.list({token exclude_archived}, (err, data)=>)`
-- `channels.mark({token, channel, ts}, (err, data)=>)`
-- `channels.rename({token, channel, name}, (err, data)=>)`
-- `channels.setPurpose({token, channel, purpose}, (err, data)=>)`
-- `channels.setTopic({token, channel, topic}, (err, data)=>)`
-- `channels.unarchive({token, channel}, (err, data)=>)`
-- `chat.delete({token, ts, channel}, (err, data)=>)`
-- `chat.postMessage({token text, channel}, (err, data)=>)`
-- `chat.update({token, ts, channel, text}, (err, data_=>))`
-- `emoji.list(token, (err, data)=>)`
-- files.delete
-- files.info
-- files.list
-- files.upload
-- groups.archive
-- groups.close
-- groups.create
-- groups.createChild
-- groups.history
-- groups.info
-- groups.invite
-- groups.kick
-- groups.leave
-- groups.list
-- groups.mark
-- groups.open
-- groups.rename
-- groups.setPurpose
-- groups.setTopic
-- groups.unarchive
-- im.close
-- im.history
-- im.list
-- im.mark
-- im.open
-- `mpim.close({token channel}, (err, data)=>)`
-- `mpim.history({token channel}, (err, data)=>)`
-- `mpim.list({token} (err, data)=>)`
-- `mpim.mark({token channel, ts}, (err, data)=>)`
-- `mpim.open({token users}, (err, data)=>)`
-- `oauth.access({client_id client_secret, code}, (err, data)=>)`
-- `pins.add({token channel}, (err, data)=>)`
-- `pins.list({token channel}, (err, data)=>)`
-- `pins.remove({token channel}, (err, data)=>)`
-- reactions.add
-- reactions.get
-- reactions.list
-- reactions.remove
-- `rtm.start({token} (err, data)=>)`
-- search.all
-- search.files
-- search.messages
-- `stars.add({token} (err, data)=>)`
-- `stars.list({token} (err, data)=>)`
-- `stars.remove({token} (err, data)=>)`
-- team.accessLogs
-- `team.info(token (err, data)=>)`
-- usergroups.create
-- usergroups.disable
-- usergroups.enable
-- usergroups.list
-- usergroups.update
-- usergroups.users.list
-- usergroups.users.update
-- users.getPresence
-- users.info
-- `users.list(token (err, data)=>)`
-- users.setActive
-- users.setPresence
+- `slack.api.test({}, (err, data)=>)`
+- `slack.auth.test({token}, (err, data)=>)`
+- `slack.channels.archive({token, channel}, (err, data)=>)`
+- `slack.channels.create({token, name}, (err, data)=>)`
+- `slack.channels.history({token, channel}, (err, data)=>)`
+- `slack.channels.info({token, channel}, (err, data)=>)`
+- `slack.channels.invite({token, channel, user}, (err, data)=>)`
+- `slack.channels.join({token, name}, (err, data)=>)`
+- `slack.channels.kick({token, channel, user}, (err, data)=>)`
+- `slack.channels.leave({token, channel}, (err, data)=>)`
+- `slack.channels.list({token}, (err, data)=>)`
+- `slack.channels.mark({token, channel, ts}, (err, data)=>)`
+- `slack.channels.rename({token, channel, name}, (err, data)=>)`
+- `slack.channels.setPurpose({token, channel, purpose}, (err, data)=>)`
+- `slack.channels.setTopic({token, channel, topic}, (err, data)=>)`
+- `slack.channels.unarchive({token, channel}, (err, data)=>)`
+- `slack.chat.delete({token, ts, channel}, (err, data)=>)`
+- `slack.chat.postMessage({token, channel, text}, (err, data)=>)`
+- `slack.chat.update({token, ts, channel, text}, (err, data)=>)`
+- `slack.dnd.endDnd({token}, (err, data)=>)`
+- `slack.dnd.endSnooze({token}, (err, data)=>)`
+- `slack.dnd.info({token}, (err, data)=>)`
+- `slack.dnd.setSnooze({token, num_minutes}, (err, data)=>)`
+- `slack.dnd.teamInfo({token}, (err, data)=>)`
+- `slack.emoji.list({token}, (err, data)=>)`
+- `slack.files.delete({token, file}, (err, data)=>)`
+- `slack.files.info({token, file}, (err, data)=>)`
+- `slack.files.list({token}, (err, data)=>)`
+- `slack.files.upload({token, file, filename}, (err, data)=>)`
+- `slack.groups.archive({token, channel}, (err, data)=>)`
+- `slack.groups.close({token, channel}, (err, data)=>)`
+- `slack.groups.create({token, name}, (err, data)=>)`
+- `slack.groups.createChild({token, channel}, (err, data)=>)`
+- `slack.groups.history({token, channel}, (err, data)=>)`
+- `slack.groups.info({token, channel}, (err, data)=>)`
+- `slack.groups.invite({token, channel, user}, (err, data)=>)`
+- `slack.groups.kick({token, channel, user}, (err, data)=>)`
+- `slack.groups.leave({token, channel}, (err, data)=>)`
+- `slack.groups.list({token}, (err, data)=>)`
+- `slack.groups.mark({token, channel, ts}, (err, data)=>)`
+- `slack.groups.open({token, channel}, (err, data)=>)`
+- `slack.groups.rename({token, channel, name}, (err, data)=>)`
+- `slack.groups.setPurpose({token, channel, purpose}, (err, data)=>)`
+- `slack.groups.setTopic({token, channel, topic}, (err, data)=>)`
+- `slack.groups.unarchive({token, channel}, (err, data)=>)`
+- `slack.im.close({token, channel}, (err, data)=>)`
+- `slack.im.history({token, channel}, (err, data)=>)`
+- `slack.im.list({token}, (err, data)=>)`
+- `slack.im.mark({token, channel, ts}, (err, data)=>)`
+- `slack.im.open({token, user}, (err, data)=>)`
+- `slack.mpim.close({token, channel}, (err, data)=>)`
+- `slack.mpim.history({token, channel}, (err, data)=>)`
+- `slack.mpim.list({token}, (err, data)=>)`
+- `slack.mpim.mark({token, channel, ts}, (err, data)=>)`
+- `slack.mpim.open({token, users}, (err, data)=>)`
+- `slack.oauth.access({client_id, client_secret, code}, (err, data)=>)`
+- `slack.pins.add({token, channel}, (err, data)=>)`
+- `slack.pins.list({token, channel}, (err, data)=>)`
+- `slack.pins.remove({token, channel}, (err, data)=>)`
+- `slack.reactions.add({token, name}, (err, data)=>)`
+- `slack.reactions.get({token}, (err, data)=>)`
+- `slack.reactions.list({token}, (err, data)=>)`
+- `slack.reactions.remove({token, name}, (err, data)=>)`
+- `slack.rtm.start({token}, (err, data)=>)`
+- `slack.search.all({token, query}, (err, data)=>)`
+- `slack.search.files({token, query}, (err, data)=>)`
+- `slack.search.messages({token, query}, (err, data)=>)`
+- `slack.stars.add({token}, (err, data)=>)`
+- `slack.stars.list({token}, (err, data)=>)`
+- `slack.stars.remove({token}, (err, data)=>)`
+- `slack.team.accessLogs({token}, (err, data)=>)`
+- `slack.team.info({token}, (err, data)=>)`
+- `slack.team.integrationLogs({token}, (err, data)=>)`
+- `slack.usergroups.create({token, name}, (err, data)=>)`
+- `slack.usergroups.disable({token, usergroup}, (err, data)=>)`
+- `slack.usergroups.enable({token, usergroup}, (err, data)=>)`
+- `slack.usergroups.list({token}, (err, data)=>)`
+- `slack.usergroups.update({token, usergroup}, (err, data)=>)`
+- `slack.usergroups.users.list({token, usergroup}, (err, data)=>)`
+- `slack.usergroups.users.update({token, usergroup, users}, (err, data)=>)`
+- `slack.users.getPresence({token, user}, (err, data)=>)`
+- `slack.users.info({token, user}, (err, data)=>)`
+- `slack.users.list({token}, (err, data)=>)`
+- `slack.users.setActive({token}, (err, data)=>)`
+- `slack.users.setPresence({token, presence}, (err, data)=>)`
 
 # slack rtm api 
 

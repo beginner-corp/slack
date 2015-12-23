@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+var api = require('../src/api.json')
+
+var str = ''
+Object.keys(api).sort().forEach(method=> {
+  var isRequired = param=> param.required === 'Required'
+  var params = api[method].filter(isRequired).map(param=> param.name).join(', ')
+  var interpolated = `slack.${method}({${params}}, (err, data)=>)`
+  str += '- `' + interpolated + '`\n'
+})
+
+console.log(str)

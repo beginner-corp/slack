@@ -6,7 +6,7 @@ env()
 
 test('can list users', t=> {
   let token = process.env.SLACK_TOKEN
-  list(token, (err, data)=> {
+  list({token}, (err, data)=> {
     if (err) {
       t.fail(err, 'users.list fails')
       console.error(err)

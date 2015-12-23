@@ -5,7 +5,7 @@ import env from './_env'
 env()
 
 test('sanity', t=> {
-  auth(process.env.SLACK_TOKEN, (err, data)=> {
+  auth({token:process.env.SLACK_TOKEN}, (err, data)=> {
     if (err) {
       t.fail(err, 'auth could not be tested!')
       console.error(err)

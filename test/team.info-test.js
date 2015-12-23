@@ -6,7 +6,7 @@ env()
 
 test('can get team info', t=> {
   let token = process.env.SLACK_TOKEN
-  info(token, (err, data)=> {
+  info({token}, (err, data)=> {
     if (err) {
       t.fail(err, 'team.info fails')
       console.error(err)

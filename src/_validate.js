@@ -24,7 +24,7 @@ export default function validate(method, params) {
   // optimisitcally assume the best
   var err = false
   // but have a plan for the worst
-  if (missing.length?) {
+  if (missing.length) {
     let bullets = missing.map(param=> `- ${param.name} ... ${param.description}`)
     let msg = `${method} missing params:\n${bullets.join('\n')}`
     err = Error(msg)

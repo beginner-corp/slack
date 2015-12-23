@@ -1,5 +1,5 @@
 import exec from './_exec'
 
-export default function emojiList(params, callback) {
-  exec('emoji.list', params, callback)
+export default function emojiList(token, callback) {
+  exec('emoji.list', token, callback)
 }

@@ -1,0 +1,1942 @@
+{
+  "groups.history": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:history)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to fetch history for.\n"
+    },
+    {
+      "name": "latest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=now",
+      "description": "End of time range of messages to include in results.\n"
+    },
+    {
+      "name": "oldest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=0",
+      "description": "Start of time range of messages to include in results.\n"
+    },
+    {
+      "name": "inclusive",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include messages with latest or oldest timestamp in results.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of messages to return, between 1 and 1000.\n"
+    },
+    {
+      "name": "unreads",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include unread_count_display in the output?\n"
+    }
+  ],
+  "rtm.start": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: client)\n"
+    },
+    {
+      "name": "simple_latest",
+      "example": " ",
+      "required": "Optional",
+      "description": "Return timestamp only for latest message object of each channel (improves performance).\n"
+    },
+    {
+      "name": "no_unreads",
+      "example": " ",
+      "required": "Optional",
+      "description": "Skip unread counts for each channel (improves performance).\n"
+    },
+    {
+      "name": "mpim_aware",
+      "example": " ",
+      "required": "Optional",
+      "description": "Returns MPIMs to the client in the API response.\n"
+    }
+  ],
+  "groups.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:read)\n"
+    },
+    {
+      "name": "exclude_archived",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Don't return archived private channels.\n"
+    }
+  ],
+  "im.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: im:read)\n"
+    }
+  ],
+  "users.getPresence": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users:read)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Required",
+      "description": "User to get presence info on. Defaults to the authed user.\n"
+    }
+  ],
+  "search.messages": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: search:read)\n"
+    },
+    {
+      "name": "query",
+      "example": "pickleface",
+      "required": "Required",
+      "description": "Search query. May contains booleans, etc.\n"
+    },
+    {
+      "name": "sort",
+      "example": "timestamp",
+      "required": "Optional, default=score",
+      "description": "Return matches sorted by either score or timestamp.\n"
+    },
+    {
+      "name": "sort_dir",
+      "example": "asc",
+      "required": "Optional, default=desc",
+      "description": "Change sort direction to ascending (asc) or descending (desc).\n"
+    },
+    {
+      "name": "highlight",
+      "example": "1",
+      "required": "Optional",
+      "description": "Pass a value of 1 to enable query highlight markers (see below).\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "channels.setTopic": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to set the topic of\n"
+    },
+    {
+      "name": "topic",
+      "example": "My Topic",
+      "required": "Required",
+      "description": "The new topic\n"
+    }
+  ],
+  "files.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: files:read)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Optional",
+      "description": "Filter files created by a single user.\n"
+    },
+    {
+      "name": "ts_from",
+      "example": "123456789",
+      "required": "Optional, default=0",
+      "description": "Filter files created after this timestamp (inclusive).\n"
+    },
+    {
+      "name": "ts_to",
+      "example": "123456789",
+      "required": "Optional, default=now",
+      "description": "Filter files created before this timestamp (inclusive).\n"
+    },
+    {
+      "name": "types",
+      "example": "images",
+      "required": "Optional, default=all",
+      "description": "Filter files by type:\n\n\nall - All files\nposts - Posts\nsnippets - Snippets\nimages - Image files\ngdocs - Google docs\nzips - Zip files\npdfs - PDF files\n\n\nYou can pass multiple values in the types argument, like types=posts,snippets.The default value is all, which does not filter the list.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "usergroups.create": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: usergroups:write)\n"
+    },
+    {
+      "name": "name",
+      "example": "My Test Team",
+      "required": "Required",
+      "description": "A name for the user group. Must be unique among user groups.\n"
+    },
+    {
+      "name": "handle",
+      "example": " ",
+      "required": "Optional",
+      "description": "A mention handle. Must be unique among channels, users and user groups.\n"
+    },
+    {
+      "name": "description",
+      "example": " ",
+      "required": "Optional",
+      "description": "A short description of the user group.\n"
+    },
+    {
+      "name": "channels",
+      "example": " ",
+      "required": "Optional",
+      "description": "A comma separated string of encoded channel IDs for which the user group uses as a default.\n"
+    },
+    {
+      "name": "include_count",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include the number of users in each user group.\n"
+    }
+  ],
+  "groups.create": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "name",
+      "example": " ",
+      "required": "Required",
+      "description": "Name of private channel to create\n"
+    }
+  ],
+  "groups.rename": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Private channel to rename\n"
+    },
+    {
+      "name": "name",
+      "example": " ",
+      "required": "Required",
+      "description": "New name for private channel.\n"
+    }
+  ],
+  "channels.archive": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to archive\n"
+    }
+  ],
+  "users.info": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users:read)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Required",
+      "description": "User to get info on\n"
+    }
+  ],
+  "pins.add": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: pins:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to pin the item in.\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Optional",
+      "description": "File to pin.\n"
+    },
+    {
+      "name": "file_comment",
+      "example": "Fc1234567890",
+      "required": "Optional",
+      "description": "File comment to pin.\n"
+    },
+    {
+      "name": "timestamp",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Timestamp of the message to pin.\n"
+    }
+  ],
+  "users.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users:read)\n"
+    },
+    {
+      "name": "presence",
+      "example": "1",
+      "required": "Optional",
+      "description": "Whether to include presence data in the output\n"
+    }
+  ],
+  "channels.leave": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to leave\n"
+    }
+  ],
+  "usergroups.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: usergroups:read)\n"
+    },
+    {
+      "name": "include_disabled",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include disabled user groups.\n"
+    },
+    {
+      "name": "include_count",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include the number of users in each user group.\n"
+    },
+    {
+      "name": "include_users",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include the list of users for each user group.\n"
+    }
+  ],
+  "channels.rename": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to rename\n"
+    },
+    {
+      "name": "name",
+      "example": " ",
+      "required": "Required",
+      "description": "New name for channel.\n"
+    }
+  ],
+  "pins.remove": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: pins:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel where the item is pinned to.\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Optional",
+      "description": "File to un-pin.\n"
+    },
+    {
+      "name": "file_comment",
+      "example": "Fc1234567890",
+      "required": "Optional",
+      "description": "File comment to un-pin.\n"
+    },
+    {
+      "name": "timestamp",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Timestamp of the message to un-pin.\n"
+    }
+  ],
+  "api.test": [
+    {
+      "name": "error",
+      "example": "my_error",
+      "required": "Optional",
+      "description": "Error response to return\n"
+    },
+    {
+      "name": "foo",
+      "example": "bar",
+      "required": "Optional",
+      "description": "example property to return\n"
+    }
+  ],
+  "usergroups.enable": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: usergroups:write)\n"
+    },
+    {
+      "name": "usergroup",
+      "example": "S0604QSJC",
+      "required": "Required",
+      "description": "The encoded ID of the user group to enable.\n"
+    },
+    {
+      "name": "include_count",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include the number of users in the user group.\n"
+    }
+  ],
+  "channels.setPurpose": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to set the purpose of\n"
+    },
+    {
+      "name": "purpose",
+      "example": "My Purpose",
+      "required": "Required",
+      "description": "The new purpose\n"
+    }
+  ],
+  "auth.test": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: identify)\n"
+    }
+  ],
+  "channels.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:read)\n"
+    },
+    {
+      "name": "exclude_archived",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Don't return archived channels.\n"
+    }
+  ],
+  "emoji.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: emoji:read)\n"
+    }
+  ],
+  "usergroups.users.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: usergroups:read)\n"
+    },
+    {
+      "name": "usergroup",
+      "example": "S0604QSJC",
+      "required": "Required",
+      "description": "The encoded ID of the user group to update.\n"
+    },
+    {
+      "name": "include_disabled",
+      "example": "1",
+      "required": "Optional",
+      "description": "Allow results that involve disabled user groups.\n"
+    }
+  ],
+  "chat.update": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: chat:write:user)\n"
+    },
+    {
+      "name": "ts",
+      "example": "1405894322.002768",
+      "required": "Required",
+      "description": "Timestamp of the message to be updated.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel containing the message to be updated.\n"
+    },
+    {
+      "name": "text",
+      "example": "Hello world",
+      "required": "Required",
+      "description": "New text for the message, using the default formatting rules.\n"
+    },
+    {
+      "name": "attachments",
+      "example": "[{\"pretext\": \"pre-hello\", \"text\": \"text-world\"}]",
+      "required": "Optional",
+      "description": "Structured message attachments.\n"
+    },
+    {
+      "name": "parse",
+      "example": "none",
+      "required": "Optional",
+      "description": "Change how messages are treated. See below.\n"
+    },
+    {
+      "name": "link_names",
+      "example": "1",
+      "required": "Optional",
+      "description": "Find and link channel names and usernames.\n"
+    }
+  ],
+  "pins.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: pins:read)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to get pinned items for.\n"
+    }
+  ],
+  "groups.unarchive": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to unarchive\n"
+    }
+  ],
+  "mpim.close": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: mpim:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": " ",
+      "required": "Required",
+      "description": "MPIM to close.\n"
+    }
+  ],
+  "im.history": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: im:history)\n"
+    },
+    {
+      "name": "channel",
+      "example": "D1234567890",
+      "required": "Required",
+      "description": "Direct message channel to fetch history for.\n"
+    },
+    {
+      "name": "latest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=now",
+      "description": "End of time range of messages to include in results.\n"
+    },
+    {
+      "name": "oldest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=0",
+      "description": "Start of time range of messages to include in results.\n"
+    },
+    {
+      "name": "inclusive",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include messages with latest or oldest timestamp in results.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of messages to return, between 1 and 1000.\n"
+    },
+    {
+      "name": "unreads",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include unread_count_display in the output?\n"
+    }
+  ],
+  "mpim.mark": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: mpim:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "multiparty direct message channel to set reading cursor in.\n"
+    },
+    {
+      "name": "ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Timestamp of the most recently seen message.\n"
+    }
+  ],
+  "channels.kick": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to remove user from.\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Required",
+      "description": "User to remove from channel.\n"
+    }
+  ],
+  "team.accessLogs": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: admin)\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "groups.leave": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to leave\n"
+    }
+  ],
+  "stars.remove": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: stars:write)\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Optional",
+      "description": "File to remove star from.\n"
+    },
+    {
+      "name": "file_comment",
+      "example": "Fc1234567890",
+      "required": "Optional",
+      "description": "File comment to remove star from.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Optional",
+      "description": "Channel to remove star from, or channel where the message to remove star from was posted (used with timestamp).\n"
+    },
+    {
+      "name": "timestamp",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Timestamp of the message to remove star from.\n"
+    }
+  ],
+  "groups.close": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to close.\n"
+    }
+  ],
+  "reactions.get": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: reactions:read)\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Optional",
+      "description": "File to get reactions for.\n"
+    },
+    {
+      "name": "file_comment",
+      "example": "Fc1234567890",
+      "required": "Optional",
+      "description": "File comment to get reactions for.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Optional",
+      "description": "Channel where the message to get reactions for was posted.\n"
+    },
+    {
+      "name": "timestamp",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Timestamp of the message to get reactions for.\n"
+    },
+    {
+      "name": "full",
+      "example": " ",
+      "required": "Optional",
+      "description": "If true always return the complete reaction list.\n"
+    }
+  ],
+  "reactions.add": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: reactions:write)\n"
+    },
+    {
+      "name": "name",
+      "example": "thumbsup",
+      "required": "Required",
+      "description": "Reaction (emoji) name.\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Optional",
+      "description": "File to add reaction to.\n"
+    },
+    {
+      "name": "file_comment",
+      "example": "Fc1234567890",
+      "required": "Optional",
+      "description": "File comment to add reaction to.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Optional",
+      "description": "Channel where the message to add reaction to was posted.\n"
+    },
+    {
+      "name": "timestamp",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Timestamp of the message to add reaction to.\n"
+    }
+  ],
+  "channels.unarchive": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to unarchive\n"
+    }
+  ],
+  "files.delete": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: files:write:user)\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Required",
+      "description": "ID of file to delete.\n"
+    }
+  ],
+  "groups.setTopic": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Private channel to set the topic of\n"
+    },
+    {
+      "name": "topic",
+      "example": "My Topic",
+      "required": "Required",
+      "description": "The new topic\n"
+    }
+  ],
+  "groups.createChild": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to clone and archive.\n"
+    }
+  ],
+  "im.open": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: im:write)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Required",
+      "description": "User to open a direct message channel with.\n"
+    }
+  ],
+  "team.info": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: team:read)\n"
+    }
+  ],
+  "dnd.info": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: dnd:read)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234",
+      "required": "Optional",
+      "description": "User to fetch status for (defaults to current user)\n"
+    }
+  ],
+  "files.info": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: files:read)\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Required",
+      "description": "File to fetch info for\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "channels.create": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "name",
+      "example": "mychannel",
+      "required": "Required",
+      "description": "Name of channel to create\n"
+    }
+  ],
+  "mpim.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: mpim:read)\n"
+    }
+  ],
+  "groups.archive": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to archive\n"
+    }
+  ],
+  "usergroups.users.update": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: usergroups:write)\n"
+    },
+    {
+      "name": "usergroup",
+      "example": "S0604QSJC",
+      "required": "Required",
+      "description": "The encoded ID of the user group to update.\n"
+    },
+    {
+      "name": "users",
+      "example": "U060R4BJ4,U060RNRCZ",
+      "required": "Required",
+      "description": "A comma separated string of encoded user IDs that represent the entire list of users for the user group.\n"
+    },
+    {
+      "name": "include_count",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include the number of users in the user group.\n"
+    }
+  ],
+  "im.mark": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: im:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "D1234567890",
+      "required": "Required",
+      "description": "Direct message channel to set reading cursor in.\n"
+    },
+    {
+      "name": "ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Timestamp of the most recently seen message.\n"
+    }
+  ],
+  "dnd.endSnooze": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: dnd:write)\n"
+    }
+  ],
+  "search.all": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: search:read)\n"
+    },
+    {
+      "name": "query",
+      "example": "pickleface",
+      "required": "Required",
+      "description": "Search query. May contains booleans, etc.\n"
+    },
+    {
+      "name": "sort",
+      "example": "timestamp",
+      "required": "Optional, default=score",
+      "description": "Return matches sorted by either score or timestamp.\n"
+    },
+    {
+      "name": "sort_dir",
+      "example": "asc",
+      "required": "Optional, default=desc",
+      "description": "Change sort direction to ascending (asc) or descending (desc).\n"
+    },
+    {
+      "name": "highlight",
+      "example": "1",
+      "required": "Optional",
+      "description": "Pass a value of 1 to enable query highlight markers (see below).\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "channels.info": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:read)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to get info on\n"
+    }
+  ],
+  "search.files": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: search:read)\n"
+    },
+    {
+      "name": "query",
+      "example": "pickleface",
+      "required": "Required",
+      "description": "Search query. May contain booleans, etc.\n"
+    },
+    {
+      "name": "sort",
+      "example": "timestamp",
+      "required": "Optional, default=score",
+      "description": "Return matches sorted by either score or timestamp.\n"
+    },
+    {
+      "name": "sort_dir",
+      "example": "asc",
+      "required": "Optional, default=desc",
+      "description": "Change sort direction to ascending (asc) or descending (desc).\n"
+    },
+    {
+      "name": "highlight",
+      "example": "1",
+      "required": "Optional",
+      "description": "Pass a value of 1 to enable query highlight markers (see below).\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "im.close": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: im:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "D1234567890",
+      "required": "Required",
+      "description": "Direct message channel to close.\n"
+    }
+  ],
+  "groups.mark": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to set reading cursor in.\n"
+    },
+    {
+      "name": "ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Timestamp of the most recently seen message.\n"
+    }
+  ],
+  "users.setActive": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users:write)\n"
+    }
+  ],
+  "groups.open": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to open.\n"
+    }
+  ],
+  "groups.info": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:read)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Private channel to get info on\n"
+    }
+  ],
+  "channels.invite": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to invite user to.\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Required",
+      "description": "User to invite to channel.\n"
+    }
+  ],
+  "mpim.open": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: mpim:write)\n"
+    },
+    {
+      "name": "users",
+      "example": "U1234567890,U2345678901,U3456789012",
+      "required": "Required",
+      "description": "Comma separated lists of users.  The ordering of the users is preserved whenever a MPIM group is returned.\n"
+    }
+  ],
+  "groups.setPurpose": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Private channel to set the purpose of\n"
+    },
+    {
+      "name": "purpose",
+      "example": "My Purpose",
+      "required": "Required",
+      "description": "The new purpose\n"
+    }
+  ],
+  "groups.invite": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to invite user to.\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Required",
+      "description": "User to invite.\n"
+    }
+  ],
+  "files.upload": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: files:write:user)\n"
+    },
+    {
+      "name": "file",
+      "example": "...",
+      "required": "Required",
+      "description": "File contents via multipart/form-data.\n"
+    },
+    {
+      "name": "content",
+      "example": "...",
+      "required": "Optional",
+      "description": "File contents via a POST var.\n"
+    },
+    {
+      "name": "filetype",
+      "example": "php",
+      "required": "Optional",
+      "description": "Slack-internal file type identifier.\n"
+    },
+    {
+      "name": "filename",
+      "example": "foo.txt",
+      "required": "Required",
+      "description": "Filename of file.\n"
+    },
+    {
+      "name": "title",
+      "example": "My File",
+      "required": "Optional",
+      "description": "Title of file.\n"
+    },
+    {
+      "name": "initial_comment",
+      "example": "Best!",
+      "required": "Optional",
+      "description": "Initial comment to add to file.\n"
+    },
+    {
+      "name": "channels",
+      "example": "C1234567890",
+      "required": "Optional",
+      "description": "Comma separated list of channel names or IDs to share the file into.\n"
+    }
+  ],
+  "dnd.endDnd": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: dnd:write)\n"
+    }
+  ],
+  "reactions.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: reactions:read)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Optional",
+      "description": "Show reactions made by this user. Defaults to the authed user.\n"
+    },
+    {
+      "name": "full",
+      "example": " ",
+      "required": "Optional",
+      "description": "If true always return the complete reaction list.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "dnd.teamInfo": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: dnd:read)\n"
+    },
+    {
+      "name": "users",
+      "example": "U1234,U4567",
+      "required": "Optional",
+      "description": "Comma-separated list of users to fetch Do Not Disturb status for\n"
+    }
+  ],
+  "chat.delete": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: chat:write:user)\n"
+    },
+    {
+      "name": "ts",
+      "example": "1405894322.002768",
+      "required": "Required",
+      "description": "Timestamp of the message to be deleted.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel containing the message to be deleted.\n"
+    }
+  ],
+  "channels.history": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:history)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to fetch history for.\n"
+    },
+    {
+      "name": "latest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=now",
+      "description": "End of time range of messages to include in results.\n"
+    },
+    {
+      "name": "oldest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=0",
+      "description": "Start of time range of messages to include in results.\n"
+    },
+    {
+      "name": "inclusive",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include messages with latest or oldest timestamp in results.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of messages to return, between 1 and 1000.\n"
+    },
+    {
+      "name": "unreads",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include unread_count_display in the output?\n"
+    }
+  ],
+  "stars.list": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: stars:read)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Optional",
+      "description": "Show stars by this user. Defaults to the authed user.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "channels.mark": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to set reading cursor in.\n"
+    },
+    {
+      "name": "ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Timestamp of the most recently seen message.\n"
+    }
+  ],
+  "stars.add": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: stars:write)\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Optional",
+      "description": "File to add star to.\n"
+    },
+    {
+      "name": "file_comment",
+      "example": "Fc1234567890",
+      "required": "Optional",
+      "description": "File comment to add star to.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Optional",
+      "description": "Channel to add star to, or channel where the message to add star to was posted (used with timestamp).\n"
+    },
+    {
+      "name": "timestamp",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Timestamp of the message to add star to.\n"
+    }
+  ],
+  "channels.join": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: channels:write)\n"
+    },
+    {
+      "name": "name",
+      "example": " ",
+      "required": "Required",
+      "description": "Name of channel to join\n"
+    }
+  ],
+  "usergroups.update": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: usergroups:write)\n"
+    },
+    {
+      "name": "usergroup",
+      "example": "S0604QSJC",
+      "required": "Required",
+      "description": "The encoded ID of the user group to update.\n"
+    },
+    {
+      "name": "name",
+      "example": "My Test Team",
+      "required": "Optional",
+      "description": "A name for the user group. Must be unique among user groups.\n"
+    },
+    {
+      "name": "handle",
+      "example": " ",
+      "required": "Optional",
+      "description": "A mention handle. Must be unique among channels, users and user groups.\n"
+    },
+    {
+      "name": "description",
+      "example": " ",
+      "required": "Optional",
+      "description": "A short description of the user group.\n"
+    },
+    {
+      "name": "channels",
+      "example": " ",
+      "required": "Optional",
+      "description": "A comma separated string of encoded channel IDs for which the user group uses as a default.\n"
+    },
+    {
+      "name": "include_count",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include the number of users in the user group.\n"
+    }
+  ],
+  "mpim.history": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: mpim:history)\n"
+    },
+    {
+      "name": "channel",
+      "example": " ",
+      "required": "Required",
+      "description": "Multiparty direct message to fetch history for.\n"
+    },
+    {
+      "name": "latest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=now",
+      "description": "End of time range of messages to include in results.\n"
+    },
+    {
+      "name": "oldest",
+      "example": "1234567890.123456",
+      "required": "Optional, default=0",
+      "description": "Start of time range of messages to include in results.\n"
+    },
+    {
+      "name": "inclusive",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include messages with latest or oldest timestamp in results.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of messages to return, between 1 and 1000.\n"
+    },
+    {
+      "name": "unreads",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include unread_count_display in the output?\n"
+    }
+  ],
+  "dnd.setSnooze": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: dnd:write)\n"
+    },
+    {
+      "name": "num_minutes",
+      "example": "60",
+      "required": "Required",
+      "description": "Number of minutes, from now, to snooze until.\n"
+    }
+  ],
+  "reactions.remove": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: reactions:write)\n"
+    },
+    {
+      "name": "name",
+      "example": "thumbsup",
+      "required": "Required",
+      "description": "Reaction (emoji) name.\n"
+    },
+    {
+      "name": "file",
+      "example": "F1234567890",
+      "required": "Optional",
+      "description": "File to remove reaction from.\n"
+    },
+    {
+      "name": "file_comment",
+      "example": "Fc1234567890",
+      "required": "Optional",
+      "description": "File comment to remove reaction from.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Optional",
+      "description": "Channel where the message to remove reaction from was posted.\n"
+    },
+    {
+      "name": "timestamp",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Timestamp of the message to remove reaction from.\n"
+    }
+  ],
+  "team.integrationLogs": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: admin)\n"
+    },
+    {
+      "name": "service_id",
+      "example": " ",
+      "required": "Optional",
+      "description": "Filter logs to this service. Defaults to all logs.\n"
+    },
+    {
+      "name": "app_id",
+      "example": " ",
+      "required": "Optional",
+      "description": "Filter logs to this Slack app. Defaults to all logs.\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Optional",
+      "description": "Filter logs generated by this user’s actions. Defaults to all logs.\n"
+    },
+    {
+      "name": "change_type",
+      "example": "added",
+      "required": "Optional",
+      "description": "Filter logs with this change type. Defaults to all logs.\n"
+    },
+    {
+      "name": "count",
+      "example": "100",
+      "required": "Optional, default=100",
+      "description": "Number of items to return per page.\n"
+    },
+    {
+      "name": "page",
+      "example": "2",
+      "required": "Optional, default=1",
+      "description": "Page number of results to return.\n"
+    }
+  ],
+  "chat.postMessage": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: chat:write:bot or chat:write:user)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See below for more details.\n"
+    },
+    {
+      "name": "text",
+      "example": "Hello world",
+      "required": "Required",
+      "description": "Text of the message to send. See below for an explanation of formatting.\n"
+    },
+    {
+      "name": "username",
+      "example": "My Bot",
+      "required": "Optional",
+      "description": "Name of bot.\n"
+    },
+    {
+      "name": "as_user",
+      "example": "true",
+      "required": "Optional",
+      "description": "Pass true to post the message as the authed user, instead of as a bot\n"
+    },
+    {
+      "name": "parse",
+      "example": "full",
+      "required": "Optional",
+      "description": "Change how messages are treated. See below.\n"
+    },
+    {
+      "name": "link_names",
+      "example": "1",
+      "required": "Optional",
+      "description": "Find and link channel names and usernames.\n"
+    },
+    {
+      "name": "attachments",
+      "example": "[{\"pretext\": \"pre-hello\", \"text\": \"text-world\"}]",
+      "required": "Optional",
+      "description": "Structured message attachments.\n"
+    },
+    {
+      "name": "unfurl_links",
+      "example": "true",
+      "required": "Optional",
+      "description": "Pass true to enable unfurling of primarily text-based content.\n"
+    },
+    {
+      "name": "unfurl_media",
+      "example": "false",
+      "required": "Optional",
+      "description": "Pass false to disable unfurling of media content.\n"
+    },
+    {
+      "name": "icon_url",
+      "example": "http://lorempixel.com/48/48",
+      "required": "Optional",
+      "description": "URL to an image to use as the icon for this message\n"
+    },
+    {
+      "name": "icon_emoji",
+      "example": ":chart_with_upwards_trend:",
+      "required": "Optional",
+      "description": "emoji to use as the icon for this message. Overrides icon_url.\n"
+    }
+  ],
+  "oauth.access": [
+    {
+      "name": "client_id",
+      "example": "4b39e9-752c4",
+      "required": "Required",
+      "description": "Issued when you created your application.\n"
+    },
+    {
+      "name": "client_secret",
+      "example": "33fea0113f5b1",
+      "required": "Required",
+      "description": "Issued when you created your application.\n"
+    },
+    {
+      "name": "code",
+      "example": "ccdaa72ad",
+      "required": "Required",
+      "description": "The code param returned via the OAuth callback.\n"
+    },
+    {
+      "name": "redirect_uri",
+      "example": "http://example.com",
+      "required": "Optional",
+      "description": "This must match the originally submitted URI (if one was sent).\n"
+    }
+  ],
+  "groups.kick": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: groups:write)\n"
+    },
+    {
+      "name": "channel",
+      "example": "G1234567890",
+      "required": "Required",
+      "description": "Private channel to remove user from.\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Required",
+      "description": "User to remove from private channel.\n"
+    }
+  ],
+  "usergroups.disable": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: usergroups:write)\n"
+    },
+    {
+      "name": "usergroup",
+      "example": "S0604QSJC",
+      "required": "Required",
+      "description": "The encoded ID of the user group to disable.\n"
+    },
+    {
+      "name": "include_count",
+      "example": "1",
+      "required": "Optional",
+      "description": "Include the number of users in the user group.\n"
+    }
+  ],
+  "users.setPresence": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users:write)\n"
+    },
+    {
+      "name": "presence",
+      "example": "away",
+      "required": "Required",
+      "description": "Either auto or away\n"
+    }
+  ]
+}

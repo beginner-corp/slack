@@ -109,7 +109,7 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 - `chat.delete({token, ts, channel}, (err, data)=>)`
 - `chat.postMessage({token text, channel}, (err, data)=>)`
 - `chat.update({token, ts, channel, text}, (err, data_=>))`
-- emoji.list
+- `emoji.list(token, (err, data)=>)`
 - files.delete
 - files.info
 - files.list
@@ -157,7 +157,6 @@ If the method signature below is *not* syntax highlighted then it needs paramete
 - `stars.remove({token} (err, data)=>)`
 - team.accessLogs
 - `team.info(token (err, data)=>)`
-- team.info
 - usergroups.create
 - usergroups.disable
 - usergroups.enable

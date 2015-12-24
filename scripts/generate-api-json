@@ -1,2 +1,52 @@
 #!/usr/bin/env node
+var cheerio = require('cheerio')
+var async = require('async')
+var req = require('request')
+var url = 'http://api.slack.com/methods'
 
+function getMethods(callback) {
+  req(url, (err, res)=> {
+    var $ = cheerio.load(res.body)
+    var methods = []
+    $('table a').each(function(a) {
+      methods.push($(this).text())
+    })
+    callback(err, methods)
+  })
+}
+
+function getMethodSignature(ns, callback) {
+  var uri = `${url}/${ns}`
+  req(uri, (err, res)=> {
+    var sig = {}
+    sig[ns] = []
+    var $ = cheerio.load(res.body)
+    $('table.arguments').first().children('tr').each(function(i) {
+      var arg = {}
+      $(this).children('td').each(function(index) {
+        // figure out which thing we are getting 
+        var meta = 'name example required description'.split(' ')
+        arg[meta[index]] = $(this).text()
+      })
+      if (Object.keys(arg).length != 0) {
+        sig[ns].push(arg)
+      }
+    })
+    callback(err, sig)
+  })
+}
+
+function getAPI() {
+  var api = {}
+  getMethods((err, methods)=> {
+    async.map(methods, getMethodSignature, (err, results)=> {
+      results.forEach(method=> {
+        var methodName = Object.keys(method)[0]
+        api[methodName] = method[methodName]
+      })
+      console.log(JSON.stringify(api, null, 2))
+    })
+  })
+}
+
+getAPI()

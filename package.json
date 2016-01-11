@@ -1,6 +1,6 @@
 {
   "name": "slack",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "description": "Slack API client writ in JS",
   "main": "methods/index",
   "browser": {

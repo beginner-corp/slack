@@ -35,7 +35,13 @@ export default function client() {
         // delegate everything
         bot.ws.onmessage = function message(e) {
           let json = JSON.parse(e.data)
-          bot.handlers[json.type].forEach(m=> m.call({}, json))
+          let handler = bot.handlers[json.type]
+          if (handler) {
+            handler.forEach(m=> m.call({}, json))
+          }
+          else {
+            console.error("Unknown message type: " + json);
+          }
         }
         // call started callbacks
         bot.handlers['started'].forEach(m=> m.call({}, data))

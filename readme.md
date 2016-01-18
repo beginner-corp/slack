@@ -190,7 +190,7 @@ console.log(Object.keys(bot))
 
 // do something with the rtm.start payload
 bot.started(function(payload) {
-  console.log('payload from rtm.start', paylod)
+  console.log('payload from rtm.start', payload)
 })
 
 // respond to a user_typing message

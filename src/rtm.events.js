@@ -1,5 +1,5 @@
 // generated using ./scripts/rtm-events
-let events = [ 
+let events = [
   'hello',
   'message',
   'user_typing',
@@ -61,7 +61,8 @@ let events = [
   'subteam_created',
   'subteam_updated',
   'subteam_self_added',
-  'subteam_self_removed' 
+  'subteam_self_removed',
+  'reconnect_url'
 ]
 
 export default events

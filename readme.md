@@ -4,7 +4,7 @@
 
 ### Slack [Web](https://api.slack.com/methods) and [RTM](https://api.slack.com/rtm) API client. :seedling::raised_hands::two_hearts:
 
-- Writ in es2015 JS, published as es5, tested for Node and the browser
+- Written in es2015 JS, published as es5, tested for Node and the browser
 - Web API is all pure functions *(no stateful things like classes or using `new`)*
 - RTM API has a thin wrapper for `WebSocket` *(also tested for Node and the browser!)*
 - Perfect symmetry *(low level: method sigs match api docs method sigs are node style)*

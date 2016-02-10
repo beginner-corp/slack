@@ -11,7 +11,7 @@ export default function client() {
       started: []
     }
   }
-  
+
   // generate event handler registration methods
   events.forEach(e=> {
     bot.handlers[e] = []
@@ -32,7 +32,8 @@ export default function client() {
       // delegate everything
       bot.ws.on('message', function message(data, flags) {
         let json = JSON.parse(data)
-        bot.handlers[json.type].forEach(m=> m.call({}, json))
+        let handlers = bot.handlers[json.type] || []
+        handlers.forEach(m=> m.call({}, json))
       })
       // call started callbacks
       bot.handlers['started'].forEach(m=> m.call({}, data))

@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm run build && ./scripts/repl",
     "build": "babel src --out-dir methods && cp src/api.json methods/api.json",
-    "test": "./scripts/test",
+    "test": "npm run build && ./scripts/test",
     "btest": "npm run build && ./scripts/test-browser | browser-run | tap-spec",
     "prepublish": "npm run build"
   },

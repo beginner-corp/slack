@@ -1,4 +1,5 @@
 import api from './api.test'
+import apiClient from './api.client'
 import test from './auth.test'
 import channels from './channels'
 import chat from './chat'
@@ -20,6 +21,7 @@ import users from './users'
 
 let describe = `
   slack
+    api.client(token)
     api.test(params, (err, data)=>)
     auth.test(token, (err, data)=>)
     channels.archive({token, channel}, (err, data)=>)
@@ -104,7 +106,7 @@ let describe = `
 
 export default {
   describe,
-  api: {test:api},
+  api: {test:api, client:apiClient},
   auth: {test},
   channels,
   chat,

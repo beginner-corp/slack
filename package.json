@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "httpplease": "^0.16.4",
+    "lodash": "^4.5.0",
     "query-string": "^3.0.0",
     "request": "^2.67.0",
     "ws": "^1.0.1"

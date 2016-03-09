@@ -3,6 +3,7 @@ import apiClient from './api.client'
 import test from './auth.test'
 import channels from './channels'
 import chat from './chat'
+import dnd from './dnd'
 import emojiList from './emoji.list'
 import files from './files'
 import groups from './groups'
@@ -110,6 +111,7 @@ export default {
   auth: {test},
   channels,
   chat,
+  dnd,
   emoji: {list:emojiList},
   files,
   groups,

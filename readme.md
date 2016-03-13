@@ -1,23 +1,25 @@
-[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411) [![Apache 2.0](https://img.shields.io/badge/license-Apache 2.0-blue.svg)](https://github.com/smallwins/slack/blob/master/LICENSE)
+<p align="center">
+  <img width="333px" src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
+</p>
 
-<img width=333 src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
+[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![bitHound Code](https://www.bithound.io/github/smallwins/slack/badges/code.svg)](https://www.bithound.io/github/smallwins/slack) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack/master/dependencies/npm) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411) [![Apache 2.0](https://img.shields.io/badge/license-Apache 2.0-blue.svg)](https://github.com/smallwins/slack/blob/master/LICENSE)
 
 ### Slack [Web](https://api.slack.com/methods) and [RTM](https://api.slack.com/rtm) API client. :seedling::raised_hands::two_hearts:
 
-- Written in es2015 JS, published as es5, tested for Node and the browser
+- Written in ES2015 JS, published as ES5, tested for Node and the browser
 - Web API is all pure functions *(no stateful things like classes or using `new`)*
 - RTM API has a thin wrapper for `WebSocket` *(also tested for Node and the browser!)*
-- Perfect symmetry *(low level: method sigs match api docs method sigs are node style)*
-- Opt in *(selectivly use the parts of the api surface you want w/o the entire payload)*
-- Well tested, CI and Apache2 licensed
+- Perfect symmetry *(low level: method signatures match API docs method signatures are node-style callbacks)*
+- Opt in *(selectively use the parts of the api surface you want without the entire payload)*
+- Well tested, CI, and Apache2 licensed
 
-## install :star2::package:
+## Install :star2::package:
 
 ```
 npm i slack
 ```
 
-# usage :sparkles::rocket:
+# Usage :sparkles::rocket:
 
 `slack` is tested for Node and the browser.
 
@@ -28,10 +30,10 @@ var slack = require('slack')
 slack.api.test({hello:'world'}, console.log)
 ```
 
-Usage with es2015 works well too; `slack` itself is written with [Babel](http://babeljs.io/). Also nice, you can specify only the methods you need which can trim the payload if you are using `slack` in the browser.
+Usage with ES2015 works well too; `slack` itself is written with [Babel](http://babeljs.io/). You can also specify only the methods you need which can trim the payload if you are using `slack` in the browser.
 
 ```javascript
-// only import the one method (and its deps oc)
+// only import the specific method you need
 import test from 'slack/methods/api.test'
 
 // logs {args:{hyper:'card'}}
@@ -56,7 +58,7 @@ bot.listen({token})
 
 The entire [RTM event API](https://api.slack.com/rtm) is supported.
 
-### test setup :lock::key::point_left:
+### Test Setup :lock::key::point_left:
 
 Clone this repo and create a file called `.env` in the root with the following:
 
@@ -68,7 +70,7 @@ SLACK_CLIENT_SECRET=xxxx
 
 You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
 
-## testing :green_heart::green_heart::green_heart:
+## Testing :green_heart::green_heart::green_heart:
 
 :point_right: In Node:
 
@@ -82,11 +84,11 @@ npm test
 npm run btest
 ```
 
-:point_right: Or kick up a repl and poke around:
+:point_right: Or kick up a REPL and poke around:
 
 <img-src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 
-# slack web api :tada::honeybee::triangular_flag_on_post:
+# Slack Web API :tada::honeybee::triangular_flag_on_post:
 
 The entire Slack Web API is supported. All method signatures accept a `params` object and Node style callback. Required params are documented inline below.
 
@@ -176,7 +178,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.users.setActive({token}, (err, data)=>)`
 - `slack.users.setPresence({token, presence}, (err, data)=>)`
 
-# slack rtm api 
+# Slack RTM API
 
 `slack.rtm.client()` is a factory method that returns an thinly wrapped WebSocket instance with helpers for registering callbacks to [Slack RTM events](https://api.slack.com/events).
 
@@ -185,7 +187,7 @@ var slack = require('slack')
 var bot = slack.rtm.client()
 var token = process.env.SLACK_TOKEN
 
-// logs: ws, started, close, listen ... in addition to RTM event handler reg methods
+// logs: ws, started, close, listen, etc... in addition to the RTM event handler methods
 console.log(Object.keys(bot))
 
 // do something with the rtm.start payload
@@ -206,16 +208,16 @@ Try it out by running `npm start`:
 
 <img src=https://s3-us-west-1.amazonaws.com/bugbot/repl-rtm.png>
 
-#### rtm client api
+#### RTM Client API
 
 - `bot.ws` is a `WebSocket` instance constructed from `slack/methods/rtm.start` payload
-- `bot.started(payload=>)` fires after `rtm.start` payload response is recieved and socket established
+- `bot.started(payload=>)` fires after `rtm.start` payload response is received and socket established
 - `bot.close()` closes the `WebSocket`
 - `bot.listen({token})` initiates the `slack/methods/rtm.start` handshake and delegates all messages
 
-#### rtm events
+#### RTM Events
 
-Each of these are methods on `bot` for registering handlers for the events of the same name. 
+Each of these are methods on `bot` for registering handlers for the events of the same name.
 
 - `hello`
 - `message`
@@ -278,5 +280,4 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `subteam_created`
 - `subteam_updated`
 - `subteam_self_added`
-- `subteam_self_removed` 
-
+- `subteam_self_removed`

@@ -1351,7 +1351,7 @@
     {
       "name": "file",
       "example": "...",
-      "required": "Required",
+      "required": "Optional",
       "description": "File contents via multipart/form-data.\n"
     },
     {

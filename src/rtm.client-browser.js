@@ -28,6 +28,10 @@ export default function client() {
     start(params, (err, data)=> {
       if (err) {
         console.error(err, data)
+        throw err
+      }
+      else if (!data.url) {
+        throw Error('missing data.url')
       }
       else {
         // grab a handle on the socket

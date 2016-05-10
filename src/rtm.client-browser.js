@@ -24,14 +24,11 @@ export default function client() {
   }
 
   // kicks up a web socket connection
-  bot.listen = function botListen(params) {
+  bot.listen = function botListen(params, callback) {
     start(params, (err, data)=> {
       if (err) {
-        console.error(err, data)
-        throw err
-      }
-      else if (!data.url) {
-        throw Error('missing data.url')
+        if (callback) callback(err)
+        else throw err
       }
       else {
         // grab a handle on the socket
@@ -43,6 +40,7 @@ export default function client() {
         }
         // call started callbacks
         bot.handlers['started'].forEach(m=> m.call({}, data))
+        if (callback) callback(null, data)
       }
     })
   }

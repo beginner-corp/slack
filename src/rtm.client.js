@@ -25,24 +25,25 @@ export default function client() {
   }
 
   // kicks up a web socket connection
-  bot.listen = function botListen(params) {
+  bot.listen = function botListen(params, callback) {
     start(params, (err, data)=> {
       // grab a handle on the socket
       if (err) {
-        throw err
+        if (callback) callback(err)
+        else throw err
       }
-      if (!data.url) {
-        throw Error('missing data.url')
+      else {
+        bot.ws = new WebSocket(data.url)
+        // delegate everything
+        bot.ws.on('message', function message(data, flags) {
+          let json = JSON.parse(data)
+          let handlers = bot.handlers[json.type] || []
+          handlers.forEach(m=> m.call({}, json))
+        })
+        // call started callbacks
+        bot.handlers['started'].forEach(m=> m.call({}, data))
+        if (callback) callback(null, data)
       }
-      bot.ws = new WebSocket(data.url)
-      // delegate everything
-      bot.ws.on('message', function message(data, flags) {
-        let json = JSON.parse(data)
-        let handlers = bot.handlers[json.type] || []
-        handlers.forEach(m=> m.call({}, json))
-      })
-      // call started callbacks
-      bot.handlers['started'].forEach(m=> m.call({}, data))
     })
   }
 

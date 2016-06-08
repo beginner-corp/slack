@@ -336,6 +336,10 @@ export default function client(token) {
     params.token = token
     require('./users.getPresence').call({}, params, callback)
   }
+  applied.users.identity = function (params, callback) {
+    params.token = token
+    require('./users.identity').call({}, params, callback)
+  }
   applied.users.info = function (params, callback) {
     params.token = token
     require('./users.info').call({}, params, callback)

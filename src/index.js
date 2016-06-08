@@ -99,6 +99,7 @@ let describe = `
     usergroups.users.list
     usergroups.users.update
     users.getPresence
+    users.identity
     users.info
     users.list(token, (err, data)=>)
     users.setActive

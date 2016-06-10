@@ -2077,6 +2077,14 @@
       "description": "User to get presence info on. Defaults to the authed user.\n"
     }
   ],
+  "users.identity": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: identity.basic)\n"
+    }
+  ],
   "users.info": [
     {
       "name": "token",

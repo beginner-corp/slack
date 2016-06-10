@@ -173,6 +173,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.usergroups.users.list({token, usergroup}, (err, data)=>)`
 - `slack.usergroups.users.update({token, usergroup, users}, (err, data)=>)`
 - `slack.users.getPresence({token, user}, (err, data)=>)`
+- `slack.users.identity({token}, (err, data)=>)`
 - `slack.users.info({token, user}, (err, data)=>)`
 - `slack.users.list({token}, (err, data)=>)`
 - `slack.users.setActive({token}, (err, data)=>)`

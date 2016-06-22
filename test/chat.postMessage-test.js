@@ -2,11 +2,11 @@ import test from 'tape'
 import list from '../src/channels.list'
 import msg from '../src/chat.postMessage'
 import env from './_env'
-// load SLACK_TOKEN for testing
+// load SLACK_BOT_TOKEN for testing
 env()
 
 test('can post a message', t=> {
-  let token = process.env.SLACK_TOKEN
+  let token = process.env.SLACK_BOT_TOKEN
   let text = 'test message'
   // list channels
   list({token}, (err, json)=> {
@@ -24,6 +24,6 @@ test('can post a message', t=> {
         console.log(data)
       }
       t.end()
-    })  
+    })
   })
 })

@@ -64,11 +64,12 @@ Clone this repo and create a file called `.env` in the root with the following:
 
 ```
 SLACK_TOKEN=xxxx
+SLACK_BOT_TOKEN=xxxx
 SLACK_CLIENT_ID=xxxx
 SLACK_CLIENT_SECRET=xxxx
 ```
 
-You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
+You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the `channels:history` scope.
 
 ## Testing :green_heart::green_heart::green_heart:
 

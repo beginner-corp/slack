@@ -3,16 +3,19 @@
 export default function client(token) {
   var applied = {}
   applied.auth = {}
+  applied.bots = {}
   applied.channels = {}
   applied.chat = {}
   applied.dnd = {}
   applied.emoji = {}
+  applied.files.comments = {}
   applied.files = {}
   applied.groups = {}
   applied.im = {}
   applied.mpim = {}
   applied.pins = {}
   applied.reactions = {}
+  applied.reminders = {}
   applied.rtm = {}
   applied.search = {}
   applied.stars = {}
@@ -23,6 +26,10 @@ export default function client(token) {
   applied.auth.test = function (params, callback) {
     params.token = token
     require('./auth.test').call({}, params, callback)
+  }
+  applied.bots.info = function (params, callback) {
+    params.token = token
+    require('./bots.info').call({}, params, callback)
   }
   applied.channels.archive = function (params, callback) {
     params.token = token
@@ -84,6 +91,10 @@ export default function client(token) {
     params.token = token
     require('./chat.delete').call({}, params, callback)
   }
+  applied.chat.meMessage = function (params, callback) {
+    params.token = token
+    require('./chat.meMessage').call({}, params, callback)
+  }
   applied.chat.postMessage = function (params, callback) {
     params.token = token
     require('./chat.postMessage').call({}, params, callback)
@@ -116,6 +127,18 @@ export default function client(token) {
     params.token = token
     require('./emoji.list').call({}, params, callback)
   }
+  applied.files.comments.add = function (params, callback) {
+    params.token = token
+    require('./files.comments.add').call({}, params, callback)
+  }
+  applied.files.comments.delete = function (params, callback) {
+    params.token = token
+    require('./files.comments.delete').call({}, params, callback)
+  }
+  applied.files.comments.edit = function (params, callback) {
+    params.token = token
+    require('./files.comments.edit').call({}, params, callback)
+  }
   applied.files.delete = function (params, callback) {
     params.token = token
     require('./files.delete').call({}, params, callback)
@@ -127,6 +150,14 @@ export default function client(token) {
   applied.files.list = function (params, callback) {
     params.token = token
     require('./files.list').call({}, params, callback)
+  }
+  applied.files.revokePublicURL = function (params, callback) {
+    params.token = token
+    require('./files.revokePublicURL').call({}, params, callback)
+  }
+  applied.files.sharedPublicURL = function (params, callback) {
+    params.token = token
+    require('./files.sharedPublicURL').call({}, params, callback)
   }
   applied.files.upload = function (params, callback) {
     params.token = token
@@ -264,6 +295,26 @@ export default function client(token) {
     params.token = token
     require('./reactions.remove').call({}, params, callback)
   }
+  applied.reminders.add = function (params, callback) {
+    params.token = token
+    require('./reminders.add').call({}, params, callback)
+  }
+  applied.reminders.complete = function (params, callback) {
+    params.token = token
+    require('./reminders.complete').call({}, params, callback)
+  }
+  applied.reminders.delete = function (params, callback) {
+    params.token = token
+    require('./reminders.delete').call({}, params, callback)
+  }
+  applied.reminders.info = function (params, callback) {
+    params.token = token
+    require('./reminders.info').call({}, params, callback)
+  }
+  applied.reminders.list = function (params, callback) {
+    params.token = token
+    require('./reminders.list').call({}, params, callback)
+  }
   applied.rtm.start = function (params, callback) {
     params.token = token
     require('./rtm.start').call({}, params, callback)
@@ -295,6 +346,10 @@ export default function client(token) {
   applied.team.accessLogs = function (params, callback) {
     params.token = token
     require('./team.accessLogs').call({}, params, callback)
+  }
+  applied.team.billableInfo = function (params, callback) {
+    params.token = token
+    require('./team.billableInfo').call({}, params, callback)
   }
   applied.team.info = function (params, callback) {
     params.token = token

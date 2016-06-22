@@ -5,7 +5,7 @@ import env from './_env'
 // load SLACK_TOKEN for testing
 env()
 
-test('can list channels', t=> {
+test('can list channels and get history', t=> {
   let token = process.env.SLACK_TOKEN
   let exclude_archived = 1
   let params = {token, exclude_archived}
@@ -31,5 +31,5 @@ test('can list channels', t=> {
         t.end()
       })
     }
-  })  
+  })
 })

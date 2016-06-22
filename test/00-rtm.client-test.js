@@ -2,14 +2,14 @@ import slack from '../'
 import test from 'tape'
 import env from './_env'
 
-// load SLACK_TOKEN for testing
+// load SLACK_BOT_TOKEN for testing
 env()
 
 let bot;
 
 test('bot starts', t=> {
   t.plan(2)
-  let token = process.env.SLACK_TOKEN
+  let token = process.env.SLACK_BOT_TOKEN
   bot = slack.rtm.client()
 
   // define a hello handler
@@ -40,5 +40,3 @@ test('bot bubbles error thru optional callback', t=> {
     console.log(err)
   })
 })
- 
-

@@ -1,5 +1,6 @@
 import api from './api.test'
 import apiClient from './api.client'
+import bots from './bots'
 import test from './auth.test'
 import channels from './channels'
 import chat from './chat'
@@ -25,6 +26,7 @@ let describe = `
     api.client(token)
     api.test(params, (err, data)=>)
     auth.test(token, (err, data)=>)
+    bots.info
     channels.archive({token, channel}, (err, data)=>)
     channels.create({token, name}, (err, data)=>)
     channels.history({token, channel}, (err, data)=>)
@@ -110,6 +112,7 @@ export default {
   describe,
   api: {test:api, client:apiClient},
   auth: {test},
+  bots,
   channels,
   chat,
   dnd,

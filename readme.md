@@ -64,11 +64,12 @@ Clone this repo and create a file called `.env` in the root with the following:
 
 ```
 SLACK_TOKEN=xxxx
+SLACK_BOT_TOKEN=xxxx
 SLACK_CLIENT_ID=xxxx
 SLACK_CLIENT_SECRET=xxxx
 ```
 
-You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
+You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the `channels:history` scope.
 
 ## Testing :green_heart::green_heart::green_heart:
 
@@ -93,7 +94,9 @@ npm run btest
 The entire Slack Web API is supported. All method signatures accept a `params` object and Node style callback. Required params are documented inline below.
 
 - `slack.api.test({}, (err, data)=>)`
+- `slack.auth.revoke({}, (err, data)=>)`
 - `slack.auth.test({token}, (err, data)=>)`
+- `slack.bots.info({token}, (err, data)=>)`
 - `slack.channels.archive({token, channel}, (err, data)=>)`
 - `slack.channels.create({token, name}, (err, data)=>)`
 - `slack.channels.history({token, channel}, (err, data)=>)`
@@ -109,6 +112,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.channels.setTopic({token, channel, topic}, (err, data)=>)`
 - `slack.channels.unarchive({token, channel}, (err, data)=>)`
 - `slack.chat.delete({token, ts, channel}, (err, data)=>)`
+- `slack.chat.meMessage({token, channel, text}, (err, data)=>)`
 - `slack.chat.postMessage({token, channel, text}, (err, data)=>)`
 - `slack.chat.update({token, ts, channel, text}, (err, data)=>)`
 - `slack.dnd.endDnd({token}, (err, data)=>)`
@@ -117,10 +121,15 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.dnd.setSnooze({token, num_minutes}, (err, data)=>)`
 - `slack.dnd.teamInfo({token}, (err, data)=>)`
 - `slack.emoji.list({token}, (err, data)=>)`
+- `slack.files.comments.add({token, file, comment}, (err, data)=>)`
+- `slack.files.comments.delete({token, file, id}, (err, data)=>)`
+- `slack.files.comments.edit({token, file, id, comment}, (err, data)=>)`
 - `slack.files.delete({token, file}, (err, data)=>)`
 - `slack.files.info({token, file}, (err, data)=>)`
 - `slack.files.list({token}, (err, data)=>)`
-- `slack.files.upload({token, file, filename}, (err, data)=>)`
+- `slack.files.revokePublicURL({token, file}, (err, data)=>)`
+- `slack.files.sharedPublicURL({token, file}, (err, data)=>)`
+- `slack.files.upload({token, filename}, (err, data)=>)`
 - `slack.groups.archive({token, channel}, (err, data)=>)`
 - `slack.groups.close({token, channel}, (err, data)=>)`
 - `slack.groups.create({token, name}, (err, data)=>)`
@@ -155,6 +164,11 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.reactions.get({token}, (err, data)=>)`
 - `slack.reactions.list({token}, (err, data)=>)`
 - `slack.reactions.remove({token, name}, (err, data)=>)`
+- `slack.reminders.add({token, text, time}, (err, data)=>)`
+- `slack.reminders.complete({token, reminder}, (err, data)=>)`
+- `slack.reminders.delete({token, reminder}, (err, data)=>)`
+- `slack.reminders.info({token, reminder}, (err, data)=>)`
+- `slack.reminders.list({token}, (err, data)=>)`
 - `slack.rtm.start({token}, (err, data)=>)`
 - `slack.search.all({token, query}, (err, data)=>)`
 - `slack.search.files({token, query}, (err, data)=>)`
@@ -163,6 +177,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.stars.list({token}, (err, data)=>)`
 - `slack.stars.remove({token}, (err, data)=>)`
 - `slack.team.accessLogs({token}, (err, data)=>)`
+- `slack.team.billableInfo({token}, (err, data)=>)`
 - `slack.team.info({token}, (err, data)=>)`
 - `slack.team.integrationLogs({token}, (err, data)=>)`
 - `slack.usergroups.create({token, name}, (err, data)=>)`
@@ -232,6 +247,8 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `channel_archive`
 - `channel_unarchive`
 - `channel_history_changed`
+- `dnd_updated`
+- `dnd_updated_user`
 - `im_created`
 - `im_open`
 - `im_close`
@@ -274,10 +291,14 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `team_rename`
 - `team_domain_change`
 - `email_domain_changed`
+- `team_profile_change`
+- `team_profile_delete`
+- `team_profile_reorder`
 - `bot_added`
 - `bot_changed`
 - `accounts_changed`
 - `team_migration_started`
+- `reconnect_url`
 - `subteam_created`
 - `subteam_updated`
 - `subteam_self_added`

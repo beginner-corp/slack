@@ -2,11 +2,11 @@ import slack from '../'
 import test from 'tape'
 import env from './_env'
 
-// load SLACK_TOKEN for testing
+// load SLACK_BOT_TOKEN for testing
 env()
 
 test('can get rtm endpoint info', t=> {
-  let token = process.env.SLACK_TOKEN
+  let token = process.env.SLACK_BOT_TOKEN
   slack.rtm.start({token}, (err, data)=> {
     if (err) {
       t.fail(err, 'rtm.start fails')
@@ -17,13 +17,13 @@ test('can get rtm endpoint info', t=> {
       console.log(data)
     }
     t.end()
-  })  
+  })
 })
 
 let bot;
 
 test('bot starts', t=> {
-  let token = process.env.SLACK_TOKEN
+  let token = process.env.SLACK_BOT_TOKEN
   bot = slack.rtm.client()
 
   // define a hello handler
@@ -35,7 +35,7 @@ test('bot starts', t=> {
 
   bot.listen({token})
 })
- 
+
 test('bot stops', t=> {
   t.plan(1)
   bot.close()

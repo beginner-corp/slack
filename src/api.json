@@ -13,12 +13,40 @@
       "description": "example property to return\n"
     }
   ],
+  "auth.revoke": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Optional",
+      "description": "Authentication token\n"
+    },
+    {
+      "name": "test",
+      "example": "true",
+      "required": "Optional",
+      "description": "Setting this parameter to 1 triggers a testing mode where the specified token will not actually be revoked.\n"
+    }
+  ],
   "auth.test": [
     {
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
       "description": "Authentication token (Requires scope: identify)\n"
+    }
+  ],
+  "bots.info": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users:read)\n"
+    },
+    {
+      "name": "bot",
+      "example": "B12345678",
+      "required": "Optional",
+      "description": "Bot user to get info on\n"
     }
   ],
   "channels.archive": [
@@ -309,6 +337,26 @@
       "description": "Pass true to delete the message as the authed user. Bot users in this context are considered authed users.\n"
     }
   ],
+  "chat.meMessage": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: chat:write:user)\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.\n"
+    },
+    {
+      "name": "text",
+      "example": "Hello world",
+      "required": "Required",
+      "description": "Text of the message to send.\n"
+    }
+  ],
   "chat.postMessage": [
     {
       "name": "token",
@@ -326,7 +374,7 @@
       "name": "text",
       "example": "Hello world",
       "required": "Required",
-      "description": "Text of the message to send. See below for an explanation of formatting.\n"
+      "description": "Text of the message to send. See below for an explanation of formatting. This field is usually required, unless you're providing only attachments instead.\n"
     },
     {
       "name": "parse",
@@ -508,7 +556,7 @@
     },
     {
       "name": "file",
-      "example": "F1234567890",
+      "example": "F1234467890",
       "required": "Required",
       "description": "File to add a comment to.\n"
     },
@@ -517,6 +565,12 @@
       "example": "Everyone should take a moment to read this file.",
       "required": "Required",
       "description": "Text of the comment to add.\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234467890",
+      "required": "Optional",
+      "description": "Channel id (encoded) of which location to associate with the new comment.\n"
     }
   ],
   "files.comments.delete": [
@@ -640,7 +694,7 @@
       "name": "types",
       "example": "images",
       "required": "Optional, default=all",
-      "description": "Filter files by type:\n\n\nall - All files\nposts - Posts\nsnippets - Snippets\nimages - Image files\ngdocs - Google docs\nzips - Zip files\npdfs - PDF files\n\n\nYou can pass multiple values in the types argument, like types=posts,snippets.The default value is all, which does not filter the list.\n"
+      "description": "Filter files by type:\n\n\nall - All files\nspaces - Posts\nsnippets - Snippets\nimages - Image files\ngdocs - Google docs\nzips - Zip files\npdfs - PDF files\n\n\nYou can pass multiple values in the types argument, like types=spaces,snippets.The default value is all, which does not filter the list.\n"
     },
     {
       "name": "count",
@@ -1747,12 +1801,6 @@
       "description": "Authentication token (Requires scope: stars:read)\n"
     },
     {
-      "name": "user",
-      "example": "U1234567890",
-      "required": "Optional",
-      "description": "Show stars by this user. Defaults to the authed user.\n"
-    },
-    {
       "name": "count",
       "example": "20",
       "required": "Optional, default=100",
@@ -1815,6 +1863,20 @@
       "example": "2",
       "required": "Optional, default=1",
       "description": "Page number of results to return.\n"
+    }
+  ],
+  "team.billableInfo": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: admin)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Optional",
+      "description": "A user to retrieve the billable information for. Defaults to all users.\n"
     }
   ],
   "team.info": [

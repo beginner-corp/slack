@@ -8,8 +8,9 @@ env()
 let bot;
 
 test('bot starts', t=> {
-  t.plan(2)
+  t.plan(1)
   let token = process.env.SLACK_BOT_TOKEN
+  console.log(token)
   bot = slack.rtm.client()
 
   // define a hello handler

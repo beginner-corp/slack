@@ -20,9 +20,11 @@ export default function client(token) {
   applied.search = {}
   applied.stars = {}
   applied.team = {}
+  applied.team.profile = {}
   applied.usergroups = {}
   applied.usergroups.users = {}
   applied.users = {}
+  applied.users.profile = {}
   applied.auth.test = function (params, callback) {
     params.token = token
     require('./auth.test').call({}, params, callback)
@@ -359,6 +361,10 @@ export default function client(token) {
     params.token = token
     require('./team.integrationLogs').call({}, params, callback)
   }
+  applied.team.profile.get = function (params, callback) {
+    params.token = token
+    require('./team.profile.get').call({}, params, callback)
+  }
   applied.usergroups.create = function (params, callback) {
     params.token = token
     require('./usergroups.create').call({}, params, callback)
@@ -402,6 +408,14 @@ export default function client(token) {
   applied.users.list = function (params, callback) {
     params.token = token
     require('./users.list').call({}, params, callback)
+  }
+  applied.users.profile.get = function (params, callback) {
+    params.token = token
+    require('./users.profile.get').call({}, params, callback)
+  }
+  applied.users.profile.set = function (params, callback) {
+    params.token = token
+    require('./users.profile.set').call({}, params, callback)
   }
   applied.users.setActive = function (params, callback) {
     params.token = token

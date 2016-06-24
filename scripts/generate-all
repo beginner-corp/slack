@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+var req = require('request')
+var mustache = require('mustache')
+var fs = require('fs')
+var cheerio = require('cheerio')
+var execSync = require('child_process').execSync
+
+var exec = function (cmd) {
+  return execSync(cmd, {stdio:[0,1,2]})
+}
+
+var generateReadme = function (data) {
+  var rendered = mustache.render(fs.readFileSync(__dirname + '/../readme.tmpl', { encoding: 'utf8'}), data)
+  fs.writeFileSync(__dirname + '/../readme.md', rendered)
+  console.log("🙌  Generated readme.md")
+}
+
+exec(__dirname + '/generate-stateful-client > ' + __dirname + '/../src/api.client.js')
+console.log("⚡️  Updated src/api.client.js")
+
+exec(__dirname + '/generate-api-json > ' + __dirname + '/../src/api.json')
+console.log("⚡️  Updated src/api.json")
+
+exec(__dirname + '/generate-web-api')
+console.log("⚡️  Generated web API client")
+
+// generate README docs
+var api = require('../src/api.json')
+var methods = []
+Object.keys(api).sort().forEach(method=> {
+  var isRequired = param=> param.required === 'Required'
+  var params = api[method].filter(isRequired).map(param=> param.name).join(', ')
+  var interpolated = `slack.${method}({${params}}, (err, data)=>)`
+  methods.push(interpolated)
+})
+
+// generate list of README events
+req('https://api.slack.com/rtm', (err, res)=> {
+  var events = []
+  var $ = cheerio.load(res.body)
+
+  $('table a').each(function(i, elem) {
+    events.push($(this).text())
+  })
+
+  var data = {
+    events: events,
+    methods: methods
+  }
+
+  generateReadme(data)
+})

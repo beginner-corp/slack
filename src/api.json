@@ -1931,6 +1931,20 @@
       "description": "Page number of results to return.\n"
     }
   ],
+  "team.profile.get": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users.profile:read)\n"
+    },
+    {
+      "name": "visibility",
+      "example": "all",
+      "required": "Optional",
+      "description": "Filter by visibility.\n"
+    }
+  ],
   "usergroups.create": [
     {
       "name": "token",
@@ -2195,6 +2209,58 @@
       "example": "away",
       "required": "Required",
       "description": "Either auto or away\n"
+    }
+  ],
+  "users.profile.get": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users.profile:read)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Optional",
+      "description": "User to retrieve profile info for\n"
+    },
+    {
+      "name": "include_labels",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Include labels for each ID in custom profile fields\n"
+    }
+  ],
+  "users.profile.set": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users.profile:write)\n"
+    },
+    {
+      "name": "user",
+      "example": "U1234567890",
+      "required": "Optional",
+      "description": "ID of user to change. This argument may only be specified by team admins.\n"
+    },
+    {
+      "name": "profile",
+      "example": "{ first_name: \"John\", ... }",
+      "required": "Optional",
+      "description": "Collection of key:value pairs presented as a URL-encoded JSON hash.\n"
+    },
+    {
+      "name": "name",
+      "example": "first_name",
+      "required": "Optional",
+      "description": "Name of a single key to set. Usable only if profile is not passed.\n"
+    },
+    {
+      "name": "value",
+      "example": "John",
+      "required": "Optional",
+      "description": "Value to set a single key to. Usable only if profile is not passed.\n"
     }
   ]
 }

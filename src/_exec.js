@@ -9,6 +9,12 @@ const req = request.defaults({
 })
 
 export default function exec(url, form, callback) {
+  // stringify any objects under keys since form is posted as application/x-www-form-urlencoded
+  Object.keys(form).forEach(function (key) {
+    if (typeof form[key] === 'object') {
+      form[key] = JSON.stringify(form[key])
+    }
+  })
 
   // always post
   req.post({url, form}, (err, res)=> {

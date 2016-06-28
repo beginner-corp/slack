@@ -15,11 +15,27 @@ var generateReadme = function (data) {
   console.log("🙌  Generated readme.md")
 }
 
-exec(__dirname + '/generate-stateful-client > ' + __dirname + '/../src/api.client.js')
-console.log("⚡️  Updated src/api.client.js")
+var generateRtmEvents = function (events) {
+  var rendered = `
+// generated using ./scripts/generate-all
+let events = [
+`
+  rendered += events.map(function (it) { return "  '" + it + "'"}).join(',\n')
+  rendered += `
+]
+
+export default events
+`
+  fs.writeFileSync(__dirname + '/../src/rtm.events.js', rendered)
+  console.log("⚡️  Generated src/rtm.events.js")
+}
+
 
 exec(__dirname + '/generate-api-json > ' + __dirname + '/../src/api.json')
 console.log("⚡️  Updated src/api.json")
+
+exec(__dirname + '/generate-stateful-client > ' + __dirname + '/../src/api.client.js')
+console.log("⚡️  Updated src/api.client.js")
 
 exec(__dirname + '/generate-web-api')
 console.log("⚡️  Generated web API client")
@@ -48,5 +64,6 @@ req('https://api.slack.com/rtm', (err, res)=> {
     methods: methods
   }
 
+  generateRtmEvents(events)
   generateReadme(data)
 })

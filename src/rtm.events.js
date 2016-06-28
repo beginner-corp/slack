@@ -1,4 +1,5 @@
-// generated using ./scripts/rtm-events
+
+// generated using ./scripts/generate-all
 let events = [
   'hello',
   'message',
@@ -12,6 +13,8 @@ let events = [
   'channel_archive',
   'channel_unarchive',
   'channel_history_changed',
+  'dnd_updated',
+  'dnd_updated_user',
   'im_created',
   'im_open',
   'im_close',
@@ -54,15 +57,18 @@ let events = [
   'team_rename',
   'team_domain_change',
   'email_domain_changed',
+  'team_profile_change',
+  'team_profile_delete',
+  'team_profile_reorder',
   'bot_added',
   'bot_changed',
   'accounts_changed',
   'team_migration_started',
+  'reconnect_url',
   'subteam_created',
   'subteam_updated',
   'subteam_self_added',
-  'subteam_self_removed',
-  'reconnect_url'
+  'subteam_self_removed'
 ]
 
 export default events

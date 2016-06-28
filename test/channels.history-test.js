@@ -6,7 +6,7 @@ import env from './_env'
 env()
 
 test('can list channels and get history', t=> {
-  let token = process.env.SLACK_TOKEN
+  let token = process.env.SLACK_BOT_TOKEN
   let exclude_archived = 1
   let params = {token, exclude_archived}
   list(params, (err, data)=> {

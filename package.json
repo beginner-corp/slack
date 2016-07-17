@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "npm run build && ./scripts/repl",
-    "build": "babel src --out-dir methods && cp src/api.json methods/api.json",
+    "build": "rimraf methods && babel src --out-dir methods && cpr src/api.json methods/api.json",
     "test": "npm run build && ./scripts/test",
     "btest": "npm run build && ./scripts/test-browser | browser-run | tap-spec",
     "prepublish": "npm run build",
@@ -40,11 +40,13 @@
     "browserify": "^13.0.1",
     "chalk": "^1.1.1",
     "cheerio": "^0.20.0",
+    "cpr": "^1.1.2",
     "envify": "^3.4.0",
     "glob": "^7.0.5",
     "lodash": "^4.5.0",
     "mustache": "^2.2.1",
     "node-env-file": "^0.1.8",
+    "rimraf": "^2.5.3",
     "tap": "^5.8.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.0"

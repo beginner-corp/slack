@@ -1175,6 +1175,12 @@
       "example": "U1234567890",
       "required": "Required",
       "description": "User to open a direct message channel with.\n"
+    },
+    {
+      "name": "return_im",
+      "example": " ",
+      "required": "Optional",
+      "description": "Boolean, indicates you want the full IM channel definition in the response.\n"
     }
   ],
   "mpim.close": [

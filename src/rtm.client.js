@@ -12,6 +12,9 @@ export default function client() {
     }
   }
 
+  // add undocumented ping event
+  events.push('ping')
+
   // generate event handler registration methods
   events.forEach(e=> {
     bot.handlers[e] = []

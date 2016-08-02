@@ -8,10 +8,11 @@ env()
 let bot;
 
 test('bot starts', t=> {
-  t.plan(1)
+  t.plan(3)
   let token = process.env.SLACK_BOT_TOKEN
-  console.log(token)
+
   bot = slack.rtm.client()
+  console.log(bot)
 
   // define a hello handler
   bot.hello(msg=> {
@@ -19,9 +20,17 @@ test('bot starts', t=> {
     console.log(msg)
   })
 
+  // define a ping handler
+  bot.pong(msg=> {
+    t.ok(msg, 'got a ping message')
+    console.log(msg)
+  })
+
   bot.listen({token}, (err, d)=> {
-    t.ok(d, 'got the data')
-    console.log('got data')
+    t.ok(d, 'got init data')
+    setTimeout(x=> {
+      bot.ws.send(JSON.stringify({id:1, type:'ping'}))
+    }, 1000)
   })
 })
 
@@ -34,9 +43,9 @@ test('bot stops', t=> {
 test('bot bubbles error thru optional callback', t=> {
   t.plan(1)
   let token = 'mmmmm-baaaad-token'
-  bot = slack.rtm.client()
+  let otherbot = slack.rtm.client()
 
-  bot.listen({token}, (err, d)=> {
+  otherbot.listen({token}, (err, d)=> {
     t.ok(err, 'got the error')
     console.log(err)
   })

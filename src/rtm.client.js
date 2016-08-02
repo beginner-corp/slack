@@ -13,7 +13,7 @@ export default function client() {
   }
 
   // add undocumented ping event
-  events.push('ping')
+  events.push('pong')
 
   // generate event handler registration methods
   events.forEach(e=> {

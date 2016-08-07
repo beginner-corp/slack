@@ -12,6 +12,7 @@ import im from './im'
 import mpim from './mpim'
 import access from './oauth.access'
 import reactions from './reactions'
+import reminders from './reminders'
 import pins from './pins'
 import client from './rtm.client'
 import start from './rtm.start'
@@ -83,6 +84,11 @@ let describe = `
     reactions.get
     reactions.list
     reactions.remove
+    reminders.add
+    reminders.complete
+    reminders.delete
+    reminders.info
+    reminders.list
     rtm.client()
     rtm.start({token}, (err, data)=>)
     search.all
@@ -123,6 +129,7 @@ export default {
   mpim,
   oauth: {access},
   reactions,
+  reminders,
   pins,
   rtm: {client, start},
   search,

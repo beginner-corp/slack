@@ -14,13 +14,11 @@ export default {
   info,
   list,
   upload,
-  files: {
-    comments: {
-      add: filesCommentsAdd,
-      delete: filesCommentsDelete,
-      edit: filesCommentsEdit
-    },
-    revokePublicURL,
-    sharedPublicURL
-  }
+  comments: {
+    add: filesCommentsAdd,
+    delete: filesCommentsDelete,
+    edit: filesCommentsEdit
+  },
+  revokePublicURL,
+  sharedPublicURL
 }

@@ -98,7 +98,10 @@ let describe = `
     stars.list
     stars.remove
     team.acccessLogs
+    team.billableInfo
     team.info(token, (err, data)=>)
+    team.integrationLogs
+    team.profile.get
     usergroups.create
     usergroups.disable
     usergroups.enable

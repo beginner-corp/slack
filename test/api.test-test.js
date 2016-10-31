@@ -8,6 +8,7 @@ test('sanity', t=> {
 
 test('can call the api', t=> {
   slack({test:'hello world'}, (err, res)=> {
+      console.log('whuuuuuut', err, res)
     if (err) {
       t.fail(err, err)
     }

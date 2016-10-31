@@ -1,5 +1,5 @@
 import http from 'httpplease'
-import qs from 'query-string'
+import qs from 'querystring'
 
 export default function exec(ns, json, callback) {
   

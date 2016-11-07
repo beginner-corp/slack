@@ -188,6 +188,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.usergroups.update({token, usergroup}, (err, data)=>)``
 - `slack.usergroups.users.list({token, usergroup}, (err, data)=>)``
 - `slack.usergroups.users.update({token, usergroup, users}, (err, data)=>)``
+- `slack.users.deletePhoto({token}, (err, data)=>)``
 - `slack.users.getPresence({token, user}, (err, data)=>)``
 - `slack.users.identity({token}, (err, data)=>)``
 - `slack.users.info({token, user}, (err, data)=>)``
@@ -195,6 +196,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.users.profile.get({token}, (err, data)=>)``
 - `slack.users.profile.set({token}, (err, data)=>)``
 - `slack.users.setActive({token}, (err, data)=>)``
+- `slack.users.setPhoto({token, image}, (err, data)=>)``
 - `slack.users.setPresence({token, presence}, (err, data)=>)``
 
 # Slack RTM API
@@ -264,6 +266,7 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `file_public`
 - `file_shared`
 - `file_unshared`
+- `goodbye`
 - `group_archive`
 - `group_close`
 - `group_history_changed`

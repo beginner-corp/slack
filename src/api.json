@@ -1869,6 +1869,12 @@
       "example": "2",
       "required": "Optional, default=1",
       "description": "Page number of results to return.\n"
+    },
+    {
+      "name": "before",
+      "example": "1457989166",
+      "required": "Optional, default=now",
+      "description": "End of time range of logs to include in results (inclusive).\n"
     }
   ],
   "team.billableInfo": [
@@ -2145,6 +2151,14 @@
       "description": "Include the number of users in the User Group.\n"
     }
   ],
+  "users.deletePhoto": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users.profile:write)\n"
+    }
+  ],
   "users.getPresence": [
     {
       "name": "token",
@@ -2203,6 +2217,38 @@
       "description": "Authentication token (Requires scope: users:write)\n"
     }
   ],
+  "users.setPhoto": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token (Requires scope: users.profile:write)\n"
+    },
+    {
+      "name": "image",
+      "example": "...",
+      "required": "Required",
+      "description": "File contents via multipart/form-data.\n"
+    },
+    {
+      "name": "crop_x",
+      "example": "10",
+      "required": "Optional",
+      "description": "X coordinate of top-left corner of crop box\n"
+    },
+    {
+      "name": "crop_y",
+      "example": "15",
+      "required": "Optional",
+      "description": "Y coordinate of top-left corner of crop box\n"
+    },
+    {
+      "name": "crop_w",
+      "example": "100",
+      "required": "Optional",
+      "description": "Width/height of crop box (always square)\n"
+    }
+  ],
   "users.setPresence": [
     {
       "name": "token",
@@ -2248,7 +2294,7 @@
       "name": "user",
       "example": "U1234567890",
       "required": "Optional",
-      "description": "ID of user to change. This argument may only be specified by team admins.\n"
+      "description": "ID of user to change. This argument may only be specified by team admins on paid teams.\n"
     },
     {
       "name": "profile",

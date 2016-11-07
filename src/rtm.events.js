@@ -27,6 +27,7 @@ let events = [
   'file_public',
   'file_shared',
   'file_unshared',
+  'goodbye',
   'group_archive',
   'group_close',
   'group_history_changed',

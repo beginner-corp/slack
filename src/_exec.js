@@ -1,6 +1,7 @@
 import http from 'tiny-json-http'
 
 export default function exec(url, form, callback) {
+
   // stringify any objects under keys since form is posted as application/x-www-form-urlencoded
   Object.keys(form).forEach(function (key) {
     if (typeof form[key] === 'object') {
@@ -8,17 +9,15 @@ export default function exec(url, form, callback) {
     }
   })
 
-  var options = {
+  // always post
+  http.post({
     url: `https://slack.com/api/${url}`,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     data: form
-  }
-  // console.log(options)
-
-  // always post
-  http.post(options, (err, res)=> {
+  }, 
+  function _res(err, res) {
     // var rateLimit = 'You are sending too many requests. Please relax.'
     if (res) res = JSON.parse(res)
     if (err) {
@@ -32,5 +31,4 @@ export default function exec(url, form, callback) {
       callback(null, res)
     }
   })
-/// eom
 }

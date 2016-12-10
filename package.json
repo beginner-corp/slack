@@ -4,7 +4,6 @@
   "description": "Slack API client written in JS",
   "main": "methods/index",
   "browser": {
-    "./methods/_exec.js": "./methods/_exec-browser.js",
     "./methods/rtm.client.js": "./methods/rtm.client-browser.js",
     "./test/_env.js": "./test/_env-browser.js"
   },
@@ -54,7 +53,6 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
-    "httpplease": "^0.16.4",
     "tiny-json-http": "^1.0.3",
     "ws": "^1.1.1"
   }

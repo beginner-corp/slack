@@ -1,7 +1,7 @@
 import test from 'tape'
 import slack from '../src/api.test'
 
-test('sanity', t=> {
+test('env', t=> {
   t.ok(slack, 'slack.api.test exists')
   t.end()
 })

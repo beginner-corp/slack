@@ -18,7 +18,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Optional",
-      "description": "Authentication token\n"
+      "description": "Authentication token.\n"
     },
     {
       "name": "test",
@@ -32,7 +32,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: identify)\n"
+      "description": "Authentication token.\nRequires scope: identify\n"
     }
   ],
   "bots.info": [
@@ -40,7 +40,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users:read)\n"
+      "description": "Authentication token.\nRequires scope: users:read\n"
     },
     {
       "name": "bot",
@@ -54,7 +54,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -68,7 +68,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "name",
@@ -82,7 +82,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:history)\n"
+      "description": "Authentication token.\nRequires scope: channels:history\n"
     },
     {
       "name": "channel",
@@ -126,7 +126,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:read)\n"
+      "description": "Authentication token.\nRequires scope: channels:read\n"
     },
     {
       "name": "channel",
@@ -140,7 +140,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -160,7 +160,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "name",
@@ -174,7 +174,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -194,7 +194,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -208,7 +208,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:read)\n"
+      "description": "Authentication token.\nRequires scope: channels:read\n"
     },
     {
       "name": "exclude_archived",
@@ -222,7 +222,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -242,7 +242,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -262,7 +262,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -282,7 +282,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -302,7 +302,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: channels:write)\n"
+      "description": "Authentication token.\nRequires scope: channels:write\n"
     },
     {
       "name": "channel",
@@ -316,7 +316,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: chat:write:bot or chat:write:user)\n"
+      "description": "Authentication token.\nRequires scope: chat:write:bot or chat:write:user\n"
     },
     {
       "name": "ts",
@@ -342,7 +342,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: chat:write:user)\n"
+      "description": "Authentication token.\nRequires scope: chat:write:user\n"
     },
     {
       "name": "channel",
@@ -362,7 +362,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: chat:write:bot or chat:write:user)\n"
+      "description": "Authentication token.\nRequires scope: chat:write:bot or chat:write:user\n"
     },
     {
       "name": "channel",
@@ -436,7 +436,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: chat:write:bot or chat:write:user)\n"
+      "description": "Authentication token.\nRequires scope: chat:write:bot or chat:write:user\n"
     },
     {
       "name": "ts",
@@ -486,7 +486,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: dnd:write)\n"
+      "description": "Authentication token.\nRequires scope: dnd:write\n"
     }
   ],
   "dnd.endSnooze": [
@@ -494,7 +494,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: dnd:write)\n"
+      "description": "Authentication token.\nRequires scope: dnd:write\n"
     }
   ],
   "dnd.info": [
@@ -502,7 +502,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: dnd:read)\n"
+      "description": "Authentication token.\nRequires scope: dnd:read\n"
     },
     {
       "name": "user",
@@ -516,7 +516,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: dnd:write)\n"
+      "description": "Authentication token.\nRequires scope: dnd:write\n"
     },
     {
       "name": "num_minutes",
@@ -530,7 +530,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: dnd:read)\n"
+      "description": "Authentication token.\nRequires scope: dnd:read\n"
     },
     {
       "name": "users",
@@ -544,7 +544,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: emoji:read)\n"
+      "description": "Authentication token.\nRequires scope: emoji:read\n"
     }
   ],
   "files.comments.add": [
@@ -552,7 +552,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:write:user)\n"
+      "description": "Authentication token.\nRequires scope: files:write:user\n"
     },
     {
       "name": "file",
@@ -578,7 +578,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:write:user)\n"
+      "description": "Authentication token.\nRequires scope: files:write:user\n"
     },
     {
       "name": "file",
@@ -598,7 +598,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:write:user)\n"
+      "description": "Authentication token.\nRequires scope: files:write:user\n"
     },
     {
       "name": "file",
@@ -624,7 +624,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:write:user)\n"
+      "description": "Authentication token.\nRequires scope: files:write:user\n"
     },
     {
       "name": "file",
@@ -638,7 +638,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:read)\n"
+      "description": "Authentication token.\nRequires scope: files:read\n"
     },
     {
       "name": "file",
@@ -664,7 +664,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:read)\n"
+      "description": "Authentication token.\nRequires scope: files:read\n"
     },
     {
       "name": "user",
@@ -714,7 +714,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:write:user)\n"
+      "description": "Authentication token.\nRequires scope: files:write:user\n"
     },
     {
       "name": "file",
@@ -728,7 +728,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:write:user)\n"
+      "description": "Authentication token.\nRequires scope: files:write:user\n"
     },
     {
       "name": "file",
@@ -742,7 +742,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: files:write:user)\n"
+      "description": "Authentication token.\nRequires scope: files:write:user\n"
     },
     {
       "name": "file",
@@ -792,7 +792,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -806,7 +806,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -820,7 +820,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "name",
@@ -834,7 +834,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -848,7 +848,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:history)\n"
+      "description": "Authentication token.\nRequires scope: groups:history\n"
     },
     {
       "name": "channel",
@@ -892,7 +892,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:read)\n"
+      "description": "Authentication token.\nRequires scope: groups:read\n"
     },
     {
       "name": "channel",
@@ -906,7 +906,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -926,7 +926,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -946,7 +946,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -960,7 +960,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:read)\n"
+      "description": "Authentication token.\nRequires scope: groups:read\n"
     },
     {
       "name": "exclude_archived",
@@ -974,7 +974,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -994,7 +994,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -1008,7 +1008,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -1028,7 +1028,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -1048,7 +1048,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -1068,7 +1068,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: groups:write)\n"
+      "description": "Authentication token.\nRequires scope: groups:write\n"
     },
     {
       "name": "channel",
@@ -1082,7 +1082,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: im:write)\n"
+      "description": "Authentication token.\nRequires scope: im:write\n"
     },
     {
       "name": "channel",
@@ -1096,7 +1096,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: im:history)\n"
+      "description": "Authentication token.\nRequires scope: im:history\n"
     },
     {
       "name": "channel",
@@ -1140,7 +1140,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: im:read)\n"
+      "description": "Authentication token.\nRequires scope: im:read\n"
     }
   ],
   "im.mark": [
@@ -1148,7 +1148,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: im:write)\n"
+      "description": "Authentication token.\nRequires scope: im:write\n"
     },
     {
       "name": "channel",
@@ -1168,7 +1168,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: im:write)\n"
+      "description": "Authentication token.\nRequires scope: im:write\n"
     },
     {
       "name": "user",
@@ -1188,7 +1188,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: mpim:write)\n"
+      "description": "Authentication token.\nRequires scope: mpim:write\n"
     },
     {
       "name": "channel",
@@ -1202,7 +1202,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: mpim:history)\n"
+      "description": "Authentication token.\nRequires scope: mpim:history\n"
     },
     {
       "name": "channel",
@@ -1246,7 +1246,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: mpim:read)\n"
+      "description": "Authentication token.\nRequires scope: mpim:read\n"
     }
   ],
   "mpim.mark": [
@@ -1254,7 +1254,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: mpim:write)\n"
+      "description": "Authentication token.\nRequires scope: mpim:write\n"
     },
     {
       "name": "channel",
@@ -1274,7 +1274,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: mpim:write)\n"
+      "description": "Authentication token.\nRequires scope: mpim:write\n"
     },
     {
       "name": "users",
@@ -1314,7 +1314,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: pins:write)\n"
+      "description": "Authentication token.\nRequires scope: pins:write\n"
     },
     {
       "name": "channel",
@@ -1346,7 +1346,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: pins:read)\n"
+      "description": "Authentication token.\nRequires scope: pins:read\n"
     },
     {
       "name": "channel",
@@ -1360,7 +1360,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: pins:write)\n"
+      "description": "Authentication token.\nRequires scope: pins:write\n"
     },
     {
       "name": "channel",
@@ -1392,7 +1392,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reactions:write)\n"
+      "description": "Authentication token.\nRequires scope: reactions:write\n"
     },
     {
       "name": "name",
@@ -1430,7 +1430,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reactions:read)\n"
+      "description": "Authentication token.\nRequires scope: reactions:read\n"
     },
     {
       "name": "file",
@@ -1468,7 +1468,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reactions:read)\n"
+      "description": "Authentication token.\nRequires scope: reactions:read\n"
     },
     {
       "name": "user",
@@ -1500,7 +1500,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reactions:write)\n"
+      "description": "Authentication token.\nRequires scope: reactions:write\n"
     },
     {
       "name": "name",
@@ -1538,7 +1538,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reminders:write)\n"
+      "description": "Authentication token.\nRequires scope: reminders:write\n"
     },
     {
       "name": "text",
@@ -1564,7 +1564,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reminders:write)\n"
+      "description": "Authentication token.\nRequires scope: reminders:write\n"
     },
     {
       "name": "reminder",
@@ -1578,7 +1578,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reminders:write)\n"
+      "description": "Authentication token.\nRequires scope: reminders:write\n"
     },
     {
       "name": "reminder",
@@ -1592,7 +1592,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reminders:read)\n"
+      "description": "Authentication token.\nRequires scope: reminders:read\n"
     },
     {
       "name": "reminder",
@@ -1606,7 +1606,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: reminders:read)\n"
+      "description": "Authentication token.\nRequires scope: reminders:read\n"
     }
   ],
   "rtm.start": [
@@ -1614,7 +1614,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: client)\n"
+      "description": "Authentication token.\nRequires scope: client\n"
     },
     {
       "name": "simple_latest",
@@ -1640,7 +1640,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: search:read)\n"
+      "description": "Authentication token.\nRequires scope: search:read\n"
     },
     {
       "name": "query",
@@ -1684,7 +1684,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: search:read)\n"
+      "description": "Authentication token.\nRequires scope: search:read\n"
     },
     {
       "name": "query",
@@ -1728,7 +1728,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: search:read)\n"
+      "description": "Authentication token.\nRequires scope: search:read\n"
     },
     {
       "name": "query",
@@ -1772,7 +1772,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: stars:write)\n"
+      "description": "Authentication token.\nRequires scope: stars:write\n"
     },
     {
       "name": "file",
@@ -1804,7 +1804,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: stars:read)\n"
+      "description": "Authentication token.\nRequires scope: stars:read\n"
     },
     {
       "name": "count",
@@ -1824,7 +1824,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: stars:write)\n"
+      "description": "Authentication token.\nRequires scope: stars:write\n"
     },
     {
       "name": "file",
@@ -1856,7 +1856,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: admin)\n"
+      "description": "Authentication token.\nRequires scope: admin\n"
     },
     {
       "name": "count",
@@ -1882,7 +1882,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: admin)\n"
+      "description": "Authentication token.\nRequires scope: admin\n"
     },
     {
       "name": "user",
@@ -1896,7 +1896,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: team:read)\n"
+      "description": "Authentication token.\nRequires scope: team:read\n"
     }
   ],
   "team.integrationLogs": [
@@ -1904,7 +1904,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: admin)\n"
+      "description": "Authentication token.\nRequires scope: admin\n"
     },
     {
       "name": "service_id",
@@ -1948,7 +1948,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users.profile:read)\n"
+      "description": "Authentication token.\nRequires scope: users.profile:read\n"
     },
     {
       "name": "visibility",
@@ -1962,7 +1962,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: usergroups:write)\n"
+      "description": "Authentication token.\nRequires scope: usergroups:write\n"
     },
     {
       "name": "name",
@@ -2000,7 +2000,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: usergroups:write)\n"
+      "description": "Authentication token.\nRequires scope: usergroups:write\n"
     },
     {
       "name": "usergroup",
@@ -2020,7 +2020,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: usergroups:write)\n"
+      "description": "Authentication token.\nRequires scope: usergroups:write\n"
     },
     {
       "name": "usergroup",
@@ -2040,7 +2040,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: usergroups:read)\n"
+      "description": "Authentication token.\nRequires scope: usergroups:read\n"
     },
     {
       "name": "include_disabled",
@@ -2066,7 +2066,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: usergroups:write)\n"
+      "description": "Authentication token.\nRequires scope: usergroups:write\n"
     },
     {
       "name": "usergroup",
@@ -2110,7 +2110,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: usergroups:read)\n"
+      "description": "Authentication token.\nRequires scope: usergroups:read\n"
     },
     {
       "name": "usergroup",
@@ -2130,7 +2130,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: usergroups:write)\n"
+      "description": "Authentication token.\nRequires scope: usergroups:write\n"
     },
     {
       "name": "usergroup",
@@ -2156,7 +2156,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users.profile:write)\n"
+      "description": "Authentication token.\nRequires scope: users.profile:write\n"
     }
   ],
   "users.getPresence": [
@@ -2164,7 +2164,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users:read)\n"
+      "description": "Authentication token.\nRequires scope: users:read\n"
     },
     {
       "name": "user",
@@ -2178,7 +2178,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: identity.basic)\n"
+      "description": "Authentication token.\nRequires scope: identity.basic\n"
     }
   ],
   "users.info": [
@@ -2186,7 +2186,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users:read)\n"
+      "description": "Authentication token.\nRequires scope: users:read\n"
     },
     {
       "name": "user",
@@ -2200,7 +2200,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users:read)\n"
+      "description": "Authentication token.\nRequires scope: users:read\n"
     },
     {
       "name": "presence",
@@ -2214,7 +2214,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users:write)\n"
+      "description": "Authentication token.\nRequires scope: users:write\n"
     }
   ],
   "users.setPhoto": [
@@ -2222,7 +2222,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users.profile:write)\n"
+      "description": "Authentication token.\nRequires scope: users.profile:write\n"
     },
     {
       "name": "image",
@@ -2254,7 +2254,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users:write)\n"
+      "description": "Authentication token.\nRequires scope: users:write\n"
     },
     {
       "name": "presence",
@@ -2268,7 +2268,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users.profile:read)\n"
+      "description": "Authentication token.\nRequires scope: users.profile:read\n"
     },
     {
       "name": "user",
@@ -2288,7 +2288,7 @@
       "name": "token",
       "example": "xxxx-xxxxxxxxx-xxxx",
       "required": "Required",
-      "description": "Authentication token (Requires scope: users.profile:write)\n"
+      "description": "Authentication token.\nRequires scope: users.profile:write\n"
     },
     {
       "name": "user",

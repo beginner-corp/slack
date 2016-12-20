@@ -46,7 +46,7 @@ var methods = []
 Object.keys(api).sort().forEach(method=> {
   var isRequired = param=> param.required === 'Required'
   var params = api[method].filter(isRequired).map(param=> param.name).join(', ')
-  var interpolated = `slack.${method}({${params}}, (err, data)=>)`
+  var interpolated = `slack.${method}({${params}}, (err, data) => { })`
   methods.push(interpolated)
 })
 
@@ -63,7 +63,7 @@ req('https://api.slack.com/rtm', (err, res)=> {
     events: events,
     methods: methods
   }
-  
+
   // add undocumented pong event
   data.events.push('pong')
   data.events = data.events.sort()

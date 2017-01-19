@@ -164,7 +164,7 @@
     },
     {
       "name": "name",
-      "example": " ",
+      "example": "C1234567890",
       "required": "Required",
       "description": "Name of channel to join\n"
     }
@@ -255,6 +255,26 @@
       "example": " ",
       "required": "Required",
       "description": "New name for channel.\n"
+    }
+  ],
+  "channels.replies": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token.\nRequires scope: channels:history\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel to fetch thread from\n"
+    },
+    {
+      "name": "thread_ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Unique identifier of a thread's parent message\n"
     }
   ],
   "channels.setPurpose": [
@@ -428,7 +448,19 @@
       "name": "icon_emoji",
       "example": ":chart_with_upwards_trend:",
       "required": "Optional",
-      "description": "emoji to use as the icon for this message. Overrides icon_url. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below.\n"
+      "description": "Emoji to use as the icon for this message. Overrides icon_url. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below.\n"
+    },
+    {
+      "name": "thread_ts",
+      "example": "1234567890.123456",
+      "required": "Optional",
+      "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead.\n"
+    },
+    {
+      "name": "reply_broadcast",
+      "example": "true",
+      "required": "Optional",
+      "description": "Used in conjunction with thread_ts and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false.\n"
     }
   ],
   "chat.update": [
@@ -896,7 +928,7 @@
     },
     {
       "name": "channel",
-      "example": "C1234567890",
+      "example": "G1234567890",
       "required": "Required",
       "description": "Private channel to get info on\n"
     }
@@ -1012,7 +1044,7 @@
     },
     {
       "name": "channel",
-      "example": "C1234567890",
+      "example": "G1234567890",
       "required": "Required",
       "description": "Private channel to rename\n"
     },
@@ -1021,6 +1053,26 @@
       "example": " ",
       "required": "Required",
       "description": "New name for private channel.\n"
+    }
+  ],
+  "groups.replies": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token.\nRequires scope: groups:history\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Private channel to fetch thread from\n"
+    },
+    {
+      "name": "thread_ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Unique identifier of a thread's parent message\n"
     }
   ],
   "groups.setPurpose": [
@@ -1032,7 +1084,7 @@
     },
     {
       "name": "channel",
-      "example": "C1234567890",
+      "example": "G1234567890",
       "required": "Required",
       "description": "Private channel to set the purpose of\n"
     },
@@ -1052,7 +1104,7 @@
     },
     {
       "name": "channel",
-      "example": "C1234567890",
+      "example": "G1234567890",
       "required": "Required",
       "description": "Private channel to set the topic of\n"
     },
@@ -1183,6 +1235,26 @@
       "description": "Boolean, indicates you want the full IM channel definition in the response.\n"
     }
   ],
+  "im.replies": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token.\nRequires scope: im:history\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Direct message channel to fetch thread from\n"
+    },
+    {
+      "name": "thread_ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Unique identifier of a thread's parent message\n"
+    }
+  ],
   "mpim.close": [
     {
       "name": "token",
@@ -1281,6 +1353,26 @@
       "example": "U1234567890,U2345678901,U3456789012",
       "required": "Required",
       "description": "Comma separated lists of users.  The ordering of the users is preserved whenever a MPIM group is returned.\n"
+    }
+  ],
+  "mpim.replies": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token.\nRequires scope: mpim:history\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Multiparty direct message channel to fetch thread from.\n"
+    },
+    {
+      "name": "thread_ts",
+      "example": "1234567890.123456",
+      "required": "Required",
+      "description": "Unique identifier of a thread's parent message.\n"
     }
   ],
   "oauth.access": [

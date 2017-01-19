@@ -108,6 +108,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.channels.list({token}, (err, data) => { })`
 - `slack.channels.mark({token, channel, ts}, (err, data) => { })`
 - `slack.channels.rename({token, channel, name}, (err, data) => { })`
+- `slack.channels.replies({token, channel, thread_ts}, (err, data) => { })`
 - `slack.channels.setPurpose({token, channel, purpose}, (err, data) => { })`
 - `slack.channels.setTopic({token, channel, topic}, (err, data) => { })`
 - `slack.channels.unarchive({token, channel}, (err, data) => { })`
@@ -143,6 +144,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.groups.mark({token, channel, ts}, (err, data) => { })`
 - `slack.groups.open({token, channel}, (err, data) => { })`
 - `slack.groups.rename({token, channel, name}, (err, data) => { })`
+- `slack.groups.replies({token, channel, thread_ts}, (err, data) => { })`
 - `slack.groups.setPurpose({token, channel, purpose}, (err, data) => { })`
 - `slack.groups.setTopic({token, channel, topic}, (err, data) => { })`
 - `slack.groups.unarchive({token, channel}, (err, data) => { })`
@@ -151,11 +153,13 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.im.list({token}, (err, data) => { })`
 - `slack.im.mark({token, channel, ts}, (err, data) => { })`
 - `slack.im.open({token, user}, (err, data) => { })`
+- `slack.im.replies({token, channel, thread_ts}, (err, data) => { })`
 - `slack.mpim.close({token, channel}, (err, data) => { })`
 - `slack.mpim.history({token, channel}, (err, data) => { })`
 - `slack.mpim.list({token}, (err, data) => { })`
 - `slack.mpim.mark({token, channel, ts}, (err, data) => { })`
 - `slack.mpim.open({token, users}, (err, data) => { })`
+- `slack.mpim.replies({token, channel, thread_ts}, (err, data) => { })`
 - `slack.oauth.access({client_id, client_secret, code}, (err, data) => { })`
 - `slack.pins.add({token, channel}, (err, data) => { })`
 - `slack.pins.list({token, channel}, (err, data) => { })`

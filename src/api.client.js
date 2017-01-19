@@ -20,6 +20,7 @@ export default function client(token) {
     list: {},
     mark: {},
     rename: {},
+    replies: {},
     setPurpose: {},
     setTopic: {},
     unarchive: {}
@@ -67,6 +68,7 @@ export default function client(token) {
     mark: {},
     open: {},
     rename: {},
+    replies: {},
     setPurpose: {},
     setTopic: {},
     unarchive: {}
@@ -76,14 +78,16 @@ export default function client(token) {
     history: {},
     list: {},
     mark: {},
-    open: {}
+    open: {},
+    replies: {}
   },
   mpim: {
     close: {},
     history: {},
     list: {},
     mark: {},
-    open: {}
+    open: {},
+    replies: {}
   },
   pins: {
     add: {},
@@ -203,6 +207,10 @@ export default function client(token) {
   applied.channels.rename = function (params, callback) {
     params.token = token
     require('./channels.rename').call({}, params, callback)
+  }
+  applied.channels.replies = function (params, callback) {
+    params.token = token
+    require('./channels.replies').call({}, params, callback)
   }
   applied.channels.setPurpose = function (params, callback) {
     params.token = token
@@ -344,6 +352,10 @@ export default function client(token) {
     params.token = token
     require('./groups.rename').call({}, params, callback)
   }
+  applied.groups.replies = function (params, callback) {
+    params.token = token
+    require('./groups.replies').call({}, params, callback)
+  }
   applied.groups.setPurpose = function (params, callback) {
     params.token = token
     require('./groups.setPurpose').call({}, params, callback)
@@ -376,6 +388,10 @@ export default function client(token) {
     params.token = token
     require('./im.open').call({}, params, callback)
   }
+  applied.im.replies = function (params, callback) {
+    params.token = token
+    require('./im.replies').call({}, params, callback)
+  }
   applied.mpim.close = function (params, callback) {
     params.token = token
     require('./mpim.close').call({}, params, callback)
@@ -395,6 +411,10 @@ export default function client(token) {
   applied.mpim.open = function (params, callback) {
     params.token = token
     require('./mpim.open').call({}, params, callback)
+  }
+  applied.mpim.replies = function (params, callback) {
+    params.token = token
+    require('./mpim.replies').call({}, params, callback)
   }
   applied.pins.add = function (params, callback) {
     params.token = token

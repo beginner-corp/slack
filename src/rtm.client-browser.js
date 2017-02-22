@@ -39,7 +39,9 @@ export default function client() {
         // delegate everything
         bot.ws.onmessage = function message(e) {
           let json = JSON.parse(e.data)
-          bot.handlers[json.type].forEach(m=> m.call({}, json))
+          // Call all registered handlers for this event, if any
+          if(bot.handlers[json.type])
+            bot.handlers[json.type].forEach(m=> m.call({}, json))
         }
         // call started callbacks
         bot.handlers['started'].forEach(m=> m.call({}, data))

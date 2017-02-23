@@ -14,6 +14,10 @@ test('bot starts', t=> {
   bot = slack.rtm.client()
   console.log(bot)
 
+  bot.message(msg=> {
+    console.log('got a message GENERIC', msg)
+  })
+
   // define a hello handler
   bot.hello(msg=> {
     t.ok(msg, 'got a hello message')

@@ -104,7 +104,7 @@
     },
     {
       "name": "inclusive",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include messages with latest or oldest timestamp in results.\n"
     },
@@ -116,7 +116,7 @@
     },
     {
       "name": "unreads",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include unread_count_display in the output?\n"
     }
@@ -212,8 +212,8 @@
     },
     {
       "name": "exclude_archived",
-      "example": "1",
-      "required": "Optional, default=0",
+      "example": "true",
+      "required": "Optional, default=false",
       "description": "Don't return archived channels.\n"
     }
   ],
@@ -404,7 +404,7 @@
     },
     {
       "name": "link_names",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Find and link channel names and usernames.\n"
     },
@@ -502,7 +502,7 @@
     },
     {
       "name": "link_names",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Find and link channel names and usernames. Defaults to none. This parameter should be used in conjunction with parse. To set link_names to 1, specify a parse mode of full.\n"
     },
@@ -660,7 +660,7 @@
     },
     {
       "name": "file",
-      "example": " ",
+      "example": "F1234567890",
       "required": "Required",
       "description": "ID of file to delete.\n"
     }
@@ -814,7 +814,7 @@
     },
     {
       "name": "channels",
-      "example": "C1234567890",
+      "example": "C1234567890,C2345678901,C3456789012",
       "required": "Optional",
       "description": "Comma-separated list of channel names or IDs where the file will be shared.\n"
     }
@@ -902,7 +902,7 @@
     },
     {
       "name": "inclusive",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include messages with latest or oldest timestamp in results.\n"
     },
@@ -914,7 +914,7 @@
     },
     {
       "name": "unreads",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include unread_count_display in the output?\n"
     }
@@ -996,7 +996,7 @@
     },
     {
       "name": "exclude_archived",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Don't return archived private channels.\n"
     }
@@ -1170,7 +1170,7 @@
     },
     {
       "name": "inclusive",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include messages with latest or oldest timestamp in results.\n"
     },
@@ -1182,7 +1182,7 @@
     },
     {
       "name": "unreads",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include unread_count_display in the output?\n"
     }
@@ -1230,7 +1230,7 @@
     },
     {
       "name": "return_im",
-      "example": " ",
+      "example": "true",
       "required": "Optional",
       "description": "Boolean, indicates you want the full IM channel definition in the response.\n"
     }
@@ -1296,7 +1296,7 @@
     },
     {
       "name": "inclusive",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include messages with latest or oldest timestamp in results.\n"
     },
@@ -1308,7 +1308,7 @@
     },
     {
       "name": "unreads",
-      "example": "1",
+      "example": "true",
       "required": "Optional, default=0",
       "description": "Include unread_count_display in the output?\n"
     }
@@ -1550,7 +1550,7 @@
     },
     {
       "name": "full",
-      "example": " ",
+      "example": "true",
       "required": "Optional",
       "description": "If true always return the complete reaction list.\n"
     }
@@ -1570,7 +1570,7 @@
     },
     {
       "name": "full",
-      "example": " ",
+      "example": "true",
       "required": "Optional",
       "description": "If true always return the complete reaction list.\n"
     },
@@ -1710,19 +1710,19 @@
     },
     {
       "name": "simple_latest",
-      "example": " ",
+      "example": "true",
       "required": "Optional",
       "description": "Return timestamp only for latest message object of each channel (improves performance).\n"
     },
     {
       "name": "no_unreads",
-      "example": " ",
+      "example": "true",
       "required": "Optional",
       "description": "Skip unread counts for each channel (improves performance).\n"
     },
     {
       "name": "mpim_aware",
-      "example": " ",
+      "example": "true",
       "required": "Optional",
       "description": "Returns MPIMs to the client in the API response.\n"
     }
@@ -1754,9 +1754,9 @@
     },
     {
       "name": "highlight",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
-      "description": "Pass a value of 1 to enable query highlight markers (see below).\n"
+      "description": "Pass a value of true to enable query highlight markers (see below).\n"
     },
     {
       "name": "count",
@@ -1798,9 +1798,9 @@
     },
     {
       "name": "highlight",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
-      "description": "Pass a value of 1 to enable query highlight markers (see below).\n"
+      "description": "Pass a value of true to enable query highlight markers (see below).\n"
     },
     {
       "name": "count",
@@ -1842,9 +1842,9 @@
     },
     {
       "name": "highlight",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
-      "description": "Pass a value of 1 to enable query highlight markers (see below).\n"
+      "description": "Pass a value of true to enable query highlight markers (see below).\n"
     },
     {
       "name": "count",
@@ -2064,7 +2064,7 @@
     },
     {
       "name": "handle",
-      "example": " ",
+      "example": "marketing",
       "required": "Optional",
       "description": "A mention handle. Must be unique among channels, users and User Groups.\n"
     },
@@ -2076,13 +2076,13 @@
     },
     {
       "name": "channels",
-      "example": " ",
+      "example": "C1234567890,C2345678901,C3456789012",
       "required": "Optional",
       "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.\n"
     },
     {
       "name": "include_count",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include the number of users in each User Group.\n"
     }
@@ -2102,7 +2102,7 @@
     },
     {
       "name": "include_count",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include the number of users in the User Group.\n"
     }
@@ -2122,7 +2122,7 @@
     },
     {
       "name": "include_count",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include the number of users in the User Group.\n"
     }
@@ -2136,19 +2136,19 @@
     },
     {
       "name": "include_disabled",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include disabled User Groups.\n"
     },
     {
       "name": "include_count",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include the number of users in each User Group.\n"
     },
     {
       "name": "include_users",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include the list of users for each User Group.\n"
     }
@@ -2174,7 +2174,7 @@
     },
     {
       "name": "handle",
-      "example": " ",
+      "example": "marketing",
       "required": "Optional",
       "description": "A mention handle. Must be unique among channels, users and User Groups.\n"
     },
@@ -2186,13 +2186,13 @@
     },
     {
       "name": "channels",
-      "example": " ",
+      "example": "C1234567890,C2345678901,C3456789012",
       "required": "Optional",
       "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.\n"
     },
     {
       "name": "include_count",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include the number of users in the User Group.\n"
     }
@@ -2212,7 +2212,7 @@
     },
     {
       "name": "include_disabled",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Allow results that involve disabled User Groups.\n"
     }
@@ -2238,7 +2238,7 @@
     },
     {
       "name": "include_count",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Include the number of users in the User Group.\n"
     }
@@ -2296,7 +2296,7 @@
     },
     {
       "name": "presence",
-      "example": "1",
+      "example": "true",
       "required": "Optional",
       "description": "Whether to include presence data in the output\n"
     }
@@ -2370,8 +2370,8 @@
     },
     {
       "name": "include_labels",
-      "example": "1",
-      "required": "Optional, default=0",
+      "example": "true",
+      "required": "Optional, default=false",
       "description": "Include labels for each ID in custom profile fields\n"
     }
   ],

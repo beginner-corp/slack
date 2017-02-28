@@ -26,7 +26,7 @@ export default {
   list,
   mark,
   rename,
-  replies
+  replies,
   setPurpose,
   setTopic,
   unarchive

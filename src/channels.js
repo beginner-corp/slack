@@ -9,6 +9,7 @@ import leave from './channels.leave'
 import list from './channels.list'
 import mark from './channels.mark'
 import rename from './channels.rename'
+import replies from './channels.replies'
 import setPurpose from './channels.setPurpose'
 import setTopic from './channels.setTopic'
 import unarchive from './channels.unarchive'
@@ -25,6 +26,7 @@ export default {
   list,
   mark,
   rename,
+  replies,
   setPurpose,
   setTopic,
   unarchive

@@ -19,16 +19,15 @@ export default function exec(url, form, callback) {
   }, 
   function _res(err, res) {
     // var rateLimit = 'You are sending too many requests. Please relax.'
-    if (res) res = JSON.parse(res)
     if (err) {
       // if request failed bubble the error
       callback(err)
     }
-    else if (res.error) {
-      callback(Error(res.error))
+    else if (res.body && res.body.error) {
+      callback(Error(res.body.error))
     }
     else {
-      callback(null, res)
+      callback(null, res.body)
     }
   })
 }

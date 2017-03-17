@@ -29,6 +29,7 @@ export default function client(token) {
     delete: {},
     meMessage: {},
     postMessage: {},
+    unfurl: {},
     update: {}
   },
   dnd: {
@@ -235,6 +236,10 @@ export default function client(token) {
   applied.chat.postMessage = function (params, callback) {
     params.token = token
     require('./chat.postMessage').call({}, params, callback)
+  }
+  applied.chat.unfurl = function (params, callback) {
+    params.token = token
+    require('./chat.unfurl').call({}, params, callback)
   }
   applied.chat.update = function (params, callback) {
     params.token = token

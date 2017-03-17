@@ -43,6 +43,7 @@ let events = [
   'im_history_changed',
   'im_marked',
   'im_open',
+  'link_shared',
   'manual_presence_change',
   'message',
   'message.channels',

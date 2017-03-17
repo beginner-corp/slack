@@ -115,6 +115,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.chat.delete({token, ts, channel}, (err, data) => { })`
 - `slack.chat.meMessage({token, channel, text}, (err, data) => { })`
 - `slack.chat.postMessage({token, channel, text}, (err, data) => { })`
+- `slack.chat.unfurl({token, channel, ts, unfurls}, (err, data) => { })`
 - `slack.chat.update({token, ts, channel, text}, (err, data) => { })`
 - `slack.dnd.endDnd({token}, (err, data) => { })`
 - `slack.dnd.endSnooze({token}, (err, data) => { })`
@@ -286,6 +287,7 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `im_history_changed`
 - `im_marked`
 - `im_open`
+- `link_shared`
 - `manual_presence_change`
 - `message`
 - `message.channels`

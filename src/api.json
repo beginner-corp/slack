@@ -75,6 +75,12 @@
       "example": "mychannel",
       "required": "Required",
       "description": "Name of channel to create\n"
+    },
+    {
+      "name": "validate",
+      "example": "true",
+      "required": "Optional",
+      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
     }
   ],
   "channels.history": [
@@ -167,6 +173,12 @@
       "example": "C1234567890",
       "required": "Required",
       "description": "Name of channel to join\n"
+    },
+    {
+      "name": "validate",
+      "example": "true",
+      "required": "Optional",
+      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
     }
   ],
   "channels.kick": [
@@ -255,6 +267,12 @@
       "example": " ",
       "required": "Required",
       "description": "New name for channel.\n"
+    },
+    {
+      "name": "validate",
+      "example": "true",
+      "required": "Optional",
+      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
     }
   ],
   "channels.replies": [
@@ -463,6 +481,38 @@
       "description": "Used in conjunction with thread_ts and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false.\n"
     }
   ],
+  "chat.unfurl": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token.\nRequires scope: links:write\n"
+    },
+    {
+      "name": "channel",
+      "example": "C1234567890",
+      "required": "Required",
+      "description": "Channel ID of the message\n"
+    },
+    {
+      "name": "ts",
+      "example": " ",
+      "required": "Required",
+      "description": "Timestamp of the message to add unfurl behavior to\n"
+    },
+    {
+      "name": "unfurls",
+      "example": " ",
+      "required": "Required",
+      "description": "JSON mapping a set of URLs from the message to their unfurl attachments\n"
+    },
+    {
+      "name": "user_auth_required",
+      "example": "true",
+      "required": "Optional, default=0",
+      "description": "Set to true or 1 to indicate the user must install your Slack app to trigger unfurls for this domain\n"
+    }
+  ],
   "chat.update": [
     {
       "name": "token",
@@ -597,12 +647,6 @@
       "example": "Everyone should take a moment to read this file.",
       "required": "Required",
       "description": "Text of the comment to add.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234467890",
-      "required": "Optional",
-      "description": "Channel id (encoded) of which location to associate with the new comment.\n"
     }
   ],
   "files.comments.delete": [
@@ -859,6 +903,12 @@
       "example": " ",
       "required": "Required",
       "description": "Name of private channel to create\n"
+    },
+    {
+      "name": "validate",
+      "example": "true",
+      "required": "Optional",
+      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
     }
   ],
   "groups.createChild": [
@@ -1053,6 +1103,12 @@
       "example": " ",
       "required": "Required",
       "description": "New name for private channel.\n"
+    },
+    {
+      "name": "validate",
+      "example": "true",
+      "required": "Optional",
+      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
     }
   ],
   "groups.replies": [

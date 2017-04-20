@@ -1757,6 +1757,14 @@
       "description": "Authentication token.\nRequires scope: reminders:read\n"
     }
   ],
+  "rtm.connect": [
+    {
+      "name": "token",
+      "example": "xxxx-xxxxxxxxx-xxxx",
+      "required": "Required",
+      "description": "Authentication token.\nRequires token type: session or oauth or bot or app\nRequires scope: client\n"
+    }
+  ],
   "rtm.start": [
     {
       "name": "token",
@@ -1781,6 +1789,12 @@
       "example": "true",
       "required": "Optional",
       "description": "Returns MPIMs to the client in the API response.\n"
+    },
+    {
+      "name": "no_latest",
+      "example": "1",
+      "required": "Optional, default=0",
+      "description": "Exclude latest timestamps for channels, groups, mpims, and ims\n"
     }
   ],
   "search.all": [

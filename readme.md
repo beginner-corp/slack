@@ -174,6 +174,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.reminders.delete({token, reminder}, (err, data) => { })`
 - `slack.reminders.info({token, reminder}, (err, data) => { })`
 - `slack.reminders.list({token}, (err, data) => { })`
+- `slack.rtm.connect({token}, (err, data) => { })`
 - `slack.rtm.start({token}, (err, data) => { })`
 - `slack.search.all({token, query}, (err, data) => { })`
 - `slack.search.files({token, query}, (err, data) => { })`

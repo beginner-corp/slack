@@ -109,6 +109,7 @@ export default function client(token) {
     list: {}
   },
   rtm: {
+    connect: {},
     start: {}
   },
   search: {
@@ -468,6 +469,10 @@ export default function client(token) {
   applied.reminders.list = function (params, callback) {
     params.token = token
     require('./reminders.list').call({}, params, callback)
+  }
+  applied.rtm.connect = function (params, callback) {
+    params.token = token
+    require('./rtm.connect').call({}, params, callback)
   }
   applied.rtm.start = function (params, callback) {
     params.token = token

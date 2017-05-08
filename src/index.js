@@ -2,6 +2,7 @@ import api from './api.test'
 import apiClient from './api.client'
 import bots from './bots'
 import test from './auth.test'
+import revoke from './auth.revoke'
 import channels from './channels'
 import chat from './chat'
 import dnd from './dnd'
@@ -25,7 +26,7 @@ import users from './users'
 
 export default {
   api: {test:api, client:apiClient},
-  auth: {test},
+  auth: {test, revoke},
   bots,
   channels,
   chat,

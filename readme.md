@@ -131,7 +131,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.files.list({token}, (err, data) => { })`
 - `slack.files.revokePublicURL({token, file}, (err, data) => { })`
 - `slack.files.sharedPublicURL({token, file}, (err, data) => { })`
-- `slack.files.upload({token, filename}, (err, data) => { })`
+- `slack.files.upload({token}, (err, data) => { })`
 - `slack.groups.archive({token, channel}, (err, data) => { })`
 - `slack.groups.close({token, channel}, (err, data) => { })`
 - `slack.groups.create({token, name}, (err, data) => { })`
@@ -290,6 +290,8 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `im_open`
 - `link_shared`
 - `manual_presence_change`
+- `member_joined_channel`
+- `member_left_channel`
 - `message`
 - `message.channels`
 - `message.groups`

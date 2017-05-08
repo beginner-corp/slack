@@ -226,7 +226,13 @@
       "name": "exclude_archived",
       "example": "true",
       "required": "Optional, default=false",
-      "description": "Don't return archived channels.\n"
+      "description": "Exclude archived channels from the list\n"
+    },
+    {
+      "name": "exclude_members",
+      "example": "true",
+      "required": "Optional, default=false",
+      "description": "Exclude the members collection from each channel\n"
     }
   ],
   "channels.mark": [
@@ -841,7 +847,7 @@
     {
       "name": "filename",
       "example": "foo.txt",
-      "required": "Required",
+      "required": "Optional",
       "description": "Filename of file.\n"
     },
     {
@@ -1794,7 +1800,7 @@
       "name": "no_latest",
       "example": "1",
       "required": "Optional, default=0",
-      "description": "Exclude latest timestamps for channels, groups, mpims, and ims\n"
+      "description": "Exclude latest timestamps for channels, groups, mpims, and ims. Automatically sets no_unreads to 1\n"
     }
   ],
   "search.all": [

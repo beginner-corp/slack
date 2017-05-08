@@ -45,6 +45,8 @@ let events = [
   'im_open',
   'link_shared',
   'manual_presence_change',
+  'member_joined_channel',
+  'member_left_channel',
   'message',
   'message.channels',
   'message.groups',

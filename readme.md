@@ -87,7 +87,7 @@ npm run btest
 
 :point_right: Or kick up a REPL and poke around:
 
-<img-src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
+<img src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 
 # Slack Web API :tada::honeybee::triangular_flag_on_post:
 

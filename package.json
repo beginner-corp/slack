@@ -8,7 +8,7 @@
     "./test/_env.js": "./test/_env-browser.js"
   },
   "scripts": {
-    "generate": "npm run build && ./scripts/test"
+    "test": "npm run build && ./scripts/test"
   },
   "repository": {
     "type": "git",

@@ -8,12 +8,6 @@
     "./test/_env.js": "./test/_env-browser.js"
   },
   "scripts": {
-    // "start": "npm run build && ./scripts/repl",
-    // "build": "rimraf methods && babel src --out-dir methods && cpr src/api.json methods/api.json",
-    // "test": "npm run build && ./scripts/test",
-    // "t": "npm run build && ./scripts/t",
-    // "btest": "npm run build && ./scripts/test-browser | browser-run | tap-spec",
-    // "prepublish": "npm run build",
     "generate": "npm run build && ./scripts/test"
   },
   "repository": {
@@ -60,4 +54,6 @@
     "ws": "^1.1.4"
   }
 }
+
+
 

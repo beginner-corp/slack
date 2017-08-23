@@ -8,17 +8,11 @@
     "./test/_env.js": "./test/_env-browser.js"
   },
   "scripts": {
-    "start": "npm run build && ./scripts/repl",
-    "build": "rimraf methods && babel src --out-dir methods && cpr src/api.json methods/api.json",
-    "test": "npm run build && ./scripts/test",
-    "t": "npm run build && ./scripts/t",
-    "btest": "npm run build && ./scripts/test-browser | browser-run | tap-spec",
-    "prepublish": "npm run build",
-    "generate": "./scripts/generate-all"
+    "test": "npm run build && ./scripts/test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smallwins/slack.git"
+    "url": "git+https://github.com/abhaysingh1722/slack"
   },
   "keywords": [
     "slack",
@@ -54,7 +48,12 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
+    "JSON": "^1.0.0",
+    "fs": "0.0.1-security",
     "tiny-json-http": "^5.1.0",
     "ws": "^1.1.4"
   }
 }
+
+
+

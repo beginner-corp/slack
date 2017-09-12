@@ -87,14 +87,16 @@ npm run btest
 
 :point_right: Or kick up a REPL and poke around:
 
-<img src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
+<img-src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 
 # Slack Web API :tada::honeybee::triangular_flag_on_post:
 
 The entire Slack Web API is supported. All method signatures accept a `params` object and Node style callback. Required params are documented inline below.
 
 - `slack.api.test({}, (err, data) => { })`
-- `slack.auth.revoke({}, (err, data) => { })`
+- `slack.apps.permissions.info({token}, (err, data) => { })`
+- `slack.apps.permissions.request({token, scopes, trigger_id}, (err, data) => { })`
+- `slack.auth.revoke({token}, (err, data) => { })`
 - `slack.auth.test({token}, (err, data) => { })`
 - `slack.bots.info({token}, (err, data) => { })`
 - `slack.channels.archive({token, channel}, (err, data) => { })`
@@ -112,20 +114,38 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.channels.setPurpose({token, channel, purpose}, (err, data) => { })`
 - `slack.channels.setTopic({token, channel, topic}, (err, data) => { })`
 - `slack.channels.unarchive({token, channel}, (err, data) => { })`
-- `slack.chat.delete({token, ts, channel}, (err, data) => { })`
+- `slack.chat.delete({token, channel, ts}, (err, data) => { })`
 - `slack.chat.meMessage({token, channel, text}, (err, data) => { })`
+- `slack.chat.postEphemeral({token, channel, text, user}, (err, data) => { })`
 - `slack.chat.postMessage({token, channel, text}, (err, data) => { })`
 - `slack.chat.unfurl({token, channel, ts, unfurls}, (err, data) => { })`
-- `slack.chat.update({token, ts, channel, text}, (err, data) => { })`
+- `slack.chat.update({token, channel, text, ts}, (err, data) => { })`
+- `slack.conversations.archive({token, channel}, (err, data) => { })`
+- `slack.conversations.close({token, channel}, (err, data) => { })`
+- `slack.conversations.create({token, name}, (err, data) => { })`
+- `slack.conversations.history({token, channel}, (err, data) => { })`
+- `slack.conversations.info({token, channel}, (err, data) => { })`
+- `slack.conversations.invite({token, channel, users}, (err, data) => { })`
+- `slack.conversations.join({token, channel}, (err, data) => { })`
+- `slack.conversations.kick({token, channel, user}, (err, data) => { })`
+- `slack.conversations.leave({token, channel}, (err, data) => { })`
+- `slack.conversations.list({token}, (err, data) => { })`
+- `slack.conversations.members({token, channel}, (err, data) => { })`
+- `slack.conversations.open({token}, (err, data) => { })`
+- `slack.conversations.rename({token, channel, name}, (err, data) => { })`
+- `slack.conversations.replies({token, channel, ts}, (err, data) => { })`
+- `slack.conversations.setPurpose({token, channel, purpose}, (err, data) => { })`
+- `slack.conversations.setTopic({token, channel, topic}, (err, data) => { })`
+- `slack.conversations.unarchive({token, channel}, (err, data) => { })`
 - `slack.dnd.endDnd({token}, (err, data) => { })`
 - `slack.dnd.endSnooze({token}, (err, data) => { })`
 - `slack.dnd.info({token}, (err, data) => { })`
 - `slack.dnd.setSnooze({token, num_minutes}, (err, data) => { })`
 - `slack.dnd.teamInfo({token}, (err, data) => { })`
 - `slack.emoji.list({token}, (err, data) => { })`
-- `slack.files.comments.add({token, file, comment}, (err, data) => { })`
+- `slack.files.comments.add({token, comment, file}, (err, data) => { })`
 - `slack.files.comments.delete({token, file, id}, (err, data) => { })`
-- `slack.files.comments.edit({token, file, id, comment}, (err, data) => { })`
+- `slack.files.comments.edit({token, comment, file, id}, (err, data) => { })`
 - `slack.files.delete({token, file}, (err, data) => { })`
 - `slack.files.info({token, file}, (err, data) => { })`
 - `slack.files.list({token}, (err, data) => { })`
@@ -133,7 +153,6 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.files.sharedPublicURL({token, file}, (err, data) => { })`
 - `slack.files.upload({token}, (err, data) => { })`
 - `slack.groups.archive({token, channel}, (err, data) => { })`
-- `slack.groups.close({token, channel}, (err, data) => { })`
 - `slack.groups.create({token, name}, (err, data) => { })`
 - `slack.groups.createChild({token, channel}, (err, data) => { })`
 - `slack.groups.history({token, channel}, (err, data) => { })`
@@ -162,6 +181,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - `slack.mpim.open({token, users}, (err, data) => { })`
 - `slack.mpim.replies({token, channel, thread_ts}, (err, data) => { })`
 - `slack.oauth.access({client_id, client_secret, code}, (err, data) => { })`
+- `slack.oauth.token({client_id, client_secret, code}, (err, data) => { })`
 - `slack.pins.add({token, channel}, (err, data) => { })`
 - `slack.pins.list({token, channel}, (err, data) => { })`
 - `slack.pins.remove({token, channel}, (err, data) => { })`
@@ -247,6 +267,7 @@ Try it out by running `npm start`:
 Each of these are methods on `bot` for registering handlers for the events of the same name.
 
 - `accounts_changed`
+- `app_uninstalled`
 - `bot_added`
 - `bot_changed`
 - `channel_archive`
@@ -273,6 +294,8 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `file_shared`
 - `file_unshared`
 - `goodbye`
+- `grid_migration_finished`
+- `grid_migration_started`
 - `group_archive`
 - `group_close`
 - `group_history_changed`
@@ -302,12 +325,18 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `pong`
 - `pref_change`
 - `presence_change`
+- `presence_sub`
 - `reaction_added`
 - `reaction_removed`
 - `reconnect_url`
+- `resources_added`
+- `resources_removed`
+- `scope_denied`
+- `scope_granted`
 - `star_added`
 - `star_removed`
 - `subteam_created`
+- `subteam_members_changed`
 - `subteam_self_added`
 - `subteam_self_removed`
 - `subteam_updated`
@@ -320,6 +349,7 @@ Each of these are methods on `bot` for registering handlers for the events of th
 - `team_profile_delete`
 - `team_profile_reorder`
 - `team_rename`
+- `tokens_revoked`
 - `url_verification`
 - `user_change`
 - `user_typing`

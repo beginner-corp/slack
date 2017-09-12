@@ -10,8 +10,11 @@ import emojiList from './emoji.list'
 import files from './files'
 import groups from './groups'
 import im from './im'
+import info from './apps.permissions.info'
+import request from './apps.permissions.request'
 import mpim from './mpim'
 import access from './oauth.access'
+import token from './oauth.token'
 import reactions from './reactions'
 import reminders from './reminders'
 import pins from './pins'
@@ -25,6 +28,9 @@ import usergroups from './usergroups'
 import users from './users'
 
 export default {
+  apps: {
+    permissions: {info, request}
+  },
   api: {test:api, client:apiClient},
   auth: {test, revoke},
   bots,
@@ -36,7 +42,7 @@ export default {
   groups,
   im,
   mpim,
-  oauth: {access},
+  oauth: {access, token},
   reactions,
   reminders,
   pins,

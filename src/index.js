@@ -5,6 +5,7 @@ import test from './auth.test'
 import revoke from './auth.revoke'
 import channels from './channels'
 import chat from './chat'
+import conversations from './conversations'
 import dnd from './dnd'
 import emojiList from './emoji.list'
 import files from './files'
@@ -36,6 +37,7 @@ export default {
   bots,
   channels,
   chat,
+  conversations,
   dnd,
   emoji: {list:emojiList},
   files,

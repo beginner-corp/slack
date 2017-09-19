@@ -874,7 +874,7 @@
       "name": "limit",
       "example": "20",
       "required": "Optional, default=100",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.\n"
+      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached. Must be an integer no larger than 1000.\n"
     },
     {
       "name": "types",

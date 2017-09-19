@@ -1,22 +1,6 @@
-//
-// validate returns an error object if any required params are missing
-//
-// example usage:
-// 
-//   // token and id are required params
-//   function apiCall(params, callback) { 
-//     let err = validate('api.signature', params)
-//     if (err) {
-//       callback(err)
-//     }
-//     else {
-//       // do api call
-//     }
-//   }
-//
-import api from './api.json'
+var api = require('./api.json')
 
-export default function validate(method, params) {
+module.exports = function validate(method, params) {
   // get all the requried params for this method
   let required = api[method].filter(param=>param.required === 'Required')
   // collect any missing params

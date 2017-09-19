@@ -1,19 +1,16 @@
 {
   "name": "slack",
-  "version": "8.4.1",
+  "version": "9.0.0",
   "description": "Slack API client written in JS",
-  "main": "methods/index",
+  "main": "slack2",
   "browser": {
-    "./methods/rtm.client.js": "./methods/rtm.client-browser.js",
     "./test/_env.js": "./test/_env-browser.js"
   },
   "scripts": {
-    "start": "npm run build && ./scripts/repl",
-    "build": "rimraf methods && babel src --out-dir methods && cpr src/api.json methods/api.json",
-    "test": "npm run build && ./scripts/test",
-    "t": "npm run build && ./scripts/t",
-    "btest": "npm run build && ./scripts/test-browser | browser-run | tap-spec",
-    "prepublish": "npm run build",
+    "start": "./scripts/repl",
+    "test": "./scripts/test",
+    "t": "./scripts/t",
+    "btest": "./scripts/test-browser | browser-run | tap-spec",
     "generate": "./scripts/generate-all"
   },
   "repository": {
@@ -33,10 +30,6 @@
   "homepage": "https://github.com/smallwins/slack#readme",
   "devDependencies": {
     "async": "^2.1.2",
-    "babel-cli": "^6.3.15",
-    "babel-plugin-add-module-exports": "^0.1.1",
-    "babel-preset-es2015": "^6.3.13",
-    "babelify": "^7.2.0",
     "browser-run": "^4.0.1",
     "browserify": "^14.1.0",
     "chalk": "^1.1.1",
@@ -54,7 +47,6 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
-    "tiny-json-http": "^5.1.0",
-    "ws": "^3.1.0"
+    "tiny-json-http": "^5.1.0"
   }
 }

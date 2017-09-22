@@ -1,7 +1,24 @@
 var http = require('tiny-json-http')
 var validate = require('./_validate')
+var promisify = require('util.promisify')
 
-module.exports = function _exec(url, form, callback) {
+/**
+ * returns a promise if callback isn't defined; _exec is the actual impl
+ */
+module.exports = function exec(url, form, callback) {
+  if (!callback) {
+    var pfy = promisify(_exec)
+    return pfy(url, form)
+  }
+  else {
+    _exec(url, form, callback)
+  }
+}
+
+/**
+ * performs the http request to the Slack Web API
+ */
+function _exec(url, form, callback) {
 
   var err = validate(url, form)
   if (err) {

@@ -1,7 +1,9 @@
-import test from 'tape'
-import list from '../src/channels.list'
-import msg from '../src/chat.postMessage'
-import env from './_env'
+var test = require('tape')
+var slack = require('..')
+var list = slack.channels.list
+var msg = slack.chat.postMessage
+var env = require('./_env')
+
 // load SLACK_BOT_TOKEN for testing
 env()
 

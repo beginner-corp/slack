@@ -1,7 +1,8 @@
-import test from 'tape'
-import list from '../src/channels.list'
-import history from '../src/channels.history'
-import env from './_env'
+var test = require('tape')
+var slack = require('..')
+var list = slack.channels.list
+var history = slack.channels.history
+var env = require('./_env')
 // load SLACK_TOKEN for testing
 env()
 

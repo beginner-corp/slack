@@ -1,7 +1,7 @@
 scripts/
-src/
 test/
 .env
 .DS_Store
 readme.tmpl
 yarn.lock
+scratch.js

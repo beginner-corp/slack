@@ -1,8 +1,10 @@
 var api = require('./api.json')
 
-module.exports = function _bind(exec) {
-
-  var ns = {}
+/**
+ * reads api.json and generates a matching javascript object
+ * the leaf nodes bind the method name to the passed in exec function
+ */
+module.exports = function _bind(ns, exec) {
 
   // walks the generated api.json keys dynamically constructing the client
   Object.keys(api).forEach(key=> {

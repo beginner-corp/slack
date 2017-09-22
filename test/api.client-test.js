@@ -1,6 +1,6 @@
-import test from 'tape'
-import slack from '../'
-import env from './_env'
+var test = require('tape')
+var slack = require('..')
+var env = require('./_env')
 
 // load SLACK_TOKEN for testing
 env()
@@ -10,9 +10,9 @@ let client = null
 
 test('env', t=> {
   t.plan(2)
-  t.ok(slack.api.client, 'slack.api.client exists')
-  client = slack.api.client(process.env.SLACK_BOT_TOKEN)
-  t.ok(client, 'got a client')
+  t.ok(slack, 'slack client exists')
+  client = new slack({token: process.env.SLACK_BOT_TOKEN})
+  t.ok(client, 'got a Slack client')
   console.log(client)
 })
 

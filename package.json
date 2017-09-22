@@ -2,7 +2,7 @@
   "name": "slack",
   "version": "9.0.0",
   "description": "Slack API client written in JS",
-  "main": "slack2",
+  "main": "index",
   "browser": {
     "./test/_env.js": "./test/_env-browser.js"
   },
@@ -47,6 +47,7 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
-    "tiny-json-http": "^5.1.0"
+    "tiny-json-http": "^5.1.0",
+    "util.promisify": "^1.0.0"
   }
 }

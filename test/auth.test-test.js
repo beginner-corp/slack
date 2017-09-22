@@ -1,6 +1,6 @@
-import test from 'tape'
-import auth from '../src/auth.test'
-import env from './_env'
+var test = require('tape')
+var auth = require('..').auth.test
+var env = require('./_env')
 // load SLACK_TOKEN for testing
 env()
 

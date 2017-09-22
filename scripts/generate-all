@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-var req = require('request')
-var mustache = require('mustache')
 var fs = require('fs')
 var cheerio = require('cheerio')
+var mustache = require('mustache')
 var execSync = require('child_process').execSync
 
 var exec = function (cmd) {
@@ -15,30 +14,8 @@ var generateReadme = function (data) {
   console.log("🙌  Generated readme.md")
 }
 
-var generateRtmEvents = function (events) {
-  var rendered = `
-// generated using ./scripts/generate-all
-let events = [
-`
-  rendered += events.map(function (it) { return "  '" + it + "'"}).join(',\n')
-  rendered += `
-]
-
-export default events
-`
-  fs.writeFileSync(__dirname + '/../src/rtm.events.js', rendered)
-  console.log("⚡️  Generated src/rtm.events.js")
-}
-
-
 exec(__dirname + '/generate-api-json > ' + __dirname + '/../src/api.json')
 console.log("⚡️  Updated src/api.json")
-
-exec(__dirname + '/generate-stateful-client > ' + __dirname + '/../src/api.client.js')
-console.log("⚡️  Updated src/api.client.js")
-
-exec(__dirname + '/generate-web-api')
-console.log("⚡️  Generated web API client")
 
 // generate README docs
 var api = require('../src/api.json')
@@ -50,24 +27,4 @@ Object.keys(api).sort().forEach(method=> {
   methods.push(interpolated)
 })
 
-// generate list of README events
-req('https://api.slack.com/rtm', (err, res)=> {
-  var events = []
-  var $ = cheerio.load(res.body)
-
-  $('table a').each(function(i, elem) {
-    events.push($(this).text())
-  })
-
-  var data = {
-    events: events,
-    methods: methods
-  }
-
-  // add undocumented pong event
-  data.events.push('pong')
-  data.events = data.events.sort()
-
-  generateRtmEvents(events)
-  generateReadme(data)
-})
+generateReadme({methods})

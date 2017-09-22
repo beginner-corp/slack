@@ -1,6 +1,7 @@
-import test from 'tape'
-import info from '../src/team.info'
-import env from './_env'
+var test = require('tape')
+var info = require('..').team.info
+var env = require('./_env')
+
 // load SLACK_BOT_TOKEN for testing
 env()
 

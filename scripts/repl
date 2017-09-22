@@ -1,16 +1,19 @@
 #!/usr/bin/env node
+Slack = require('../')
 
-// read in secrets and the such
-require('node-env-file')(process.cwd() + '/.env')
+// omg no var, let or const?! u monster
+path = require('path')
+repl = require('repl')
+chalk = require('chalk')
+env = require('node-env-file')
 
-var repl = require('repl')
-var chalk = require('chalk')
-var prompt = chalk.green('#!/slack> ')
-var server = repl.start({prompt})
+// read secrets and interpolate with process.env
+env(path.join(process.cwd(), '.env'))
 
-server.context.slack = require('../')
-server.context.help = x=> console.log(server.context.slack.describe)
+// setup the repl
+prompt = chalk.green('#!/slack> ')
+server = repl.start({prompt})
 
-server.on('exit', x=> {
-  console.log(chalk.grey('#!/slack> goodbye 👋👋👋'))
-})
+// adds some predefined variables
+server.context.slack = Slack
+server.context.bot = new Slack({token: process.env.SLACK_BOT_TOKEN})

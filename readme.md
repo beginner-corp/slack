@@ -30,8 +30,6 @@ var slack = require('slack')
 slack.api.test({hello:'world'}, console.log)
 ```
 
-Usage with ES2015 works well too; `slack` itself is written with [Babel](http://babeljs.io/). You can also specify only the methods you need which can trim the payload if you are using `slack` in the browser.
-
 ```javascript
 // only import the specific method you need
 import test from 'slack/methods/api.test'

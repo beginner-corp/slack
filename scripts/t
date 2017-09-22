@@ -1,4 +1,3 @@
 #!/bin/sh
-node=./node_modules/babel-cli/bin/babel-node.js
 reporter=./node_modules/tap-spec/bin/cmd.js
-$node $1 | $reporter
+node $1 | $reporter

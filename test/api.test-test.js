@@ -1,5 +1,5 @@
-import test from 'tape'
-import slack from '../src/api.test'
+var test = require('tape')
+var slack = require('..').api.test
 
 test('env', t=> {
   t.ok(slack, 'slack.api.test exists')

@@ -1,6 +1,7 @@
 var test = require('tape')
 var auth = require('..').auth.test
 var env = require('./_env')
+
 // load SLACK_TOKEN for testing
 env()
 
@@ -15,5 +16,5 @@ test('sanity', t=> {
       console.log(data)
     }
     t.end()
-  })  
+  })
 })

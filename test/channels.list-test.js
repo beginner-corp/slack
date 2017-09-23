@@ -1,6 +1,7 @@
 var test = require('tape')
 var list = require('..').channels.list
 var env = require('./_env')
+
 // load SLACK_BOT_TOKEN for testing
 env()
 

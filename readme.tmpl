@@ -4,16 +4,16 @@
 
 [![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411)
 
-### Slack [Web API](https://api.slack.com/methods) client :seedling::raised_hands::two_hearts:
+### A [Slack Web API](https://api.slack.com/methods) client :seedling::raised_hands::two_hearts:
 
 - Written in modern JavaScript; tested for Node and the browser
-- Complete support for the Slack Web API
-- Perfect symmetry: method signatures match API docs method
-- Choose your async adventure: method signatures accept either a node-style errbacks or return a `Promise`
-- Opt into an oo style class instance that applies `token` to all methods
+- Complete support for the [Slack Web API](https://api.slack.com/methods)
+- Perfect symmetry: JS method signatures match Web API docs
+- Choose your async adventure: all methods accept either a Node style errback or return a `Promise`
+- Opt into an OO style class instance that applies `token` to all methods
 - Well tested, CI, and Apache2 licensed
 - Only two dependencies: `util.promisify` and `tiny-json-http`
-- Tiny: 7kb browserified/minified
+- Tiny: **7kb** browserified/minified
 
 ## Install :star2::package:
 
@@ -88,10 +88,6 @@ npm test
 ```
 npm run btest
 ```
-
-:point_right: Or kick up a REPL and poke around:
-
-<img-src=https://s3-us-west-1.amazonaws.com/bugbot/slack-repl.png>
 
 # Slack Web API :tada::honeybee::triangular_flag_on_post:
 

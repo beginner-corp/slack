@@ -3,6 +3,7 @@ var slack = require('..')
 var list = slack.channels.list
 var history = slack.channels.history
 var env = require('./_env')
+
 // load SLACK_TOKEN for testing
 env()
 

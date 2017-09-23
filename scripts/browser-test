@@ -14,7 +14,7 @@ entries.push(path.join(__dirname, '..', 'test', '_env-browser-close.js'))
 env(path.join(__dirname, '..', '.env'))
 
 // build the test suite and pipe to stdout
-browserify({entries:entries})
+browserify({entries})
   .transform(envify)
   .bundle()
   .pipe(process.stdout)

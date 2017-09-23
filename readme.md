@@ -12,6 +12,8 @@
 - Choose your async adventure: method signatures accept either a node-style errbacks or return a `Promise`
 - Opt into an oo style class instance that applies `token` to all methods
 - Well tested, CI, and Apache2 licensed
+- Only two dependencies
+- Tiny: 7kb browserified/minified
 
 ## Install :star2::package:
 

@@ -6,11 +6,11 @@
 
 ### Slack [Web](https://api.slack.com/methods) and [RTM](https://api.slack.com/rtm) API client. :seedling::raised_hands::two_hearts:
 
-- Written in ES2015 JS, published as ES5, tested for Node and the browser
-- Web API is all pure functions *(no stateful things like classes or using `new`)*
-- RTM API has a thin wrapper for `WebSocket` *(also tested for Node and the browser!)*
-- Perfect symmetry *(low level: method signatures match API docs method signatures are node-style callbacks)*
-- Opt in *(selectively use the parts of the api surface you want without the entire payload)*
+- Written in modern JavaScript; tested for Node and the browser
+- Complete support for the Slack Web API 
+- Perfect symmetry: method signatures match API docs method 
+- Choose your async adventure: method signatures accept either a node-style errbacks or return a `Promise`
+- Opt into an oo style class instance that applies `token` to all methods
 - Well tested, CI, and Apache2 licensed
 
 ## Install :star2::package:
@@ -21,40 +21,44 @@ npm i slack
 
 # Usage :sparkles::rocket:
 
-`slack` is tested for Node and the browser.
+`slack` mirrors the published API docs exactly because its generated from those docs! The default interface are stateless functions and has remain unchanged since `1.0.0` and that will continue to be the case. 
 
 ```javascript
 var slack = require('slack')
 
 // logs {args:{hello:'world'}}
 slack.api.test({hello:'world'}, console.log)
+
+// :new: opt into promises
+slack.api.test({nice:1}).then(console.log).catch(console.log)
 ```
 
+Due to popular demand an OO style is now supported. For an instance of `Slack` all methods come prebound with the `token` parameter applied.
+
 ```javascript
-// only import the specific method you need
-import test from 'slack/methods/api.test'
+const token = process.env.SLACKBOT_TOKEN
+const Slack = require('slack')
+const bot = new Slack({token})
 
 // logs {args:{hyper:'card'}}
-test({hyper:'card'}, console.log)
+bot.api.test({hyper:'card'}).then(console.log)
 ```
 
-Starting an RTM session:
+Using `async`/`await` in Node 8.x:
 
 ```javascript
-import slack from 'slack'
+let token = process.env.SLACKBOT_TOKEN
+let Slack = require('slack')
+let bot = new Slack({token})
 
-let bot = slack.rtm.client()
-let token = process.env.SLACK_TOKEN
-
-bot.hello(message=> {
-  console.log(`Got a message: ${message}`)
-  bot.close()
-})
-
-bot.listen({token})
+;(async function main() {
+  // logs {args:{hyper:'card'}}
+  var result = await bot.api.test({hyper:'card'})
+  console.log(result)
+})()
 ```
 
-The entire [RTM event API](https://api.slack.com/rtm) is supported.
+Choose whichever style works best for your project deployment needs and team preference. It is definately worth examining what style is more concise, expressive and determinatistic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
 
 ### Test Setup :lock::key::point_left:
 
@@ -92,270 +96,140 @@ npm run btest
 The entire Slack Web API is supported. All method signatures accept a `params` object and Node style callback. Required params are documented inline below.
 
 - `slack.api.test({}, (err, data) => { })`
-- `slack.apps.permissions.info({token}, (err, data) => { })`
-- `slack.apps.permissions.request({token, scopes, trigger_id}, (err, data) => { })`
-- `slack.auth.revoke({token}, (err, data) => { })`
-- `slack.auth.test({token}, (err, data) => { })`
-- `slack.bots.info({token}, (err, data) => { })`
-- `slack.channels.archive({token, channel}, (err, data) => { })`
-- `slack.channels.create({token, name}, (err, data) => { })`
-- `slack.channels.history({token, channel}, (err, data) => { })`
-- `slack.channels.info({token, channel}, (err, data) => { })`
-- `slack.channels.invite({token, channel, user}, (err, data) => { })`
-- `slack.channels.join({token, name}, (err, data) => { })`
-- `slack.channels.kick({token, channel, user}, (err, data) => { })`
-- `slack.channels.leave({token, channel}, (err, data) => { })`
-- `slack.channels.list({token}, (err, data) => { })`
-- `slack.channels.mark({token, channel, ts}, (err, data) => { })`
-- `slack.channels.rename({token, channel, name}, (err, data) => { })`
-- `slack.channels.replies({token, channel, thread_ts}, (err, data) => { })`
-- `slack.channels.setPurpose({token, channel, purpose}, (err, data) => { })`
-- `slack.channels.setTopic({token, channel, topic}, (err, data) => { })`
-- `slack.channels.unarchive({token, channel}, (err, data) => { })`
-- `slack.chat.delete({token, channel, ts}, (err, data) => { })`
-- `slack.chat.meMessage({token, channel, text}, (err, data) => { })`
-- `slack.chat.postEphemeral({token, channel, text, user}, (err, data) => { })`
-- `slack.chat.postMessage({token, channel, text}, (err, data) => { })`
-- `slack.chat.unfurl({token, channel, ts, unfurls}, (err, data) => { })`
-- `slack.chat.update({token, channel, text, ts}, (err, data) => { })`
-- `slack.conversations.archive({token, channel}, (err, data) => { })`
-- `slack.conversations.close({token, channel}, (err, data) => { })`
-- `slack.conversations.create({token, name}, (err, data) => { })`
-- `slack.conversations.history({token, channel}, (err, data) => { })`
-- `slack.conversations.info({token, channel}, (err, data) => { })`
-- `slack.conversations.invite({token, channel, users}, (err, data) => { })`
-- `slack.conversations.join({token, channel}, (err, data) => { })`
-- `slack.conversations.kick({token, channel, user}, (err, data) => { })`
-- `slack.conversations.leave({token, channel}, (err, data) => { })`
-- `slack.conversations.list({token}, (err, data) => { })`
-- `slack.conversations.members({token, channel}, (err, data) => { })`
-- `slack.conversations.open({token}, (err, data) => { })`
-- `slack.conversations.rename({token, channel, name}, (err, data) => { })`
-- `slack.conversations.replies({token, channel, ts}, (err, data) => { })`
-- `slack.conversations.setPurpose({token, channel, purpose}, (err, data) => { })`
-- `slack.conversations.setTopic({token, channel, topic}, (err, data) => { })`
-- `slack.conversations.unarchive({token, channel}, (err, data) => { })`
-- `slack.dnd.endDnd({token}, (err, data) => { })`
-- `slack.dnd.endSnooze({token}, (err, data) => { })`
-- `slack.dnd.info({token}, (err, data) => { })`
-- `slack.dnd.setSnooze({token, num_minutes}, (err, data) => { })`
-- `slack.dnd.teamInfo({token}, (err, data) => { })`
-- `slack.emoji.list({token}, (err, data) => { })`
-- `slack.files.comments.add({token, comment, file}, (err, data) => { })`
-- `slack.files.comments.delete({token, file, id}, (err, data) => { })`
-- `slack.files.comments.edit({token, comment, file, id}, (err, data) => { })`
-- `slack.files.delete({token, file}, (err, data) => { })`
-- `slack.files.info({token, file}, (err, data) => { })`
-- `slack.files.list({token}, (err, data) => { })`
-- `slack.files.revokePublicURL({token, file}, (err, data) => { })`
-- `slack.files.sharedPublicURL({token, file}, (err, data) => { })`
-- `slack.files.upload({token}, (err, data) => { })`
-- `slack.groups.archive({token, channel}, (err, data) => { })`
-- `slack.groups.create({token, name}, (err, data) => { })`
-- `slack.groups.createChild({token, channel}, (err, data) => { })`
-- `slack.groups.history({token, channel}, (err, data) => { })`
-- `slack.groups.info({token, channel}, (err, data) => { })`
-- `slack.groups.invite({token, channel, user}, (err, data) => { })`
-- `slack.groups.kick({token, channel, user}, (err, data) => { })`
-- `slack.groups.leave({token, channel}, (err, data) => { })`
-- `slack.groups.list({token}, (err, data) => { })`
-- `slack.groups.mark({token, channel, ts}, (err, data) => { })`
-- `slack.groups.open({token, channel}, (err, data) => { })`
-- `slack.groups.rename({token, channel, name}, (err, data) => { })`
-- `slack.groups.replies({token, channel, thread_ts}, (err, data) => { })`
-- `slack.groups.setPurpose({token, channel, purpose}, (err, data) => { })`
-- `slack.groups.setTopic({token, channel, topic}, (err, data) => { })`
-- `slack.groups.unarchive({token, channel}, (err, data) => { })`
-- `slack.im.close({token, channel}, (err, data) => { })`
-- `slack.im.history({token, channel}, (err, data) => { })`
-- `slack.im.list({token}, (err, data) => { })`
-- `slack.im.mark({token, channel, ts}, (err, data) => { })`
-- `slack.im.open({token, user}, (err, data) => { })`
-- `slack.im.replies({token, channel, thread_ts}, (err, data) => { })`
-- `slack.mpim.close({token, channel}, (err, data) => { })`
-- `slack.mpim.history({token, channel}, (err, data) => { })`
-- `slack.mpim.list({token}, (err, data) => { })`
-- `slack.mpim.mark({token, channel, ts}, (err, data) => { })`
-- `slack.mpim.open({token, users}, (err, data) => { })`
-- `slack.mpim.replies({token, channel, thread_ts}, (err, data) => { })`
-- `slack.oauth.access({client_id, client_secret, code}, (err, data) => { })`
-- `slack.oauth.token({client_id, client_secret, code}, (err, data) => { })`
-- `slack.pins.add({token, channel}, (err, data) => { })`
-- `slack.pins.list({token, channel}, (err, data) => { })`
-- `slack.pins.remove({token, channel}, (err, data) => { })`
-- `slack.reactions.add({token, name}, (err, data) => { })`
-- `slack.reactions.get({token}, (err, data) => { })`
-- `slack.reactions.list({token}, (err, data) => { })`
-- `slack.reactions.remove({token, name}, (err, data) => { })`
-- `slack.reminders.add({token, text, time}, (err, data) => { })`
-- `slack.reminders.complete({token, reminder}, (err, data) => { })`
-- `slack.reminders.delete({token, reminder}, (err, data) => { })`
-- `slack.reminders.info({token, reminder}, (err, data) => { })`
-- `slack.reminders.list({token}, (err, data) => { })`
-- `slack.rtm.connect({token}, (err, data) => { })`
-- `slack.rtm.start({token}, (err, data) => { })`
-- `slack.search.all({token, query}, (err, data) => { })`
-- `slack.search.files({token, query}, (err, data) => { })`
-- `slack.search.messages({token, query}, (err, data) => { })`
-- `slack.stars.add({token}, (err, data) => { })`
-- `slack.stars.list({token}, (err, data) => { })`
-- `slack.stars.remove({token}, (err, data) => { })`
-- `slack.team.accessLogs({token}, (err, data) => { })`
-- `slack.team.billableInfo({token}, (err, data) => { })`
-- `slack.team.info({token}, (err, data) => { })`
-- `slack.team.integrationLogs({token}, (err, data) => { })`
-- `slack.team.profile.get({token}, (err, data) => { })`
-- `slack.usergroups.create({token, name}, (err, data) => { })`
-- `slack.usergroups.disable({token, usergroup}, (err, data) => { })`
-- `slack.usergroups.enable({token, usergroup}, (err, data) => { })`
-- `slack.usergroups.list({token}, (err, data) => { })`
-- `slack.usergroups.update({token, usergroup}, (err, data) => { })`
-- `slack.usergroups.users.list({token, usergroup}, (err, data) => { })`
-- `slack.usergroups.users.update({token, usergroup, users}, (err, data) => { })`
-- `slack.users.deletePhoto({token}, (err, data) => { })`
-- `slack.users.getPresence({token, user}, (err, data) => { })`
-- `slack.users.identity({token}, (err, data) => { })`
-- `slack.users.info({token, user}, (err, data) => { })`
-- `slack.users.list({token}, (err, data) => { })`
-- `slack.users.profile.get({token}, (err, data) => { })`
-- `slack.users.profile.set({token}, (err, data) => { })`
-- `slack.users.setActive({token}, (err, data) => { })`
-- `slack.users.setPhoto({token, image}, (err, data) => { })`
-- `slack.users.setPresence({token, presence}, (err, data) => { })`
-
-# Slack RTM API
-
-`slack.rtm.client()` is a factory method that returns an thinly wrapped WebSocket instance with helpers for registering callbacks to [Slack RTM events](https://api.slack.com/events).
-
-```javascript
-var slack = require('slack')
-var bot = slack.rtm.client()
-var token = process.env.SLACK_TOKEN
-
-// logs: ws, started, close, listen, etc... in addition to the RTM event handler methods
-console.log(Object.keys(bot))
-
-// do something with the rtm.start payload
-bot.started(function(payload) {
-  console.log('payload from rtm.start', payload)
-})
-
-// respond to a user_typing message
-bot.user_typing(function(msg) {
-  console.log('several people are coding', msg)
-})
-
-// start listening to the slack team associated to the token
-bot.listen({token:token})
-```
-
-Try it out by running `npm start`:
-
-<img src=https://s3-us-west-1.amazonaws.com/bugbot/repl-rtm.png>
-
-#### RTM Client API
-
-- `bot.ws` is a `WebSocket` instance constructed from `slack/methods/rtm.start` payload
-- `bot.started(payload=>)` fires after `rtm.start` payload response is received and socket established
-- `bot.close()` closes the `WebSocket`
-- `bot.listen({token})` initiates the `slack/methods/rtm.start` handshake and delegates all messages
-
-#### RTM Events
-
-Each of these are methods on `bot` for registering handlers for the events of the same name.
-
-- `accounts_changed`
-- `app_uninstalled`
-- `bot_added`
-- `bot_changed`
-- `channel_archive`
-- `channel_created`
-- `channel_deleted`
-- `channel_history_changed`
-- `channel_joined`
-- `channel_left`
-- `channel_marked`
-- `channel_rename`
-- `channel_unarchive`
-- `commands_changed`
-- `dnd_updated`
-- `dnd_updated_user`
-- `email_domain_changed`
-- `emoji_changed`
-- `file_change`
-- `file_comment_added`
-- `file_comment_deleted`
-- `file_comment_edited`
-- `file_created`
-- `file_deleted`
-- `file_public`
-- `file_shared`
-- `file_unshared`
-- `goodbye`
-- `grid_migration_finished`
-- `grid_migration_started`
-- `group_archive`
-- `group_close`
-- `group_history_changed`
-- `group_joined`
-- `group_left`
-- `group_marked`
-- `group_open`
-- `group_rename`
-- `group_unarchive`
-- `hello`
-- `im_close`
-- `im_created`
-- `im_history_changed`
-- `im_marked`
-- `im_open`
-- `link_shared`
-- `manual_presence_change`
-- `member_joined_channel`
-- `member_left_channel`
-- `message`
-- `message.channels`
-- `message.groups`
-- `message.im`
-- `message.mpim`
-- `pin_added`
-- `pin_removed`
-- `pong`
-- `pref_change`
-- `presence_change`
-- `presence_sub`
-- `reaction_added`
-- `reaction_removed`
-- `reconnect_url`
-- `resources_added`
-- `resources_removed`
-- `scope_denied`
-- `scope_granted`
-- `star_added`
-- `star_removed`
-- `subteam_created`
-- `subteam_members_changed`
-- `subteam_self_added`
-- `subteam_self_removed`
-- `subteam_updated`
-- `team_domain_change`
-- `team_join`
-- `team_migration_started`
-- `team_plan_change`
-- `team_pref_change`
-- `team_profile_change`
-- `team_profile_delete`
-- `team_profile_reorder`
-- `team_rename`
-- `tokens_revoked`
-- `url_verification`
-- `user_change`
-- `user_typing`
-
+- `slack.apps.permissions.info({}, (err, data) => { })`
+- `slack.apps.permissions.request({}, (err, data) => { })`
+- `slack.auth.revoke({}, (err, data) => { })`
+- `slack.auth.test({}, (err, data) => { })`
+- `slack.bots.info({}, (err, data) => { })`
+- `slack.channels.archive({}, (err, data) => { })`
+- `slack.channels.create({}, (err, data) => { })`
+- `slack.channels.history({}, (err, data) => { })`
+- `slack.channels.info({}, (err, data) => { })`
+- `slack.channels.invite({}, (err, data) => { })`
+- `slack.channels.join({}, (err, data) => { })`
+- `slack.channels.kick({}, (err, data) => { })`
+- `slack.channels.leave({}, (err, data) => { })`
+- `slack.channels.list({}, (err, data) => { })`
+- `slack.channels.mark({}, (err, data) => { })`
+- `slack.channels.rename({}, (err, data) => { })`
+- `slack.channels.replies({}, (err, data) => { })`
+- `slack.channels.setPurpose({}, (err, data) => { })`
+- `slack.channels.setTopic({}, (err, data) => { })`
+- `slack.channels.unarchive({}, (err, data) => { })`
+- `slack.chat.delete({}, (err, data) => { })`
+- `slack.chat.meMessage({}, (err, data) => { })`
+- `slack.chat.postEphemeral({}, (err, data) => { })`
+- `slack.chat.postMessage({}, (err, data) => { })`
+- `slack.chat.unfurl({}, (err, data) => { })`
+- `slack.chat.update({}, (err, data) => { })`
+- `slack.conversations.archive({}, (err, data) => { })`
+- `slack.conversations.close({}, (err, data) => { })`
+- `slack.conversations.create({}, (err, data) => { })`
+- `slack.conversations.history({}, (err, data) => { })`
+- `slack.conversations.info({}, (err, data) => { })`
+- `slack.conversations.invite({}, (err, data) => { })`
+- `slack.conversations.join({}, (err, data) => { })`
+- `slack.conversations.kick({}, (err, data) => { })`
+- `slack.conversations.leave({}, (err, data) => { })`
+- `slack.conversations.list({}, (err, data) => { })`
+- `slack.conversations.members({}, (err, data) => { })`
+- `slack.conversations.open({}, (err, data) => { })`
+- `slack.conversations.rename({}, (err, data) => { })`
+- `slack.conversations.replies({}, (err, data) => { })`
+- `slack.conversations.setPurpose({}, (err, data) => { })`
+- `slack.conversations.setTopic({}, (err, data) => { })`
+- `slack.conversations.unarchive({}, (err, data) => { })`
+- `slack.dnd.endDnd({}, (err, data) => { })`
+- `slack.dnd.endSnooze({}, (err, data) => { })`
+- `slack.dnd.info({}, (err, data) => { })`
+- `slack.dnd.setSnooze({}, (err, data) => { })`
+- `slack.dnd.teamInfo({}, (err, data) => { })`
+- `slack.emoji.list({}, (err, data) => { })`
+- `slack.files.comments.add({}, (err, data) => { })`
+- `slack.files.comments.delete({}, (err, data) => { })`
+- `slack.files.comments.edit({}, (err, data) => { })`
+- `slack.files.delete({}, (err, data) => { })`
+- `slack.files.info({}, (err, data) => { })`
+- `slack.files.list({}, (err, data) => { })`
+- `slack.files.revokePublicURL({}, (err, data) => { })`
+- `slack.files.sharedPublicURL({}, (err, data) => { })`
+- `slack.files.upload({}, (err, data) => { })`
+- `slack.groups.archive({}, (err, data) => { })`
+- `slack.groups.create({}, (err, data) => { })`
+- `slack.groups.createChild({}, (err, data) => { })`
+- `slack.groups.history({}, (err, data) => { })`
+- `slack.groups.info({}, (err, data) => { })`
+- `slack.groups.invite({}, (err, data) => { })`
+- `slack.groups.kick({}, (err, data) => { })`
+- `slack.groups.leave({}, (err, data) => { })`
+- `slack.groups.list({}, (err, data) => { })`
+- `slack.groups.mark({}, (err, data) => { })`
+- `slack.groups.open({}, (err, data) => { })`
+- `slack.groups.rename({}, (err, data) => { })`
+- `slack.groups.replies({}, (err, data) => { })`
+- `slack.groups.setPurpose({}, (err, data) => { })`
+- `slack.groups.setTopic({}, (err, data) => { })`
+- `slack.groups.unarchive({}, (err, data) => { })`
+- `slack.im.close({}, (err, data) => { })`
+- `slack.im.history({}, (err, data) => { })`
+- `slack.im.list({}, (err, data) => { })`
+- `slack.im.mark({}, (err, data) => { })`
+- `slack.im.open({}, (err, data) => { })`
+- `slack.im.replies({}, (err, data) => { })`
+- `slack.mpim.close({}, (err, data) => { })`
+- `slack.mpim.history({}, (err, data) => { })`
+- `slack.mpim.list({}, (err, data) => { })`
+- `slack.mpim.mark({}, (err, data) => { })`
+- `slack.mpim.open({}, (err, data) => { })`
+- `slack.mpim.replies({}, (err, data) => { })`
+- `slack.oauth.access({}, (err, data) => { })`
+- `slack.oauth.token({}, (err, data) => { })`
+- `slack.pins.add({}, (err, data) => { })`
+- `slack.pins.list({}, (err, data) => { })`
+- `slack.pins.remove({}, (err, data) => { })`
+- `slack.reactions.add({}, (err, data) => { })`
+- `slack.reactions.get({}, (err, data) => { })`
+- `slack.reactions.list({}, (err, data) => { })`
+- `slack.reactions.remove({}, (err, data) => { })`
+- `slack.reminders.add({}, (err, data) => { })`
+- `slack.reminders.complete({}, (err, data) => { })`
+- `slack.reminders.delete({}, (err, data) => { })`
+- `slack.reminders.info({}, (err, data) => { })`
+- `slack.reminders.list({}, (err, data) => { })`
+- `slack.rtm.connect({}, (err, data) => { })`
+- `slack.rtm.start({}, (err, data) => { })`
+- `slack.search.all({}, (err, data) => { })`
+- `slack.search.files({}, (err, data) => { })`
+- `slack.search.messages({}, (err, data) => { })`
+- `slack.stars.add({}, (err, data) => { })`
+- `slack.stars.list({}, (err, data) => { })`
+- `slack.stars.remove({}, (err, data) => { })`
+- `slack.team.accessLogs({}, (err, data) => { })`
+- `slack.team.billableInfo({}, (err, data) => { })`
+- `slack.team.info({}, (err, data) => { })`
+- `slack.team.integrationLogs({}, (err, data) => { })`
+- `slack.team.profile.get({}, (err, data) => { })`
+- `slack.usergroups.create({}, (err, data) => { })`
+- `slack.usergroups.disable({}, (err, data) => { })`
+- `slack.usergroups.enable({}, (err, data) => { })`
+- `slack.usergroups.list({}, (err, data) => { })`
+- `slack.usergroups.update({}, (err, data) => { })`
+- `slack.usergroups.users.list({}, (err, data) => { })`
+- `slack.usergroups.users.update({}, (err, data) => { })`
+- `slack.users.deletePhoto({}, (err, data) => { })`
+- `slack.users.getPresence({}, (err, data) => { })`
+- `slack.users.identity({}, (err, data) => { })`
+- `slack.users.info({}, (err, data) => { })`
+- `slack.users.list({}, (err, data) => { })`
+- `slack.users.profile.get({}, (err, data) => { })`
+- `slack.users.profile.set({}, (err, data) => { })`
+- `slack.users.setActive({}, (err, data) => { })`
+- `slack.users.setPhoto({}, (err, data) => { })`
+- `slack.users.setPresence({}, (err, data) => { })`
 
 # Contributing
 
-Most of the code for the client is generated by scraping the [Slack API documentation](https://api.slack.com/methods).
+The code for the client is generated by scraping the [Slack API documentation](https://api.slack.com/methods).
 Regenerate from the latest Slack documentation by running :runner::
 
 ```

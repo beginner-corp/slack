@@ -4,14 +4,15 @@
   "description": "Slack API client written in JS",
   "main": "index",
   "browser": {
-    "./test/_env.js": "./test/_env-browser.js"
+    "./test/_env.js": "./test/_env-browser.js",
+    "./_exec.js": "_exec-browser.js"
   },
   "scripts": {
     "start": "./scripts/repl",
     "test": "./scripts/test",
     "t": "./scripts/t",
-    "btest": "./scripts/test-browser | browser-run | tap-spec",
-    "generate": "./scripts/generate-all"
+    "btest": "./scripts/browser-test | browser-run | tap-spec",
+    "pkg": "./scripts/browser-pkg > slack.js && jsmin -o slack.min.js slack.js"
   },
   "repository": {
     "type": "git",
@@ -34,14 +35,12 @@
     "browserify": "^14.1.0",
     "chalk": "^1.1.1",
     "cheerio": "^0.22.0",
-    "cpr": "^2.2.0",
     "envify": "^4.1.0",
-    "glob": "^7.0.5",
-    "lodash": "^4.5.0",
+    "glob": "^7.1.2",
+    "jsmin": "^1.0.1",
     "mustache": "^2.2.1",
     "node-env-file": "^0.1.8",
     "request": "^2.78.0",
-    "rimraf": "^2.5.3",
     "tap": "^10.7.2",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.0"

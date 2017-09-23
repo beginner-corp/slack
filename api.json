@@ -1,3060 +1,528 @@
 {
-  "api.test": [
-    {
-      "name": "error",
-      "example": "my_error",
-      "required": "Optional",
-      "description": "Error response to return\n"
-    },
-    {
-      "name": "foo",
-      "example": "bar",
-      "required": "Optional",
-      "description": "example property to return\n"
-    }
-  ],
+  "api.test": [],
   "apps.permissions.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "apps.permissions.request": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "scopes",
-      "example": " ",
-      "required": "Required",
-      "description": "A comma separated list of scopes to request for\n"
-    },
-    {
-      "name": "trigger_id",
-      "example": " ",
-      "required": "Required",
-      "description": "Token used to trigger the permissions API\n"
-    }
+    "token",
+    "scopes",
+    "trigger_id"
   ],
   "auth.revoke": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "test",
-      "example": "true",
-      "required": "Optional",
-      "description": "Setting this parameter to 1 triggers a testing mode where the specified token will not actually be revoked.\n"
-    }
+    "token"
   ],
   "auth.test": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "bots.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "bot",
-      "example": "B12345678",
-      "required": "Optional",
-      "description": "Bot user to get info on\n"
-    }
+    "token"
   ],
   "channels.archive": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to archive\n"
-    }
+    "token",
+    "channel"
   ],
   "channels.create": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": "mychannel",
-      "required": "Required",
-      "description": "Name of channel to create\n"
-    },
-    {
-      "name": "validate",
-      "example": "true",
-      "required": "Optional",
-      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
-    }
+    "token",
+    "name"
   ],
   "channels.history": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to fetch history for.\n"
-    },
-    {
-      "name": "count",
-      "example": "100",
-      "required": "Optional, default=100",
-      "description": "Number of messages to return, between 1 and 1000.\n"
-    },
-    {
-      "name": "inclusive",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include messages with latest or oldest timestamp in results.\n"
-    },
-    {
-      "name": "latest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=now",
-      "description": "End of time range of messages to include in results.\n"
-    },
-    {
-      "name": "oldest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=0",
-      "description": "Start of time range of messages to include in results.\n"
-    },
-    {
-      "name": "unreads",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include unread_count_display in the output?\n"
-    }
+    "token",
+    "channel"
   ],
   "channels.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to get info on\n"
-    },
-    {
-      "name": "include_locale",
-      "example": "true",
-      "required": "Optional",
-      "description": "Set this to true to receive the locale for this channel. Defaults to false\n"
-    }
+    "token",
+    "channel"
   ],
   "channels.invite": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to invite user to.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User to invite to channel.\n"
-    }
+    "token",
+    "channel",
+    "user"
   ],
   "channels.join": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": "#general",
-      "required": "Required",
-      "description": "Name of channel to join\n"
-    },
-    {
-      "name": "validate",
-      "example": "true",
-      "required": "Optional",
-      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
-    }
+    "token",
+    "name"
   ],
   "channels.kick": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to remove user from.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User to remove from channel.\n"
-    }
+    "token",
+    "channel",
+    "user"
   ],
   "channels.leave": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to leave\n"
-    }
+    "token",
+    "channel"
   ],
   "channels.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "cursor",
-      "example": "dXNlcjpVMDYxTkZUVDI=",
-      "required": "Optional",
-      "description": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. Default value fetches the first \"page\" of the collection. See pagination for more detail.\n"
-    },
-    {
-      "name": "exclude_archived",
-      "example": "true",
-      "required": "Optional, default=false",
-      "description": "Exclude archived channels from the list\n"
-    },
-    {
-      "name": "exclude_members",
-      "example": "true",
-      "required": "Optional, default=false",
-      "description": "Exclude the members collection from each channel\n"
-    },
-    {
-      "name": "limit",
-      "example": "20",
-      "required": "Optional, default=0",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.\n"
-    }
+    "token"
   ],
   "channels.mark": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to set reading cursor in.\n"
-    },
-    {
-      "name": "ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Timestamp of the most recently seen message.\n"
-    }
+    "token",
+    "channel",
+    "ts"
   ],
   "channels.rename": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to rename\n"
-    },
-    {
-      "name": "name",
-      "example": " ",
-      "required": "Required",
-      "description": "New name for channel.\n"
-    },
-    {
-      "name": "validate",
-      "example": "true",
-      "required": "Optional",
-      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
-    }
+    "token",
+    "channel",
+    "name"
   ],
   "channels.replies": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to fetch thread from\n"
-    },
-    {
-      "name": "thread_ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Unique identifier of a thread's parent message\n"
-    }
+    "token",
+    "channel",
+    "thread_ts"
   ],
   "channels.setPurpose": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to set the purpose of\n"
-    },
-    {
-      "name": "purpose",
-      "example": "My Purpose",
-      "required": "Required",
-      "description": "The new purpose\n"
-    }
+    "token",
+    "channel",
+    "purpose"
   ],
   "channels.setTopic": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to set the topic of\n"
-    },
-    {
-      "name": "topic",
-      "example": "My Topic",
-      "required": "Required",
-      "description": "The new topic\n"
-    }
+    "token",
+    "channel",
+    "topic"
   ],
   "channels.unarchive": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to unarchive\n"
-    }
+    "token",
+    "channel"
   ],
   "chat.delete": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel containing the message to be deleted.\n"
-    },
-    {
-      "name": "ts",
-      "example": "1405894322.002768",
-      "required": "Required",
-      "description": "Timestamp of the message to be deleted.\n"
-    },
-    {
-      "name": "as_user",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass true to delete the message as the authed user. Bot users in this context are considered authed users.\n"
-    }
+    "token",
+    "channel",
+    "ts"
   ],
   "chat.meMessage": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.\n"
-    },
-    {
-      "name": "text",
-      "example": "Hello world",
-      "required": "Required",
-      "description": "Text of the message to send.\n"
-    }
+    "token",
+    "channel",
+    "text"
   ],
   "chat.postEphemeral": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name.\n"
-    },
-    {
-      "name": "text",
-      "example": "Hello world",
-      "required": "Required",
-      "description": "Text of the message to send. See below for an explanation of formatting. This field is usually required, unless you're providing only attachments instead.\n"
-    },
-    {
-      "name": "user",
-      "example": "U0BPQUNTA",
-      "required": "Required",
-      "description": "id of the user who will receive the ephemeral message. The user should be in the channel specified by the channel argument.\n"
-    },
-    {
-      "name": "as_user",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass true to post the message as the authed bot. Defaults to false.\n"
-    },
-    {
-      "name": "attachments",
-      "example": "[{\"pretext\": \"pre-hello\", \"text\": \"text-world\"}]",
-      "required": "Optional",
-      "description": "A JSON-based array of structured attachments, presented as a URL-encoded string.\n"
-    },
-    {
-      "name": "link_names",
-      "example": "true",
-      "required": "Optional",
-      "description": "Find and link channel names and usernames.\n"
-    },
-    {
-      "name": "parse",
-      "example": "full",
-      "required": "Optional",
-      "description": "Change how messages are treated. Defaults to none. See below.\n"
-    }
+    "token",
+    "channel",
+    "text",
+    "user"
   ],
   "chat.postMessage": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See below for more details.\n"
-    },
-    {
-      "name": "text",
-      "example": "Hello world",
-      "required": "Required",
-      "description": "Text of the message to send. See below for an explanation of formatting. This field is usually required, unless you're providing only attachments instead.\n"
-    },
-    {
-      "name": "as_user",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See authorship below.\n"
-    },
-    {
-      "name": "attachments",
-      "example": "[{\"pretext\": \"pre-hello\", \"text\": \"text-world\"}]",
-      "required": "Optional",
-      "description": "A JSON-based array of structured attachments, presented as a URL-encoded string.\n"
-    },
-    {
-      "name": "icon_emoji",
-      "example": ":chart_with_upwards_trend:",
-      "required": "Optional",
-      "description": "Emoji to use as the icon for this message. Overrides icon_url. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below.\n"
-    },
-    {
-      "name": "icon_url",
-      "example": "http://lorempixel.com/48/48",
-      "required": "Optional",
-      "description": "URL to an image to use as the icon for this message. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below.\n"
-    },
-    {
-      "name": "link_names",
-      "example": "true",
-      "required": "Optional",
-      "description": "Find and link channel names and usernames.\n"
-    },
-    {
-      "name": "parse",
-      "example": "full",
-      "required": "Optional",
-      "description": "Change how messages are treated. Defaults to none. See below.\n"
-    },
-    {
-      "name": "reply_broadcast",
-      "example": "true",
-      "required": "Optional",
-      "description": "Used in conjunction with thread_ts and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false.\n"
-    },
-    {
-      "name": "thread_ts",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead.\n"
-    },
-    {
-      "name": "unfurl_links",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass true to enable unfurling of primarily text-based content.\n"
-    },
-    {
-      "name": "unfurl_media",
-      "example": "false",
-      "required": "Optional",
-      "description": "Pass false to disable unfurling of media content.\n"
-    },
-    {
-      "name": "username",
-      "example": "My Bot",
-      "required": "Optional",
-      "description": "Set your bot's user name. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below.\n"
-    }
+    "token",
+    "channel",
+    "text"
   ],
   "chat.unfurl": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel ID of the message\n"
-    },
-    {
-      "name": "ts",
-      "example": " ",
-      "required": "Required",
-      "description": "Timestamp of the message to add unfurl behavior to.\n"
-    },
-    {
-      "name": "unfurls",
-      "example": " ",
-      "required": "Required",
-      "description": "URL-encoded JSON map with keys set to URLs featured in the the message, pointing to their unfurl message attachments.\n"
-    },
-    {
-      "name": "user_auth_message",
-      "example": " ",
-      "required": "Optional",
-      "description": "Provide a simply-formatted string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior\n"
-    },
-    {
-      "name": "user_auth_required",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Set to true or 1 to indicate the user must install your Slack app to trigger unfurls for this domain\n"
-    },
-    {
-      "name": "user_auth_url",
-      "example": "https://example.com/onboarding?user_id=xxx",
-      "required": "Optional",
-      "description": "Send users to this custom URL where they will complete authentication in your app to fully trigger unfurling. Value should be properly URL-encoded.\n"
-    }
+    "token",
+    "channel",
+    "ts",
+    "unfurls"
   ],
   "chat.update": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel containing the message to be updated.\n"
-    },
-    {
-      "name": "text",
-      "example": "Hello world",
-      "required": "Required",
-      "description": "New text for the message, using the default formatting rules.\n"
-    },
-    {
-      "name": "ts",
-      "example": "1405894322.002768",
-      "required": "Required",
-      "description": "Timestamp of the message to be updated.\n"
-    },
-    {
-      "name": "as_user",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass true to update the message as the authed user. Bot users in this context are considered authed users.\n"
-    },
-    {
-      "name": "attachments",
-      "example": "[{\"pretext\": \"pre-hello\", \"text\": \"text-world\"}]",
-      "required": "Optional",
-      "description": "A JSON-based array of structured attachments, presented as a URL-encoded string.\n"
-    },
-    {
-      "name": "link_names",
-      "example": "true",
-      "required": "Optional",
-      "description": "Find and link channel names and usernames. Defaults to none. This parameter should be used in conjunction with parse. To set link_names to 1, specify a parse mode of full.\n"
-    },
-    {
-      "name": "parse",
-      "example": "none",
-      "required": "Optional",
-      "description": "Change how messages are treated. Defaults to client, unlike chat.postMessage. See below.\n"
-    }
+    "token",
+    "channel",
+    "text",
+    "ts"
   ],
   "conversations.archive": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "ID of conversation to archive\n"
-    }
+    "token",
+    "channel"
   ],
   "conversations.close": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Conversation to close.\n"
-    }
+    "token",
+    "channel"
   ],
   "conversations.create": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": "mychannel",
-      "required": "Required",
-      "description": "Name of the public or private channel to create\n"
-    },
-    {
-      "name": "is_private",
-      "example": "true",
-      "required": "Optional",
-      "description": "Create a private channel instead of a public one\n"
-    }
+    "token",
+    "name"
   ],
   "conversations.history": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Conversation ID to fetch history for.\n"
-    },
-    {
-      "name": "cursor",
-      "example": "dXNlcjpVMDYxTkZUVDI=",
-      "required": "Optional",
-      "description": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. Default value fetches the first \"page\" of the collection. See pagination for more detail.\n"
-    },
-    {
-      "name": "latest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=now",
-      "description": "End of time range of messages to include in results.\n"
-    },
-    {
-      "name": "limit",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.\n"
-    },
-    {
-      "name": "oldest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=0",
-      "description": "Start of time range of messages to include in results.\n"
-    }
+    "token",
+    "channel"
   ],
   "conversations.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Conversation ID to learn more about\n"
-    },
-    {
-      "name": "include_locale",
-      "example": "true",
-      "required": "Optional",
-      "description": "Set this to true to receive the locale for this conversation. Defaults to false\n"
-    }
+    "token",
+    "channel"
   ],
   "conversations.invite": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "The ID of the public or private channel to invite user(s) to.\n"
-    },
-    {
-      "name": "users",
-      "example": "W1234567890,U2345678901,U3456789012",
-      "required": "Required",
-      "description": "A comma separated list of user IDs. Up to 30 users may be listed.\n"
-    }
+    "token",
+    "channel",
+    "users"
   ],
   "conversations.join": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "ID of conversation to join\n"
-    }
+    "token",
+    "channel"
   ],
   "conversations.kick": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "ID of conversation to remove user from.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User ID to be removed.\n"
-    }
+    "token",
+    "channel",
+    "user"
   ],
   "conversations.leave": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Conversation to leave\n"
-    }
+    "token",
+    "channel"
   ],
   "conversations.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "cursor",
-      "example": "dXNlcjpVMDYxTkZUVDI=",
-      "required": "Optional",
-      "description": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. Default value fetches the first \"page\" of the collection. See pagination for more detail.\n"
-    },
-    {
-      "name": "exclude_archived",
-      "example": "true",
-      "required": "Optional, default=false",
-      "description": "Set to true to exclude archived channels from the list\n"
-    },
-    {
-      "name": "limit",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.\n"
-    },
-    {
-      "name": "types",
-      "example": "public_channel,private_channel",
-      "required": "Optional, default=public_channel",
-      "description": "Mix and match channel types by providing a comma-separated list of any combination of public_channel, private_channel, mpim, im\n"
-    }
+    "token"
   ],
   "conversations.members": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "ID of the conversation to retrieve members for\n"
-    },
-    {
-      "name": "cursor",
-      "example": "dXNlcjpVMDYxTkZUVDI=",
-      "required": "Optional",
-      "description": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. Default value fetches the first \"page\" of the collection. See pagination for more detail.\n"
-    },
-    {
-      "name": "limit",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.\n"
-    }
+    "token",
+    "channel"
   ],
   "conversations.open": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Optional",
-      "description": "Resume a conversation by supplying an im or mpim's ID. Or provide the users field instead.\n"
-    },
-    {
-      "name": "return_im",
-      "example": "true",
-      "required": "Optional",
-      "description": "Boolean, indicates you want the full IM channel definition in the response.\n"
-    },
-    {
-      "name": "users",
-      "example": "W1234567890,U2345678901,U3456789012",
-      "required": "Optional",
-      "description": "Comma separated lists of users. If only one user is included, this creates a 1:1 DM.  The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a channel when not supplying users.\n"
-    }
+    "token"
   ],
   "conversations.rename": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "ID of conversation to rename\n"
-    },
-    {
-      "name": "name",
-      "example": " ",
-      "required": "Required",
-      "description": "New name for conversation.\n"
-    }
+    "token",
+    "channel",
+    "name"
   ],
   "conversations.replies": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Conversation ID to fetch thread from\n"
-    },
-    {
-      "name": "ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Unique identifier of a thread's parent message\n"
-    },
-    {
-      "name": "cursor",
-      "example": "dXNlcjpVMDYxTkZUVDI=",
-      "required": "Optional",
-      "description": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. Default value fetches the first \"page\" of the collection. See pagination for more detail.\n"
-    },
-    {
-      "name": "limit",
-      "example": "20",
-      "required": "Optional, default=10",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.\n"
-    }
+    "token",
+    "channel",
+    "ts"
   ],
   "conversations.setPurpose": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Conversation to set the purpose of\n"
-    },
-    {
-      "name": "purpose",
-      "example": "My More Special Purpose",
-      "required": "Required",
-      "description": "A new, specialer purpose\n"
-    }
+    "token",
+    "channel",
+    "purpose"
   ],
   "conversations.setTopic": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Conversation to set the topic of\n"
-    },
-    {
-      "name": "topic",
-      "example": "Apply topically for best effects",
-      "required": "Required",
-      "description": "The new topic string. Does not support formatting or linkification.\n"
-    }
+    "token",
+    "channel",
+    "topic"
   ],
   "conversations.unarchive": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "ID of conversation to unarchive\n"
-    }
+    "token",
+    "channel"
   ],
   "dnd.endDnd": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "dnd.endSnooze": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "dnd.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "user",
-      "example": "U1234",
-      "required": "Optional",
-      "description": "User to fetch status for (defaults to current user)\n"
-    }
+    "token"
   ],
   "dnd.setSnooze": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "num_minutes",
-      "example": "60",
-      "required": "Required",
-      "description": "Number of minutes, from now, to snooze until.\n"
-    }
+    "token",
+    "num_minutes"
   ],
   "dnd.teamInfo": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "users",
-      "example": "U1234,U4567",
-      "required": "Optional",
-      "description": "Comma-separated list of users to fetch Do Not Disturb status for\n"
-    }
+    "token"
   ],
   "emoji.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "files.comments.add": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "comment",
-      "example": "Everyone should take a moment to read this file.",
-      "required": "Required",
-      "description": "Text of the comment to add.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234467890",
-      "required": "Required",
-      "description": "File to add a comment to.\n"
-    }
+    "token",
+    "comment",
+    "file"
   ],
   "files.comments.delete": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Required",
-      "description": "File to delete a comment from.\n"
-    },
-    {
-      "name": "id",
-      "example": "Fc1234567890",
-      "required": "Required",
-      "description": "The comment to delete.\n"
-    }
+    "token",
+    "file",
+    "id"
   ],
   "files.comments.edit": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "comment",
-      "example": "Everyone should take a moment to read this file, seriously.",
-      "required": "Required",
-      "description": "Text of the comment to edit.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Required",
-      "description": "File containing the comment to edit.\n"
-    },
-    {
-      "name": "id",
-      "example": "Fc1234567890",
-      "required": "Required",
-      "description": "The comment to edit.\n"
-    }
+    "token",
+    "comment",
+    "file",
+    "id"
   ],
   "files.delete": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Required",
-      "description": "ID of file to delete.\n"
-    }
+    "token",
+    "file"
   ],
   "files.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "file",
-      "example": "F2147483862",
-      "required": "Required",
-      "description": "Specify a file by providing its ID.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    }
+    "token",
+    "file"
   ],
   "files.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Optional",
-      "description": "Filter files appearing in a specific channel, indicated by its ID.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    },
-    {
-      "name": "ts_from",
-      "example": "123456789",
-      "required": "Optional, default=0",
-      "description": "Filter files created after this timestamp (inclusive).\n"
-    },
-    {
-      "name": "ts_to",
-      "example": "123456789",
-      "required": "Optional, default=now",
-      "description": "Filter files created before this timestamp (inclusive).\n"
-    },
-    {
-      "name": "types",
-      "example": "images",
-      "required": "Optional, default=all",
-      "description": "Filter files by type:\n\n\nall - All files\nspaces - Posts\nsnippets - Snippets\nimages - Image files\ngdocs - Google docs\nzips - Zip files\npdfs - PDF files\n\n\nYou can pass multiple values in the types argument, like types=spaces,snippets.The default value is all, which does not filter the list.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Optional",
-      "description": "Filter files created by a single user.\n"
-    }
+    "token"
   ],
   "files.revokePublicURL": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Required",
-      "description": "File to revoke\n"
-    }
+    "token",
+    "file"
   ],
   "files.sharedPublicURL": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Required",
-      "description": "File to share\n"
-    }
+    "token",
+    "file"
   ],
   "files.upload": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channels",
-      "example": "C1234567890,C2345678901,C3456789012",
-      "required": "Optional",
-      "description": "Comma-separated list of channel names or IDs where the file will be shared.\n"
-    },
-    {
-      "name": "content",
-      "example": "...",
-      "required": "Optional",
-      "description": "File contents via a POST variable. If omitting this parameter, you must provide a file.\n"
-    },
-    {
-      "name": "file",
-      "example": "...",
-      "required": "Optional",
-      "description": "File contents via multipart/form-data. If omitting this parameter, you must submit content.\n"
-    },
-    {
-      "name": "filename",
-      "example": "foo.txt",
-      "required": "Optional",
-      "description": "Filename of file.\n"
-    },
-    {
-      "name": "filetype",
-      "example": "php",
-      "required": "Optional",
-      "description": "A file type identifier.\n"
-    },
-    {
-      "name": "initial_comment",
-      "example": "Best!",
-      "required": "Optional",
-      "description": "Initial comment to add to file.\n"
-    },
-    {
-      "name": "title",
-      "example": "My File",
-      "required": "Optional",
-      "description": "Title of file.\n"
-    }
+    "token"
   ],
   "groups.archive": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to archive\n"
-    }
+    "token",
+    "channel"
   ],
   "groups.create": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": " ",
-      "required": "Required",
-      "description": "Name of private channel to create\n"
-    },
-    {
-      "name": "validate",
-      "example": "true",
-      "required": "Optional",
-      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
-    }
+    "token",
+    "name"
   ],
   "groups.createChild": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to clone and archive.\n"
-    }
+    "token",
+    "channel"
   ],
   "groups.history": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to fetch history for.\n"
-    },
-    {
-      "name": "count",
-      "example": "100",
-      "required": "Optional, default=100",
-      "description": "Number of messages to return, between 1 and 1000.\n"
-    },
-    {
-      "name": "inclusive",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include messages with latest or oldest timestamp in results.\n"
-    },
-    {
-      "name": "latest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=now",
-      "description": "End of time range of messages to include in results.\n"
-    },
-    {
-      "name": "oldest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=0",
-      "description": "Start of time range of messages to include in results.\n"
-    },
-    {
-      "name": "unreads",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include unread_count_display in the output?\n"
-    }
+    "token",
+    "channel"
   ],
   "groups.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to get info on\n"
-    },
-    {
-      "name": "include_locale",
-      "example": "true",
-      "required": "Optional",
-      "description": "Set this to true to receive the locale for this group. Defaults to false\n"
-    }
+    "token",
+    "channel"
   ],
   "groups.invite": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to invite user to.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User to invite.\n"
-    }
+    "token",
+    "channel",
+    "user"
   ],
   "groups.kick": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to remove user from.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User to remove from private channel.\n"
-    }
+    "token",
+    "channel",
+    "user"
   ],
   "groups.leave": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to leave\n"
-    }
+    "token",
+    "channel"
   ],
   "groups.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "exclude_archived",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Don't return archived private channels.\n"
-    },
-    {
-      "name": "exclude_members",
-      "example": "true",
-      "required": "Optional, default=false",
-      "description": "Exlude the members from each group\n"
-    }
+    "token"
   ],
   "groups.mark": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to set reading cursor in.\n"
-    },
-    {
-      "name": "ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Timestamp of the most recently seen message.\n"
-    }
+    "token",
+    "channel",
+    "ts"
   ],
   "groups.open": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to open.\n"
-    }
+    "token",
+    "channel"
   ],
   "groups.rename": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to rename\n"
-    },
-    {
-      "name": "name",
-      "example": " ",
-      "required": "Required",
-      "description": "New name for private channel.\n"
-    },
-    {
-      "name": "validate",
-      "example": "true",
-      "required": "Optional",
-      "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.\n"
-    }
+    "token",
+    "channel",
+    "name"
   ],
   "groups.replies": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Private channel to fetch thread from\n"
-    },
-    {
-      "name": "thread_ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Unique identifier of a thread's parent message\n"
-    }
+    "token",
+    "channel",
+    "thread_ts"
   ],
   "groups.setPurpose": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to set the purpose of\n"
-    },
-    {
-      "name": "purpose",
-      "example": "My Purpose",
-      "required": "Required",
-      "description": "The new purpose\n"
-    }
+    "token",
+    "channel",
+    "purpose"
   ],
   "groups.setTopic": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to set the topic of\n"
-    },
-    {
-      "name": "topic",
-      "example": "My Topic",
-      "required": "Required",
-      "description": "The new topic\n"
-    }
+    "token",
+    "channel",
+    "topic"
   ],
   "groups.unarchive": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Private channel to unarchive\n"
-    }
+    "token",
+    "channel"
   ],
   "im.close": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "D1234567890",
-      "required": "Required",
-      "description": "Direct message channel to close.\n"
-    }
+    "token",
+    "channel"
   ],
   "im.history": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "D1234567890",
-      "required": "Required",
-      "description": "Direct message channel to fetch history for.\n"
-    },
-    {
-      "name": "count",
-      "example": "100",
-      "required": "Optional, default=100",
-      "description": "Number of messages to return, between 1 and 1000.\n"
-    },
-    {
-      "name": "inclusive",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include messages with latest or oldest timestamp in results.\n"
-    },
-    {
-      "name": "latest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=now",
-      "description": "End of time range of messages to include in results.\n"
-    },
-    {
-      "name": "oldest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=0",
-      "description": "Start of time range of messages to include in results.\n"
-    },
-    {
-      "name": "unreads",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include unread_count_display in the output?\n"
-    }
+    "token",
+    "channel"
   ],
   "im.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "cursor",
-      "example": "dXNlcjpVMDYxTkZUVDI=",
-      "required": "Optional",
-      "description": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. Default value fetches the first \"page\" of the collection. See pagination for more detail.\n"
-    },
-    {
-      "name": "limit",
-      "example": "20",
-      "required": "Optional",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.\n"
-    }
+    "token"
   ],
   "im.mark": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "D1234567890",
-      "required": "Required",
-      "description": "Direct message channel to set reading cursor in.\n"
-    },
-    {
-      "name": "ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Timestamp of the most recently seen message.\n"
-    }
+    "token",
+    "channel",
+    "ts"
   ],
   "im.open": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User to open a direct message channel with.\n"
-    },
-    {
-      "name": "include_locale",
-      "example": "true",
-      "required": "Optional",
-      "description": "Set this to true to receive the locale for this im. Defaults to false\n"
-    },
-    {
-      "name": "return_im",
-      "example": "true",
-      "required": "Optional",
-      "description": "Boolean, indicates you want the full IM channel definition in the response.\n"
-    }
+    "token",
+    "user"
   ],
   "im.replies": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Direct message channel to fetch thread from\n"
-    },
-    {
-      "name": "thread_ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Unique identifier of a thread's parent message\n"
-    }
+    "token",
+    "channel",
+    "thread_ts"
   ],
   "mpim.close": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "MPIM to close.\n"
-    }
+    "token",
+    "channel"
   ],
   "mpim.history": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "Multiparty direct message to fetch history for.\n"
-    },
-    {
-      "name": "count",
-      "example": "100",
-      "required": "Optional, default=100",
-      "description": "Number of messages to return, between 1 and 1000.\n"
-    },
-    {
-      "name": "inclusive",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include messages with latest or oldest timestamp in results.\n"
-    },
-    {
-      "name": "latest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=now",
-      "description": "End of time range of messages to include in results.\n"
-    },
-    {
-      "name": "oldest",
-      "example": "1234567890.123456",
-      "required": "Optional, default=0",
-      "description": "Start of time range of messages to include in results.\n"
-    },
-    {
-      "name": "unreads",
-      "example": "true",
-      "required": "Optional, default=0",
-      "description": "Include unread_count_display in the output?\n"
-    }
+    "token",
+    "channel"
   ],
   "mpim.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "mpim.mark": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "G1234567890",
-      "required": "Required",
-      "description": "multiparty direct message channel to set reading cursor in.\n"
-    },
-    {
-      "name": "ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Timestamp of the most recently seen message.\n"
-    }
+    "token",
+    "channel",
+    "ts"
   ],
   "mpim.open": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "users",
-      "example": "W1234567890,U2345678901,U3456789012",
-      "required": "Required",
-      "description": "Comma separated lists of users.  The ordering of the users is preserved whenever a MPIM group is returned.\n"
-    }
+    "token",
+    "users"
   ],
   "mpim.replies": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Multiparty direct message channel to fetch thread from.\n"
-    },
-    {
-      "name": "thread_ts",
-      "example": "1234567890.123456",
-      "required": "Required",
-      "description": "Unique identifier of a thread's parent message.\n"
-    }
+    "token",
+    "channel",
+    "thread_ts"
   ],
   "oauth.access": [
-    {
-      "name": "client_id",
-      "example": "4b39e9-752c4",
-      "required": "Required",
-      "description": "Issued when you created your application.\n"
-    },
-    {
-      "name": "client_secret",
-      "example": "33fea0113f5b1",
-      "required": "Required",
-      "description": "Issued when you created your application.\n"
-    },
-    {
-      "name": "code",
-      "example": "ccdaa72ad",
-      "required": "Required",
-      "description": "The code param returned via the OAuth callback.\n"
-    },
-    {
-      "name": "redirect_uri",
-      "example": "http://example.com",
-      "required": "Optional",
-      "description": "This must match the originally submitted URI (if one was sent).\n"
-    }
+    "client_id",
+    "client_secret",
+    "code"
   ],
   "oauth.token": [
-    {
-      "name": "client_id",
-      "example": "4b39e9-752c4",
-      "required": "Required",
-      "description": "Issued when you created your application.\n"
-    },
-    {
-      "name": "client_secret",
-      "example": "33fea0113f5b1",
-      "required": "Required",
-      "description": "Issued when you created your application.\n"
-    },
-    {
-      "name": "code",
-      "example": "ccdaa72ad",
-      "required": "Required",
-      "description": "The code param returned via the OAuth callback.\n"
-    },
-    {
-      "name": "redirect_uri",
-      "example": "http://example.com",
-      "required": "Optional",
-      "description": "This must match the originally submitted URI (if one was sent).\n"
-    },
-    {
-      "name": "single_channel",
-      "example": "1",
-      "required": "Optional, default=0",
-      "description": "Request the user to add your app only to a single channel.\n"
-    }
+    "client_id",
+    "client_secret",
+    "code"
   ],
   "pins.add": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to pin the item in.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Optional",
-      "description": "File to pin.\n"
-    },
-    {
-      "name": "file_comment",
-      "example": "Fc1234567890",
-      "required": "Optional",
-      "description": "File comment to pin.\n"
-    },
-    {
-      "name": "timestamp",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Timestamp of the message to pin.\n"
-    }
+    "token",
+    "channel"
   ],
   "pins.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel to get pinned items for.\n"
-    }
+    "token",
+    "channel"
   ],
   "pins.remove": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Required",
-      "description": "Channel where the item is pinned to.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Optional",
-      "description": "File to un-pin.\n"
-    },
-    {
-      "name": "file_comment",
-      "example": "Fc1234567890",
-      "required": "Optional",
-      "description": "File comment to un-pin.\n"
-    },
-    {
-      "name": "timestamp",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Timestamp of the message to un-pin.\n"
-    }
+    "token",
+    "channel"
   ],
   "reactions.add": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": "thumbsup",
-      "required": "Required",
-      "description": "Reaction (emoji) name.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Optional",
-      "description": "Channel where the message to add reaction to was posted.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Optional",
-      "description": "File to add reaction to.\n"
-    },
-    {
-      "name": "file_comment",
-      "example": "Fc1234567890",
-      "required": "Optional",
-      "description": "File comment to add reaction to.\n"
-    },
-    {
-      "name": "timestamp",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Timestamp of the message to add reaction to.\n"
-    }
+    "token",
+    "name"
   ],
   "reactions.get": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Optional",
-      "description": "Channel where the message to get reactions for was posted.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Optional",
-      "description": "File to get reactions for.\n"
-    },
-    {
-      "name": "file_comment",
-      "example": "Fc1234567890",
-      "required": "Optional",
-      "description": "File comment to get reactions for.\n"
-    },
-    {
-      "name": "full",
-      "example": "true",
-      "required": "Optional",
-      "description": "If true always return the complete reaction list.\n"
-    },
-    {
-      "name": "timestamp",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Timestamp of the message to get reactions for.\n"
-    }
+    "token"
   ],
   "reactions.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "full",
-      "example": "true",
-      "required": "Optional",
-      "description": "If true always return the complete reaction list.\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Optional",
-      "description": "Show reactions made by this user. Defaults to the authed user.\n"
-    }
+    "token"
   ],
   "reactions.remove": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": "thumbsup",
-      "required": "Required",
-      "description": "Reaction (emoji) name.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Optional",
-      "description": "Channel where the message to remove reaction from was posted.\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Optional",
-      "description": "File to remove reaction from.\n"
-    },
-    {
-      "name": "file_comment",
-      "example": "Fc1234567890",
-      "required": "Optional",
-      "description": "File comment to remove reaction from.\n"
-    },
-    {
-      "name": "timestamp",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Timestamp of the message to remove reaction from.\n"
-    }
+    "token",
+    "name"
   ],
   "reminders.add": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "text",
-      "example": "eat a banana",
-      "required": "Required",
-      "description": "The content of the reminder\n"
-    },
-    {
-      "name": "time",
-      "example": "1602288000",
-      "required": "Required",
-      "description": "When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. \"in 15 minutes,\" or \"every Thursday\")\n"
-    },
-    {
-      "name": "user",
-      "example": "U18888888",
-      "required": "Optional",
-      "description": "The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.\n"
-    }
+    "token",
+    "text",
+    "time"
   ],
   "reminders.complete": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "reminder",
-      "example": "Rm12345678",
-      "required": "Required",
-      "description": "The ID of the reminder to be marked as complete\n"
-    }
+    "token",
+    "reminder"
   ],
   "reminders.delete": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "reminder",
-      "example": "Rm12345678",
-      "required": "Required",
-      "description": "The ID of the reminder\n"
-    }
+    "token",
+    "reminder"
   ],
   "reminders.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "reminder",
-      "example": "Rm23456789",
-      "required": "Required",
-      "description": "The ID of the reminder\n"
-    }
+    "token",
+    "reminder"
   ],
   "reminders.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "rtm.connect": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "batch_presence_aware",
-      "example": "1",
-      "required": "Optional, default=false",
-      "description": "Group presence change notices as presence_change_batch events when possible. See batching.\n"
-    },
-    {
-      "name": "presence_sub",
-      "example": "true",
-      "required": "Optional, default=false",
-      "description": "Only deliver presence events when requested by subscription. See presence subscriptions.\n"
-    }
+    "token"
   ],
   "rtm.start": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "batch_presence_aware",
-      "example": "1",
-      "required": "Optional, default=false",
-      "description": "Group presence change notices as presence_change_batch events when possible. See batching.\n"
-    },
-    {
-      "name": "include_locale",
-      "example": "true",
-      "required": "Optional",
-      "description": "Set this to true to receive the locale for users and channels. Defaults to false\n"
-    },
-    {
-      "name": "mpim_aware",
-      "example": "true",
-      "required": "Optional",
-      "description": "Returns MPIMs to the client in the API response.\n"
-    },
-    {
-      "name": "no_latest",
-      "example": "1",
-      "required": "Optional, default=0",
-      "description": "Exclude latest timestamps for channels, groups, mpims, and ims. Automatically sets no_unreads to 1\n"
-    },
-    {
-      "name": "no_unreads",
-      "example": "true",
-      "required": "Optional",
-      "description": "Skip unread counts for each channel (improves performance).\n"
-    },
-    {
-      "name": "presence_sub",
-      "example": "true",
-      "required": "Optional, default=false",
-      "description": "Only deliver presence events when requested by subscription. See presence subscriptions.\n"
-    },
-    {
-      "name": "simple_latest",
-      "example": "true",
-      "required": "Optional",
-      "description": "Return timestamp only for latest message object of each channel (improves performance).\n"
-    }
+    "token"
   ],
   "search.all": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "query",
-      "example": "pickleface",
-      "required": "Required",
-      "description": "Search query. May contains booleans, etc.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=20",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "highlight",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass a value of true to enable query highlight markers (see below).\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    },
-    {
-      "name": "sort",
-      "example": "timestamp",
-      "required": "Optional, default=score",
-      "description": "Return matches sorted by either score or timestamp.\n"
-    },
-    {
-      "name": "sort_dir",
-      "example": "asc",
-      "required": "Optional, default=desc",
-      "description": "Change sort direction to ascending (asc) or descending (desc).\n"
-    }
+    "token",
+    "query"
   ],
   "search.files": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "query",
-      "example": "pickleface",
-      "required": "Required",
-      "description": "Search query. May contain booleans, etc.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=20",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "highlight",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass a value of true to enable query highlight markers (see below).\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    },
-    {
-      "name": "sort",
-      "example": "timestamp",
-      "required": "Optional, default=score",
-      "description": "Return matches sorted by either score or timestamp.\n"
-    },
-    {
-      "name": "sort_dir",
-      "example": "asc",
-      "required": "Optional, default=desc",
-      "description": "Change sort direction to ascending (asc) or descending (desc).\n"
-    }
+    "token",
+    "query"
   ],
   "search.messages": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "query",
-      "example": "pickleface",
-      "required": "Required",
-      "description": "Search query. May contains booleans, etc.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=20",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "highlight",
-      "example": "true",
-      "required": "Optional",
-      "description": "Pass a value of true to enable query highlight markers (see below).\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    },
-    {
-      "name": "sort",
-      "example": "timestamp",
-      "required": "Optional, default=score",
-      "description": "Return matches sorted by either score or timestamp.\n"
-    },
-    {
-      "name": "sort_dir",
-      "example": "asc",
-      "required": "Optional, default=desc",
-      "description": "Change sort direction to ascending (asc) or descending (desc).\n"
-    }
+    "token",
+    "query"
   ],
   "stars.add": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Optional",
-      "description": "Channel to add star to, or channel where the message to add star to was posted (used with timestamp).\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Optional",
-      "description": "File to add star to.\n"
-    },
-    {
-      "name": "file_comment",
-      "example": "Fc1234567890",
-      "required": "Optional",
-      "description": "File comment to add star to.\n"
-    },
-    {
-      "name": "timestamp",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Timestamp of the message to add star to.\n"
-    }
+    "token"
   ],
   "stars.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    }
+    "token"
   ],
   "stars.remove": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "channel",
-      "example": "C1234567890",
-      "required": "Optional",
-      "description": "Channel to remove star from, or channel where the message to remove star from was posted (used with timestamp).\n"
-    },
-    {
-      "name": "file",
-      "example": "F1234567890",
-      "required": "Optional",
-      "description": "File to remove star from.\n"
-    },
-    {
-      "name": "file_comment",
-      "example": "Fc1234567890",
-      "required": "Optional",
-      "description": "File comment to remove star from.\n"
-    },
-    {
-      "name": "timestamp",
-      "example": "1234567890.123456",
-      "required": "Optional",
-      "description": "Timestamp of the message to remove star from.\n"
-    }
+    "token"
   ],
   "team.accessLogs": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "before",
-      "example": "1457989166",
-      "required": "Optional, default=now",
-      "description": "End of time range of logs to include in results (inclusive).\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    }
+    "token"
   ],
   "team.billableInfo": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Optional",
-      "description": "A user to retrieve the billable information for. Defaults to all users.\n"
-    }
+    "token"
   ],
   "team.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "team.integrationLogs": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "app_id",
-      "example": " ",
-      "required": "Optional",
-      "description": "Filter logs to this Slack app. Defaults to all logs.\n"
-    },
-    {
-      "name": "change_type",
-      "example": "added",
-      "required": "Optional",
-      "description": "Filter logs with this change type. Defaults to all logs.\n"
-    },
-    {
-      "name": "count",
-      "example": "20",
-      "required": "Optional, default=100",
-      "description": "Number of items to return per page.\n"
-    },
-    {
-      "name": "page",
-      "example": "2",
-      "required": "Optional, default=1",
-      "description": "Page number of results to return.\n"
-    },
-    {
-      "name": "service_id",
-      "example": " ",
-      "required": "Optional",
-      "description": "Filter logs to this service. Defaults to all logs.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Optional",
-      "description": "Filter logs generated by this user’s actions. Defaults to all logs.\n"
-    }
+    "token"
   ],
   "team.profile.get": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "visibility",
-      "example": "all",
-      "required": "Optional",
-      "description": "Filter by visibility.\n"
-    }
+    "token"
   ],
   "usergroups.create": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": "My Test Team",
-      "required": "Required",
-      "description": "A name for the User Group. Must be unique among User Groups.\n"
-    },
-    {
-      "name": "channels",
-      "example": "C1234567890,C2345678901,C3456789012",
-      "required": "Optional",
-      "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.\n"
-    },
-    {
-      "name": "description",
-      "example": " ",
-      "required": "Optional",
-      "description": "A short description of the User Group.\n"
-    },
-    {
-      "name": "handle",
-      "example": "marketing",
-      "required": "Optional",
-      "description": "A mention handle. Must be unique among channels, users and User Groups.\n"
-    },
-    {
-      "name": "include_count",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include the number of users in each User Group.\n"
-    }
+    "token",
+    "name"
   ],
   "usergroups.disable": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "usergroup",
-      "example": "S0604QSJC",
-      "required": "Required",
-      "description": "The encoded ID of the User Group to disable.\n"
-    },
-    {
-      "name": "include_count",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include the number of users in the User Group.\n"
-    }
+    "token",
+    "usergroup"
   ],
   "usergroups.enable": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "usergroup",
-      "example": "S0604QSJC",
-      "required": "Required",
-      "description": "The encoded ID of the User Group to enable.\n"
-    },
-    {
-      "name": "include_count",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include the number of users in the User Group.\n"
-    }
+    "token",
+    "usergroup"
   ],
   "usergroups.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "include_count",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include the number of users in each User Group.\n"
-    },
-    {
-      "name": "include_disabled",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include disabled User Groups.\n"
-    },
-    {
-      "name": "include_users",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include the list of users for each User Group.\n"
-    }
+    "token"
   ],
   "usergroups.update": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "usergroup",
-      "example": "S0604QSJC",
-      "required": "Required",
-      "description": "The encoded ID of the User Group to update.\n"
-    },
-    {
-      "name": "channels",
-      "example": "C1234567890,C2345678901,C3456789012",
-      "required": "Optional",
-      "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.\n"
-    },
-    {
-      "name": "description",
-      "example": " ",
-      "required": "Optional",
-      "description": "A short description of the User Group.\n"
-    },
-    {
-      "name": "handle",
-      "example": "marketing",
-      "required": "Optional",
-      "description": "A mention handle. Must be unique among channels, users and User Groups.\n"
-    },
-    {
-      "name": "include_count",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include the number of users in the User Group.\n"
-    },
-    {
-      "name": "name",
-      "example": "My Test Team",
-      "required": "Optional",
-      "description": "A name for the User Group. Must be unique among User Groups.\n"
-    }
+    "token",
+    "usergroup"
   ],
   "usergroups.users.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "usergroup",
-      "example": "S0604QSJC",
-      "required": "Required",
-      "description": "The encoded ID of the User Group to update.\n"
-    },
-    {
-      "name": "include_disabled",
-      "example": "true",
-      "required": "Optional",
-      "description": "Allow results that involve disabled User Groups.\n"
-    }
+    "token",
+    "usergroup"
   ],
   "usergroups.users.update": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "usergroup",
-      "example": "S0604QSJC",
-      "required": "Required",
-      "description": "The encoded ID of the User Group to update.\n"
-    },
-    {
-      "name": "users",
-      "example": "U060R4BJ4,U060RNRCZ",
-      "required": "Required",
-      "description": "A comma separated string of encoded user IDs that represent the entire list of users for the User Group.\n"
-    },
-    {
-      "name": "include_count",
-      "example": "true",
-      "required": "Optional",
-      "description": "Include the number of users in the User Group.\n"
-    }
+    "token",
+    "usergroup",
+    "users"
   ],
   "users.deletePhoto": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "users.getPresence": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User to get presence info on. Defaults to the authed user.\n"
-    }
+    "token",
+    "user"
   ],
   "users.identity": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "users.info": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Required",
-      "description": "User to get info on\n"
-    },
-    {
-      "name": "include_locale",
-      "example": "true",
-      "required": "Optional",
-      "description": "Set this to true to receive the locale for this user. Defaults to false\n"
-    }
+    "token",
+    "user"
   ],
   "users.list": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "cursor",
-      "example": "dXNlcjpVMDYxTkZUVDI=",
-      "required": "Optional",
-      "description": "Paginate through collections of data by setting the cursor parameter to a next_cursor attribute returned by a previous request's response_metadata. Default value fetches the first \"page\" of the collection. See pagination for more detail.\n"
-    },
-    {
-      "name": "include_locale",
-      "example": "true",
-      "required": "Optional",
-      "description": "Set this to true to receive the locale for users. Defaults to false\n"
-    },
-    {
-      "name": "limit",
-      "example": "20",
-      "required": "Optional, default=0",
-      "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.\n"
-    },
-    {
-      "name": "presence",
-      "example": "true",
-      "required": "Optional",
-      "description": "Whether to include presence data in the output. Setting this to false improves performance, especially with large teams.\n"
-    }
+    "token"
   ],
   "users.setActive": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    }
+    "token"
   ],
   "users.setPhoto": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "image",
-      "example": "...",
-      "required": "Required",
-      "description": "File contents via multipart/form-data.\n"
-    },
-    {
-      "name": "crop_w",
-      "example": "100",
-      "required": "Optional",
-      "description": "Width/height of crop box (always square)\n"
-    },
-    {
-      "name": "crop_x",
-      "example": "10",
-      "required": "Optional",
-      "description": "X coordinate of top-left corner of crop box\n"
-    },
-    {
-      "name": "crop_y",
-      "example": "15",
-      "required": "Optional",
-      "description": "Y coordinate of top-left corner of crop box\n"
-    }
+    "token",
+    "image"
   ],
   "users.setPresence": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "presence",
-      "example": "away",
-      "required": "Required",
-      "description": "Either auto or away\n"
-    }
+    "token",
+    "presence"
   ],
   "users.profile.get": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "include_labels",
-      "example": "true",
-      "required": "Optional, default=false",
-      "description": "Include labels for each ID in custom profile fields\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Optional",
-      "description": "User to retrieve profile info for\n"
-    }
+    "token"
   ],
   "users.profile.set": [
-    {
-      "name": "token",
-      "example": "xxxx-xxxxxxxxx-xxxx",
-      "required": "Required",
-      "description": "Authentication token bearing required scopes.\n"
-    },
-    {
-      "name": "name",
-      "example": "first_name",
-      "required": "Optional",
-      "description": "Name of a single key to set. Usable only if profile is not passed.\n"
-    },
-    {
-      "name": "profile",
-      "example": "{ first_name: \"John\", ... }",
-      "required": "Optional",
-      "description": "Collection of key:value pairs presented as a URL-encoded JSON hash.\n"
-    },
-    {
-      "name": "user",
-      "example": "W1234567890",
-      "required": "Optional",
-      "description": "ID of user to change. This argument may only be specified by team admins on paid teams.\n"
-    },
-    {
-      "name": "value",
-      "example": "John",
-      "required": "Optional",
-      "description": "Value to set a single key to. Usable only if profile is not passed.\n"
-    }
+    "token"
   ]
 }

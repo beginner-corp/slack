@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+var browserify = require('browserify')
+  , path       = require('path')
+  , fs         = require('fs')
+
+browserify('.')
+  .bundle()
+  .pipe(process.stdout)

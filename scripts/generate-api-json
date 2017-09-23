@@ -41,8 +41,14 @@ function getAPI() {
   getMethods((err, methods)=> {
     async.map(methods, getMethodSignature, (err, results)=> {
       results.forEach(method=> {
+        function optionals(attr) {
+          return attr.required === 'Required' 
+        }
+        function cleanup(attr) {
+          return attr.name
+        }
         var methodName = Object.keys(method)[0]
-        api[methodName] = method[methodName]
+        api[methodName] = method[methodName].filter(optionals).map(cleanup)
       })
       console.log(JSON.stringify(api, null, 2))
     })

@@ -5,3 +5,5 @@ test/
 readme.tmpl
 yarn.lock
 scratch.js
+slack.js
+slack.min.js

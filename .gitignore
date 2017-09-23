@@ -2,3 +2,5 @@ node_modules/
 .env
 yarn.lock
 scratch.js
+slack.js
+slack.min.js

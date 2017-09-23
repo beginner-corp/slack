@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 var browserify = require('browserify')
-  , babelify   = require('babelify')
   , envify     = require('envify')
   , path       = require('path')
   , glob       = require('glob')
@@ -16,10 +15,6 @@ env(path.join(__dirname, '..', '.env'))
 
 // build the test suite and pipe to stdout
 browserify({entries:entries})
-  .transform(babelify)
   .transform(envify)
   .bundle()
   .pipe(process.stdout)
-
-
-

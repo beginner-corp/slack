@@ -12,7 +12,7 @@
     "test": "./scripts/test",
     "t": "./scripts/t",
     "btest": "./scripts/browser-test | browser-run | tap-spec",
-    "generate": "./scripts/generate-api-json > api.json && ./scripts/generate-readme",
+    "generate": "./scripts/generate-api-json > src/api.json && ./scripts/generate-readme",
     "pkg": "./scripts/browser-pkg > slack.js && jsmin -o slack.min.js slack.js"
   },
   "repository": {

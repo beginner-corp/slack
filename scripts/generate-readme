@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs')
 var mustache = require('mustache')
-var api = require('../api.json')
+var api = require('../src/api.json')
 
 var methods = []
 Object.keys(api).sort().forEach(method=> {

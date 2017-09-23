@@ -1,6 +1,6 @@
-let bind = require('./_bind')
-let exec = require('./_exec')
-let factory = require('./_factory')
+let bind = require('./src/_bind')
+let exec = require('./src/_exec')
+let factory = require('./src/_factory')
 
 /**
  * bind accepts an object, in this case the factory function, and

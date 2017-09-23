@@ -5,9 +5,8 @@ var api = require('../api.json')
 
 var methods = []
 Object.keys(api).sort().forEach(method=> {
-  var isRequired = param=> param.required === 'Required'
-  var params = api[method].filter(isRequired).map(param=> param.name).join(', ')
-  var interpolated = `slack.${method}({${params}}, (err, data) => { })`
+  var params = api[method].join(', ')
+  var interpolated = `slack.${method}({${params}})`
   methods.push(interpolated)
 })
 
@@ -15,5 +14,3 @@ var tmpl = fs.readFileSync(__dirname + '/../readme.tmpl', { encoding: 'utf8'})
 var rendered = mustache.render(tmpl, {methods})
 
 fs.writeFileSync(__dirname + '/../readme.md', rendered)
-
-console.log("🙌  Generated readme.md")

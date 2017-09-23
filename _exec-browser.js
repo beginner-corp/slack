@@ -1,9 +1,13 @@
 module.exports = function exec(url, params, callback) {
   if (!callback) {
     return new Promise(function(resolve, reject) {
-      _exec(url, params, function (err, res) {
-        if (err) reject(err)
-        else resolve(res)
+      _exec(url, params, function __exec(err, res) {
+        if (err) {
+          reject(err)
+        }
+        else { 
+          resolve(res)
+        }
       })
     })
   }
@@ -24,17 +28,22 @@ function _exec(url, params, callback) {
     body: _serialize(params)
   }).then(function(res) {
     res.json().then(function(res) {
-      callback(null, res)
+      if (res.error) {
+        callback(Error(res.error))
+      }
+      else {
+        callback(null, res)
+      }
     }).catch(throws)
   }).catch(throws)
 }
 
 function _serialize(obj) {
-  var str = [];
+  var str = []
   for(var p in obj) {
     if (obj.hasOwnProperty(p)) {
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]))
+      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
     }
   }
-  return str.join("&")
+  return str.join('&')
 }

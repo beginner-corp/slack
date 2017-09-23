@@ -21,6 +21,7 @@ test('can call the api', t=> {
 })
 
 test('can pass an error', t=> {
+  t.plan(1)
   slack({error:'wtfjs'}, (err, res)=> {
     if (err) {
       t.ok(err, 'got an error!')
@@ -28,7 +29,7 @@ test('can pass an error', t=> {
     }
     else {
       t.fail(res, 'error did not bubble')
+      console.log(err, res)
     }
-    t.end()
   })
 })

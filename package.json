@@ -5,7 +5,7 @@
   "main": "index",
   "browser": {
     "./test/_env.js": "./test/_env-browser.js",
-    "./_exec.js": "_exec-browser.js"
+    "./src/_exec.js": "./src/_exec-browser.js"
   },
   "scripts": {
     "start": "./scripts/repl",

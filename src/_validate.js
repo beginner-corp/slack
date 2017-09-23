@@ -5,13 +5,6 @@ module.exports = function validate(method, params) {
   let required = api[method]
   // collect any missing params
   let missing = required.filter(param=> typeof params[param] === 'undefined')
-  // optimistic: assume the best
-  var err = false
-  // but have a plan for the worst
-  if (missing.length) {
-    //let bullets = missing.map(param=>param.name)
-    let msg = `${method} missing params: ${missing.join(', ')}`
-    err = Error(msg)
-  }
-  return err
+  // optimistic: assume the best but have a plan for the worst
+  return missing.length? Error(`${method} missing params: ${missing.join(', ')}`) : false
 }

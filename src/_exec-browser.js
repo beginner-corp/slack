@@ -1,3 +1,5 @@
+var validate = require('./_validate')
+
 module.exports = function exec(url, params, callback) {
   if (!callback) {
     return new Promise(function(resolve, reject) {
@@ -16,26 +18,42 @@ module.exports = function exec(url, params, callback) {
   }
 }
 
-function _exec(url, params, callback) {
-  function throws(e) {
+async function _exec(url, params, callback) {
+ 
+  try {
+  
+    var err = validate(url, params)
+    if (err) throw err
+
+    // stringify any objects under keys since form 
+    // is posted as application/x-www-form-urlencoded
+    Object.keys(params).forEach(function (key) {
+      if (typeof params[key] === 'object') {
+        params[key] = JSON.stringify(params[key])
+      }
+    })
+
+    var opts = {
+	    method: 'POST', 
+	    headers: new Headers({
+		    'Content-Type': 'application/x-www-form-urlencoded'
+	    }),
+      body: _serialize(params)
+    }
+
+    var res = await fetch(`https://slack.com/api/${url}`, opts)
+    var json = await res.json()
+
+    if (json.error) {
+      callback(Error(json.error))
+    }
+    else {
+      callback(null, json)
+    }
+  }
+  catch(e) {
     callback(e)
   }
-  fetch(`https://slack.com/api/${url}`, {
-	  method: 'POST', 
-	  headers: new Headers({
-		  'Content-Type': 'application/x-www-form-urlencoded'
-	  }),
-    body: _serialize(params)
-  }).then(function(res) {
-    res.json().then(function(res) {
-      if (res.error) {
-        callback(Error(res.error))
-      }
-      else {
-        callback(null, res)
-      }
-    }).catch(throws)
-  }).catch(throws)
 }
 
 function _serialize(obj) {

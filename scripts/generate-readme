@@ -6,7 +6,7 @@ var api = require('../api.json')
 var methods = []
 Object.keys(api).sort().forEach(method=> {
   var params = api[method].join(', ')
-  var interpolated = `[slack.${method}({${params}})](https://api.slack.com/methods/${method})`
+  var interpolated = `[\`slack.${method}({${params}})\`](https://api.slack.com/methods/${method})`
   methods.push(interpolated)
 })
 

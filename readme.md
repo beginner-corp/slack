@@ -93,137 +93,137 @@ npm run btest
 
 The entire Slack Web API is supported. All method signatures accept a `params` object and either a Node style callback (an errback) or, if absent, it will return a `Promise`. Required params are documented inline below.
 
-- `slack.api.test({})`
-- `slack.apps.permissions.info({token})`
-- `slack.apps.permissions.request({token, scopes, trigger_id})`
-- `slack.auth.revoke({token})`
-- `slack.auth.test({token})`
-- `slack.bots.info({token})`
-- `slack.channels.archive({token, channel})`
-- `slack.channels.create({token, name})`
-- `slack.channels.history({token, channel})`
-- `slack.channels.info({token, channel})`
-- `slack.channels.invite({token, channel, user})`
-- `slack.channels.join({token, name})`
-- `slack.channels.kick({token, channel, user})`
-- `slack.channels.leave({token, channel})`
-- `slack.channels.list({token})`
-- `slack.channels.mark({token, channel, ts})`
-- `slack.channels.rename({token, channel, name})`
-- `slack.channels.replies({token, channel, thread_ts})`
-- `slack.channels.setPurpose({token, channel, purpose})`
-- `slack.channels.setTopic({token, channel, topic})`
-- `slack.channels.unarchive({token, channel})`
-- `slack.chat.delete({token, channel, ts})`
-- `slack.chat.meMessage({token, channel, text})`
-- `slack.chat.postEphemeral({token, channel, text, user})`
-- `slack.chat.postMessage({token, channel, text})`
-- `slack.chat.unfurl({token, channel, ts, unfurls})`
-- `slack.chat.update({token, channel, text, ts})`
-- `slack.conversations.archive({token, channel})`
-- `slack.conversations.close({token, channel})`
-- `slack.conversations.create({token, name})`
-- `slack.conversations.history({token, channel})`
-- `slack.conversations.info({token, channel})`
-- `slack.conversations.invite({token, channel, users})`
-- `slack.conversations.join({token, channel})`
-- `slack.conversations.kick({token, channel, user})`
-- `slack.conversations.leave({token, channel})`
-- `slack.conversations.list({token})`
-- `slack.conversations.members({token, channel})`
-- `slack.conversations.open({token})`
-- `slack.conversations.rename({token, channel, name})`
-- `slack.conversations.replies({token, channel, ts})`
-- `slack.conversations.setPurpose({token, channel, purpose})`
-- `slack.conversations.setTopic({token, channel, topic})`
-- `slack.conversations.unarchive({token, channel})`
-- `slack.dnd.endDnd({token})`
-- `slack.dnd.endSnooze({token})`
-- `slack.dnd.info({token})`
-- `slack.dnd.setSnooze({token, num_minutes})`
-- `slack.dnd.teamInfo({token})`
-- `slack.emoji.list({token})`
-- `slack.files.comments.add({token, comment, file})`
-- `slack.files.comments.delete({token, file, id})`
-- `slack.files.comments.edit({token, comment, file, id})`
-- `slack.files.delete({token, file})`
-- `slack.files.info({token, file})`
-- `slack.files.list({token})`
-- `slack.files.revokePublicURL({token, file})`
-- `slack.files.sharedPublicURL({token, file})`
-- `slack.files.upload({token})`
-- `slack.groups.archive({token, channel})`
-- `slack.groups.create({token, name})`
-- `slack.groups.createChild({token, channel})`
-- `slack.groups.history({token, channel})`
-- `slack.groups.info({token, channel})`
-- `slack.groups.invite({token, channel, user})`
-- `slack.groups.kick({token, channel, user})`
-- `slack.groups.leave({token, channel})`
-- `slack.groups.list({token})`
-- `slack.groups.mark({token, channel, ts})`
-- `slack.groups.open({token, channel})`
-- `slack.groups.rename({token, channel, name})`
-- `slack.groups.replies({token, channel, thread_ts})`
-- `slack.groups.setPurpose({token, channel, purpose})`
-- `slack.groups.setTopic({token, channel, topic})`
-- `slack.groups.unarchive({token, channel})`
-- `slack.im.close({token, channel})`
-- `slack.im.history({token, channel})`
-- `slack.im.list({token})`
-- `slack.im.mark({token, channel, ts})`
-- `slack.im.open({token, user})`
-- `slack.im.replies({token, channel, thread_ts})`
-- `slack.mpim.close({token, channel})`
-- `slack.mpim.history({token, channel})`
-- `slack.mpim.list({token})`
-- `slack.mpim.mark({token, channel, ts})`
-- `slack.mpim.open({token, users})`
-- `slack.mpim.replies({token, channel, thread_ts})`
-- `slack.oauth.access({client_id, client_secret, code})`
-- `slack.oauth.token({client_id, client_secret, code})`
-- `slack.pins.add({token, channel})`
-- `slack.pins.list({token, channel})`
-- `slack.pins.remove({token, channel})`
-- `slack.reactions.add({token, name})`
-- `slack.reactions.get({token})`
-- `slack.reactions.list({token})`
-- `slack.reactions.remove({token, name})`
-- `slack.reminders.add({token, text, time})`
-- `slack.reminders.complete({token, reminder})`
-- `slack.reminders.delete({token, reminder})`
-- `slack.reminders.info({token, reminder})`
-- `slack.reminders.list({token})`
-- `slack.rtm.connect({token})`
-- `slack.rtm.start({token})`
-- `slack.search.all({token, query})`
-- `slack.search.files({token, query})`
-- `slack.search.messages({token, query})`
-- `slack.stars.add({token})`
-- `slack.stars.list({token})`
-- `slack.stars.remove({token})`
-- `slack.team.accessLogs({token})`
-- `slack.team.billableInfo({token})`
-- `slack.team.info({token})`
-- `slack.team.integrationLogs({token})`
-- `slack.team.profile.get({token})`
-- `slack.usergroups.create({token, name})`
-- `slack.usergroups.disable({token, usergroup})`
-- `slack.usergroups.enable({token, usergroup})`
-- `slack.usergroups.list({token})`
-- `slack.usergroups.update({token, usergroup})`
-- `slack.usergroups.users.list({token, usergroup})`
-- `slack.usergroups.users.update({token, usergroup, users})`
-- `slack.users.deletePhoto({token})`
-- `slack.users.getPresence({token, user})`
-- `slack.users.identity({token})`
-- `slack.users.info({token, user})`
-- `slack.users.list({token})`
-- `slack.users.profile.get({token})`
-- `slack.users.profile.set({token})`
-- `slack.users.setActive({token})`
-- `slack.users.setPhoto({token, image})`
-- `slack.users.setPresence({token, presence})`
+- `[slack.api.test({})](https://api.slack.com/methods/api.test)`
+- `[slack.apps.permissions.info({token})](https://api.slack.com/methods/apps.permissions.info)`
+- `[slack.apps.permissions.request({token, scopes, trigger_id})](https://api.slack.com/methods/apps.permissions.request)`
+- `[slack.auth.revoke({token})](https://api.slack.com/methods/auth.revoke)`
+- `[slack.auth.test({token})](https://api.slack.com/methods/auth.test)`
+- `[slack.bots.info({token})](https://api.slack.com/methods/bots.info)`
+- `[slack.channels.archive({token, channel})](https://api.slack.com/methods/channels.archive)`
+- `[slack.channels.create({token, name})](https://api.slack.com/methods/channels.create)`
+- `[slack.channels.history({token, channel})](https://api.slack.com/methods/channels.history)`
+- `[slack.channels.info({token, channel})](https://api.slack.com/methods/channels.info)`
+- `[slack.channels.invite({token, channel, user})](https://api.slack.com/methods/channels.invite)`
+- `[slack.channels.join({token, name})](https://api.slack.com/methods/channels.join)`
+- `[slack.channels.kick({token, channel, user})](https://api.slack.com/methods/channels.kick)`
+- `[slack.channels.leave({token, channel})](https://api.slack.com/methods/channels.leave)`
+- `[slack.channels.list({token})](https://api.slack.com/methods/channels.list)`
+- `[slack.channels.mark({token, channel, ts})](https://api.slack.com/methods/channels.mark)`
+- `[slack.channels.rename({token, channel, name})](https://api.slack.com/methods/channels.rename)`
+- `[slack.channels.replies({token, channel, thread_ts})](https://api.slack.com/methods/channels.replies)`
+- `[slack.channels.setPurpose({token, channel, purpose})](https://api.slack.com/methods/channels.setPurpose)`
+- `[slack.channels.setTopic({token, channel, topic})](https://api.slack.com/methods/channels.setTopic)`
+- `[slack.channels.unarchive({token, channel})](https://api.slack.com/methods/channels.unarchive)`
+- `[slack.chat.delete({token, channel, ts})](https://api.slack.com/methods/chat.delete)`
+- `[slack.chat.meMessage({token, channel, text})](https://api.slack.com/methods/chat.meMessage)`
+- `[slack.chat.postEphemeral({token, channel, text, user})](https://api.slack.com/methods/chat.postEphemeral)`
+- `[slack.chat.postMessage({token, channel, text})](https://api.slack.com/methods/chat.postMessage)`
+- `[slack.chat.unfurl({token, channel, ts, unfurls})](https://api.slack.com/methods/chat.unfurl)`
+- `[slack.chat.update({token, channel, text, ts})](https://api.slack.com/methods/chat.update)`
+- `[slack.conversations.archive({token, channel})](https://api.slack.com/methods/conversations.archive)`
+- `[slack.conversations.close({token, channel})](https://api.slack.com/methods/conversations.close)`
+- `[slack.conversations.create({token, name})](https://api.slack.com/methods/conversations.create)`
+- `[slack.conversations.history({token, channel})](https://api.slack.com/methods/conversations.history)`
+- `[slack.conversations.info({token, channel})](https://api.slack.com/methods/conversations.info)`
+- `[slack.conversations.invite({token, channel, users})](https://api.slack.com/methods/conversations.invite)`
+- `[slack.conversations.join({token, channel})](https://api.slack.com/methods/conversations.join)`
+- `[slack.conversations.kick({token, channel, user})](https://api.slack.com/methods/conversations.kick)`
+- `[slack.conversations.leave({token, channel})](https://api.slack.com/methods/conversations.leave)`
+- `[slack.conversations.list({token})](https://api.slack.com/methods/conversations.list)`
+- `[slack.conversations.members({token, channel})](https://api.slack.com/methods/conversations.members)`
+- `[slack.conversations.open({token})](https://api.slack.com/methods/conversations.open)`
+- `[slack.conversations.rename({token, channel, name})](https://api.slack.com/methods/conversations.rename)`
+- `[slack.conversations.replies({token, channel, ts})](https://api.slack.com/methods/conversations.replies)`
+- `[slack.conversations.setPurpose({token, channel, purpose})](https://api.slack.com/methods/conversations.setPurpose)`
+- `[slack.conversations.setTopic({token, channel, topic})](https://api.slack.com/methods/conversations.setTopic)`
+- `[slack.conversations.unarchive({token, channel})](https://api.slack.com/methods/conversations.unarchive)`
+- `[slack.dnd.endDnd({token})](https://api.slack.com/methods/dnd.endDnd)`
+- `[slack.dnd.endSnooze({token})](https://api.slack.com/methods/dnd.endSnooze)`
+- `[slack.dnd.info({token})](https://api.slack.com/methods/dnd.info)`
+- `[slack.dnd.setSnooze({token, num_minutes})](https://api.slack.com/methods/dnd.setSnooze)`
+- `[slack.dnd.teamInfo({token})](https://api.slack.com/methods/dnd.teamInfo)`
+- `[slack.emoji.list({token})](https://api.slack.com/methods/emoji.list)`
+- `[slack.files.comments.add({token, comment, file})](https://api.slack.com/methods/files.comments.add)`
+- `[slack.files.comments.delete({token, file, id})](https://api.slack.com/methods/files.comments.delete)`
+- `[slack.files.comments.edit({token, comment, file, id})](https://api.slack.com/methods/files.comments.edit)`
+- `[slack.files.delete({token, file})](https://api.slack.com/methods/files.delete)`
+- `[slack.files.info({token, file})](https://api.slack.com/methods/files.info)`
+- `[slack.files.list({token})](https://api.slack.com/methods/files.list)`
+- `[slack.files.revokePublicURL({token, file})](https://api.slack.com/methods/files.revokePublicURL)`
+- `[slack.files.sharedPublicURL({token, file})](https://api.slack.com/methods/files.sharedPublicURL)`
+- `[slack.files.upload({token})](https://api.slack.com/methods/files.upload)`
+- `[slack.groups.archive({token, channel})](https://api.slack.com/methods/groups.archive)`
+- `[slack.groups.create({token, name})](https://api.slack.com/methods/groups.create)`
+- `[slack.groups.createChild({token, channel})](https://api.slack.com/methods/groups.createChild)`
+- `[slack.groups.history({token, channel})](https://api.slack.com/methods/groups.history)`
+- `[slack.groups.info({token, channel})](https://api.slack.com/methods/groups.info)`
+- `[slack.groups.invite({token, channel, user})](https://api.slack.com/methods/groups.invite)`
+- `[slack.groups.kick({token, channel, user})](https://api.slack.com/methods/groups.kick)`
+- `[slack.groups.leave({token, channel})](https://api.slack.com/methods/groups.leave)`
+- `[slack.groups.list({token})](https://api.slack.com/methods/groups.list)`
+- `[slack.groups.mark({token, channel, ts})](https://api.slack.com/methods/groups.mark)`
+- `[slack.groups.open({token, channel})](https://api.slack.com/methods/groups.open)`
+- `[slack.groups.rename({token, channel, name})](https://api.slack.com/methods/groups.rename)`
+- `[slack.groups.replies({token, channel, thread_ts})](https://api.slack.com/methods/groups.replies)`
+- `[slack.groups.setPurpose({token, channel, purpose})](https://api.slack.com/methods/groups.setPurpose)`
+- `[slack.groups.setTopic({token, channel, topic})](https://api.slack.com/methods/groups.setTopic)`
+- `[slack.groups.unarchive({token, channel})](https://api.slack.com/methods/groups.unarchive)`
+- `[slack.im.close({token, channel})](https://api.slack.com/methods/im.close)`
+- `[slack.im.history({token, channel})](https://api.slack.com/methods/im.history)`
+- `[slack.im.list({token})](https://api.slack.com/methods/im.list)`
+- `[slack.im.mark({token, channel, ts})](https://api.slack.com/methods/im.mark)`
+- `[slack.im.open({token, user})](https://api.slack.com/methods/im.open)`
+- `[slack.im.replies({token, channel, thread_ts})](https://api.slack.com/methods/im.replies)`
+- `[slack.mpim.close({token, channel})](https://api.slack.com/methods/mpim.close)`
+- `[slack.mpim.history({token, channel})](https://api.slack.com/methods/mpim.history)`
+- `[slack.mpim.list({token})](https://api.slack.com/methods/mpim.list)`
+- `[slack.mpim.mark({token, channel, ts})](https://api.slack.com/methods/mpim.mark)`
+- `[slack.mpim.open({token, users})](https://api.slack.com/methods/mpim.open)`
+- `[slack.mpim.replies({token, channel, thread_ts})](https://api.slack.com/methods/mpim.replies)`
+- `[slack.oauth.access({client_id, client_secret, code})](https://api.slack.com/methods/oauth.access)`
+- `[slack.oauth.token({client_id, client_secret, code})](https://api.slack.com/methods/oauth.token)`
+- `[slack.pins.add({token, channel})](https://api.slack.com/methods/pins.add)`
+- `[slack.pins.list({token, channel})](https://api.slack.com/methods/pins.list)`
+- `[slack.pins.remove({token, channel})](https://api.slack.com/methods/pins.remove)`
+- `[slack.reactions.add({token, name})](https://api.slack.com/methods/reactions.add)`
+- `[slack.reactions.get({token})](https://api.slack.com/methods/reactions.get)`
+- `[slack.reactions.list({token})](https://api.slack.com/methods/reactions.list)`
+- `[slack.reactions.remove({token, name})](https://api.slack.com/methods/reactions.remove)`
+- `[slack.reminders.add({token, text, time})](https://api.slack.com/methods/reminders.add)`
+- `[slack.reminders.complete({token, reminder})](https://api.slack.com/methods/reminders.complete)`
+- `[slack.reminders.delete({token, reminder})](https://api.slack.com/methods/reminders.delete)`
+- `[slack.reminders.info({token, reminder})](https://api.slack.com/methods/reminders.info)`
+- `[slack.reminders.list({token})](https://api.slack.com/methods/reminders.list)`
+- `[slack.rtm.connect({token})](https://api.slack.com/methods/rtm.connect)`
+- `[slack.rtm.start({token})](https://api.slack.com/methods/rtm.start)`
+- `[slack.search.all({token, query})](https://api.slack.com/methods/search.all)`
+- `[slack.search.files({token, query})](https://api.slack.com/methods/search.files)`
+- `[slack.search.messages({token, query})](https://api.slack.com/methods/search.messages)`
+- `[slack.stars.add({token})](https://api.slack.com/methods/stars.add)`
+- `[slack.stars.list({token})](https://api.slack.com/methods/stars.list)`
+- `[slack.stars.remove({token})](https://api.slack.com/methods/stars.remove)`
+- `[slack.team.accessLogs({token})](https://api.slack.com/methods/team.accessLogs)`
+- `[slack.team.billableInfo({token})](https://api.slack.com/methods/team.billableInfo)`
+- `[slack.team.info({token})](https://api.slack.com/methods/team.info)`
+- `[slack.team.integrationLogs({token})](https://api.slack.com/methods/team.integrationLogs)`
+- `[slack.team.profile.get({token})](https://api.slack.com/methods/team.profile.get)`
+- `[slack.usergroups.create({token, name})](https://api.slack.com/methods/usergroups.create)`
+- `[slack.usergroups.disable({token, usergroup})](https://api.slack.com/methods/usergroups.disable)`
+- `[slack.usergroups.enable({token, usergroup})](https://api.slack.com/methods/usergroups.enable)`
+- `[slack.usergroups.list({token})](https://api.slack.com/methods/usergroups.list)`
+- `[slack.usergroups.update({token, usergroup})](https://api.slack.com/methods/usergroups.update)`
+- `[slack.usergroups.users.list({token, usergroup})](https://api.slack.com/methods/usergroups.users.list)`
+- `[slack.usergroups.users.update({token, usergroup, users})](https://api.slack.com/methods/usergroups.users.update)`
+- `[slack.users.deletePhoto({token})](https://api.slack.com/methods/users.deletePhoto)`
+- `[slack.users.getPresence({token, user})](https://api.slack.com/methods/users.getPresence)`
+- `[slack.users.identity({token})](https://api.slack.com/methods/users.identity)`
+- `[slack.users.info({token, user})](https://api.slack.com/methods/users.info)`
+- `[slack.users.list({token})](https://api.slack.com/methods/users.list)`
+- `[slack.users.profile.get({token})](https://api.slack.com/methods/users.profile.get)`
+- `[slack.users.profile.set({token})](https://api.slack.com/methods/users.profile.set)`
+- `[slack.users.setActive({token})](https://api.slack.com/methods/users.setActive)`
+- `[slack.users.setPhoto({token, image})](https://api.slack.com/methods/users.setPhoto)`
+- `[slack.users.setPresence({token, presence})](https://api.slack.com/methods/users.setPresence)`
 
 # Contributing
 

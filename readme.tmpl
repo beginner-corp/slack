@@ -60,7 +60,7 @@ let bot = new Slack({token})
 })()
 ```
 
-Choose whichever style works best for your project deployment needs and team preference. It is definately worth examining what style is more concise, expressive and determinatistic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
+Choose whichever style works best for your project deployment needs and team preference. It is definately worth examining what style is more concise, expressive and deterministic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
 
 ### Test Setup :lock::key::point_left:
 

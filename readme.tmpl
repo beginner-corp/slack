@@ -2,13 +2,13 @@
   <img width="333px" src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 </p>
 
-[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411) 
+[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411)
 
 ### Slack [Web API](https://api.slack.com/methods) client :seedling::raised_hands::two_hearts:
 
 - Written in modern JavaScript; tested for Node and the browser
-- Complete support for the Slack Web API 
-- Perfect symmetry: method signatures match API docs method 
+- Complete support for the Slack Web API
+- Perfect symmetry: method signatures match API docs method
 - Choose your async adventure: method signatures accept either a node-style errbacks or return a `Promise`
 - Opt into an oo style class instance that applies `token` to all methods
 - Well tested, CI, and Apache2 licensed
@@ -23,7 +23,7 @@ npm i slack
 
 # Usage :sparkles::rocket:
 
-`slack` mirrors the published API docs exactly because its generated from those docs! The default interface are stateless functions and has remain unchanged since `1.0.0` and that will continue to be the case. 
+`slack` mirrors the published API docs exactly because its generated from those docs! The default interface are stateless functions and has remain unchanged since `1.0.0` and that will continue to be the case.
 
 ```javascript
 var slack = require('slack')
@@ -60,7 +60,7 @@ let bot = new Slack({token})
 })()
 ```
 
-Choose whichever style works best for your project deployment needs and team preference. It is definately worth examining what style is more concise, expressive and deterministic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
+Choose whichever style works best for your project deployment needs and team preference. It is definitely worth examining what style is more concise, expressive and deterministic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
 
 ### Test Setup :lock::key::point_left:
 

@@ -1,8 +1,10 @@
 <h1 align="center">
-  <img width="333px" src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg alt=slack title=slack width=200>
+  <img width="333px" src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg alt=slack title=slack width=178>
 </h1>
 <p align="center" style="font-size: 1.2rem;">
-[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411) ![coverage 98.21%](https://img.shields.io/badge/coverage-98.21%25-brightgreen.svg)
+  <a href=https://www.npmjs.com/package/slack><img alt=npm src=https://badge.fury.io/js/slack.svg></a>
+  <a href=https://codeship.com/projects/121411><img alt=codeship src=https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg></a>
+  <a href=><img alt="coverage 98.21%" src=https://img.shields.io/badge/coverage-98.21%25-brightgreen.svg></a>
 </p>
 
 ### A [Slack Web API](https://api.slack.com/methods) client :seedling::raised_hands::two_hearts:

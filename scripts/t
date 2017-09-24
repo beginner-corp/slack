@@ -1,3 +1,0 @@
-#!/bin/sh
-reporter=./node_modules/tap-spec/bin/cmd.js
-node $1 | $reporter

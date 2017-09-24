@@ -1,7 +1,0 @@
-#!/bin/sh
-set -e
-for f in ./test/*-test.js
-do
-  echo $f
-  ./scripts/t $f
-done

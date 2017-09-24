@@ -2,7 +2,7 @@
   <img width="333px" src=https://s3-us-west-1.amazonaws.com/bugbot/slack-js.svg>
 </p>
 
-[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411)
+[![npm](https://badge.fury.io/js/slack.svg)](https://www.npmjs.com/package/slack) [![Codeship CI](https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg)](https://codeship.com/projects/121411) ![coverage 98.21%](https://img.shields.io/badge/coverage-98.21%25-brightgreen.svg)
 
 ### A [Slack Web API](https://api.slack.com/methods) client :seedling::raised_hands::two_hearts:
 

@@ -1,5 +1,10 @@
-var validate = require('./_validate')
+let validate = require('./_validate')
+let encode = encodeURIComponent
+let serialize = o=> Object.keys(o).map(k=> encode(k) + '=' + encode(o[k])).join('&')
 
+/**
+ * returns a promise if callback isn't defined; _exec is the actual impl
+ */
 module.exports = function exec(url, params, callback) {
   if (!callback) {
     return new Promise(function(resolve, reject) {
@@ -19,9 +24,8 @@ module.exports = function exec(url, params, callback) {
 }
 
 async function _exec(url, params, callback) {
- 
   try {
-  
+    // validates the params against api.json
     var err = validate(url, params)
     if (err) throw err
 
@@ -38,7 +42,7 @@ async function _exec(url, params, callback) {
       headers: new Headers({
         'Content-Type': 'application/x-www-form-urlencoded'
       }),
-      body: _serialize(params)
+      body: serialize(params)
     }
 
     var res = await fetch(`https://slack.com/api/${url}`, opts)
@@ -54,14 +58,4 @@ async function _exec(url, params, callback) {
   catch(e) {
     callback(e)
   }
-}
-
-function _serialize(obj) {
-  var str = []
-  for(var p in obj) {
-    if (obj.hasOwnProperty(p)) {
-      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
-    }
-  }
-  return str.join('&')
 }

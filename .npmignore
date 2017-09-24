@@ -7,3 +7,4 @@ yarn.lock
 scratch.js
 slack.js
 slack.min.js
+.nyc_output

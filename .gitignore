@@ -5,3 +5,5 @@ scratch.js
 slack.js
 slack.min.js
 .nyc_output
+slack.node.js
+slack.node.min.js

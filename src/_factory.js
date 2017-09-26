@@ -14,14 +14,13 @@ var exec = require('./_exec')
  */
 module.exports = function factory(xxx) {
   
-  if (!xxx) throw ReferenceError('missing params; params.token is required')
-  if (!xxx.token) throw ReferenceError('missing params.token; params.token is required')
+  if (!xxx) xxx = {}
 
   // Slack instance applies the token param to all the api methods
   class Slack {
     constructor() {
       function _execWithToken(method, params, callback) {
-        params.token = xxx.token
+        params.token = params.token || xxx.token
         return exec(method, params, callback)
       }
       // bind applies the above method to this obj

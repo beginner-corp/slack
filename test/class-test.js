@@ -5,15 +5,17 @@ test('class ctor factory validates', t=> {
   t.plan(2)
   try {
     var bot = new Slack
+    t.ok(bot)
   }
   catch(e) {
-    t.ok(e, e) 
+    t.fail() 
   }
   try {
     var bot = new Slack({})
+    t.ok(bot)
   }
   catch(e) {
-    t.ok(e, e) 
+    t.fail() 
   }
 })
 

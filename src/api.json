@@ -188,6 +188,11 @@
     "token",
     "channel"
   ],
+  "dialog.open": [
+    "token",
+    "dialog",
+    "trigger_id"
+  ],
   "dnd.endDnd": [
     "token"
   ],

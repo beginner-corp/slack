@@ -140,6 +140,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.conversations.setPurpose({token, channel, purpose})`](https://api.slack.com/methods/conversations.setPurpose)
 - [`slack.conversations.setTopic({token, channel, topic})`](https://api.slack.com/methods/conversations.setTopic)
 - [`slack.conversations.unarchive({token, channel})`](https://api.slack.com/methods/conversations.unarchive)
+- [`slack.dialog.open({token, dialog, trigger_id})`](https://api.slack.com/methods/dialog.open)
 - [`slack.dnd.endDnd({token})`](https://api.slack.com/methods/dnd.endDnd)
 - [`slack.dnd.endSnooze({token})`](https://api.slack.com/methods/dnd.endSnooze)
 - [`slack.dnd.info({token})`](https://api.slack.com/methods/dnd.info)

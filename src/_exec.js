@@ -46,7 +46,11 @@ function _exec(url, form, callback) {
         callback(err)
       }
       else if (res.body && res.body.error) {
-        callback(Error(res.body.error))
+        var e = Error(res.body.error)
+        if (res.body.response_metadata && res.body.response_metadata.messages) {
+          e.messages = res.body.response_metadata.messages
+        }
+        callback(e)
       }
       else {
         callback(null, res.body)

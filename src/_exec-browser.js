@@ -49,7 +49,11 @@ async function _exec(url, params, callback) {
     var json = await res.json()
 
     if (json.error) {
-      callback(Error(json.error))
+      var e = Error(json.error)
+      if (json.response_metadata && json.response_metadata.messages) {
+        e.messages = json.response_metadata.messages
+      }
+      callback(e)
     }
     else {
       callback(null, json)

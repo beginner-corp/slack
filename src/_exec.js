@@ -1,6 +1,6 @@
 var http = require('tiny-json-http')
 var validate = require('./_validate')
-var promisify = require('util.promisify')
+var promisify = require('./_promisify')
 
 /**
  * returns a promise if callback isn't defined; _exec is the actual impl

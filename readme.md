@@ -65,6 +65,15 @@ let bot = new Slack({token})
 
 Choose whichever style works best for your project deployment needs and team preference. It is definitely worth examining what style is more concise, expressive and deterministic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
 
+### Error Handling
+Some methods (like [`slack.dialog.open`](https://api.slack.com/methods/dialog.open)) provide additional context for errors through a `response_metadata` object. This will be exposed as a `messages` properties on the errors that are thrown.
+
+```javascript
+slack.dialog.open(options).catch(err => {
+  console.log(err.messages)
+})
+```
+
 ### Test Setup :lock::key::point_left:
 
 Clone this repo and create a file called `.env` in the root with the following:

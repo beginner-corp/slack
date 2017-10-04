@@ -20,6 +20,7 @@ module.exports = function factory(xxx) {
   class Slack {
     constructor() {
       function _execWithToken(method, params, callback) {
+        if(!params) params = {}
         params.token = params.token || xxx.token
         return exec(method, params, callback)
       }

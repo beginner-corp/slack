@@ -1,6 +1,7 @@
 var http = require('tiny-json-http')
 var validate = require('./_validate')
 var promisify = require('./_promisify')
+var origin = require('./_origin')
 
 /**
  * returns a promise if callback isn't defined; _exec is the actual impl
@@ -35,7 +36,7 @@ function _exec(url, form, callback) {
 
     // always post to slack
     http.post({
-      url: `https://slack.com/api/${url}`,
+      url: `${origin}/api/${url}`,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },

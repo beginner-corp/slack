@@ -1,4 +1,5 @@
 let validate = require('./_validate')
+let origin = require('./_origin')
 let encode = encodeURIComponent
 let serialize = o=> Object.keys(o).map(k=> encode(k) + '=' + encode(o[k])).join('&')
 
@@ -45,7 +46,7 @@ async function _exec(url, params, callback) {
       body: serialize(params)
     }
 
-    var res = await fetch(`https://slack.com/api/${url}`, opts)
+    var res = await fetch(`${origin}/api/${url}`, opts)
     var json = await res.json()
 
     if (json.error) {

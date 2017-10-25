@@ -7,3 +7,5 @@ slack.min.js
 .nyc_output
 slack.node.js
 slack.node.min.js
+slack-testing.js
+slack-testing.min.js

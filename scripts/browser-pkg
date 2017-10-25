@@ -3,6 +3,23 @@ var browserify = require('browserify')
   , path       = require('path')
   , fs         = require('fs')
 
+var files = {
+  output: fs.createWriteStream('slack.js'),
+  testing: fs.createWriteStream('slack-testing.js')
+}
+
 browserify('.')
+  .transform('envify', {
+    'NODE_ENV': 'production',
+    'STENO_URL': false
+  })
   .bundle()
-  .pipe(process.stdout)
+  .pipe(files.output)
+
+browserify('.')
+  .transform('envify', {
+    'NODE_ENV': 'testing',
+    'STENO_URL': false
+  })
+  .bundle()
+  .pipe(files.testing)

@@ -49,6 +49,6 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
-    "tiny-json-http": "^5.1.0"
+    "tiny-json-http": "^5.2.0"
   }
 }

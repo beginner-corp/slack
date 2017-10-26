@@ -15,7 +15,7 @@
 - Choose your async adventure: all methods accept either a Node style errback or return a `Promise`
 - Opt into an OO style class instance that applies `token` to all methods
 - Well tested, CI, and Apache2 licensed
-- Only two dependencies: `util.promisify` and `tiny-json-http`
+- Only one dependency: `tiny-json-http`
 - Tiny: **7kb** browserified/minified
 
 ## Install :star2::package:

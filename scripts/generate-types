@@ -1,0 +1,237 @@
+#!/usr/bin/env node
+let fs = require('fs');
+let api = require('../src/api.json')
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1)
+}
+
+function trim(str) {
+  return str.trim();
+}
+
+function dedent(str) {
+  return str.split("\n").map(trim).join("\n");
+}
+
+function unzip(obj) {
+  let pairs = [];
+
+  for (let key in obj) {
+    pairs.push({ key: key, value: obj[key] });
+  }
+
+  return pairs;
+}
+
+
+function toApiTree() {
+  let namespaces = {}
+
+  for (let method in api) {
+    let parts = method.split('.')
+    let params = api[method]
+    let namespace = namespaces
+
+    let node = {
+      params: params,
+      name: parts.map(capitalize).join("."),
+      func: parts[parts.length - 1]
+    }
+
+    while (parts.length) {
+      let key = parts.shift()
+
+      if (parts.length) {
+        namespace = namespace[key] = {}
+      } else {
+        namespace[key] = node
+      }
+    }
+  }
+
+  return namespaces
+}
+
+
+function format(code) {
+  let indent = 0
+  let unformatted = dedent(code)
+  let formatted = []
+
+  for (let i = 0; i < unformatted.length; i++) {
+    let ch = unformatted[i];
+
+    if (ch === "{") {
+      indent += 1
+    }
+
+    if (ch === "}") {
+      formatted.pop();
+      indent -= 1
+    }
+
+    formatted.push(ch)
+
+    if (ch === "\n") {
+      for (let n = 0; n < indent; n++) {
+        formatted.push("  ")
+      }
+    }
+  }
+
+  return formatted.join("").replace(/^\s+$/g, "");
+}
+
+function Namespace(name, exports) {
+  return (`
+    namespace ${name} {
+      ${exports.map(Export).join('\n\n')}
+    }
+  `).trim();
+}
+
+function Export(code) {
+  return `export ${code}`;
+}
+
+function Interface(name, props) {
+  return (`
+    interface ${name} {
+      ${props.map(KeyValue).join("\n")}
+    }
+  `).trim()
+}
+
+function Object(props) {
+  return (`
+    {
+      ${props.map(KeyValue).join("\n")}
+    }
+  `).trim()
+}
+
+function KeyValue(kv) {
+  return `${kv.key}: ${kv.value};`;
+}
+
+function Module(name, lets) {
+  return (`
+    declare module "${name}" {
+      ${lets.map(Export).join('\n\n')}
+    }
+  `).trim()
+}
+
+function Let(name, type) {
+  return `let ${name}: ${type}`;
+}
+
+function File(expressions) {
+  return (`
+    // generated from scripts/generate-types
+
+    ${expressions.join("\n\n")}
+  `).trim();
+}
+
+function Generic(name, t) {
+  return `${name}<${t}>`;
+}
+
+function Method(name, args, type) {
+  return {
+    key: `${name}(${args.join(", ")})`,
+    value: type
+  };
+}
+
+function Property(name, value) {
+  return {
+    key: name,
+    value: value
+  };
+}
+
+function Argument(name, type) {
+  return `${name}: ${type}`;
+}
+
+let example = format(
+  File([
+    Namespace('Slack.Auth', [
+      Interface('Params', [
+        { key: 'token', value: 'string' }
+      ]),
+      Interface('Response', unzip({
+        token: 'string',
+        ok: 'boolean',
+        url: 'string',
+        team: 'string',
+        user: 'string',
+        team_id: 'string',
+        user_id: 'string'
+      }))
+    ]),
+    Module('slack', [
+      Let('auth', Object([
+        Method(
+          'test',
+          [Argument('params', 'Slack.Auth.Params')],
+          Generic('Promise', 'Slack.Auth.Response')
+        )
+      ]))
+    ])
+  ])
+);
+
+let namespaces = unzip(api).map(function(kv) {
+  let name = kv.key.split(".").map(capitalize).join(".");
+  let params = kv.value;
+
+  return Namespace(name, [
+    Interface('Params', params.map(function(param) {
+      return { key: param, value: 'any' };
+    })),
+    Interface('Response', [
+      { key: 'ok', value: 'boolean' },
+      { key: '[key: string]', value: 'any' }
+    ])
+  ]);
+});
+
+let module = Module('slack', unzip(toApiTree()).map(function(kv) {
+  let name = kv.key;
+  let value = kv.value;
+
+  function type(value) {
+    if (value.params) {
+      return Object([
+        Method(
+          value.func,
+          [Argument('params', `${value.name}.Params`)],
+          Generic('Promise', `${value.name}.Response`)
+        ),
+        Method(
+          value.func,
+          [
+            Argument('params', `${value.name}.Params`),
+            Argument('callback', `(err, response: ${value.name}.Response) => void`)
+          ],
+          'void'
+        )
+      ]);
+    } else {
+      return Object(unzip(value).map(function(kv) {
+        return Property(kv.key, type(kv.value));
+      }))
+    }
+  }
+
+  return Let(name, type(value));
+}));
+
+let source = File(namespaces.concat(module));
+
+fs.writeFileSync('../slack.d.ts', format(source));
+

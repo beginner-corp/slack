@@ -157,34 +157,6 @@ function Argument(name, type) {
   return `${name}: ${type}`;
 }
 
-let example = format(
-  File([
-    Namespace('Slack.Auth', [
-      Interface('Params', [
-        { key: 'token', value: 'string' }
-      ]),
-      Interface('Response', unzip({
-        token: 'string',
-        ok: 'boolean',
-        url: 'string',
-        team: 'string',
-        user: 'string',
-        team_id: 'string',
-        user_id: 'string'
-      }))
-    ]),
-    Module('slack', [
-      Let('auth', Object([
-        Method(
-          'test',
-          [Argument('params', 'Slack.Auth.Params')],
-          Generic('Promise', 'Slack.Auth.Response')
-        )
-      ]))
-    ])
-  ])
-);
-
 let namespaces = unzip(api).map(function(kv) {
   let name = kv.key.split(".").map(capitalize).join(".");
   let params = kv.value;
@@ -200,7 +172,7 @@ let namespaces = unzip(api).map(function(kv) {
   ]);
 });
 
-let module = Module('slack', unzip(toApiTree()).map(function(kv) {
+let exported = Module('slack', unzip(toApiTree()).map(function(kv) {
   let name = kv.key;
   let value = kv.value;
 
@@ -231,7 +203,7 @@ let module = Module('slack', unzip(toApiTree()).map(function(kv) {
   return Let(name, type(value));
 }));
 
-let source = File(namespaces.concat(module));
+let source = File(namespaces.concat(exported));
 
 fs.writeFileSync('../slack.d.ts', format(source));
 

@@ -33,7 +33,7 @@ function keys(obj) {
 
 function Namespace(name, exports) {
   return (`
-    namespace ${name} {
+    declare namespace ${name} {
       ${exports.map(Export).join('\n\n')}
     }
   `).trim()

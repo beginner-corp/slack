@@ -14,9 +14,8 @@
     "test": "tape test/*-test.js | tap-spec",
     "cov": "nyc tape test/*-test.js",
     "btest": "./scripts/browser-test | browser-run | tap-spec",
-    "generate": "./scripts/generate-api-json > src/api.json && ./scripts/generate-readme",
-    "pkg": "./scripts/browser-pkg && jsmin -o slack.min.js slack.js && jsmin -o slack-testing.min.js slack-testing.js",
-    "types": "./scripts/generate-types"
+    "generate": "./scripts/generate-api-json > src/api.json && ./scripts/generate-readme && ./scripts/generate-types",
+    "pkg": "./scripts/browser-pkg && jsmin -o slack.min.js slack.js && jsmin -o slack-testing.min.js slack-testing.js"
   },
   "repository": {
     "type": "git",

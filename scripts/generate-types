@@ -217,7 +217,9 @@ function createDeclarations() {
     return Namespace(name, [
       Interface('Params', params.map(param => {
         return { key: param, value: 'any' }
-      })),
+      }).concat([
+        { key: '[optional: string]', value: 'any' }
+      ])),
       Interface('Response', [
         { key: 'ok', value: 'boolean' },
         { key: '[key: string]', value: 'any' }

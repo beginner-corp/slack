@@ -41,7 +41,7 @@ slack.api.test({nice:1}).then(console.log).catch(console.log)
 Due to popular demand an OO style is now supported. For an instance of `Slack` all methods come prebound with the `token` parameter applied.
 
 ```javascript
-const token = process.env.SLACKBOT_TOKEN
+const token = process.env.SLACK_BOT_TOKEN
 const Slack = require('slack')
 const bot = new Slack({token})
 
@@ -52,7 +52,7 @@ bot.api.test({hyper:'card'}).then(console.log)
 Using `async`/`await` in Node 8.x:
 
 ```javascript
-let token = process.env.SLACKBOT_TOKEN
+let token = process.env.SLACK_BOT_TOKEN
 let Slack = require('slack')
 let bot = new Slack({token})
 

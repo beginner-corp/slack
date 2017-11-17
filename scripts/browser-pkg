@@ -8,7 +8,7 @@ var files = {
   testing: fs.createWriteStream('slack-testing.js')
 }
 
-browserify('.')
+browserify('.', {standalone:'slack'})
   .transform('envify', {
     'NODE_ENV': 'production',
     'STENO_URL': false
@@ -16,7 +16,7 @@ browserify('.')
   .bundle()
   .pipe(files.output)
 
-browserify('.')
+browserify('.', {standalone:'slack'})
   .transform('envify', {
     'NODE_ENV': 'testing',
     'STENO_URL': false

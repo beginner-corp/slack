@@ -4,9 +4,8 @@ var validate = require('./_validate')
 var promisify = require('./_promisify')
 var origin = require('./_origin')
 var electron = require('electron')
-var net = electron.net
+var net = electron.net || electron.remote.net // wat
 
-console.log({electron, net})
 /**
  * returns a promise if callback isn't defined; _exec is the actual impl
  */
@@ -63,61 +62,32 @@ function _exec(url, form, callback) {
   }
 }
 
+/**
+ * this method uses electron.net or electron.remote.net
+ * it also does not fire the 'end' if it is registered after 'data' 
+ */
 function _post(options, callback) {
-  // require options.url or fail noisily
-  if (!options.url) {
-    throw Error('options.url required')
-  }
-
   // parse out the options from options.url
   var opts = url.parse(options.url)
   opts.method = 'POST'
   opts.rejectUnauthorized = false
   opts.headers = options.headers || {}
-  opts.headers['User-Agent'] = opts.headers['User-Agent'] || 'tiny-http'
-  opts.headers['Content-Type'] = opts.headers['Content-Type'] || 'application/json; charset=utf-8'
+  opts.headers['User-Agent'] = 'tiny-http'
 
-  var reqJSON = opts.headers['Content-Type'].startsWith('application/json')
-  var postData = reqJSON? JSON.stringify(options.data || {}) : qs.stringify(options.data || {})
+  var req = net.request(opts) 
+  var raw = []
 
-  // make a POST request
-  var req = net.request(opts, function(res) {
-
-    var raw = [] // keep our buffers here
-    var ok = res.statusCode >= 200 && res.statusCode < 300
-
-    res.on('data', function _data(chunk) {
+  req.on('response', (response) => {
+    // these are order dependent??
+    response.on('error', callback)
+    response.on('end', () => {
+      var body = JSON.parse(raw.join(''))
+      callback(null, {body})
+    })
+    response.on('data', (chunk) => {
       raw.push(chunk)
     })
-
-    res.on('end', function _end() {
-      var err = null
-      var result = null
-
-      try {
-        var isJSON = res.headers['content-type'].startsWith('application/json')
-        var rawData = Buffer.concat(raw).toString()
-        result = isJSON? JSON.parse(rawData) : rawData
-      }
-      catch (e) {
-        err = e
-      }
-
-      if (!ok) {
-        err = Error('POST failed with: ' + res.statusCode)
-        err.raw = res
-        err.body = result
-        callback(err)
-      } 
-      else {
-        callback(err, {body:result, headers:res.headers})
-      }
-    })
   })
-
-  req.on('error', callback)
-
-  req.write(postData)
-
+  req.write(qs.stringify(options.data))
   req.end()
 }

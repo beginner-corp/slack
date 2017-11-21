@@ -6,6 +6,7 @@ var env = require('./_env')
 env()
 
 test('can post a message', t=> {
+  t.plan(1)
   let token = process.env.SLACK_BOT_TOKEN
   let slack = new Slack({token, useElectronNet:true})
   let text = 'test message'
@@ -13,9 +14,9 @@ test('can post a message', t=> {
   slack.channels.list({}, (err, json)=> {
     // look for a channel called 'test'
     let channel = json.channels.filter(c=> c.name === 'test')[0].id
-    let params = {token, text, channel}
+    let params = {text, channel}
     // post a message there
-    msg(params, (err, data)=> {
+    slack.chat.postMessage(params, (err, data)=> {
       if (err) {
         t.fail(err, 'chat.postMessage fails')
         console.error(err)
@@ -24,7 +25,6 @@ test('can post a message', t=> {
         t.ok(data, 'posted a message')
         console.log(data)
       }
-      t.end()
     })
   })
 })

@@ -5,7 +5,7 @@ var browserify = require('browserify')
   , glob       = require('glob')
   , env        = require('node-env-file')
   , fs         = require('fs')
-  , entries    = glob.sync('./test/*-test.js')
+  , entries    = glob.sync('./test/*-test-electron.js')
 
 // add a window.close for the browser-run env
 entries.push(path.join(__dirname, '..', 'test', '_env-browser-close.js'))
@@ -15,7 +15,7 @@ env(path.join(__dirname, '..', '.env'))
 
 // build the test suite and pipe to stdout
 browserify({entries})
-  .ignore('electron')
+  .external('electron')
   .transform(envify)
   .bundle()
   .pipe(process.stdout)

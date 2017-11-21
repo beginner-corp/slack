@@ -3,8 +3,10 @@ var url = require('url')
 var validate = require('./_validate')
 var promisify = require('./_promisify')
 var origin = require('./_origin')
-var {net} = require('electron')
+var electron = require('electron')
+var net = electron.net
 
+console.log({electron, net})
 /**
  * returns a promise if callback isn't defined; _exec is the actual impl
  */

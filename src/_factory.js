@@ -18,8 +18,11 @@ module.exports = function factory(xxx) {
   // allow for empty params
   if (!xxx) xxx = {}
 
-  // override exec via explicit optin
-  if (xxx.useElectronNet) exec = electronExec
+  // override exec to use electron.net via explicit opt-in
+  if (xxx.useElectronNet) {
+    delete userElectronNet
+    exec = electronExec(xxx)
+  }
 
   // Slack instance applies the token param to all the api methods
   class Slack {

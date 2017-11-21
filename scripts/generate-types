@@ -1,31 +1,116 @@
 #!/usr/bin/env node
-let fs = require('fs');
+let fs = require('fs')
+let path = require('path')
 let api = require('../src/api.json')
+
+/**
+ * Utilities & helpers
+ */
 
 function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1)
 }
 
 function trim(str) {
-  return str.trim();
+  return str.trim()
 }
 
 function dedent(str) {
-  return str.split("\n").map(trim).join("\n");
+  return str.split("\n").map(trim).join("\n")
 }
 
-function unzip(obj) {
-  let pairs = [];
+function flatten(arrays) {
+  return [].concat(...arrays)
+}
 
-  for (let key in obj) {
-    pairs.push({ key: key, value: obj[key] });
+function keys(obj) {
+  return Object.keys(obj)
+}
+
+/**
+ * Code gen utilities.
+ */
+
+function Namespace(name, exports) {
+  return (`
+    declare namespace ${name} {
+      ${exports.map(Export).join('\n\n')}
+    }
+  `).trim()
+}
+
+function Export(code) {
+  return `export ${code}`
+}
+
+function Interface(name, props) {
+  return (`
+    interface ${name} {
+      ${props.map(KeyValue).join("\n")}
+    }
+  `).trim()
+}
+
+function ObjectLiteral(props) {
+  return (`
+    {
+      ${props.map(KeyValue).join("\n")}
+    }
+  `).trim()
+}
+
+function KeyValue(kv) {
+  return `${kv.key}: ${kv.value}`
+}
+
+function Module(name, lets) {
+  return (`
+    declare module "${name}" {
+      ${lets.map(Export).join('\n\n')}
+    }
+  `).trim()
+}
+
+function Let(name, type) {
+  return `let ${name}: ${type}`
+}
+
+function File(expressions) {
+  return (`
+    // generated from scripts/generate-types
+
+    ${expressions.join("\n\n")}
+  `).trim()
+}
+
+function Generic(name, t) {
+  return `${name}<${t}>`
+}
+
+function Method(name, args, type) {
+  return {
+    key: `${name}(${args.join(", ")})`,
+    value: type
   }
-
-  return pairs;
 }
 
+function Property(name, value) {
+  return {
+    key: name,
+    value: value
+  }
+}
 
-function toApiTree() {
+function Argument(name, type) {
+  return `${name}: ${type}`
+}
+
+/**
+ * Converts the object format in api.json into a properly nested tree
+ * that can be recursed through to generate the source for objects
+ * with nested methods.
+ */
+function apiToTree() {
   let namespaces = {}
 
   for (let method in api) {
@@ -43,7 +128,7 @@ function toApiTree() {
       let key = parts.shift()
 
       if (parts.length) {
-        namespace = namespace[key] = {}
+        namespace = (namespace[key] = namespace[key] || {})
       } else {
         namespace[key] = node
       }
@@ -53,21 +138,24 @@ function toApiTree() {
   return namespaces
 }
 
-
+/**
+ * Quick and dirty helper for getting passable formatting and indentation
+ * from a block of code based on curly brace locations.
+ */
 function format(code) {
   let indent = 0
   let unformatted = dedent(code)
   let formatted = []
 
   for (let i = 0; i < unformatted.length; i++) {
-    let ch = unformatted[i];
+    let ch = unformatted[i]
 
     if (ch === "{") {
       indent += 1
     }
 
     if (ch === "}") {
-      formatted.pop();
+      formatted.pop()
       indent -= 1
     }
 
@@ -80,158 +168,76 @@ function format(code) {
     }
   }
 
-  return formatted.join("").replace(/^\s+$/g, "");
+  // Remove whitespace from lines with no other chars
+  return formatted.join("").replace(/^\s+$/g, "")
 }
 
-function Namespace(name, exports) {
-  return (`
-    namespace ${name} {
-      ${exports.map(Export).join('\n\n')}
-    }
-  `).trim();
-}
-
-function Export(code) {
-  return `export ${code}`;
-}
-
-function Interface(name, props) {
-  return (`
-    interface ${name} {
-      ${props.map(KeyValue).join("\n")}
-    }
-  `).trim()
-}
-
-function Object(props) {
-  return (`
-    {
-      ${props.map(KeyValue).join("\n")}
-    }
-  `).trim()
-}
-
-function KeyValue(kv) {
-  return `${kv.key}: ${kv.value};`;
-}
-
-function Module(name, lets) {
-  return (`
-    declare module "${name}" {
-      ${lets.map(Export).join('\n\n')}
-    }
-  `).trim()
-}
-
-function Let(name, type) {
-  return `let ${name}: ${type}`;
-}
-
-function File(expressions) {
-  return (`
-    // generated from scripts/generate-types
-
-    ${expressions.join("\n\n")}
-  `).trim();
-}
-
-function Generic(name, t) {
-  return `${name}<${t}>`;
-}
-
-function Method(name, args, type) {
-  return {
-    key: `${name}(${args.join(", ")})`,
-    value: type
-  };
-}
-
-function Property(name, value) {
-  return {
-    key: name,
-    value: value
-  };
-}
-
-function Argument(name, type) {
-  return `${name}: ${type}`;
-}
-
-let example = format(
-  File([
-    Namespace('Slack.Auth', [
-      Interface('Params', [
-        { key: 'token', value: 'string' }
-      ]),
-      Interface('Response', unzip({
-        token: 'string',
-        ok: 'boolean',
-        url: 'string',
-        team: 'string',
-        user: 'string',
-        team_id: 'string',
-        user_id: 'string'
-      }))
-    ]),
-    Module('slack', [
-      Let('auth', Object([
-        Method(
-          'test',
-          [Argument('params', 'Slack.Auth.Params')],
-          Generic('Promise', 'Slack.Auth.Response')
-        )
-      ]))
-    ])
-  ])
-);
-
-let namespaces = unzip(api).map(function(kv) {
-  let name = kv.key.split(".").map(capitalize).join(".");
-  let params = kv.value;
-
-  return Namespace(name, [
-    Interface('Params', params.map(function(param) {
-      return { key: param, value: 'any' };
-    })),
-    Interface('Response', [
-      { key: 'ok', value: 'boolean' },
-      { key: '[key: string]', value: 'any' }
-    ])
-  ]);
-});
-
-let module = Module('slack', unzip(toApiTree()).map(function(kv) {
-  let name = kv.key;
-  let value = kv.value;
-
-  function type(value) {
-    if (value.params) {
-      return Object([
-        Method(
-          value.func,
-          [Argument('params', `${value.name}.Params`)],
-          Generic('Promise', `${value.name}.Response`)
-        ),
-        Method(
-          value.func,
-          [
-            Argument('params', `${value.name}.Params`),
-            Argument('callback', `(err, response: ${value.name}.Response) => void`)
-          ],
-          'void'
-        )
-      ]);
-    } else {
-      return Object(unzip(value).map(function(kv) {
-        return Property(kv.key, type(kv.value));
-      }))
-    }
+/**
+ * Recursive helper for generating properties and methods inside the
+ * exported values.
+ */
+function types(value) {
+  if ('params' in value) {
+    return [
+      Method(
+        value.func,
+        [Argument('params', `${value.name}.Params`)],
+        Generic('Promise', `${value.name}.Response`)
+      ),
+      Method(
+        value.func,
+        [
+          Argument('params', `${value.name}.Params`),
+          Argument('callback', `(params: ${value.name}.Params) => void`),
+        ],
+        'void',
+      ),
+    ]
   }
 
-  return Let(name, type(value));
-}));
+  return flatten(keys(value).map(key => {
+    let subtype = value[key]
+    let props = types(subtype)
 
-let source = File(namespaces.concat(module));
+    if ('params' in subtype) {
+      return props
+    }
 
-fs.writeFileSync('../slack.d.ts', format(source));
+    return Property(key, ObjectLiteral(props))
+  }))
+}
+
+function createDeclarations() {
+  let tree = apiToTree()
+
+  let namespaces = keys(api).map(method => {
+    let name = method.split(".").map(capitalize).join(".")
+    let params = api[method]
+
+    return Namespace(name, [
+      Interface('Params', params.map(param => {
+        return { key: param, value: 'any' }
+      }).concat([
+        { key: '[optional: string]', value: 'any' }
+      ])),
+      Interface('Response', [
+        { key: 'ok', value: 'boolean' },
+        { key: '[key: string]', value: 'any' }
+      ])
+    ])
+  })
+
+  let exported = Module('slack', keys(tree).map(key => {
+    let value = tree[key]
+    let props = types(value)
+    return Let(key, ObjectLiteral(props))
+  }))
+
+  return File(namespaces.concat(exported))
+}
+
+let outfile = path.resolve(__dirname, '../slack.d.ts')
+let source = format(createDeclarations())
+
+fs.writeFileSync(outfile, source)
 

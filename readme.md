@@ -41,7 +41,7 @@ slack.api.test({nice:1}).then(console.log).catch(console.log)
 Due to popular demand an OO style is now supported. For an instance of `Slack` all methods come prebound with the `token` parameter applied.
 
 ```javascript
-const token = process.env.SLACKBOT_TOKEN
+const token = process.env.SLACK_BOT_TOKEN
 const Slack = require('slack')
 const bot = new Slack({token})
 
@@ -52,7 +52,7 @@ bot.api.test({hyper:'card'}).then(console.log)
 Using `async`/`await` in Node 8.x:
 
 ```javascript
-let token = process.env.SLACKBOT_TOKEN
+let token = process.env.SLACK_BOT_TOKEN
 let Slack = require('slack')
 let bot = new Slack({token})
 
@@ -79,13 +79,12 @@ slack.dialog.open(options).catch(err => {
 Clone this repo and create a file called `.env` in the root with the following:
 
 ```
-SLACK_TOKEN=xxxx
 SLACK_BOT_TOKEN=xxxx
 SLACK_CLIENT_ID=xxxx
 SLACK_CLIENT_SECRET=xxxx
 ```
 
-You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the `channels:history` scope.
+You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the `channels:history` scope. You can [read about bot tokens here](https://api.slack.com/docs/token-types#bot).
 
 ## Testing :green_heart::green_heart::green_heart:
 

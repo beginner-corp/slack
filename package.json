@@ -14,6 +14,7 @@
     "test": "tape test/*-test.js | tap-spec",
     "cov": "nyc tape test/*-test.js",
     "btest": "./scripts/browser-test | browser-run | tap-spec",
+    "etest": "./scripts/electron-test | browser-run --node  | tap-spec",
     "generate": "./scripts/generate-api-json > src/api.json && ./scripts/generate-readme",
     "pkg": "./scripts/browser-pkg && jsmin -o slack.min.js slack.js && jsmin -o slack-testing.min.js slack-testing.js"
   },

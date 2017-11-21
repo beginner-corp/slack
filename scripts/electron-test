@@ -15,7 +15,7 @@ env(path.join(__dirname, '..', '.env'))
 
 // build the test suite and pipe to stdout
 browserify({entries})
+  .ignore('electron')
   .transform(envify)
-  .ignore('/src/_exec-electron.js')
   .bundle()
   .pipe(process.stdout)

@@ -9,6 +9,7 @@ var files = {
 }
 
 browserify('.')
+  .ignore('/src/_exec-electron.js')
   .transform('envify', {
     'NODE_ENV': 'production',
     'STENO_URL': false
@@ -17,6 +18,7 @@ browserify('.')
   .pipe(files.output)
 
 browserify('.')
+  .ignore('/src/_exec-electron.js')
   .transform('envify', {
     'NODE_ENV': 'testing',
     'STENO_URL': false

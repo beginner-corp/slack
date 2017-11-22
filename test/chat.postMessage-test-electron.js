@@ -1,5 +1,6 @@
 const test = require('tape')
 const Slack = require('..')
+const electron = require('electron')
 
 // load SLACK_BOT_TOKEN for testing
 var env = require('./_env')
@@ -8,7 +9,7 @@ env()
 test('can post a message', t=> {
   t.plan(1)
   let token = process.env.SLACK_BOT_TOKEN
-  let slack = new Slack({token, useElectronNet:true})
+  let slack = new Slack({token, useElectronNet:electron.remote.net})
   let text = 'test message'
   // list channels
   slack.channels.list({}, (err, json)=> {

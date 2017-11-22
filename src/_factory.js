@@ -20,7 +20,6 @@ module.exports = function factory(xxx) {
 
   // override exec to use electron.net via explicit opt-in
   if (xxx.useElectronNet) {
-    delete userElectronNet
     exec = electronExec(xxx)
   }
 

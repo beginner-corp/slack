@@ -3,8 +3,6 @@ var url = require('url')
 var validate = require('./_validate')
 var promisify = require('./_promisify')
 var origin = require('./_origin')
-var electron = require('electron')
-var net = electron? (electron.net || electron.remote? electron.remote.net : undefined) : undefined
 
 /**
  * returns a promise if callback isn't defined; _exec is the actual impl
@@ -82,7 +80,7 @@ function _post(options, callback) {
   opts.headers = options.headers || {}
   opts.headers['User-Agent'] = 'tiny-http'
 
-  var req = net.request(opts) 
+  var req = options.useElectronNet.request(opts) 
   var raw = []
 
   req.on('response', function _req(response) {

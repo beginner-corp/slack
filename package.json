@@ -8,6 +8,9 @@
     "./test/_env.js": "./test/_env-browser.js",
     "./src/_exec.js": "./src/_exec-browser.js"
   },
+  "nyc": {
+    "exclude": ["src/_exec-electron.js", "test"]
+  },
   "scripts": {
     "standalone": "browserify . --node --standalone slack > slack.node.js && jsmin -o slack.node.min.js slack.node.js",
     "start": "./scripts/repl",

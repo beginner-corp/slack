@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-var browserify = require('browserify')
-  , path       = require('path')
-  , fs         = require('fs')
+let browserify = require('browserify')
+let path = require('path')
+let = require('fs')
 
 var files = {
   output: fs.createWriteStream('slack.js'),

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-var browserify = require('browserify')
-  , envify     = require('envify')
-  , path       = require('path')
-  , glob       = require('glob')
-  , env        = require('node-env-file')
-  , fs         = require('fs')
-  , entries    = glob.sync('./test/*-test-electron.js')
+let browserify = require('browserify')
+let envify     = require('envify')
+let path       = require('path')
+let glob       = require('glob')
+let env        = require('node-env-file')
+let fs         = require('fs')
+let entries    = glob.sync('./test/*-test-electron.js')
 
 // add a window.close for the browser-run env
 entries.push(path.join(__dirname, '..', 'test', '_env-browser-close.js'))

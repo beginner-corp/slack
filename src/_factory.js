@@ -1,5 +1,6 @@
 var bind = require('./_bind')
 var exec = require('./_exec')
+var electronExec = require('./_exec-electron')
 
 /** 
  * factory returns a new instance of Slack
@@ -14,7 +15,13 @@ var exec = require('./_exec')
  */
 module.exports = function factory(xxx) {
   
+  // allow for empty params
   if (!xxx) xxx = {}
+
+  // override exec to use electron.net via explicit opt-in
+  if (xxx.useElectronNet) {
+    exec = electronExec(xxx)
+  }
 
   // Slack instance applies the token param to all the api methods
   class Slack {

@@ -88,6 +88,11 @@
     "channel",
     "ts"
   ],
+  "chat.getPermalink": [
+    "token",
+    "channel",
+    "message_ts"
+  ],
   "chat.meMessage": [
     "token",
     "channel",
@@ -345,6 +350,10 @@
     "channel",
     "thread_ts"
   ],
+  "migration.exchange": [
+    "token",
+    "users"
+  ],
   "mpim.close": [
     "token",
     "channel"
@@ -512,6 +521,10 @@
   ],
   "users.list": [
     "token"
+  ],
+  "users.lookupByEmail": [
+    "token",
+    "email"
   ],
   "users.setActive": [
     "token"

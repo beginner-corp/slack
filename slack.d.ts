@@ -288,6 +288,20 @@ declare namespace Chat.Delete {
   }
 }
 
+declare namespace Chat.GetPermalink {
+  export interface Params {
+    token: any
+    channel: any
+    message_ts: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
 declare namespace Chat.MeMessage {
   export interface Params {
     token: any
@@ -1085,6 +1099,19 @@ declare namespace Im.Replies {
   }
 }
 
+declare namespace Migration.Exchange {
+  export interface Params {
+    token: any
+    users: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
 declare namespace Mpim.Close {
   export interface Params {
     token: any
@@ -1658,6 +1685,19 @@ declare namespace Users.List {
   }
 }
 
+declare namespace Users.LookupByEmail {
+  export interface Params {
+    token: any
+    email: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
 declare namespace Users.SetActive {
   export interface Params {
     token: any
@@ -1783,6 +1823,8 @@ declare module "slack" {
   export let chat: {
     delete(params: Chat.Delete.Params): Promise<Chat.Delete.Response>
     delete(params: Chat.Delete.Params, callback: (params: Chat.Delete.Params) => void): void
+    getPermalink(params: Chat.GetPermalink.Params): Promise<Chat.GetPermalink.Response>
+    getPermalink(params: Chat.GetPermalink.Params, callback: (params: Chat.GetPermalink.Params) => void): void
     meMessage(params: Chat.MeMessage.Params): Promise<Chat.MeMessage.Response>
     meMessage(params: Chat.MeMessage.Params, callback: (params: Chat.MeMessage.Params) => void): void
     postEphemeral(params: Chat.PostEphemeral.Params): Promise<Chat.PostEphemeral.Response>
@@ -1928,6 +1970,11 @@ declare module "slack" {
     replies(params: Im.Replies.Params, callback: (params: Im.Replies.Params) => void): void
   }
   
+  export let migration: {
+    exchange(params: Migration.Exchange.Params): Promise<Migration.Exchange.Response>
+    exchange(params: Migration.Exchange.Params, callback: (params: Migration.Exchange.Params) => void): void
+  }
+  
   export let mpim: {
     close(params: Mpim.Close.Params): Promise<Mpim.Close.Response>
     close(params: Mpim.Close.Params, callback: (params: Mpim.Close.Params) => void): void
@@ -2053,6 +2100,8 @@ declare module "slack" {
     info(params: Users.Info.Params, callback: (params: Users.Info.Params) => void): void
     list(params: Users.List.Params): Promise<Users.List.Response>
     list(params: Users.List.Params, callback: (params: Users.List.Params) => void): void
+    lookupByEmail(params: Users.LookupByEmail.Params): Promise<Users.LookupByEmail.Response>
+    lookupByEmail(params: Users.LookupByEmail.Params, callback: (params: Users.LookupByEmail.Params) => void): void
     setActive(params: Users.SetActive.Params): Promise<Users.SetActive.Response>
     setActive(params: Users.SetActive.Params, callback: (params: Users.SetActive.Params) => void): void
     setPhoto(params: Users.SetPhoto.Params): Promise<Users.SetPhoto.Response>

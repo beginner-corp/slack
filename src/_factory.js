@@ -26,7 +26,7 @@ module.exports = function factory(xxx) {
   // Slack instance applies the token param to all the api methods
   class Slack {
     constructor() {
-      function _execWithToken(method, params, callback) {
+      function _execWithToken(method, params={}, callback) {
         params.token = params && params.token || xxx.token
         return exec(method, params, callback)
       }

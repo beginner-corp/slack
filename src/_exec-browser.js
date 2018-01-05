@@ -56,6 +56,11 @@ async function _exec(url, params, callback) {
       }
       callback(e)
     }
+    else if (res.status === 429) {
+      var e = Error('ratelimited')
+      e.retry = res.headers.get('retry-after')
+      callback(e)
+    }
     else {
       callback(null, json)
     }

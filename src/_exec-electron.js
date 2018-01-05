@@ -53,6 +53,11 @@ function _execFactory(options) {
         if (err) {
           callback(err)
         }
+        else if (res.statusCode === 429) {
+          var e = Error('ratelimited')
+          e.retry = res.headers['retry-after']
+          callback(e)
+        }
         else if (res.body && res.body.error) {
           var e = Error(res.body.error)
           if (res.body.response_metadata && res.body.response_metadata.messages) {

@@ -38,7 +38,7 @@ slack.api.test({hello:'world'}, console.log)
 slack.api.test({nice:1}).then(console.log).catch(console.log)
 ```
 
-Due to popular demand an OO style is now supported. For an instance of `Slack` all methods come prebound with the `token` parameter applied.
+Due to popular demand an OO style is supported. For an instance of `Slack` all methods come prebound with the `token` parameter applied.
 
 ```javascript
 const token = process.env.SLACK_BOT_TOKEN
@@ -63,15 +63,27 @@ let bot = new Slack({token})
 })()
 ```
 
-Choose whichever style works best for your project deployment needs and team preference. It is definitely worth examining what style is more concise, expressive and deterministic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
+Choose whichever style works best for your project deployment needs and team preference. :hearts::beer:
 
 ### Error Handling
+
 Some methods (like [`slack.dialog.open`](https://api.slack.com/methods/dialog.open)) provide additional context for errors through a `response_metadata` object. This will be exposed as a `messages` properties on the errors that are thrown.
 
 ```javascript
 slack.dialog.open(options).catch(err => {
   console.log(err.messages)
 })
+```
+
+### Specialized Electron Support
+
+Electron ships its own HTTP module called `electron.net` which can have better performance and proxy handling. You can opt into Electron support by passing `useElectronNet:true` to the `Slack` constructor.
+
+```javascript
+import {app, BrowserWindow, net} from 'electron'
+import Slack from 'slack'
+
+const slack = new Slack({useElectronNet:net})
 ```
 
 ### Test Setup :lock::key::point_left:
@@ -146,8 +158,8 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.conversations.open({token})`](https://api.slack.com/methods/conversations.open)
 - [`slack.conversations.rename({token, channel, name})`](https://api.slack.com/methods/conversations.rename)
 - [`slack.conversations.replies({token, channel, ts})`](https://api.slack.com/methods/conversations.replies)
-- [`slack.conversations.setPurpose({token, channel, purpose})`](https://api.slack.com/methods/conversations.setPurpose)
-- [`slack.conversations.setTopic({token, channel, topic})`](https://api.slack.com/methods/conversations.setTopic)
+- [`slack.conversations.setPurpose({})`](https://api.slack.com/methods/conversations.setPurpose)
+- [`slack.conversations.setTopic({})`](https://api.slack.com/methods/conversations.setTopic)
 - [`slack.conversations.unarchive({token, channel})`](https://api.slack.com/methods/conversations.unarchive)
 - [`slack.dialog.open({token, dialog, trigger_id})`](https://api.slack.com/methods/dialog.open)
 - [`slack.dnd.endDnd({token})`](https://api.slack.com/methods/dnd.endDnd)
@@ -219,7 +231,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.team.accessLogs({token})`](https://api.slack.com/methods/team.accessLogs)
 - [`slack.team.billableInfo({token})`](https://api.slack.com/methods/team.billableInfo)
 - [`slack.team.info({token})`](https://api.slack.com/methods/team.info)
-- [`slack.team.integrationLogs({token})`](https://api.slack.com/methods/team.integrationLogs)
+- [`slack.team.integrationLogs({})`](https://api.slack.com/methods/team.integrationLogs)
 - [`slack.team.profile.get({token})`](https://api.slack.com/methods/team.profile.get)
 - [`slack.usergroups.create({token, name})`](https://api.slack.com/methods/usergroups.create)
 - [`slack.usergroups.disable({token, usergroup})`](https://api.slack.com/methods/usergroups.disable)

@@ -38,7 +38,7 @@ slack.api.test({hello:'world'}, console.log)
 slack.api.test({nice:1}).then(console.log).catch(console.log)
 ```
 
-Due to popular demand an OO style is now supported. For an instance of `Slack` all methods come prebound with the `token` parameter applied.
+Due to popular demand an OO style is supported. For an instance of `Slack` all methods come prebound with the `token` parameter applied.
 
 ```javascript
 const token = process.env.SLACK_BOT_TOKEN
@@ -63,15 +63,27 @@ let bot = new Slack({token})
 })()
 ```
 
-Choose whichever style works best for your project deployment needs and team preference. It is definitely worth examining what style is more concise, expressive and deterministic. It is also worth noticing how these properties can change between runtime versions. :hearts::beer:
+Choose whichever style works best for your project deployment needs and team preference. :hearts::beer:
 
 ### Error Handling
+
 Some methods (like [`slack.dialog.open`](https://api.slack.com/methods/dialog.open)) provide additional context for errors through a `response_metadata` object. This will be exposed as a `messages` properties on the errors that are thrown.
 
 ```javascript
 slack.dialog.open(options).catch(err => {
   console.log(err.messages)
 })
+```
+
+### Specialized Electron Support
+
+Electron ships its own HTTP module called `electron.net` which can have better performance and proxy handling. You can opt into Electron support by passing `useElectronNet:true` to the `Slack` constructor.
+
+```javascript
+import {app, BrowserWindow, net} from 'electron'
+import Slack from 'slack'
+
+const slack = new Slack({useElectronNet:net})
 ```
 
 ### Test Setup :lock::key::point_left:

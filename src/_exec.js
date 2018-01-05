@@ -43,6 +43,12 @@ function _exec(url, form, callback) {
       data: form
     }, 
     function _res(err, res) {
+      if (err && err.message === 'POST failed with: 429') {
+        // workaround Slacks lack of symmetry not ours…
+        var e = Error('ratelimited')
+        e.retry = err.raw.headers['retry-after']
+        callback(e)
+      }
       if (err) {
         callback(err)
       }

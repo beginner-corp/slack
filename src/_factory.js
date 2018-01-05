@@ -27,7 +27,7 @@ module.exports = function factory(xxx) {
   class Slack {
     constructor() {
       function _execWithToken(method, params, callback) {
-        params.token = params.token || xxx.token
+        params.token = params && params.token || xxx.token
         return exec(method, params, callback)
       }
       // bind applies the above method to this obj

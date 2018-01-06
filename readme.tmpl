@@ -77,14 +77,26 @@ slack.dialog.open(options).catch(err => {
 
 ### Specialized Electron Support
 
-Electron ships its own HTTP module called `electron.net` which can have better performance and proxy handling. You can opt into Electron support by passing `useElectronNet:true` to the `Slack` constructor.
+Electron ships its own HTTP module called `electron.net` which can have better performance and offers more extensive HTTP proxy handling. You can opt into Electron support by passing `useElectronNet:true` to the `Slack` constructor.
 
 ```javascript
 import {app, BrowserWindow, net} from 'electron'
 import Slack from 'slack'
 
-const slack = new Slack({useElectronNet:net})
+const slack = new Slack({useElectronNet:true})
 ```
+
+You can setup an HTTP authentication proxy logic by passing `login` to the constructor. 
+
+```javascript
+function login(authInfo, callback) {
+  callback('username', 'password')
+}
+
+const slack = new Slack({useElectronNet:true, login})
+```
+
+[Read more about `electron.net` from the source!](https://github.com/electron/electron/blob/master/docs/api/net.md)
 
 ### Test Setup :lock::key::point_left:
 

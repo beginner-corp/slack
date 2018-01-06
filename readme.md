@@ -77,14 +77,26 @@ slack.dialog.open(options).catch(err => {
 
 ### Specialized Electron Support
 
-Electron ships its own HTTP module called `electron.net` which can have better performance and proxy handling. You can opt into Electron support by passing `useElectronNet:true` to the `Slack` constructor.
+Electron ships its own HTTP module called `electron.net` which can have better performance and offers more extensive HTTP proxy handling. You can opt into Electron support by passing `useElectronNet:true` to the `Slack` constructor.
 
 ```javascript
 import {app, BrowserWindow, net} from 'electron'
 import Slack from 'slack'
 
-const slack = new Slack({useElectronNet:net})
+const slack = new Slack({useElectronNet:true})
 ```
+
+You can setup an HTTP authentication proxy logic by passing `login` to the constructor. 
+
+```javascript
+function login(authInfo, callback) {
+  callback('username', 'password')
+}
+
+const slack = new Slack({useElectronNet:true, login})
+```
+
+[Read more about `electron.net` from the source!](https://github.com/electron/electron/blob/master/docs/api/net.md)
 
 ### Test Setup :lock::key::point_left:
 
@@ -158,8 +170,8 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.conversations.open({token})`](https://api.slack.com/methods/conversations.open)
 - [`slack.conversations.rename({token, channel, name})`](https://api.slack.com/methods/conversations.rename)
 - [`slack.conversations.replies({token, channel, ts})`](https://api.slack.com/methods/conversations.replies)
-- [`slack.conversations.setPurpose({})`](https://api.slack.com/methods/conversations.setPurpose)
-- [`slack.conversations.setTopic({})`](https://api.slack.com/methods/conversations.setTopic)
+- [`slack.conversations.setPurpose({token, channel, purpose})`](https://api.slack.com/methods/conversations.setPurpose)
+- [`slack.conversations.setTopic({token, channel, topic})`](https://api.slack.com/methods/conversations.setTopic)
 - [`slack.conversations.unarchive({token, channel})`](https://api.slack.com/methods/conversations.unarchive)
 - [`slack.dialog.open({token, dialog, trigger_id})`](https://api.slack.com/methods/dialog.open)
 - [`slack.dnd.endDnd({token})`](https://api.slack.com/methods/dnd.endDnd)
@@ -231,7 +243,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.team.accessLogs({token})`](https://api.slack.com/methods/team.accessLogs)
 - [`slack.team.billableInfo({token})`](https://api.slack.com/methods/team.billableInfo)
 - [`slack.team.info({token})`](https://api.slack.com/methods/team.info)
-- [`slack.team.integrationLogs({})`](https://api.slack.com/methods/team.integrationLogs)
+- [`slack.team.integrationLogs({token})`](https://api.slack.com/methods/team.integrationLogs)
 - [`slack.team.profile.get({token})`](https://api.slack.com/methods/team.profile.get)
 - [`slack.usergroups.create({token, name})`](https://api.slack.com/methods/usergroups.create)
 - [`slack.usergroups.disable({token, usergroup})`](https://api.slack.com/methods/usergroups.disable)

@@ -561,6 +561,9 @@ declare namespace Conversations.Replies {
 
 declare namespace Conversations.SetPurpose {
   export interface Params {
+    token: any
+    channel: any
+    purpose: any
     [optional: string]: any
   }
   
@@ -572,6 +575,9 @@ declare namespace Conversations.SetPurpose {
 
 declare namespace Conversations.SetTopic {
   export interface Params {
+    token: any
+    channel: any
+    topic: any
     [optional: string]: any
   }
   
@@ -1504,6 +1510,7 @@ declare namespace Team.Info {
 
 declare namespace Team.IntegrationLogs {
   export interface Params {
+    token: any
     [optional: string]: any
   }
   

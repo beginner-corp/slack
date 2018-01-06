@@ -179,8 +179,16 @@
     "channel",
     "ts"
   ],
-  "conversations.setPurpose": [],
-  "conversations.setTopic": [],
+  "conversations.setPurpose": [
+    "token",
+    "channel",
+    "purpose"
+  ],
+  "conversations.setTopic": [
+    "token",
+    "channel",
+    "topic"
+  ],
   "conversations.unarchive": [
     "token",
     "channel"
@@ -463,7 +471,9 @@
   "team.info": [
     "token"
   ],
-  "team.integrationLogs": [],
+  "team.integrationLogs": [
+    "token"
+  ],
   "team.profile.get": [
     "token"
   ],

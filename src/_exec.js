@@ -49,7 +49,7 @@ function _exec(url, form, callback) {
         e.retry = err.raw.headers['retry-after']
         callback(e)
       }
-      if (err) {
+      else if (err) {
         callback(err)
       }
       else if (res.body && res.body.error) {

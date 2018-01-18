@@ -27,18 +27,24 @@ function _exec(url, form, callback) {
   }
   else {
   
-    // stringify any objects under keys since form is posted as application/x-www-form-urlencoded
-    Object.keys(form).forEach(function (key) {
-      if (typeof form[key] === 'object') {
-        form[key] = JSON.stringify(form[key])
-      }
-    })
+    // api.slack.com/files.upload requires multipart/form-data post
+    // which means we need to do a few things differently…
+    var isUploading = /files.upload/.test(url)
+
+    // stringify any objects under keys when application/x-www-form-urlencoded
+    if (!isUploading) {
+      Object.keys(form).forEach(function (key) {
+        if (typeof form[key] === 'object') {
+          form[key] = JSON.stringify(form[key])
+        }
+      })
+    }
 
     // always post to slack
     http.post({
       url: `${origin}/api/${url}`,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': isUploading? 'multipart/form-data' : 'application/x-www-form-urlencoded'
       },
       data: form
     }, 

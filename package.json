@@ -15,7 +15,7 @@
     ]
   },
   "scripts": {
-    "standalone": "browserify . --node --standalone slack > slack.node.js && jsmin -o slack.node.min.js slack.node.js",
+    "standalone": "browserify . --im --node --standalone slack > slack.node.js && jsmin -o slack.node.min.js slack.node.js",
     "start": "./scripts/repl",
     "test": "tape test/*-test.js | tap-spec",
     "cov": "nyc tape test/*-test.js",

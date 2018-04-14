@@ -43,10 +43,22 @@ function Export(code) {
   return `export ${code}`
 }
 
+function ModuleExport(code) {
+  return `export = ${code}`
+}
+
 function Interface(name, props) {
   return (`
     interface ${name} {
       ${props.map(KeyValue).join("\n")}
+    }
+  `).trim()
+}
+
+function Class(name, members) {
+  return (`
+    class ${name} {
+      ${members.map(KeyValue).join(";\n")}
     }
   `).trim()
 }
@@ -60,13 +72,13 @@ function ObjectLiteral(props) {
 }
 
 function KeyValue(kv) {
-  return `${kv.key}: ${kv.value}`
+  return `${kv.key}${kv.op || ": "}${kv.value}`
 }
 
-function Module(name, lets) {
+function Module(name, statements) {
   return (`
     declare module "${name}" {
-      ${lets.map(Export).join('\n\n')}
+      ${statements.join('\n\n')}
     }
   `).trim()
 }
@@ -227,11 +239,22 @@ function createDeclarations() {
     ])
   })
 
-  let exported = Module('slack', keys(tree).map(key => {
-    let value = tree[key]
-    let props = types(value)
-    return Let(key, ObjectLiteral(props))
-  }))
+  let exported = Module('slack', [
+    ModuleExport(
+      Class("Slack", [
+        Property("token", "string"),
+        Method("constructor", ["token"], "void"),
+        ...flatten(keys(tree).map(key => {
+          let value = tree[key]
+          let props = types(value)
+          return [
+            { key: `static ${key}`, value: ObjectLiteral(props), op: " = " },
+            { key, value: ObjectLiteral(props), op: " = " }
+          ];
+        }))
+      ])
+    )
+  ]);
 
   return File(namespaces.concat(exported))
 }

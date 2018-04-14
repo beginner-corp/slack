@@ -228,6 +228,7 @@ function createDeclarations() {
 
     return Namespace(name, [
       Interface('Params', params.map(param => {
+        if (param === "token") param = "token?";
         return { key: param, value: 'any' }
       }).concat([
         { key: '[optional: string]', value: 'any' }

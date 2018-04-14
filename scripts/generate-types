@@ -194,13 +194,13 @@ function types(value) {
       Method(
         value.func,
         [Argument('params', `${value.name}.Params`)],
-        Generic('Promise', `${value.name}.Response`)
+        Generic('Promise', `Base.Response`)
       ),
       Method(
         value.func,
         [
           Argument('params', `${value.name}.Params`),
-          Argument('callback', `(params: ${value.name}.Params) => void`),
+          Argument('callback', `(params: Base.Response) => void`),
         ],
         'void',
       ),
@@ -222,21 +222,25 @@ function types(value) {
 function createDeclarations() {
   let tree = apiToTree()
 
+  let base = Namespace("Base", [
+    Interface('Params', [
+      Property("[optional: string]", "any")
+    ]),
+    Interface('Response', [
+      { key: 'ok', value: 'boolean' },
+      { key: '[key: string]', value: 'any' }
+    ])
+  ])
+
   let namespaces = keys(api).map(method => {
     let name = method.split(".").map(capitalize).join(".")
     let params = api[method]
 
     return Namespace(name, [
-      Interface('Params', params.map(param => {
-        if (param === "token") param = "token?";
+      Interface('Params extends Base.Params', params.map(param => {
+        if (param === "token") param = "token?"
         return { key: param, value: 'any' }
-      }).concat([
-        { key: '[optional: string]', value: 'any' }
-      ])),
-      Interface('Response', [
-        { key: 'ok', value: 'boolean' },
-        { key: '[key: string]', value: 'any' }
-      ])
+      }))
     ])
   })
 
@@ -244,20 +248,19 @@ function createDeclarations() {
     ModuleExport(
       Class("Slack", [
         Property("token", "string"),
-        Method("constructor", ["token"], "void"),
-        ...flatten(keys(tree).map(key => {
-          let value = tree[key]
-          let props = types(value)
-          return [
-            { key: `static ${key}`, value: ObjectLiteral(props), op: " = " },
-            { key, value: ObjectLiteral(props), op: " = " }
-          ];
-        }))
-      ])
+        Method("constructor", ["token"], "void")
+      ].concat(flatten(keys(tree).map(key => {
+        let value = tree[key]
+        let props = types(value)
+        return [
+          { key: `static ${key}`, value: ObjectLiteral(props), op: " = " },
+          { key, value: ObjectLiteral(props), op: " = " }
+        ]
+      }))))
     )
-  ]);
+  ])
 
-  return File(namespaces.concat(exported))
+  return File([base, ...namespaces, ...exported])
 }
 
 let outfile = path.resolve(__dirname, '../slack.d.ts')

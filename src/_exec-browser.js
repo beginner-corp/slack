@@ -2,6 +2,13 @@ let validate = require('./_validate')
 let origin = require('./_origin')
 let encode = encodeURIComponent
 let serialize = o=> Object.keys(o).map(k=> encode(k) + '=' + encode(o[k])).join('&')
+let makeform = o => {
+  let form = new FormData()
+  Object.keys(o).forEach(k => {
+    form.append(k, o[k])
+  })
+  return form
+}
 
 /**
  * returns a promise if callback isn't defined; _exec is the actual impl
@@ -13,7 +20,7 @@ module.exports = function exec(url, params, callback) {
         if (err) {
           reject(err)
         }
-        else { 
+        else {
           resolve(res)
         }
       })
@@ -30,20 +37,34 @@ async function _exec(url, params, callback) {
     var err = validate(url, params)
     if (err) throw err
 
-    // stringify any objects under keys since form 
-    // is posted as application/x-www-form-urlencoded
-    Object.keys(params).forEach(function (key) {
-      if (typeof params[key] === 'object') {
-        params[key] = JSON.stringify(params[key])
-      }
-    })
+    var isUploading = /files.upload/.test(url)
+    var f
+    var opts
 
-    var opts = {
-      method: 'POST', 
-      headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }),
-      body: serialize(params)
+    if (!isUploading) {
+      // stringify any objects under keys since form
+      // is posted as application/x-www-form-urlencoded
+      Object.keys(params).forEach(function (key) {
+        if (typeof params[key] === 'object') {
+          params[key] = JSON.stringify(params[key])
+        }
+      })
+      opts = {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }),
+        body: serialize(params)
+      }
+    } else {
+      // make it into FormData
+      // leave content-type undefined so it would be automatically
+      // set as multipart/form-data; boundary='boundary'
+      let form = makeform(params)
+      opts = {
+        method: 'POST',
+        body:form
+      }
     }
 
     var res = await fetch(`${origin}/api/${url}`, opts)

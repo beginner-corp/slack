@@ -38,33 +38,17 @@ async function _exec(url, params, callback) {
     if (err) throw err
 
     var isUploading = /files.upload/.test(url)
-    var f
-    var opts
 
+    var opts = {
+      method: 'POST',
+      body: isUploading ? makeform(params) : serialize(params)
+    }
+
+    // leave headers undefined for multipart/form-data
     if (!isUploading) {
-      // stringify any objects under keys since form
-      // is posted as application/x-www-form-urlencoded
-      Object.keys(params).forEach(function (key) {
-        if (typeof params[key] === 'object') {
-          params[key] = JSON.stringify(params[key])
-        }
+      opts.headers = new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded'
       })
-      opts = {
-        method: 'POST',
-        headers: new Headers({
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }),
-        body: serialize(params)
-      }
-    } else {
-      // make it into FormData
-      // leave content-type undefined so it would be automatically
-      // set as multipart/form-data; boundary='boundary'
-      let form = makeform(params)
-      opts = {
-        method: 'POST',
-        body:form
-      }
     }
 
     var res = await fetch(`${origin}/api/${url}`, opts)

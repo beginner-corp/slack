@@ -7,12 +7,23 @@ var origin = require('./_origin')
  * returns a promise if callback isn't defined; _exec is the actual impl
  */
 module.exports = function exec(url, form, callback) {
+  // get call stack trace in case we throw later
+  var trace = new Error()
+
   if (!callback) {
     var pfy = promisify(_exec)
-    return pfy(url, form)
+    return pfy(url, form).catch(function(err) {
+      err.stack = trace.stack.replace(/^Error/, "Error: " + err.message)
+      throw err
+    })
   }
   else {
-    _exec(url, form, callback)
+    _exec(url, form, function(err, res) {
+      if (err) {
+        err.stack = trace.stack.replace(/^Error/, "Error: " + err.message)
+      }
+      callback(err, res)
+    })
   }
 }
 

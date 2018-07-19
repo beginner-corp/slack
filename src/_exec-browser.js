@@ -14,10 +14,14 @@ let makeform = o => {
  * returns a promise if callback isn't defined; _exec is the actual impl
  */
 module.exports = function exec(url, params, callback) {
+  // get call stack trace in case we throw later
+  var trace = new Error()
+
   if (!callback) {
     return new Promise(function(resolve, reject) {
       _exec(url, params, function __exec(err, res) {
         if (err) {
+          err.stack = trace.stack.replace(/^Error/, "Error: " + err.message)
           reject(err)
         }
         else {
@@ -27,7 +31,12 @@ module.exports = function exec(url, params, callback) {
     })
   }
   else {
-    _exec(url, params, callback)
+    _exec(url, params, function(err, res) {
+      if (err) {
+        err.stack = trace.stack.replace(/^Error/, "Error: " + err.message)
+      }
+      callback(err, res)
+    })
   }
 }
 

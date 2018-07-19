@@ -8,14 +8,25 @@ var origin = require('./_origin')
  * returns a promise if callback isn't defined; _exec is the actual impl
  */
 module.exports = function electronFactory(options) {
+  // get call stack trace in case we throw later
+  var trace = new Error()
+
   var exec = _execFactory(options)
   return function _execElectron(url, form, callback) {
     if (!callback) {
       var pfy = promisify(exec)
-      return pfy(url, form)
+      return pfy(url, form).catch(function(err) {
+        err.stack = trace.stack.replace(/^Error/, "Error: " + err.message)
+        throw err
+      })
     }
     else {
-      exec(url, form, callback)
+      exec(url, form, function(err, res) {
+        if (err) {
+          err.stack = trace.stack.replace(/^Error/, "Error: " + err.message)
+        }
+        callback(err, res)
+      })
     }
   }
 }

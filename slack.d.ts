@@ -37,6 +37,57 @@ declare namespace Apps.Permissions.Request {
   }
 }
 
+declare namespace Apps.Permissions.Resources.List {
+  export interface Params {
+    token: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
+declare namespace Apps.Permissions.Scopes.List {
+  export interface Params {
+    token: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
+declare namespace Apps.Permissions.Users.List {
+  export interface Params {
+    token: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
+declare namespace Apps.Permissions.Users.Request {
+  export interface Params {
+    token: any
+    scopes: any
+    trigger_id: any
+    user: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
 declare namespace Auth.Revoke {
   export interface Params {
     token: any
@@ -1623,6 +1674,18 @@ declare namespace Usergroups.Users.Update {
   }
 }
 
+declare namespace Users.Conversations {
+  export interface Params {
+    token: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
 declare namespace Users.DeletePhoto {
   export interface Params {
     token: any
@@ -1772,6 +1835,20 @@ declare module "slack" {
       info(params: Apps.Permissions.Info.Params, callback: (params: Apps.Permissions.Info.Params) => void): void
       request(params: Apps.Permissions.Request.Params): Promise<Apps.Permissions.Request.Response>
       request(params: Apps.Permissions.Request.Params, callback: (params: Apps.Permissions.Request.Params) => void): void
+      resources: {
+        list(params: Apps.Permissions.Resources.List.Params): Promise<Apps.Permissions.Resources.List.Response>
+        list(params: Apps.Permissions.Resources.List.Params, callback: (params: Apps.Permissions.Resources.List.Params) => void): void
+      }
+      scopes: {
+        list(params: Apps.Permissions.Scopes.List.Params): Promise<Apps.Permissions.Scopes.List.Response>
+        list(params: Apps.Permissions.Scopes.List.Params, callback: (params: Apps.Permissions.Scopes.List.Params) => void): void
+      }
+      users: {
+        list(params: Apps.Permissions.Users.List.Params): Promise<Apps.Permissions.Users.List.Response>
+        list(params: Apps.Permissions.Users.List.Params, callback: (params: Apps.Permissions.Users.List.Params) => void): void
+        request(params: Apps.Permissions.Users.Request.Params): Promise<Apps.Permissions.Users.Request.Response>
+        request(params: Apps.Permissions.Users.Request.Params, callback: (params: Apps.Permissions.Users.Request.Params) => void): void
+      }
     }
   }
   
@@ -2090,6 +2167,8 @@ declare module "slack" {
   }
   
   export let users: {
+    conversations(params: Users.Conversations.Params): Promise<Users.Conversations.Response>
+    conversations(params: Users.Conversations.Params, callback: (params: Users.Conversations.Params) => void): void
     deletePhoto(params: Users.DeletePhoto.Params): Promise<Users.DeletePhoto.Response>
     deletePhoto(params: Users.DeletePhoto.Params, callback: (params: Users.DeletePhoto.Params) => void): void
     getPresence(params: Users.GetPresence.Params): Promise<Users.GetPresence.Response>

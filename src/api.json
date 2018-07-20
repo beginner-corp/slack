@@ -8,6 +8,21 @@
     "scopes",
     "trigger_id"
   ],
+  "apps.permissions.resources.list": [
+    "token"
+  ],
+  "apps.permissions.scopes.list": [
+    "token"
+  ],
+  "apps.permissions.users.list": [
+    "token"
+  ],
+  "apps.permissions.users.request": [
+    "token",
+    "scopes",
+    "trigger_id",
+    "user"
+  ],
   "auth.revoke": [
     "token"
   ],
@@ -504,6 +519,9 @@
     "token",
     "usergroup",
     "users"
+  ],
+  "users.conversations": [
+    "token"
   ],
   "users.deletePhoto": [
     "token"

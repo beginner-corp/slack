@@ -131,6 +131,10 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.api.test({})`](https://api.slack.com/methods/api.test)
 - [`slack.apps.permissions.info({token})`](https://api.slack.com/methods/apps.permissions.info)
 - [`slack.apps.permissions.request({token, scopes, trigger_id})`](https://api.slack.com/methods/apps.permissions.request)
+- [`slack.apps.permissions.resources.list({token})`](https://api.slack.com/methods/apps.permissions.resources.list)
+- [`slack.apps.permissions.scopes.list({token})`](https://api.slack.com/methods/apps.permissions.scopes.list)
+- [`slack.apps.permissions.users.list({token})`](https://api.slack.com/methods/apps.permissions.users.list)
+- [`slack.apps.permissions.users.request({token, scopes, trigger_id, user})`](https://api.slack.com/methods/apps.permissions.users.request)
 - [`slack.auth.revoke({token})`](https://api.slack.com/methods/auth.revoke)
 - [`slack.auth.test({token})`](https://api.slack.com/methods/auth.test)
 - [`slack.bots.info({token})`](https://api.slack.com/methods/bots.info)
@@ -252,6 +256,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.usergroups.update({token, usergroup})`](https://api.slack.com/methods/usergroups.update)
 - [`slack.usergroups.users.list({token, usergroup})`](https://api.slack.com/methods/usergroups.users.list)
 - [`slack.usergroups.users.update({token, usergroup, users})`](https://api.slack.com/methods/usergroups.users.update)
+- [`slack.users.conversations({token})`](https://api.slack.com/methods/users.conversations)
 - [`slack.users.deletePhoto({token})`](https://api.slack.com/methods/users.deletePhoto)
 - [`slack.users.getPresence({token, user})`](https://api.slack.com/methods/users.getPresence)
 - [`slack.users.identity({token})`](https://api.slack.com/methods/users.identity)
@@ -275,4 +280,3 @@ npm run generate
 
 Portions of this README are generated as well; to make edits, update `readme.tmpl`
 and run the same command :cloud::umbrella::sunny::sunflower:.
- 

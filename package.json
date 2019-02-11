@@ -1,6 +1,6 @@
 {
   "name": "slack",
-  "version": "11.0.1",
+  "version": "11.0.2",
   "description": "Slack API client written in JS",
   "main": "index",
   "types": "./slack.d.ts",

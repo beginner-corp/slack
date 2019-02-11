@@ -135,6 +135,7 @@ The entire Slack Web API is supported. All method signatures accept a `params` o
 - [`slack.apps.permissions.scopes.list({token})`](https://api.slack.com/methods/apps.permissions.scopes.list)
 - [`slack.apps.permissions.users.list({token})`](https://api.slack.com/methods/apps.permissions.users.list)
 - [`slack.apps.permissions.users.request({token, scopes, trigger_id, user})`](https://api.slack.com/methods/apps.permissions.users.request)
+- [`slack.apps.uninstall({token, client_id, client_secret})`](https://api.slack.com/methods/apps.uninstall)
 - [`slack.auth.revoke({token})`](https://api.slack.com/methods/auth.revoke)
 - [`slack.auth.test({token})`](https://api.slack.com/methods/auth.test)
 - [`slack.bots.info({token})`](https://api.slack.com/methods/bots.info)

@@ -23,6 +23,11 @@
     "trigger_id",
     "user"
   ],
+  "apps.uninstall": [
+    "token",
+    "client_id",
+    "client_secret"
+  ],
   "auth.revoke": [
     "token"
   ],

@@ -88,6 +88,20 @@ declare namespace Apps.Permissions.Users.Request {
   }
 }
 
+declare namespace Apps.Uninstall {
+  export interface Params {
+    token: any
+    client_id: any
+    client_secret: any
+    [optional: string]: any
+  }
+  
+  export interface Response {
+    ok: boolean
+    [key: string]: any
+  }
+}
+
 declare namespace Auth.Revoke {
   export interface Params {
     token: any
@@ -1850,6 +1864,8 @@ declare module "slack" {
         request(params: Apps.Permissions.Users.Request.Params, callback: (params: Apps.Permissions.Users.Request.Params) => void): void
       }
     }
+    uninstall(params: Apps.Uninstall.Params): Promise<Apps.Uninstall.Response>
+    uninstall(params: Apps.Uninstall.Params, callback: (params: Apps.Uninstall.Params) => void): void
   }
   
   export let auth: {

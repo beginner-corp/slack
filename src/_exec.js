@@ -1,4 +1,4 @@
-var http = require('tiny-json-http')
+var http = require('http')
 var validate = require('./_validate')
 var promisify = require('./_promisify')
 var origin = require('./_origin')

@@ -43,7 +43,7 @@
     "async": "^2.1.2",
     "browser-run": "^5.0.1",
     "browserify": "^16.2.3",
-    "chalk": "^1.1.1",
+    "chalk": "^3.0.0",
     "cheerio": "^0.22.0",
     "envify": "^4.1.0",
     "glob": "^7.1.3",

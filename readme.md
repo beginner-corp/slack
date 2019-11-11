@@ -86,7 +86,7 @@ import Slack from 'slack'
 const slack = new Slack({useElectronNet:true})
 ```
 
-You can setup an HTTP authentication proxy logic by passing `login` to the constructor. 
+You can setup an HTTP authentication proxy logic by passing `login` to the constructor.
 
 ```javascript
 function login(authInfo, callback) {
@@ -108,7 +108,16 @@ SLACK_CLIENT_ID=xxxx
 SLACK_CLIENT_SECRET=xxxx
 ```
 
-You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the `channels:history` scope. You can [read about bot tokens here](https://api.slack.com/docs/token-types#bot).
+You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the following scopes:
+
+- `channels:history`
+- `channels:read`
+- `chat:write:bot`
+- `team:read`
+- `users:read`
+
+You can [read about bot tokens here](https://api.slack.com/docs/token-types#bot).
+
 
 ## Testing :green_heart::green_heart::green_heart:
 

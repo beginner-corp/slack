@@ -10,8 +10,13 @@ const entries = glob.sync('./test/*-test.js')
 // add a window.close for the browser-run env
 entries.push(path.join(__dirname, '..', 'test', '_env-browser-close.js'))
 
-// load up the env vars
-env(path.join(__dirname, '..', '.env'))
+let hasVars = process.env.SLACK_BOT_TOKEN &&
+              process.env.SLACK_CLIENT_ID &&
+              process.env.SLACK_CLIENT_SECRET
+if (!hasVars) {
+  // load up the env vars
+  env(path.join(__dirname, '..', '.env'))
+}
 
 // build the test suite and pipe to stdout
 browserify({entries})

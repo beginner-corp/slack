@@ -37,14 +37,14 @@ jobs:
           SLACK_CLIENT_SECRET: ${{ secrets.SLACK_CLIENT_SECRET }}
 
       - name: Test (browser)
-        run: npm btest
+        run: npm run btest
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CLIENT_ID: ${{ secrets.SLACK_CLIENT_ID }}
           SLACK_CLIENT_SECRET: ${{ secrets.SLACK_CLIENT_SECRET }}
 
       - name: Test (Electron)
-        run: npm etest
+        run: npm run etest
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CLIENT_ID: ${{ secrets.SLACK_CLIENT_ID }}

@@ -7,8 +7,13 @@ repl = require('repl')
 chalk = require('chalk')
 env = require('node-env-file')
 
-// read secrets and interpolate with process.env
-env(path.join(process.cwd(), '.env'))
+let hasVars = process.env.SLACK_BOT_TOKEN &&
+              process.env.SLACK_CLIENT_ID &&
+              process.env.SLACK_CLIENT_SECRET
+if (!hasVars) {
+  // load up the env vars
+  env(path.join(__dirname, '..', '.env'))
+}
 
 // setup the repl
 prompt = chalk.green('#!/slack> ')

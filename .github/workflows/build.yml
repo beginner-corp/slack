@@ -1,0 +1,52 @@
+name: Node CI
+
+# Push tests commits; pull_request tests PR merges
+on: [push, pull_request]
+
+jobs:
+
+  # Test the build
+  build:
+    # Setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    # Go
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Version
+        run: node --version
+
+      - name: Install
+        run: npm install
+
+      - name: Test (module)
+        run: npm test
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CLIENT_ID: ${{ secrets.SLACK_CLIENT_ID }}
+          SLACK_CLIENT_SECRET: ${{ secrets.SLACK_CLIENT_SECRET }}
+
+      ## These are currently breaking for unknown reasons; re-enable when possible!
+      # - name: Test (browser)
+      #   run: npm run btest -ddd
+      #   env:
+      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      #     SLACK_CLIENT_ID: ${{ secrets.SLACK_CLIENT_ID }}
+      #     SLACK_CLIENT_SECRET: ${{ secrets.SLACK_CLIENT_SECRET }}
+
+      # - name: Test (Electron)
+      #   run: npm run etest -ddd
+      #   env:
+      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      #     SLACK_CLIENT_ID: ${{ secrets.SLACK_CLIENT_ID }}
+      #     SLACK_CLIENT_SECRET: ${{ secrets.SLACK_CLIENT_SECRET }}

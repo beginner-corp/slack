@@ -1,0 +1,25 @@
+#! /usr/bin/env node
+
+let fs = require('fs')
+let {join} = require('path')
+
+let packageFile = join(__dirname, '..', 'package.json')
+let packageLockFile = join(__dirname, '..', 'package-lock.json')
+
+;(function updateName () {
+  let name = process.argv.slice(2)[0]
+  if (!name.length) throw Error('Please provide a package name')
+
+  let read = f => JSON.parse(fs.readFileSync(f).toString())
+  let package = read(packageFile)
+  let packageLock = read(packageLockFile)
+
+  package.name = name
+  packageLock.name = name
+
+  let write = (p,d) => fs.writeFileSync(p, JSON.stringify(d, null, 2))
+  write(packageFile, package)
+  write(packageLockFile, packageLock)
+
+  console.log('Updated package names to:', name)
+})()

@@ -23,8 +23,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Version
-        run: node --version
+      - name: Env
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Git ref:    ${{ github.ref }}"
+          echo "GH actor:   ${{ github.actor }}"
+          echo "SHA:        ${{ github.sha }}"
+          VER=`node --version`; echo "Node ver:   $VER"
+          VER=`npm --version`; echo "npm ver:    $VER"
 
       - name: Install
         run: npm install
@@ -50,3 +56,79 @@ jobs:
       #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
       #     SLACK_CLIENT_ID: ${{ secrets.SLACK_CLIENT_ID }}
       #     SLACK_CLIENT_SECRET: ${{ secrets.SLACK_CLIENT_SECRET }}
+
+      - name: Notify
+        uses: homoluctus/slatify@master
+        # Only fire alert once
+        if: github.ref == 'refs/heads/master' && failure() && matrix.node-version == '10.x' && matrix.os == 'ubuntu-latest'
+        with:
+          type: ${{ job.status }}
+          job_name: '*Build*'
+          url: ${{ secrets.SLACK_WEBHOOK }}
+
+  # ----- Only git tag testing + package publishing beyond this point ----- #
+
+  # Publish to package registries
+  publish:
+    # Setup
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+
+    # Go
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install
+        run: npm ci
+
+      # Publish to npm
+      - name: Publish @RC to npm
+        if: contains(github.ref, 'RC')
+        run: npm publish --tag RC
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @latest to npm
+        if: contains(github.ref, 'RC') == false #'!contains()'' doesn't work lol
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Set up Node again, this time using GitHub as the publish target
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: https://npm.pkg.github.com/
+
+      # Change package org (@smallwins on GitHub vs @begin on NPM)
+      - name: Change package name
+        run: scripts/change-package-name @smallwins/slack
+
+      # Publish to GitHub
+      - name: Publish @RC to GitHub
+        if: contains(github.ref, 'RC')
+        run: npm publish --tag RC
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish @latest to GitHub
+        if: contains(github.ref, 'RC') == false #'!contains()'' doesn't work lol
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify
+        uses: homoluctus/slatify@master
+        if: always()
+        with:
+          type: ${{ job.status }}
+          job_name: '*Publish*'
+          url: ${{ secrets.SLACK_WEBHOOK }}

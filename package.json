@@ -49,7 +49,7 @@
     "envify": "^4.1.0",
     "glob": "^7.1.6",
     "jsmin": "^1.0.1",
-    "mustache": "^3.1.0",
+    "mustache": "^4.0.0",
     "node-env-file": "^0.1.8",
     "nyc": "^14.1.1",
     "request": "^2.88.0",

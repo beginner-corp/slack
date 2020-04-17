@@ -21,13 +21,11 @@ function getMethodSignature(ns, callback) {
     var sig = {}
     sig[ns] = []
     var $ = cheerio.load(res.body)
-    $('table.arguments').first().children('tr').each(function(i) {
+    $('.method_arguments').first().children('.method_argument').each(function(i) {
       var arg = {}
-      $(this).children('td').each(function(index) {
-        // figure out which thing we are getting 
-        var meta = 'name example required description'.split(' ')
-        arg[meta[index]] = $(this).text()
-      })
+      arg['name'] = $(this).find($('.arg_name')).text();
+      arg['required'] = $(this).find($('.arg_required')).text();
+
       if (Object.keys(arg).length != 0) {
         sig[ns].push(arg)
       }
@@ -42,7 +40,7 @@ function getAPI() {
     async.map(methods, getMethodSignature, (err, results)=> {
       results.forEach(method=> {
         function optionals(attr) {
-          return attr.required === 'Required' 
+          return attr.required === 'Required'
         }
         function cleanup(attr) {
           return attr.name

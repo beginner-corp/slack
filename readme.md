@@ -118,7 +118,6 @@ You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You n
 
 You can [read about bot tokens here](https://api.slack.com/docs/token-types#bot).
 
-
 ## Testing :green_heart::green_heart::green_heart:
 
 :point_right: In Node:

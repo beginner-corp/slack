@@ -3,8 +3,8 @@
 </h1>
 <p align="center" style="font-size: 1.2rem;">
   <a href=https://www.npmjs.com/package/slack><img alt=npm src=https://badge.fury.io/js/slack.svg></a>
-  <a href=https://codeship.com/projects/121411><img alt=codeship src=https://img.shields.io/codeship/3fd641e0-81f4-0133-c733-22940a7a47c6.svg></a>
-  <a href=><img alt="coverage 93.85%" src=https://img.shields.io/badge/coverage-93.85%25-brightgreen.svg></a>
+  <a href=https://github.com/smallwins/slack/actions?query=workflow%3A%22Node+CI%22><img alt="Node CI" src=https://github.com/smallwins/slack/workflows/Node%20CI/badge.svg></a>
+  <img alt="coverage 93.85%" src=https://img.shields.io/badge/coverage-93.85%25-brightgreen.svg>
 </p>
 
 ### A [Slack Web API](https://api.slack.com/methods) client :seedling::raised_hands::two_hearts:
@@ -86,7 +86,7 @@ import Slack from 'slack'
 const slack = new Slack({useElectronNet:true})
 ```
 
-You can setup an HTTP authentication proxy logic by passing `login` to the constructor. 
+You can setup an HTTP authentication proxy logic by passing `login` to the constructor.
 
 ```javascript
 function login(authInfo, callback) {
@@ -108,7 +108,15 @@ SLACK_CLIENT_ID=xxxx
 SLACK_CLIENT_SECRET=xxxx
 ```
 
-You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the `channels:history` scope. You can [read about bot tokens here](https://api.slack.com/docs/token-types#bot).
+You can get a `SLACK_TOKEN` for testing [here](https://api.slack.com/web). You need to register an app for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`. The tests require the app to have the following scopes, and for the target slack to have a `#test` channel:
+
+- `channels:history`
+- `channels:read`
+- `chat:write:bot`
+- `team:read`
+- `users:read`
+
+You can [read about bot tokens here](https://api.slack.com/docs/token-types#bot).
 
 ## Testing :green_heart::green_heart::green_heart:
 

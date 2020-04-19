@@ -1,11 +1,157 @@
 {
-  "api.test": [],
-  "apps.permissions.info": [
+  "admin.apps.approve": [
     "token"
   ],
-  "apps.permissions.request": [
+  "admin.apps.approved.list": [
+    "token"
+  ],
+  "admin.apps.requests.list": [
+    "token"
+  ],
+  "admin.apps.restrict": [
+    "token"
+  ],
+  "admin.apps.restricted.list": [
+    "token"
+  ],
+  "admin.conversations.setTeams": [
+    "channel_id",
+    "token"
+  ],
+  "admin.emoji.add": [
+    "url",
     "token",
+    "name"
+  ],
+  "admin.emoji.addAlias": [
+    "token",
+    "name",
+    "alias_for"
+  ],
+  "admin.emoji.list": [
+    "token"
+  ],
+  "admin.emoji.remove": [
+    "token",
+    "name"
+  ],
+  "admin.emoji.rename": [
+    "new_name",
+    "token",
+    "name"
+  ],
+  "admin.inviteRequests.approve": [
+    "token",
+    "invite_request_id"
+  ],
+  "admin.inviteRequests.approved.list": [
+    "token"
+  ],
+  "admin.inviteRequests.denied.list": [
+    "token"
+  ],
+  "admin.inviteRequests.deny": [
+    "token",
+    "invite_request_id"
+  ],
+  "admin.inviteRequests.list": [
+    "token"
+  ],
+  "admin.teams.admins.list": [
+    "token",
+    "team_id"
+  ],
+  "admin.teams.create": [
+    "team_domain",
+    "token",
+    "team_name"
+  ],
+  "admin.teams.list": [
+    "token"
+  ],
+  "admin.teams.owners.list": [
+    "token",
+    "team_id"
+  ],
+  "admin.teams.settings.info": [
+    "token",
+    "team_id"
+  ],
+  "admin.teams.settings.setDefaultChannels": [
+    "channel_ids",
+    "token",
+    "team_id"
+  ],
+  "admin.teams.settings.setDescription": [
+    "token",
+    "team_id",
+    "description"
+  ],
+  "admin.teams.settings.setDiscoverability": [
+    "token",
+    "team_id",
+    "discoverability"
+  ],
+  "admin.teams.settings.setIcon": [
+    "token",
+    "image_url",
+    "team_id"
+  ],
+  "admin.teams.settings.setName": [
+    "token",
+    "team_id",
+    "name"
+  ],
+  "admin.users.assign": [
+    "user_id",
+    "team_id",
+    "token"
+  ],
+  "admin.users.invite": [
+    "channel_ids",
+    "team_id",
+    "token",
+    "email"
+  ],
+  "admin.users.list": [
+    "token",
+    "team_id"
+  ],
+  "admin.users.remove": [
+    "token",
+    "user_id",
+    "team_id"
+  ],
+  "admin.users.session.reset": [
+    "token",
+    "user_id"
+  ],
+  "admin.users.setAdmin": [
+    "token",
+    "user_id",
+    "team_id"
+  ],
+  "admin.users.setExpiration": [
+    "expiration_ts",
+    "token",
+    "user_id",
+    "team_id"
+  ],
+  "admin.users.setOwner": [
+    "token",
+    "user_id",
+    "team_id"
+  ],
+  "admin.users.setRegular": [
+    "token",
+    "user_id",
+    "team_id"
+  ],
+  "api.test": [],
+  "apps.permissions.info": [],
+  "apps.permissions.request": [
     "scopes",
+    "token",
     "trigger_id"
   ],
   "apps.permissions.resources.list": [
@@ -18,16 +164,12 @@
     "token"
   ],
   "apps.permissions.users.request": [
-    "token",
     "scopes",
-    "trigger_id",
-    "user"
-  ],
-  "apps.uninstall": [
     "token",
-    "client_id",
-    "client_secret"
+    "user",
+    "trigger_id"
   ],
+  "apps.uninstall": [],
   "auth.revoke": [
     "token"
   ],
@@ -37,186 +179,86 @@
   "bots.info": [
     "token"
   ],
-  "channels.archive": [
-    "token",
-    "channel"
-  ],
-  "channels.create": [
-    "token",
-    "name"
-  ],
-  "channels.history": [
-    "token",
-    "channel"
-  ],
-  "channels.info": [
-    "token",
-    "channel"
-  ],
-  "channels.invite": [
-    "token",
-    "channel",
-    "user"
-  ],
-  "channels.join": [
-    "token",
-    "name"
-  ],
-  "channels.kick": [
-    "token",
-    "channel",
-    "user"
-  ],
-  "channels.leave": [
-    "token",
-    "channel"
-  ],
-  "channels.list": [
-    "token"
-  ],
-  "channels.mark": [
-    "token",
-    "channel",
-    "ts"
-  ],
-  "channels.rename": [
-    "token",
-    "channel",
-    "name"
-  ],
-  "channels.replies": [
-    "token",
-    "channel",
-    "thread_ts"
-  ],
+  "channels.archive": [],
+  "channels.create": [],
+  "channels.history": [],
+  "channels.info": [],
+  "channels.invite": [],
+  "channels.join": [],
+  "channels.kick": [],
+  "channels.leave": [],
+  "channels.list": [],
+  "channels.mark": [],
+  "channels.rename": [],
+  "channels.replies": [],
   "channels.setPurpose": [
     "token",
-    "channel",
-    "purpose"
+    "purpose",
+    "channel"
   ],
   "channels.setTopic": [
+    "topic",
     "token",
-    "channel",
-    "topic"
+    "channel"
   ],
   "channels.unarchive": [
     "token",
     "channel"
   ],
-  "chat.delete": [
+  "chat.delete": [],
+  "chat.deleteScheduledMessage": [
     "token",
     "channel",
-    "ts"
+    "scheduled_message_id"
   ],
   "chat.getPermalink": [
     "token",
-    "channel",
-    "message_ts"
+    "message_ts",
+    "channel"
   ],
-  "chat.meMessage": [
-    "token",
-    "channel",
-    "text"
-  ],
+  "chat.meMessage": [],
   "chat.postEphemeral": [
     "token",
-    "channel",
-    "text",
-    "user"
+    "user",
+    "channel"
   ],
   "chat.postMessage": [
-    "token",
     "channel",
-    "text"
+    "token"
   ],
+  "chat.scheduleMessage": [],
+  "chat.scheduledMessages.list": [],
   "chat.unfurl": [
-    "token",
-    "channel",
     "ts",
-    "unfurls"
+    "token",
+    "channel"
   ],
   "chat.update": [
-    "token",
-    "channel",
-    "text",
-    "ts"
-  ],
-  "conversations.archive": [
+    "ts",
     "token",
     "channel"
   ],
-  "conversations.close": [
-    "token",
-    "channel"
-  ],
-  "conversations.create": [
-    "token",
-    "name"
-  ],
-  "conversations.history": [
-    "token",
-    "channel"
-  ],
-  "conversations.info": [
-    "token",
-    "channel"
-  ],
-  "conversations.invite": [
-    "token",
-    "channel",
-    "users"
-  ],
-  "conversations.join": [
-    "token",
-    "channel"
-  ],
-  "conversations.kick": [
-    "token",
-    "channel",
-    "user"
-  ],
-  "conversations.leave": [
-    "token",
-    "channel"
-  ],
-  "conversations.list": [
-    "token"
-  ],
-  "conversations.members": [
-    "token",
-    "channel"
-  ],
-  "conversations.open": [
-    "token"
-  ],
-  "conversations.rename": [
-    "token",
-    "channel",
-    "name"
-  ],
-  "conversations.replies": [
-    "token",
-    "channel",
-    "ts"
-  ],
-  "conversations.setPurpose": [
-    "token",
-    "channel",
-    "purpose"
-  ],
-  "conversations.setTopic": [
-    "token",
-    "channel",
-    "topic"
-  ],
-  "conversations.unarchive": [
-    "token",
-    "channel"
-  ],
+  "conversations.archive": [],
+  "conversations.close": [],
+  "conversations.create": [],
+  "conversations.history": [],
+  "conversations.info": [],
+  "conversations.invite": [],
+  "conversations.join": [],
+  "conversations.kick": [],
+  "conversations.leave": [],
+  "conversations.list": [],
+  "conversations.members": [],
+  "conversations.open": [],
+  "conversations.rename": [],
+  "conversations.replies": [],
+  "conversations.setPurpose": [],
+  "conversations.setTopic": [],
+  "conversations.unarchive": [],
   "dialog.open": [
     "token",
-    "dialog",
-    "trigger_id"
+    "trigger_id",
+    "dialog"
   ],
   "dnd.endDnd": [
     "token"
@@ -224,152 +266,64 @@
   "dnd.endSnooze": [
     "token"
   ],
-  "dnd.info": [
-    "token"
-  ],
+  "dnd.info": [],
   "dnd.setSnooze": [
-    "token",
-    "num_minutes"
-  ],
-  "dnd.teamInfo": [
+    "num_minutes",
     "token"
   ],
+  "dnd.teamInfo": [],
   "emoji.list": [
     "token"
   ],
-  "files.comments.add": [
-    "token",
-    "comment",
-    "file"
-  ],
-  "files.comments.delete": [
-    "token",
-    "file",
-    "id"
-  ],
-  "files.comments.edit": [
-    "token",
-    "comment",
-    "file",
-    "id"
-  ],
-  "files.delete": [
-    "token",
-    "file"
-  ],
-  "files.info": [
-    "token",
-    "file"
-  ],
-  "files.list": [
-    "token"
-  ],
-  "files.revokePublicURL": [
-    "token",
-    "file"
-  ],
-  "files.sharedPublicURL": [
-    "token",
-    "file"
-  ],
-  "files.upload": [
-    "token"
-  ],
-  "groups.archive": [
-    "token",
-    "channel"
-  ],
-  "groups.create": [
-    "token",
-    "name"
-  ],
-  "groups.createChild": [
-    "token",
-    "channel"
-  ],
-  "groups.history": [
-    "token",
-    "channel"
-  ],
-  "groups.info": [
-    "token",
-    "channel"
-  ],
-  "groups.invite": [
-    "token",
-    "channel",
-    "user"
-  ],
+  "files.comments.delete": [],
+  "files.delete": [],
+  "files.info": [],
+  "files.list": [],
+  "files.remote.add": [],
+  "files.remote.info": [],
+  "files.remote.list": [],
+  "files.remote.remove": [],
+  "files.remote.share": [],
+  "files.remote.update": [],
+  "files.revokePublicURL": [],
+  "files.sharedPublicURL": [],
+  "files.upload": [],
+  "groups.archive": [],
+  "groups.create": [],
+  "groups.createChild": [],
+  "groups.history": [],
+  "groups.info": [],
+  "groups.invite": [],
   "groups.kick": [
     "token",
-    "channel",
-    "user"
+    "user",
+    "channel"
   ],
   "groups.leave": [
     "token",
     "channel"
   ],
-  "groups.list": [
-    "token"
-  ],
-  "groups.mark": [
-    "token",
-    "channel",
-    "ts"
-  ],
-  "groups.open": [
-    "token",
-    "channel"
-  ],
-  "groups.rename": [
-    "token",
-    "channel",
-    "name"
-  ],
-  "groups.replies": [
-    "token",
-    "channel",
-    "thread_ts"
-  ],
-  "groups.setPurpose": [
-    "token",
-    "channel",
-    "purpose"
-  ],
-  "groups.setTopic": [
-    "token",
-    "channel",
-    "topic"
-  ],
-  "groups.unarchive": [
-    "token",
-    "channel"
-  ],
+  "groups.list": [],
+  "groups.mark": [],
+  "groups.open": [],
+  "groups.rename": [],
+  "groups.replies": [],
+  "groups.setPurpose": [],
+  "groups.setTopic": [],
+  "groups.unarchive": [],
   "im.close": [
     "token",
     "channel"
   ],
-  "im.history": [
-    "token",
-    "channel"
-  ],
-  "im.list": [
-    "token"
-  ],
+  "im.history": [],
+  "im.list": [],
   "im.mark": [
     "token",
     "channel",
     "ts"
   ],
-  "im.open": [
-    "token",
-    "user"
-  ],
-  "im.replies": [
-    "token",
-    "channel",
-    "thread_ts"
-  ],
+  "im.open": [],
+  "im.replies": [],
   "migration.exchange": [
     "token",
     "users"
@@ -378,52 +332,24 @@
     "token",
     "channel"
   ],
-  "mpim.history": [
-    "token",
-    "channel"
-  ],
-  "mpim.list": [
-    "token"
-  ],
-  "mpim.mark": [
-    "token",
-    "channel",
-    "ts"
-  ],
-  "mpim.open": [
-    "token",
-    "users"
-  ],
-  "mpim.replies": [
-    "token",
-    "channel",
-    "thread_ts"
-  ],
-  "oauth.access": [
-    "client_id",
-    "client_secret",
+  "mpim.history": [],
+  "mpim.list": [],
+  "mpim.mark": [],
+  "mpim.open": [],
+  "mpim.replies": [],
+  "oauth.access": [],
+  "oauth.token": [],
+  "oauth.v2.access": [
     "code"
   ],
-  "oauth.token": [
-    "client_id",
-    "client_secret",
-    "code"
-  ],
-  "pins.add": [
-    "token",
-    "channel"
-  ],
-  "pins.list": [
-    "token",
-    "channel"
-  ],
-  "pins.remove": [
-    "token",
-    "channel"
-  ],
+  "pins.add": [],
+  "pins.list": [],
+  "pins.remove": [],
   "reactions.add": [
+    "timestamp",
     "token",
-    "name"
+    "name",
+    "channel"
   ],
   "reactions.get": [
     "token"
@@ -432,56 +358,26 @@
     "token"
   ],
   "reactions.remove": [
-    "token",
-    "name"
-  ],
-  "reminders.add": [
-    "token",
-    "text",
-    "time"
-  ],
-  "reminders.complete": [
-    "token",
-    "reminder"
-  ],
-  "reminders.delete": [
-    "token",
-    "reminder"
-  ],
-  "reminders.info": [
-    "token",
-    "reminder"
-  ],
-  "reminders.list": [
+    "name",
     "token"
   ],
+  "reminders.add": [],
+  "reminders.complete": [],
+  "reminders.delete": [],
+  "reminders.info": [],
+  "reminders.list": [],
   "rtm.connect": [
     "token"
   ],
-  "rtm.start": [
-    "token"
-  ],
-  "search.all": [
-    "token",
-    "query"
-  ],
-  "search.files": [
-    "token",
-    "query"
-  ],
   "search.messages": [
-    "token",
-    "query"
+    "query",
+    "token"
   ],
   "stars.add": [
     "token"
   ],
-  "stars.list": [
-    "token"
-  ],
-  "stars.remove": [
-    "token"
-  ],
+  "stars.list": [],
+  "stars.remove": [],
   "team.accessLogs": [
     "token"
   ],
@@ -521,49 +417,49 @@
     "usergroup"
   ],
   "usergroups.users.update": [
+    "users",
     "token",
-    "usergroup",
-    "users"
+    "usergroup"
   ],
-  "users.conversations": [
-    "token"
-  ],
+  "users.conversations": [],
   "users.deletePhoto": [
     "token"
   ],
   "users.getPresence": [
-    "token",
-    "user"
-  ],
-  "users.identity": [
     "token"
   ],
+  "users.identity": [],
   "users.info": [
-    "token",
-    "user"
-  ],
-  "users.list": [
     "token"
   ],
-  "users.lookupByEmail": [
-    "token",
-    "email"
-  ],
+  "users.list": [],
+  "users.lookupByEmail": [],
+  "users.profile.get": [],
+  "users.profile.set": [],
   "users.setActive": [
     "token"
   ],
-  "users.setPhoto": [
-    "token",
-    "image"
-  ],
+  "users.setPhoto": [],
   "users.setPresence": [
     "token",
     "presence"
   ],
-  "users.profile.get": [
-    "token"
+  "views.open": [
+    "token",
+    "trigger_id",
+    "view"
   ],
-  "users.profile.set": [
+  "views.publish": [
+    "token",
+    "user_id",
+    "view"
+  ],
+  "views.push": [
+    "token",
+    "trigger_id",
+    "view"
+  ],
+  "views.update": [
     "token"
   ]
 }

@@ -54,7 +54,7 @@
     "nyc": "^15.0.1",
     "request": "^2.88.0",
     "tap-spec": "^5.0.0",
-    "tape": "^4.11.0"
+    "tape": "^5.0.0"
   },
   "dependencies": {
     "tiny-json-http": "^7.1.2"

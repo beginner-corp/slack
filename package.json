@@ -42,7 +42,7 @@
   "homepage": "https://github.com/smallwins/slack#readme",
   "devDependencies": {
     "async": "^3.1.0",
-    "browser-run": "^6.0.0",
+    "browser-run": "^8.0.0",
     "browserify": "^16.5.0",
     "chalk": "^3.0.0",
     "cheerio": "^0.22.0",

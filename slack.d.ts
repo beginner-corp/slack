@@ -401,6 +401,8 @@ declare namespace Chat.PostMessage {
     token: any
     channel: any
     text: any
+    blocks: any
+    attachments: any
     [optional: string]: any
   }
   

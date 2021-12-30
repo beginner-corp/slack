@@ -127,7 +127,9 @@
   "chat.postMessage": [
     "token",
     "channel",
-    "text"
+    "text",
+    "blocks",
+    "attachments"
   ],
   "chat.unfurl": [
     "token",
